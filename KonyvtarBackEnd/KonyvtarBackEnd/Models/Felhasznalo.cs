@@ -13,9 +13,9 @@ public partial class Felhasznalo
 
     public DateTime? TagsagVege { get; set; }
 
-    public sbyte? Kolcsonozhet { get; set; }
+    public bool? Kolcsonozhet { get; set; }
 
-    public sbyte? TagFelvehet { get; set; }
+    public bool? TagFelvehet { get; set; }
 
     public string? FelhasznaloiNev { get; set; }
 
