@@ -1,23 +1,31 @@
 ﻿namespace KonyvtarBackEnd.Dto
 {
-    public record FelhasznaloDto(uint Id,string Nev,DateTime Tagsagkezdete,DateTime Tagsagvege,bool Kolcsonozhet,bool Tag_felvehet,string Felhasznaloi_nev);
-    public record CreateFelhasznaloDto(uint Id, string Nev, DateTime Tagsagkezdete, DateTime Tagsagvege, bool Kolcsonozhet, bool Tag_felvehet, string Felhasznaloi_nev,string Hash);
-    public record ModifyFelhasznaloDto(uint Id, string Nev, DateTime Tagsagkezdete, DateTime Tagsagvege, bool Kolcsonozhet, bool Tag_felvehet, string Felhasznaloi_nev);
-    public record ModifyJelszo(string Jelszo);
+    public record FelhasznaloDto(uint Id, string Name, DateTime MembershipStart, DateTime MembershipEnd,string UserName,int Id_Rule,int Id_Account_Image);
+    public record CreateFelhasznaloDto(uint Id, string Name, DateTime MembershipStart, DateTime MembershipEnd, string UserName, string Hash, int Id_Rule, int Id_Account_Image);
+    public record ModifyFelhasznaloDto(uint Id, string Name, DateTime MembershipStart, DateTime MembershipEnd,string UserName, int Id_Rule, int Id_Account_Image);
+    public record ModifyJelszo(string Hash);
 
-    public record SzerzoDto(uint Id,string Nev);
-    public record CreateOrModifySzerzoDto(uint Id, string Nev);
+    public record AuthorDto(uint Id, string Name);
+    public record CreateOrModifyAuthorDto(uint Id, string Name);
 
-    public record KiadoDto(uint Id, string Nev);
-    public record CreateOrModifyKiadoDto(uint Id, string Nev);
+    public record PublisherDto(uint Id, string Name);
+    public record CreateOrModifyPublisherDto(uint Id, string Name);
 
-    public record SorozatDto(uint Id, string Nev);
-    public record CreateOrModifySorozatDto(uint Id, string Nev);
+    public record SeriesDto(uint Id, string Name);
+    public record CreateOrModifySeriesDto(uint Id, string Name);
 
-    public record KolcsonzesTortenetDto(uint Id,int Konyv_Id,int Tag_Id,DateTime Datum);
-    public record CreateOrModifyKolcsonzesTortenetDto(uint Id, uint Konyv_Id, uint Tag_Id, DateTime Datum);
+    public record LoanHistoryDto(uint Id, int Book_Id, int User_Id, DateTime Date);
+    public record CreateOrModifyLoanHistoryDto(uint Id, uint Book_Id, uint User_Id, DateTime Date);
 
-    public record KonyvDto(uint Id,int Raktari_Szam,DateTime Beszerzes_Datuma,uint Szerzo_Id,string Cim,int Sorozat_Id,decimal isbn_szam,decimal Szakjelzet,string Cutter_Jelzet,uint Kiado_Id,short Kiadas_Eve,decimal Ar,string Megjegyzes,uint Tag_Id);
-    public record CreateOrModifyKonyvDto(uint Id, uint Raktari_Szam, DateTime Beszerzes_Datuma, uint Szerzo_Id, string Cim, uint Sorozat_Id, decimal isbn_szam, decimal Szakjelzet, string Cutter_Jelzet, uint Kiado_Id, short Kiadas_Eve, decimal Ar, string Megjegyzes, uint Tag_Id);
+    public record BookDto(uint Id, int Warehouse_Num, DateTime Purchase_Date, uint Author_Id, string Title, int Series_Id, decimal Isbn_Num, decimal Szakjelzet, string Cutter_Jelzet, uint Publisher_Id, ushort Release_Date, decimal Price, string Comment, uint User_Id);
+    public record CreateOrModifyKonyvDto(uint Id, uint Warehouse_Num, DateTime Purchase_Date, uint Author_Id, string Title, uint Series_Id, decimal Isbn_Num, decimal Szakjelzet, string Cutter_Jelzet, uint Publisher_Id, ushort Release_Date, decimal Price, string Comment, uint User_Id);
+
+    public record RuleDto(int Id, string Name);
+    public record CreateOrModifyRuleDto(int Id, string Name);
+
+    public record AccountImgDto(int Id, string Name,string Path);
+    public record CreateOrModifyAccountImgDto(int Id, string Name,string Path);
+
+    public record EmailDto(string To, string Subject, string Body);
 
 }
