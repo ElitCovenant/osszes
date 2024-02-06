@@ -13,7 +13,6 @@ namespace KonyvtarBackEnd.Controllers
         {
             var UjFelhasznalo = new User
             {
-                Id = createFelhasznaloDto.Id,
                 MembershipStart = createFelhasznaloDto.MembershipStart,
                 MembershipEnd = createFelhasznaloDto.MembershipEnd,
                 Usarname = createFelhasznaloDto.UserName,
@@ -80,7 +79,7 @@ namespace KonyvtarBackEnd.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<FelhasznaloDto> Put(int id, CreateFelhasznaloDto createFelhasznaloDto)
+        public ActionResult<FelhasznaloDto> Put(int id, ModifyFelhasznaloDto modifyFelhasznaloDto)
         {
             using (var context = new KonyvtarDbContext())
             {
@@ -89,12 +88,12 @@ namespace KonyvtarBackEnd.Controllers
                     var valtoztatando = context.Users.FirstOrDefault(x => x.Id == id);
                     if (valtoztatando != null)
                     {
-                        valtoztatando.Id = createFelhasznaloDto.Id;
-                        valtoztatando.MembershipStart = createFelhasznaloDto.MembershipStart;
-                        valtoztatando.MembershipEnd = createFelhasznaloDto.MembershipEnd;
-                        valtoztatando.Usarname = createFelhasznaloDto.UserName;
-                        valtoztatando.IdRule = createFelhasznaloDto.Id_Rule;
-                        valtoztatando.IdAccountImg = createFelhasznaloDto.Id_Account_Image;
+                        valtoztatando.Id = modifyFelhasznaloDto.Id;
+                        valtoztatando.MembershipStart = modifyFelhasznaloDto.MembershipStart;
+                        valtoztatando.MembershipEnd = modifyFelhasznaloDto.MembershipEnd;
+                        valtoztatando.Usarname = modifyFelhasznaloDto.UserName;
+                        valtoztatando.IdRule = modifyFelhasznaloDto.Id_Rule;
+                        valtoztatando.IdAccountImg = modifyFelhasznaloDto.Id_Account_Image;
 
                         context.Users.Update(valtoztatando);
                         context.SaveChanges();
