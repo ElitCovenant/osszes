@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Péter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj": {}
+    "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Péter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj": {
+    "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Péter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
         "projectName": "KonyvtarBackEnd",
-        "projectPath": "C:\\Users\\Péter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
-        "packagesPath": "C:\\Users\\Péter\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Péter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\obj\\",
+        "projectPath": "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
+        "packagesPath": "C:\\Users\\peter\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\C#\\C# Cuccok 3\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Péter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\peter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -45,6 +45,18 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.15, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.13, )"
@@ -59,6 +71,10 @@
               "target": "Package",
               "version": "[7.0.15, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[7.0.0, )"
@@ -66,6 +82,14 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.2.0, )"
             }
           },
           "imports": [
