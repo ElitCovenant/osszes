@@ -26,9 +26,19 @@ builder.Services.AddSwaggerGen(options =>
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 builder.Services.AddAuthentication().AddJwtBearer();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "Niggerveszedelem",
+                      builder =>
+                      {
+                          builder.WithOrigins("http://127.0.0.1:5500","http://localhost:3000")
+                                 .AllowAnyMethod()
+                                 .AllowAnyHeader();
+                      });
+});
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -38,6 +48,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("Niggerveszedelem");
 
 app.MapControllers();
 
