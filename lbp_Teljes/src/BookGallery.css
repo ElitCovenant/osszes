@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .gallery__strip {
+    min-height: 100vh;
+  }
+  
+  .gallery__strip__wrapper {
+    flex: 0 0 100%;
+    justify-content: flex-end;
+    border-right: 2px solid #333;
+    position: relative;
+  }
+  
+  @media (min-width: 250px) {
+    .gallery__strip__wrapper {
+      flex: 0 0 100%;
+    }
+  }
+  
+  @media (min-width: 250px) {
+    .gallery {
+      height: 99vh;
+    }
+  
+    .gallery__strip {
+      &.one {
+        animation: 60s move-it ease alternate infinite 5s;
+        transform: translateY(45%);
+      }
+      &.three {
+        animation: 70s move-it ease alternate infinite 6s;
+        transform: translateY(45%);
+      }
+      &.two {
+        animation: 61s move-it-2 ease alternate infinite 5s;
+        transform: translateY(-50%);
+      }
+      &.four {
+        animation: 65s move-it-2 ease alternate infinite 5.5s;
+        transform: translateY(-50%);
+      }
+  
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
+  
+    .gallery__strip__wrapper {
+      flex: 0 0 5%;
+    }
+  }
+  
+  .photo {
+    position: relative;
+    text-align: right;
+    padding-bottom: 3rem;
+    
+  }
+  
+  .photo__image img {
+    width: 50%;
+    transform: translateX(30%);
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
+  }
+  
+  .photo__name {
+    text-transform: uppercase;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    margin-top: -25px;
+    transition: 0.4s ease-in-out 0.4s;
+    position: relative;
+    width: 100%;
+  }
+  
+  .photo:hover .photo__image img {
+    transform: translateX(5%);
+  }
+  
+  .photo:hover .photo__name {
+    color: #fff;
+  }
+  
+  @keyframes move-it {
+    0%,
+    90%,
+    100% {
+     transform: translateY(70%);
+    }
+    45% {
+     transform: translateY(-70%);
+    }
+   }
+   
+   @keyframes move-it-2 {
+    0%,
+    90%,
+    100% {
+     transform: translateY(-50%);
+    }
+    45% {
+     transform: translateY(80%);
+    }
+   }

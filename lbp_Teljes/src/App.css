@@ -1,0 +1,36 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content-container {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  @media (max-width: 952px) {
+    .content-container {
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 858px) {
+    .app-container {
+      flex-direction: column;
+    }
+  
+    .content-container {
+      padding: 10px;
+    }
+  }
+
+  body{
+    background-image: url(/src/Surrealism.jpg);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position:auto;
+    background-size: top;
+
+  }
+  

@@ -1,0 +1,33 @@
+.language-selector {
+    position: relative;
+    display: inline-block;
+    
+    
+}
+
+.dropdown-button {
+    background-color: rgba(0, 0, 0, 0.333);
+    color: rgb(248, 248, 248);
+    padding: 6px 12px;
+    border: 1 solid #ddd;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.829);
+    box-shadow: 0 2px 5px rgba(121, 11, 11, 0.996);
+    z-index: 1;
+}
+
+.dropdown-menu p {
+    padding: auto;
+    cursor: pointer;
+    width: auto;
+
+}
+
+.dropdown-menu p:hover {
+    background-color: #9c9898;
+    max-width: auto;
+}
