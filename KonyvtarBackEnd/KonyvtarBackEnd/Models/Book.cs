@@ -31,6 +31,8 @@ public partial class Book
 
     public string? Comment { get; set; }
 
+    public string BookImg { get; set; } = null!;
+
     public uint? UserId { get; set; }
 
     public virtual Author Author { get; set; } = null!;

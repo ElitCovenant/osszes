@@ -88,6 +88,10 @@ public partial class KonyvtarDbContext : DbContext
             entity.Property(e => e.AuthorId)
                 .HasDefaultValueSql("'34'")
                 .HasColumnName("author_id");
+            entity.Property(e => e.BookImg)
+                .HasMaxLength(100)
+                .HasDefaultValueSql("'Valami/Valami'")
+                .HasColumnName("book_img");
             entity.Property(e => e.Comment)
                 .HasMaxLength(1000)
                 .HasColumnName("comment");
@@ -143,7 +147,12 @@ public partial class KonyvtarDbContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.BookId).HasColumnName("book_id");
+            entity.Property(e => e.Comment)
+                .HasMaxLength(100)
+                .HasColumnName("comment");
             entity.Property(e => e.Date).HasColumnName("date");
+            entity.Property(e => e.DateEnd).HasColumnName("date_end");
+            entity.Property(e => e.Returned).HasColumnName("returned");
             entity.Property(e => e.UserId).HasColumnName("user_id");
 
             entity.HasOne(d => d.Book).WithMany(p => p.LoanHistories)
@@ -214,6 +223,9 @@ public partial class KonyvtarDbContext : DbContext
                 .HasColumnName("id_rule");
             entity.Property(e => e.MembershipEnd).HasColumnName("membership_end");
             entity.Property(e => e.MembershipStart).HasColumnName("membership_start");
+            entity.Property(e => e.Token)
+                .HasMaxLength(1000)
+                .HasColumnName("token");
             entity.Property(e => e.Usarname)
                 .HasMaxLength(45)
                 .HasColumnName("usarname");

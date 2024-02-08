@@ -10,14 +10,19 @@ namespace KonyvtarBackEnd.Controllers
     public class LoanHistoryController : ControllerBase
     {
         [HttpPost]
-        public ActionResult<LoanHistoryDto> Post(CreateOrModifyLoanHistoryDto createOrModifyLoanHistory)
+        public ActionResult<LoanHistoryDto> Post(CreateLoanHistoryDto createOrModifyLoanHistory)
         {
             var UjKolcsonzesTortenet = new LoanHistory
             {
                 Id = createOrModifyLoanHistory.Id,
                 BookId = createOrModifyLoanHistory.Book_Id,
                 UserId = createOrModifyLoanHistory.User_Id,
-                Date = createOrModifyLoanHistory.Date
+                Date = DateTime.Now,
+                DateEnd = DateTime.Now.AddDays(createOrModifyLoanHistory.Deadline),
+                Returned = false,
+                Comment = createOrModifyLoanHistory.Comment
+
+                
             };
             using (var context = new KonyvtarDbContext())
             {
@@ -78,7 +83,7 @@ namespace KonyvtarBackEnd.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<LoanHistoryDto> Put(int id, CreateOrModifyLoanHistoryDto createOrModifyLoanHistoryDto)
+        public ActionResult<LoanHistoryDto> Put(int id, ModifyLoanHistoryDto createOrModifyLoanHistoryDto)
         {
             using (var context = new KonyvtarDbContext())
             {
@@ -91,6 +96,9 @@ namespace KonyvtarBackEnd.Controllers
                         valtoztatando.BookId = createOrModifyLoanHistoryDto.Book_Id;
                         valtoztatando.UserId = createOrModifyLoanHistoryDto.User_Id;
                         valtoztatando.Date = createOrModifyLoanHistoryDto.Date;
+                        valtoztatando.DateEnd = createOrModifyLoanHistoryDto.Date_End;
+                        valtoztatando.Returned = createOrModifyLoanHistoryDto.Returned;
+                        valtoztatando.Comment = createOrModifyLoanHistoryDto.Comment;
 
                         context.LoanHistories.Update(valtoztatando);
                         context.SaveChanges();

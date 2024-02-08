@@ -1,5 +1,5 @@
-using KonyvtarBackEnd.Service.IEmailServices;
-using KonyvtarBackEnd.Service;
+//using KonyvtarBackEnd.Service.IEmailServices;
+//using KonyvtarBackEnd.Service;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
@@ -14,7 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers().AddJsonOptions(x =>
 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-builder.Services.AddScoped<IEmailService, EmailService>();
+//builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("interactions", new OpenApiSecurityScheme
