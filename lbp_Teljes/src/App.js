@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './AuthContext'; // Győződj meg róla, hogy létrehoztad ezt a kontextust
+import { AuthProvider } from './AuthContext';
 import Navbar from './Navbar';
 import Home from './Home';
 import Books from './Books';
 import Footer from './Footer';
 import Login from './Login';
-import {Hover} from './Hover'; // Feltételezem, hogy ez egy komponens
+import {Hover} from './Hover';
 import './App.css';
 
 const App = () => {
@@ -14,8 +14,8 @@ const App = () => {
 
   return (
     <Router>
-      <AuthProvider> {/* Az AuthProvider itt kerül alkalmazásra */}
-        <div className="app-container">
+      <div className="app-container">
+        <AuthProvider>
           <Navbar setSearchTerm={setSearchTerm} />
           <div className="content-container">
             <Routes>
@@ -26,9 +26,9 @@ const App = () => {
             </Routes>
           </div>
           <Hover />
-          <Footer />
-        </div>
-      </AuthProvider>
+        </AuthProvider>
+        <Footer />
+      </div>
     </Router>
   );
 };

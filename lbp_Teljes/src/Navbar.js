@@ -50,6 +50,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
+      <div className="navbar-left">
         {isLogo1 ? (
           <Link to="https://github.com/LibraKando/Project">
             <img src={logoPath} height={50} alt='' />
@@ -59,6 +60,7 @@ const Navbar = () => {
             <img src={logoPath} height={50} alt='' />
           </Link>
         )}
+        </div>
       <div className="navbar-right">
         <ul className="navbar-menu">
           <li><Link to="/">Home</Link></li>
@@ -84,8 +86,10 @@ const Navbar = () => {
             </datalist>
           )}
 
+        </div>
+           <div className="frame">
+             <button className="search-button" onClick={handleSearch}>Search</button>
           </div>
-          <button className="search-button" onClick={handleSearch}>Search</button>
         </div>
         <LanguageSelector />
       </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './Login.css'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -39,13 +40,14 @@ const Login = () => {
                   <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="field padding-bottom--24">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type={passwordVisible ? "text" : "password"}
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                    <label htmlFor="password">Password</label>
+                      <input
+                        type={passwordVisible ? "text" : "password"}
+                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
                   <div className="field-checkbox padding-top--8">
                     <label>
                       <input
@@ -55,7 +57,7 @@ const Login = () => {
                       /> Show Password
                     </label>
                   </div>
-                </div>
+              
                 <div className="field padding-bottom--24">
                   <input type="submit" name="submit" value="Sign in"/>
                 </div>
