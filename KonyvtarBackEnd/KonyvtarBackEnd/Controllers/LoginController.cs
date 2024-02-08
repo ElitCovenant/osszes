@@ -62,6 +62,9 @@ namespace KonyvtarBackEnd.Controllers
                         else
                         {
                             string token = CreateToken(kerdezett);
+                            kerdezett.Token = token;
+                            context.Users.Update(kerdezett);
+                            context.SaveChanges();
                             return Ok(token);
                         }
 
@@ -98,7 +101,7 @@ namespace KonyvtarBackEnd.Controllers
                     expires: DateTime.Now.AddDays(1),
                     signingCredentials: creds);
                 var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
+                
                 return jwt;
             }
         }
