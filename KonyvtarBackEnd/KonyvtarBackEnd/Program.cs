@@ -31,7 +31,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "Niggerveszedelem",
                       builder =>
                       {
-                          builder.WithOrigins("http://127.0.0.1:5500","http://localhost:3000")
+                          builder.WithOrigins("http://127.0.0.1:5500","http://localhost:3000","http://localhost:3001")
                                  .AllowAnyMethod()
                                  .AllowAnyHeader();
                       });
