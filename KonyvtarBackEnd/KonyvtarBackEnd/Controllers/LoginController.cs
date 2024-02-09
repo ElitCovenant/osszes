@@ -65,7 +65,9 @@ namespace KonyvtarBackEnd.Controllers
                             kerdezett.Token = token;
                             context.Users.Update(kerdezett);
                             context.SaveChanges();
-                            return Ok(token);
+                            Token Troken = new Token();
+                            Troken.Troken = token;
+                            return Ok(Troken);
                         }
 
                     }
