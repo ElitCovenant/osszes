@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
 
-const Login = () => {
+const Login = ({ isLoggedIn, toggleLogin }) => { // Felhasználjuk az "isLoggedIn" és "toggleLogin" propsokat
   const [userName, setUserName] = useState('');
   const [hash, setHash] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -19,11 +19,11 @@ const Login = () => {
         body: JSON.stringify({ userName, hash }),
       });
       const data = await response.json();
-      console.log(data.troken); 
       if (response.ok && data.troken) {
         localStorage.setItem('authToken', data.troken);
+        toggleLogin(); // Átadja a visszahívást, hogy az "isLoggedIn" állapotot frissítse
         navigate('/UserPage');
-        console.log("Sikeres")
+        
       } else {
         // Itt kezelhetjük a nem sikeres bejelentkezést
         console.error('Bejelentkezés sikertelen, válasz státusz:', response.status);
@@ -32,7 +32,6 @@ const Login = () => {
       console.error('Hiba történt a bejelentkezés során:', error);
     }
   };
-
 
   return (
       <div className="login-root">
