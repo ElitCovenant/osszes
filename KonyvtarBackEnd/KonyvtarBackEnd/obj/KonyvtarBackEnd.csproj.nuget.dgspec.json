@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\OlahM\\Documents\\backend cuccok githubról\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj": {}
+    "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\OlahM\\Documents\\backend cuccok githubról\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj": {
+    "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\OlahM\\Documents\\backend cuccok githubról\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
         "projectName": "KonyvtarBackEnd",
-        "projectPath": "C:\\Users\\OlahM\\Documents\\backend cuccok githubról\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
-        "packagesPath": "C:\\Users\\OlahM\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\OlahM\\Documents\\backend cuccok githubról\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\obj\\",
+        "projectPath": "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
+        "packagesPath": "C:\\Users\\peter\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\OlahM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\peter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

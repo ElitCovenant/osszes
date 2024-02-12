@@ -1,5 +1,6 @@
 ﻿using KonyvtarBackEnd.Dto;
 using KonyvtarBackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KonyvtarBackEnd.Controllers
@@ -32,7 +33,7 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet,Authorize(Roles = "Admin")]
         public ActionResult<AccountImgDto> GetAll()
         {
             using (var context = new KonyvtarDbContext())

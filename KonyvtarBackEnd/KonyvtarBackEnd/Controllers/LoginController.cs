@@ -1,5 +1,6 @@
 ﻿using KonyvtarBackEnd.Dto;
 using KonyvtarBackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -20,7 +21,7 @@ namespace KonyvtarBackEnd.Controllers
             _configuration = configuration;
         }
 
-        [HttpPut("/Register")]
+        [HttpPut("/Register"),Authorize(Roles = "Admin")]
         public ActionResult<RegisterDto> Register(RegisterDto registerDto)
         {
             var UjFelhasznalo = new User
