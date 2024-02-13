@@ -1,8 +1,11 @@
-//using KonyvtarBackEnd.Service.IEmailServices;
-//using KonyvtarBackEnd.Service;
+using KonyvtarBackEnd.Service.IEmailServices;
+using KonyvtarBackEnd.Service;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers().AddJsonOptions(x =>
 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-//builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("interactions", new OpenApiSecurityScheme
@@ -25,7 +28,14 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
-builder.Services.AddAuthentication().AddJwtBearer();
+builder.Services.AddAuthentication().AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value!))
+    };
+});
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "Niggerveszedelem",
@@ -48,6 +58,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.UseCors("Niggerveszedelem");
 

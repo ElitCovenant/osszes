@@ -76,6 +76,22 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
+        [HttpGet("/Tanulók")]
+        public ActionResult<AccountImgDto> GetStudentPics()
+        {
+            using (var context = new KonyvtarDbContext())
+            {
+                if (context != null)
+                {
+                    return Ok(context.AccountImgs.Where(x=>x.ImgName.Contains("Guest")||x.ImgName.Contains("Default")).ToList());
+                }
+                else
+                {
+                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                }
+            }
+        }
+
         [HttpPut("{id}")]
         public ActionResult<AccountImgDto> Put(int id, CreateOrModifyAccountImgDto createOrModifyAccountImgDto)
         {

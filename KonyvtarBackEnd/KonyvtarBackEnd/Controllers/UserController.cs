@@ -88,7 +88,6 @@ namespace KonyvtarBackEnd.Controllers
                     var valtoztatando = context.Users.FirstOrDefault(x => x.Id == id);
                     if (valtoztatando != null)
                     {
-                        valtoztatando.Id = modifyFelhasznaloDto.Id;
                         valtoztatando.MembershipStart = modifyFelhasznaloDto.MembershipStart;
                         valtoztatando.MembershipEnd = modifyFelhasznaloDto.MembershipEnd;
                         valtoztatando.Usarname = modifyFelhasznaloDto.UserName;
