@@ -2274,23 +2274,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\OlahM\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Péter\\.nuget\\packages\\": {},
+    "E:\\C#\\C# Cuccok 3\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OlahM\\Documents\\backend cuccok githubról\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\Péter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
       "projectName": "KonyvtarBackEnd",
-      "projectPath": "C:\\Users\\OlahM\\Documents\\backend cuccok githubról\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
-      "packagesPath": "C:\\Users\\OlahM\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OlahM\\Documents\\backend cuccok githubról\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\obj\\",
+      "projectPath": "C:\\Users\\Péter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
+      "packagesPath": "C:\\Users\\Péter\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Péter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "E:\\C#\\C# Cuccok 3\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\OlahM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Péter\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -1,5 +1,6 @@
 ﻿using KonyvtarBackEnd.Dto;
 using KonyvtarBackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KonyvtarBackEnd.Controllers
@@ -32,7 +33,7 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet,Authorize(Roles = "Admin")]
         public ActionResult<AccountImgDto> GetAll()
         {
             using (var context = new KonyvtarDbContext())
@@ -72,6 +73,22 @@ namespace KonyvtarBackEnd.Controllers
                 }
 
 
+            }
+        }
+
+        [HttpGet("/Tanulók")]
+        public ActionResult<AccountImgDto> GetStudentPics()
+        {
+            using (var context = new KonyvtarDbContext())
+            {
+                if (context != null)
+                {
+                    return Ok(context.AccountImgs.Where(x=>x.ImgName.Contains("Guest")||x.ImgName.Contains("Default")).ToList());
+                }
+                else
+                {
+                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                }
             }
         }
 

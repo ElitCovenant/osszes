@@ -1,5 +1,6 @@
 ﻿using KonyvtarBackEnd.Dto;
 using KonyvtarBackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -20,7 +21,7 @@ namespace KonyvtarBackEnd.Controllers
             _configuration = configuration;
         }
 
-        [HttpPut("/Register")]
+        [HttpPut("/Register"),Authorize(Roles = "Admin")]
         public ActionResult<RegisterDto> Register(RegisterDto registerDto)
         {
             var UjFelhasznalo = new User
@@ -101,6 +102,8 @@ namespace KonyvtarBackEnd.Controllers
                 var token = new JwtSecurityToken(
                     claims: claims,
                     expires: DateTime.Now.AddDays(1),
+                    audience: _configuration.GetSection("Authentication:Schemes:Bearer:ValidAudiences").Value,
+                    issuer : _configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
                     signingCredentials: creds);
                 var jwt = new JwtSecurityTokenHandler().WriteToken(token);
                 
