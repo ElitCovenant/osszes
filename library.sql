@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2024. Feb 06. 08:59
+-- Létrehozás ideje: 2024. Feb 19. 08:10
 -- Kiszolgáló verziója: 8.0.31
 -- PHP verzió: 8.0.26
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `library`
 --
+CREATE DATABASE IF NOT EXISTS `library` DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci;
+USE `library`;
 
 -- --------------------------------------------------------
 
@@ -40,11 +42,11 @@ CREATE TABLE IF NOT EXISTS `account_img` (
 --
 
 INSERT INTO `account_img` (`id`, `img_name`, `img_path`) VALUES
-(1, 'Default', 'Valami/valami'),
-(2, 'Teacher_1', 'Valami/valami'),
-(3, 'Teacher_2', 'Valami/valami'),
-(4, 'Guest_1', 'Valami/valami'),
-(5, 'Guest_2', 'Valami/valami');
+(1, 'Default', './img/default_prof_picture.png'),
+(2, 'Teacher_1', './img/teacher1_prof_picture.png'),
+(3, 'Teacher_2', './img/teacher2_prof_picture.png'),
+(4, 'Guest_1', './img/quest1_prof_picture.png'),
+(5, 'Guest_2', './img/quest2_prof_picture.png');
 
 -- --------------------------------------------------------
 
@@ -94,6 +96,7 @@ CREATE TABLE IF NOT EXISTS `book` (
   `release_date` smallint UNSIGNED DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `comment` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `book_img` varchar(100) NOT NULL DEFAULT 'Valami/Valami',
   `user_id` int UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `raktari_szam_UNIQUE` (`warehouse_num`),
@@ -107,12 +110,14 @@ CREATE TABLE IF NOT EXISTS `book` (
 -- A tábla adatainak kiíratása `book`
 --
 
-INSERT INTO `book` (`id`, `warehouse_num`, `purchase_date`, `author_id`, `title`, `series_id`, `isbn_num`, `szakkjelzet`, `cutter_jelzet`, `publisher_id`, `release_date`, `price`, `comment`, `user_id`) VALUES
-(1, 1, '1967-01-09', 1, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, NULL),
-(2, 2, '1967-01-09', 1, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, NULL),
-(3, 3, '1967-01-09', 1, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, NULL),
-(4, 4, '1967-01-09', 1, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, NULL),
-(5, 5, '1967-01-09', 2, 'Összes költeményei', NULL, NULL, NULL, 'A 76', NULL, NULL, '110.00', NULL, NULL);
+INSERT INTO `book` (`id`, `warehouse_num`, `purchase_date`, `author_id`, `title`, `series_id`, `isbn_num`, `szakkjelzet`, `cutter_jelzet`, `publisher_id`, `release_date`, `price`, `comment`, `book_img`, `user_id`) VALUES
+(1, 1, '1967-01-09', 1, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'Valami/Valami', NULL),
+(2, 2, '1967-01-09', 1, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'Valami/Valami', NULL),
+(3, 3, '1967-01-09', 1, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'Valami/Valami', NULL),
+(4, 4, '1967-01-09', 1, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'Valami/Valami', NULL),
+(5, 5, '1967-01-09', 2, 'Összes költeményei', NULL, NULL, NULL, 'A 76', NULL, NULL, '110.00', NULL, 'Valami/Valami', NULL);
+
+-- --------------------------------------------------------
 
 --
 -- Tábla szerkezet ehhez a táblához `loan_history`
@@ -124,6 +129,9 @@ CREATE TABLE IF NOT EXISTS `loan_history` (
   `book_id` int UNSIGNED NOT NULL,
   `user_id` int UNSIGNED DEFAULT NULL,
   `date` date DEFAULT NULL,
+  `date_end` date DEFAULT NULL,
+  `returned` tinyint(1) NOT NULL DEFAULT '0',
+  `comment` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_konyv_id_idx` (`book_id`),
   KEY `fk_tag_id_idx` (`user_id`)
@@ -189,6 +197,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `membership_end` date DEFAULT NULL,
   `usarname` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `HASH` varchar(65) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `token` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `id_rule` int NOT NULL DEFAULT '2',
   `id_account_img` int NOT NULL DEFAULT '4',
   PRIMARY KEY (`id`),
@@ -200,9 +209,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- A tábla adatainak kiíratása `user`
 --
 
-INSERT INTO `user` (`id`, `membership_start`, `membership_end`, `usarname`, `HASH`, `id_rule`, `id_account_img`) VALUES
-(1, '2024-01-18', '2034-01-01', 'ambrusk@kkszki.hu', 'admin1', 1, 1),
-(2, '2023-09-01', '2024-06-16', 'valami@kkszki.hu', 'proba', 2, 4);
+INSERT INTO `user` (`id`, `membership_start`, `membership_end`, `usarname`, `HASH`, `token`, `id_rule`, `id_account_img`) VALUES
+(1, '2024-02-19', '2028-02-19', 'string@kkszki.hu', '$2a$11$O9CC4SduJTI3IP9FRx5qSeuBfwDTdqMCgypF2yDR3mbmLJOrG.rIa', 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJHdWVzdCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6InN0cmluZ0Bra3N6a2kuaHUiLCJleHAiOjE3MDg0MTYxODF9.TdLE7bXSqBLhSQIVEUVoE3h0eW3LqyaiFtM2qGOwbM_nQ4vMjjk0j7YZkclajGtjCGMYzr7WweELnsx8hkPFiA', 2, 4),
+(2, '2024-02-19', '2028-02-19', 'string2@kkszki.hu', '$2a$11$Zi8gAeq3mkpQqLShqZbs5etvHKQw5aH5waZ//RrxU0rpwveCzRzH6', NULL, 2, 4);
 
 --
 -- Megkötések a kiírt táblákhoz

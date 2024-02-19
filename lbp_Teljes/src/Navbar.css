@@ -114,6 +114,9 @@ background: linear-gradient(0deg, rgb(25, 155, 13) 0%, rgba(187, 186, 183, 0.951
   border-radius: 35%;
   border-width: 20%;
 }
+.profile-menu {
+  position: relative; /* Módosítás: relative helyett */
+}
 
 @media (min-width:517px) {
 

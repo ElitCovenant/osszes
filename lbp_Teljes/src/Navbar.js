@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import LanguageSelector from './LanguageSelector';
-import logo from './default_prof_picture.png';
+import logo from './img/default_prof_picture.png';
 
 const Navbar = () => {
   const [isLogo1, setIsLogo1] = useState(true);
@@ -104,7 +104,7 @@ const Navbar = () => {
                   <>
                     <Link to="/myprofile">My Profile</Link>
                     <Link to="/settings">Settings</Link>
-                    <Link to="/logout" onClick={toggleLogin}>Logout</Link>
+                    <Link to="/" onClick={toggleLogin}>Logout</Link>
                   </>
                 ) : (
                   <Link to="/login" onClick={toggleLogin}>Log in</Link>

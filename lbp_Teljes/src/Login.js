@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
 
-const Login = ({ isLoggedIn, toggleLogin }) => { // Felhasználjuk az "isLoggedIn" és "toggleLogin" propsokat
+const Login = ({ isLoggedIn, toggleLogin = () => {} }) => { // Felhasználjuk az "isLoggedIn" és "toggleLogin" propsokat
   const [userName, setUserName] = useState('');
   const [hash, setHash] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -22,7 +22,7 @@ const Login = ({ isLoggedIn, toggleLogin }) => { // Felhasználjuk az "isLoggedI
       if (response.ok && data.troken) {
         localStorage.setItem('authToken', data.troken);
         toggleLogin(); // Átadja a visszahívást, hogy az "isLoggedIn" állapotot frissítse
-        navigate('/UserPage');
+        navigate('/');
         
       } else {
         // Itt kezelhetjük a nem sikeres bejelentkezést
@@ -49,7 +49,7 @@ const Login = ({ isLoggedIn, toggleLogin }) => { // Felhasználjuk az "isLoggedI
                     <input type="text" name="userName" value={userName} onChange={(e) => setUserName(e.target.value)} />
                   </div>
                   <div className="field padding-bottom--24">
-                    <label htmlFor="hash">Jelszó</label>
+                    <label htmlFor="hash">Password</label>
                     <input
                       type={passwordVisible ? "text" : "password"}
                       name="hash"
