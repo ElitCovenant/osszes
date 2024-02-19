@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
 
-const Login = () => {
+const Login = ({ isLoggedIn, toggleLogin = () => {} }) => { // Felhasználjuk az "isLoggedIn" és "toggleLogin" propsokat
   const [userName, setUserName] = useState('');
   const [hash, setHash] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -19,11 +19,11 @@ const Login = () => {
         body: JSON.stringify({ userName, hash }),
       });
       const data = await response.json();
-      console.log(data.troken); 
       if (response.ok && data.troken) {
         localStorage.setItem('authToken', data.troken);
-        navigate('/UserPage');
-        console.log("Sikeres")
+        toggleLogin(); // Átadja a visszahívást, hogy az "isLoggedIn" állapotot frissítse
+        navigate('/');
+        
       } else {
         // Itt kezelhetjük a nem sikeres bejelentkezést
         console.error('Bejelentkezés sikertelen, válasz státusz:', response.status);
@@ -32,7 +32,6 @@ const Login = () => {
       console.error('Hiba történt a bejelentkezés során:', error);
     }
   };
-
 
   return (
       <div className="login-root">
@@ -50,7 +49,7 @@ const Login = () => {
                     <input type="text" name="userName" value={userName} onChange={(e) => setUserName(e.target.value)} />
                   </div>
                   <div className="field padding-bottom--24">
-                    <label htmlFor="hash">Jelszó</label>
+                    <label htmlFor="hash">Password</label>
                     <input
                       type={passwordVisible ? "text" : "password"}
                       name="hash"
