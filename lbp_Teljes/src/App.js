@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Login from './Login';
 import {Hover} from './Hover';
 import './App.css';
+import UserPage from './UserPage';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,6 +23,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/books" element={<Books searchTerm={searchTerm} />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/userpage" element={<UserPage />} />
               {/* További útvonalak és komponensek */}
             </Routes>
           </div>

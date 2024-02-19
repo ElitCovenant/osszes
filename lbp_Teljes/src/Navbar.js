@@ -102,7 +102,7 @@ const Navbar = () => {
               <div className="dropdown-content">
                 {isLoggedIn ? (
                   <>
-                    <Link to="/myprofile">My Profile</Link>
+                    <Link to="/UserPage">My Profile</Link>
                     <Link to="/settings">Settings</Link>
                     <Link to="/" onClick={toggleLogin}>Logout</Link>
                   </>

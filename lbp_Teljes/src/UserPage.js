@@ -1,10 +1,12 @@
 import React from 'react';
+import './UserPage.css';
+import ProfileComponent from './ProfileComponent';
 
 const UserPage = () => {
   return (
-    <div>
-      <h1>Felhasználói Oldal</h1>
-      <p>Ez az oldal tartalmazza a felhasználói információkat és egyéb releváns tartalmat.</p>
+    <div className='yeep'>
+      <p>Felhasználói Profil</p>
+      <ProfileComponent />
     </div>
   );
 };
