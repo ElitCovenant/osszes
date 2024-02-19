@@ -64,6 +64,60 @@
 background: linear-gradient(0deg, rgb(25, 155, 13) 0%, rgba(187, 186, 183, 0.951) 50%, rgb(134, 7, 7) 100%);
 }
 
+/* Profile Menu */
+.profile-menu {
+  position: relative;
+}
+
+.profile-button, .login-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px; /* Állítsd be a megfelelő padding-et */
+}
+
+.login-button {
+  background-color: #007bff; /* Módosítsd a "Log in" gomb háttérszínét */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.dropdown-content a, .profile-button, .login-button {
+  display: block;
+  padding: 10px 20px; /* Állítsd be a megfelelő padding-et */
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover, .profile-button:hover, .login-button:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.profile-menu:hover .dropdown-content {
+  display: block;
+}
+.profile-button img {
+  border-radius: 50%;
+}
+.profile-button {
+  border-radius: 35%;
+  border-width: 20%;
+}
+.profile-menu {
+  position: relative; /* Módosítás: relative helyett */
+}
+
 @media (min-width:517px) {
 
 @media (max-width: 1200px ) {

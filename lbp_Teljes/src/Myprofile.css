@@ -1,0 +1,41 @@
+.profile-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: 300px;
+  }
+  
+  .profile-details {
+    margin-top: 10px;
+  }
+  
+  .profile-details div {
+    margin-bottom: 10px;
+  }
+  
+  .profile-details strong {
+    margin-right: 5px;
+  }
+  
+  .profile-picture-upload label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .profile-picture-upload input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .profile-picture-upload button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .profile-picture-upload button:hover {
+    background-color: #0056b3;
+  }
