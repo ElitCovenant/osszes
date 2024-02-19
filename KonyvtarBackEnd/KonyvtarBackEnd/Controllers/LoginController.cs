@@ -102,7 +102,7 @@ namespace KonyvtarBackEnd.Controllers
                 var token = new JwtSecurityToken(
                     claims: claims,
                     expires: DateTime.Now.AddDays(1),
-                    audience: _configuration.GetSection("Authentication:Schemes:Bearer:ValidAudiences").Value,
+                    audience: _configuration.GetValue<string>("Authentication:Schemes:Bearer:ValidAudiences:0"),
                     issuer : _configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
                     signingCredentials: creds);
                 var jwt = new JwtSecurityTokenHandler().WriteToken(token);

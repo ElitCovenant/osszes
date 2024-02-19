@@ -6,12 +6,15 @@ using Swashbuckle.AspNetCore.Filters;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using KonyvtarBackEnd.Dto;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
+// Add services to the container.
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -28,17 +31,26 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+//builder.Services.Configure(builder.Configuration.GetSection("Authentication:Schemes"));
 builder.Services.AddAuthentication().AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
+        ValidAudience = builder.Configuration.GetValue<string>("Authentication:Schemes:Bearer:ValidAudiences:0"),
+        ValidIssuer = builder.Configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
         ValidateIssuer = true,
+        ValidateAudience = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value!))
     };
 });
+builder.Services.AddAuthentication(x => {
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+});
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "Niggerveszedelem",
+    options.AddPolicy(name: "Slime",
                       builder =>
                       {
                           builder.WithOrigins("http://127.0.0.1:5500","http://localhost:3000","http://localhost:3001")
@@ -57,10 +69,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
-app.UseCors("Niggerveszedelem");
+app.UseCors("Slime");
 
 app.MapControllers();
 
