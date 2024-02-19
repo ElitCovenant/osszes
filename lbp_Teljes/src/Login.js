@@ -22,7 +22,7 @@ const Login = ({ isLoggedIn, toggleLogin = () => {} }) => { // Felhasználjuk az
       if (response.ok && data.troken) {
         localStorage.setItem('authToken', data.troken);
         toggleLogin(); // Átadja a visszahívást, hogy az "isLoggedIn" állapotot frissítse
-        navigate('/');
+        navigate('UserPage');
         
       } else {
         // Itt kezelhetjük a nem sikeres bejelentkezést
