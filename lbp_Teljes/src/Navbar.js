@@ -23,15 +23,15 @@ const Navbar = () => {
     setIsProfileMenuOpen((prevIsOpen) => !prevIsOpen);
   };
 
-  const toggleLogin = () => {
-    setIsLoggedIn((prevIsLoggedIn) => {
-      // Ha kijelentkeztetjük a felhasználót, töröljük a tokent a localStorage-ból
-      if (prevIsLoggedIn) {
-        localStorage.removeItem('authToken');
-      }
-      return !prevIsLoggedIn;
-    });
-  };
+ const toggleLogin = () => {
+  setIsLoggedIn((prevIsLoggedIn) => {
+    // Ha kijelentkeztetjük a felhasználót, töröljük a tokent a localStorage-ból
+    if (prevIsLoggedIn) {
+      localStorage.removeItem('authToken');
+    }
+    return !prevIsLoggedIn;
+  });
+};
 
   const logoPath = isLogo1 ? 'icon10.png' : 'icon3.png';
 
