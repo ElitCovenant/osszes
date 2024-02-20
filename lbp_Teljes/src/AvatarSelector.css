@@ -1,0 +1,44 @@
+.avatar-selector-container {
+    position: absolute;
+    top: 20%;
+    left: 21%;
+    background-color: white;
+    padding:5px;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(33, 9, 9, 0.663);
+    border-radius: 8px;
+  }
+  
+  .avatar-selector-container button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .avatar-selector-container h3 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .avatars-container {
+    display: flex;
+    overflow-x: scroll;
+    padding-bottom: 10px;
+  }
+  
+  .avatar-item {
+    margin-right: 10px;
+    flex-shrink: 0; /* Tartsd meg az eredeti méretet görgetéskor */
+  }
+  
+  .avatar-item img {
+    width: 100px; /* Vagy bármilyen méret, ami megfelel */
+    height: auto;
+    border-radius: 50%; /* Kerekített avatarokhoz */
+  }
+  

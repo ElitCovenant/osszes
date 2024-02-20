@@ -1,0 +1,13 @@
+p{
+    color: #e21515;
+    width: 100%;
+    size-adjust: 10px;
+}
+
+.yeep {
+    border: 10px solid #4CAF50; /* Zöld keret */
+    border-radius: 5px; /* Kerekített sarkok */
+    padding: 20px; /* Belső térköz */
+    margin: 20px; /* Külső térköz */
+    width: 20%;
+}
