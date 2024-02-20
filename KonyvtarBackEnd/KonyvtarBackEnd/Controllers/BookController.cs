@@ -45,7 +45,7 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
-        [HttpGet,Authorize(Roles = "Admin")]
+        [HttpGet, Authorize(Roles = "Admin")]
         public ActionResult<BookDto> GetAll()
         {
             using (var context = new KonyvtarDbContext())
@@ -53,6 +53,47 @@ namespace KonyvtarBackEnd.Controllers
                 if (context != null)
                 {
                     return Ok(context.Books.ToList());
+                }
+                else
+                {
+                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                }
+            }
+        }
+
+        [HttpGet("/GuestInformations")]
+        public ActionResult<BookDto> GetSutentsAll()
+        {
+            using (var context = new KonyvtarDbContext())
+            {
+                if (context != null)
+                {
+                    return Ok(context.Books.Select(x => new { x.Author, x.Title, x.ReleaseDate, x.BookImg }).ToList());
+                }
+                else
+                {
+                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                }
+            }
+        }
+
+        [HttpGet("/Konyvvalaszto")]
+        public ActionResult<BookDto> GetSpecial(int elsoev, int masodikev, int iroId)
+        {
+            using (var context = new KonyvtarDbContext())
+            {
+                if (context != null)
+                {
+                    var response = context.Books.Where(x => x.ReleaseDate < masodikev && x.ReleaseDate > elsoev && x.AuthorId == iroId).Select(x => new { x.Author, x.Title, x.ReleaseDate, x.BookImg }).ToList();
+                    if (response != null)
+                    {
+                        return Ok(response);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+
                 }
                 else
                 {

@@ -40,7 +40,7 @@ namespace KonyvtarBackEnd.Controllers
             {
                 if (context != null)
                 {
-                    return Ok(context.AccountImgs.ToList());
+                    return Ok(context.AccountImgs.Select(x => new {x.ImgPath}).ToList());
                 }
                 else
                 {
@@ -83,7 +83,7 @@ namespace KonyvtarBackEnd.Controllers
             {
                 if (context != null)
                 {
-                    return Ok(context.AccountImgs.Where(x=>x.ImgName.Contains("Guest")||x.ImgName.Contains("Default")).ToList());
+                    return Ok(context.AccountImgs.Where(x=>x.ImgName.Contains("Guest")||x.ImgName.Contains("Default")).Select(x => new { x.ImgPath }).ToList());
                 }
                 else
                 {
