@@ -1,15 +1,18 @@
+// Navbar.js
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import LanguageSelector from './LanguageSelector';
 import logo from './img/default_prof_picture.png';
+import jwt_decode from './jwt_decode'; // Importáljuk a JWT dekódoló segédosztályt
 
 const Navbar = () => {
   const [isLogo1, setIsLogo1] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); // State to track profile menu
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [profilePicturePath, setProfilePicturePath] = useState(null); // Átnevezzük userId-ról profilePicturePath-re
   const navigate = useNavigate();
 
   const toggleLogo = () => {
@@ -21,7 +24,13 @@ const Navbar = () => {
   };
 
   const toggleLogin = () => {
-    setIsLoggedIn((prevIsLoggedIn) => !prevIsLoggedIn);
+    setIsLoggedIn((prevIsLoggedIn) => {
+      // Ha kijelentkeztetjük a felhasználót, töröljük a tokent a localStorage-ból
+      if (prevIsLoggedIn) {
+        localStorage.removeItem('authToken');
+      }
+      return !prevIsLoggedIn;
+    });
   };
 
   const logoPath = isLogo1 ? 'icon10.png' : 'icon3.png';
@@ -52,6 +61,34 @@ const Navbar = () => {
 
     return () => clearInterval(intervalId);
   }, []);
+
+  // Fetch profile picture path based on user ID
+  useEffect(() => {
+    const fetchProfilePicturePath = async () => {
+      try {
+        if (isLoggedIn) {
+          const troken = localStorage.getItem('authToken');
+          if (troken) {
+            const decodedToken = jwt_decode(troken);
+            console.log(decodedToken)
+            if (decodedToken && decodedToken.Actor) {
+              const response = await fetch(`https://localhost:7275/Profilképek/${decodedToken.Actor}`);
+              if (response.ok) {
+                const { imagePath } = await response.json();
+                setProfilePicturePath(imagePath); // Beállítjuk a profilkép útvonalát
+              } else {
+                console.error('Failed to fetch profile picture path:', response.status);
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching profile picture path:', error);
+      }
+    };
+  
+    fetchProfilePicturePath();
+  }, [isLoggedIn]); 
 
   return (
     <nav className="navbar">
@@ -93,10 +130,9 @@ const Navbar = () => {
           <div className="frame">
             <button className="search-button" onClick={handleSearch}>Search</button>
           </div>
-          {/* Profile Menu */}
           <div className="profile-menu">
             <button className="profile-button" onClick={toggleProfileMenu}>
-              <img src={logo} alt="Profile" height={30} />
+              <img src={profilePicturePath || logo} alt="Profile" height={30} /> {/* Módosítjuk a profilkép forrását */}
             </button>
             {isProfileMenuOpen && (
               <div className="dropdown-content">
