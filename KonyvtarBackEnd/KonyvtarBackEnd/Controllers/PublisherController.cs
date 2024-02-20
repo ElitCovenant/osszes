@@ -20,8 +20,16 @@ namespace KonyvtarBackEnd.Controllers
             {
                 if (context != null)
                 {
-                    context.Publishers.Add(UjKiado);
-                    context.SaveChanges();
+                    try
+                    {
+                        context.Publishers.Add(UjKiado);
+                        context.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        return BadRequest("Hiba lépett fel : "+e.Message);
+                    }
+                    
                     return StatusCode(201, "Az adatok sikeresen eltárolva!");
                 }
                 else
@@ -86,9 +94,16 @@ namespace KonyvtarBackEnd.Controllers
                     {
                         valtoztatando.Id = createOrModifyPublisherDto.Id;
                         valtoztatando.Name = createOrModifyPublisherDto.Name;
-
-                        context.Publishers.Update(valtoztatando);
-                        context.SaveChanges();
+                        try
+                        {
+                            context.Publishers.Update(valtoztatando);
+                            context.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            return BadRequest("Hiba lépett fel : "+e.Message);
+                        }
+                        
                         return Ok("Sikeres adatváltoztatás!");
                     }
                     else

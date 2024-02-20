@@ -20,8 +20,16 @@ namespace KonyvtarBackEnd.Controllers
             {
                 if (context != null)
                 {
-                    context.Rules.Add(UjJog);
-                    context.SaveChanges();
+                    try
+                    {
+                        context.Rules.Add(UjJog);
+                        context.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        return BadRequest("Hiba lépett fel : "+e.Message);
+                    }
+                    
                     return StatusCode(201, "Az adatok sikeresen eltárolva!");
                 }
                 else
@@ -87,8 +95,16 @@ namespace KonyvtarBackEnd.Controllers
                         valtoztatando.Id = createOrModifyRuleDto.Id;
                         valtoztatando.Name = createOrModifyRuleDto.Name;
 
-                        context.Rules.Update(valtoztatando);
-                        context.SaveChanges();
+                        try
+                        {
+                            context.Rules.Update(valtoztatando);
+                            context.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            return BadRequest("Hiba lépett fel : "+e.Message);
+                        }
+                        
                         return Ok("Sikeres adatváltoztatás!");
                     }
                     else
