@@ -1,4 +1,3 @@
-// Navbar.js
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
@@ -23,15 +22,15 @@ const Navbar = () => {
     setIsProfileMenuOpen((prevIsOpen) => !prevIsOpen);
   };
 
- const toggleLogin = () => {
-  setIsLoggedIn((prevIsLoggedIn) => {
-    // Ha kijelentkeztetjük a felhasználót, töröljük a tokent a localStorage-ból
-    if (prevIsLoggedIn) {
-      localStorage.removeItem('authToken');
-    }
-    return !prevIsLoggedIn;
-  });
-};
+  const toggleLogin = () => {
+    setIsLoggedIn((prevIsLoggedIn) => {
+      // Ha kijelentkeztetjük a felhasználót, töröljük a tokent a localStorage-ból
+      if (prevIsLoggedIn) {
+        localStorage.removeItem('authToken');
+      }
+      return !prevIsLoggedIn;
+    });
+  };
 
   const logoPath = isLogo1 ? 'icon10.png' : 'icon3.png';
 
@@ -60,6 +59,19 @@ const Navbar = () => {
     }, 5000);
 
     return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    // Betöltjük a tokent a localStorage-ból
+    const troken = localStorage.getItem('authToken');
+  
+    // Ha van token a localStorage-ban, a felhasználó be van jelentkezve
+    if (troken) {
+      setIsLoggedIn(true);
+      setIsProfileMenuOpen(true); // Ha van token, akkor az ablakot megnyitjuk
+    } else {
+      setIsLoggedIn(false);
+    }
   }, []);
 
   // Fetch profile picture path based on user ID
