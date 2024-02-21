@@ -11,7 +11,7 @@ const Navbar = () => {
   const [searchHistory, setSearchHistory] = useState([]);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [profilePicturePath, setProfilePicturePath] = useState(null); // Átnevezzük userId-ról profilePicturePath-re
+  const [profilePicturePath, setProfilePicturePath] = useState(null);
   const navigate = useNavigate();
 
   const toggleLogo = () => {
@@ -22,14 +22,17 @@ const Navbar = () => {
     setIsProfileMenuOpen((prevIsOpen) => !prevIsOpen);
   };
 
-  const toggleLogin = () => {
-    setIsLoggedIn((prevIsLoggedIn) => {
-      // Ha kijelentkeztetjük a felhasználót, töröljük a tokent a localStorage-ból
-      if (prevIsLoggedIn) {
-        localStorage.removeItem('authToken');
-      }
-      return !prevIsLoggedIn;
-    });
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    setIsLoggedIn(false);
+    setIsProfileMenuOpen(false);
+  };
+
+  const handleStorageChange = (event) => {
+    if (event.key === 'authToken') {
+      setIsLoggedIn(event.newValue !== null);
+      setIsProfileMenuOpen(event.newValue !== null);
+    }
   };
 
   const logoPath = isLogo1 ? 'icon10.png' : 'icon3.png';
@@ -62,19 +65,17 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    // Betöltjük a tokent a localStorage-ból
     const troken = localStorage.getItem('authToken');
-  
-    // Ha van token a localStorage-ban, a felhasználó be van jelentkezve
+    
     if (troken) {
       setIsLoggedIn(true);
-      setIsProfileMenuOpen(true); // Ha van token, akkor az ablakot megnyitjuk
+      setIsProfileMenuOpen(true);
     } else {
       setIsLoggedIn(false);
+      setIsProfileMenuOpen(false);
     }
-  }, []);
+  }, [localStorage.getItem('authToken')]);
 
-  // Fetch profile picture path based on user ID
   useEffect(() => {
     const fetchProfilePicturePath = async () => {
       try {
@@ -87,7 +88,7 @@ const Navbar = () => {
               const response = await fetch(`https://localhost:7275/Profilképek/${decodedToken.Actor}`);
               if (response.ok) {
                 const { imagePath } = await response.json();
-                setProfilePicturePath(imagePath); // Beállítjuk a profilkép útvonalát
+                setProfilePicturePath(imagePath);
               } else {
                 console.error('Failed to fetch profile picture path:', response.status);
               }
@@ -101,6 +102,14 @@ const Navbar = () => {
   
     fetchProfilePicturePath();
   }, [isLoggedIn]); 
+
+  useEffect(() => {
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   return (
     <nav className="navbar">
@@ -152,10 +161,11 @@ const Navbar = () => {
                   <>
                     <Link to="/UserPage">My Profile</Link>
                     <Link to="/settings">Settings</Link>
-                    <Link to="/" onClick={toggleLogin}>Logout</Link>
+                    <Link to="/" onClick={handleLogout}>Logout</Link>
                   </>
                 ) : (
-                  <Link to="/login" onClick={toggleLogin}>Log in</Link>
+                  <Link to="/login">Log in</Link>
+                  
                 )}
               </div>
             )}

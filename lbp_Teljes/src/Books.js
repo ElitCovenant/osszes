@@ -10,7 +10,7 @@ const Books = () => {
     const fetchData = async () => {
       try {
         // Fetch request to get books data
-        const response = await fetch('https://localhost:7275/Book');
+        const response = await fetch('https://localhost:7275/GuestInformations');
         const booksData = await response.json();
         setBooks(booksData);
       } catch (error) {

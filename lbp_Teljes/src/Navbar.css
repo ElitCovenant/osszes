@@ -84,7 +84,7 @@ background: linear-gradient(0deg, rgb(25, 155, 13) 0%, rgba(187, 186, 183, 0.951
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 30px;
+  top: 40px;
   right: 0;
   background-color: #f9f9f9;
   min-width: 160px;
