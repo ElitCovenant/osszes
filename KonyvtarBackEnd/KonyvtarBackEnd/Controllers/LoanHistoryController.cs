@@ -28,8 +28,16 @@ namespace KonyvtarBackEnd.Controllers
             {
                 if (context != null)
                 {
-                    context.LoanHistories.Add(UjKolcsonzesTortenet);
-                    context.SaveChanges();
+                    try
+                    {
+                        context.LoanHistories.Add(UjKolcsonzesTortenet);
+                        context.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        return BadRequest("Hiba lépett fel : "+e.Message);
+                    }
+                    
                     return StatusCode(201, "Az adatok sikeresen eltárolva!");
                 }
                 else
@@ -100,8 +108,16 @@ namespace KonyvtarBackEnd.Controllers
                         valtoztatando.Returned = createOrModifyLoanHistoryDto.Returned;
                         valtoztatando.Comment = createOrModifyLoanHistoryDto.Comment;
 
-                        context.LoanHistories.Update(valtoztatando);
-                        context.SaveChanges();
+                        try
+                        {
+                            context.LoanHistories.Update(valtoztatando);
+                            context.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            return BadRequest("Hiba lépett fel : "+e.Message);
+                        }
+                        
                         return Ok("Sikeres adatváltoztatás!");
                     }
                     else

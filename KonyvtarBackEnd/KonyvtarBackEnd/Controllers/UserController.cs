@@ -24,8 +24,16 @@ namespace KonyvtarBackEnd.Controllers
             {
                 if (context != null)
                 {
-                    context.Users.Add(UjFelhasznalo);
-                    context.SaveChanges();
+                    try
+                    {
+                        context.Users.Add(UjFelhasznalo);
+                        context.SaveChanges();
+                    }
+                    catch (Exception e )
+                    {
+                        return BadRequest("Hiba lépett fel : "+e.Message);
+                    }
+                    
                     return StatusCode(201, "Az adatok sikeresen eltárolva!");
                 }
                 else
@@ -94,8 +102,16 @@ namespace KonyvtarBackEnd.Controllers
                         valtoztatando.IdRule = modifyFelhasznaloDto.Id_Rule;
                         valtoztatando.IdAccountImg = modifyFelhasznaloDto.Id_Account_Image;
 
-                        context.Users.Update(valtoztatando);
-                        context.SaveChanges();
+                        try
+                        {
+                            context.Users.Update(valtoztatando);
+                            context.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            return BadRequest("Hiba lépett fel! : "+e.Message);
+                        }
+                        
                         return Ok("Sikeres adatváltoztatás!");
                     }
                     else

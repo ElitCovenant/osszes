@@ -22,8 +22,16 @@ namespace KonyvtarBackEnd.Controllers
             {
                 if (context != null)
                 {
-                    context.AccountImgs.Add(UjAccountImg);
-                    context.SaveChanges();
+                    try
+                    {
+                        context.AccountImgs.Add(UjAccountImg);
+                        context.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        return BadRequest("Hiba lépett fel ! : "+e.Message);
+                    }
+                    
                     return StatusCode(201, "Az adatok sikeresen eltárolva!");
                 }
                 else
@@ -102,12 +110,19 @@ namespace KonyvtarBackEnd.Controllers
                     var valtoztatando = context.AccountImgs.FirstOrDefault(x => x.Id == id);
                     if (valtoztatando != null)
                     {
+                        try
+                        {
                         valtoztatando.Id = createOrModifyAccountImgDto.Id;
                         valtoztatando.ImgName = createOrModifyAccountImgDto.Name;
                         valtoztatando.ImgPath = createOrModifyAccountImgDto.Path;
 
                         context.AccountImgs.Update(valtoztatando);
                         context.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            return BadRequest("Hiba lépett fel! : "+e.Message);
+                        }
                         return Ok("Sikeres adatváltoztatás!");
                     }
                     else
