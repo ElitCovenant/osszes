@@ -38,7 +38,6 @@ const Books = () => {
         <div key={book.id} className={`card ${selectedBook && selectedBook.id === book.id ? 'selected' : ''}`}>
           <div className="content">
             <h2 className="title">{book.title}</h2>
-            <p className="copy">{book.description || 'Nincs elérhető leírás.'}</p>
             <button className="btn" onClick={() => handleInfoClick(book.id)}>Info</button>
           </div>
         </div>

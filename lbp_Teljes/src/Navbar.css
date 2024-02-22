@@ -95,7 +95,7 @@ background: linear-gradient(0deg, rgb(25, 155, 13) 0%, rgba(187, 186, 183, 0.951
 
 .dropdown-content a, .profile-button, .login-button {
   display: block;
-  padding: 10px 20px;
+  padding: 10px 20px; /* Állítsd be a megfelelő padding-et */
   color: #333;
   text-decoration: none;
 }
