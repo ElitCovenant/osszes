@@ -153,6 +153,32 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
+        [HttpPut("/jelszovaltas/{id}")]
+        public ActionResult<FelhasznaloDto> Profilkepvaltas(int id, int profId)
+        {
+            using (var context = new KonyvtarDbContext())
+            {
+                if (context != null)
+                {
+                    var valtoztatando = context.Users.FirstOrDefault(x => x.Id == id);
+                    if (valtoztatando != null)
+                    {
+                        valtoztatando.IdAccountImg = profId;
+                        context.Users.Update(valtoztatando);
+                        context.SaveChanges();
+                        return Ok("Sikeres adatváltoztatás!");
+                    }
+                    else
+                    {
+                        return StatusCode(404, "A keresett felhasználó nem létezik, vagy nincs eltárolva");
+                    }
+                }
+                else
+                {
+                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                }
+            }
+        }
 
         [HttpDelete("{id}")]
         public ActionResult<FelhasznaloDto> Delete(int id)
