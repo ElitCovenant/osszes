@@ -84,23 +84,25 @@ background: linear-gradient(0deg, rgb(25, 155, 13) 0%, rgba(187, 186, 183, 0.951
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 40px;
+  top: 54px;
   right: 0;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  border-radius: 10px;
 }
 
 .dropdown-content a, .profile-button, .login-button {
   display: block;
-  padding: 10px 20px; /* Állítsd be a megfelelő padding-et */
+  padding: 10px 20px;
   color: #333;
   text-decoration: none;
 }
 
 .dropdown-content a:hover, .profile-button:hover, .login-button:hover {
   background-color: #ddd;
+  border-radius: 10px;
 }
 
 /* Show the dropdown menu on hover */
