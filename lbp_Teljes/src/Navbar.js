@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import LanguageSelector from './LanguageSelector';
-import logo from './img/default_prof_picture.png';
 import jwt_decode from './jwt_decode'; // Importáljuk a JWT dekódoló segédosztályt
+import def_logo from './img/default_prof_picture.png';
+import quest1_logo from './img/quest1_prof_picture.png';
+import quest2_logo from './img/quest2_prof_picture.png';
+import teacher1_logo from './img/teacher1_prof_picture.png';
+import teacher2_logo from './img/teacher2_prof_picture.png';
 
 const Navbar = () => {
+  const avatarlogos = [def_logo,quest1_logo,quest2_logo,teacher1_logo,teacher2_logo]
   const [isLogo1, setIsLogo1] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
@@ -73,6 +78,7 @@ const Navbar = () => {
     } else {
       setIsLoggedIn(false);
       setIsProfileMenuOpen(false);
+      setProfilePicturePath(0); // Beállítjuk a profil képet az avatarlogos első elemére
     }
   }, [localStorage.getItem('authToken')]);
 
@@ -83,15 +89,9 @@ const Navbar = () => {
           const troken = localStorage.getItem('authToken');
           if (troken) {
             const decodedToken = jwt_decode(troken);
-            console.log(decodedToken)
-            if (decodedToken && decodedToken.Actor) {
-              const response = await fetch(`https://localhost:7275/Profilképek/${decodedToken.Actor}`);
-              if (response.ok) {
-                const { imagePath } = await response.json();
-                setProfilePicturePath(imagePath);
-              } else {
-                console.error('Failed to fetch profile picture path:', response.status);
-              }
+            if (decodedToken && decodedToken.actor) {         
+              const imgPath = decodedToken.actor;
+                setProfilePicturePath(imgPath)
             }
           }
         }
@@ -153,7 +153,7 @@ const Navbar = () => {
           </div>
           <div className="profile-menu">
             <button className="profile-button" onClick={toggleProfileMenu}>
-              <img src={profilePicturePath || logo} alt="Profile" height={30} /> {/* Módosítjuk a profilkép forrását */}
+              <img src={avatarlogos[profilePicturePath]} alt="Profile" height={30} />
             </button>
             {isProfileMenuOpen && (
               <div className="dropdown-content">

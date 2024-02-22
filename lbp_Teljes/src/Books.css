@@ -179,13 +179,6 @@
 
 }
 
-.copy {
-  font-family: var(--font-serif);
-  font-size: 1.125rem;
-  font-style: italic;
-  line-height: 1.35;
-}
-
 .btn {
   cursor: pointer;
   margin-top: 1.5rem;
@@ -284,10 +277,6 @@
 
 .btn:hover {
   background-color: #0056b3;
-}
-
-.copy {
-  color: #333;
 }
 
 .modal-content.show {

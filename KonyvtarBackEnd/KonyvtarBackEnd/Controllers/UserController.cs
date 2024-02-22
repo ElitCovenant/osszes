@@ -153,7 +153,11 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
+<<<<<<< HEAD
         [HttpPut("/profilkepvaltas/{id}")]
+=======
+        [HttpPut("/Profilkepvaltas/{id}")]
+>>>>>>> 5f2861dd862f514e7e948eae05d85476b0beb3d6
         public ActionResult<FelhasznaloDto> Profilkepvaltas(int id, int profId)
         {
             using (var context = new KonyvtarDbContext())
