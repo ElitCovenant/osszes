@@ -10,7 +10,7 @@ import teacher1_logo from './img/teacher1_prof_picture.png';
 import teacher2_logo from './img/teacher2_prof_picture.png';
 
 const Navbar = () => {
-  const avatarlogos = [def_logo,quest1_logo,quest2_logo,teacher1_logo,teacher2_logo]
+  const avatarlogos = [def_logo,teacher1_logo,teacher2_logo,quest1_logo,quest2_logo]
   const [isLogo1, setIsLogo1] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
@@ -153,7 +153,7 @@ const Navbar = () => {
           </div>
           <div className="profile-menu">
             <button className="profile-button" onClick={toggleProfileMenu}>
-              <img src={avatarlogos[profilePicturePath]} alt="Profile" height={30} />
+              <img src={profilePicturePath > 0 ?avatarlogos[profilePicturePath-1]:avatarlogos[profilePicturePath]} alt="Profile" height={30} />
             </button>
             {isProfileMenuOpen && (
               <div className="dropdown-content">
