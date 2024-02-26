@@ -88,6 +88,7 @@ const Navbar = () => {
         if (isLoggedIn) {
           const troken = localStorage.getItem('authToken');
           if (troken) {
+            
             const decodedToken = jwt_decode(troken);
             if (decodedToken && decodedToken.actor) {         
               const imgPath = decodedToken.actor;

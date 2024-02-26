@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Books.css';
 import Modal from './Modal';
+import Loader from './Loader'; // A Loader komponens importálása
 
 const Books = () => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Állapot hozzáadása az oldal betöltésének állapotának követésére
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,13 +15,16 @@ const Books = () => {
         const response = await fetch('https://localhost:7275/GuestInformations');
         const booksData = await response.json();
         setBooks(booksData);
+        setIsLoading(false); // A betöltés vége, állapot frissítése
       } catch (error) {
         console.error('Error fetching data:', error);
+        setIsLoading(false); // Hiba esetén is frissítjük az állapotot
       }
     };
 
     fetchData();
   }, []);
+
 
   const handleInfoClick = (bookId) => {
     const book = books.find((book) => book.id === bookId);
@@ -34,7 +39,10 @@ const Books = () => {
 
   return (
     <main className="page-content">
-      {books.map((book) => (
+      {/* Loader megjelenítése, amíg az adatok betöltődnek */}
+      {isLoading && <Loader />}
+
+      {!isLoading && books.map((book) => (
         <div key={book.id} className={`card ${selectedBook && selectedBook.id === book.id ? 'selected' : ''}`}>
           <div className="content">
             <h2 className="title">{book.title}</h2>
