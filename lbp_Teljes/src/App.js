@@ -24,7 +24,6 @@ const App = () => {
               <Route path="/books" element={<Books searchTerm={searchTerm} />} />
               <Route path="/login" element={<Login />} />
               <Route path="/userpage" element={<UserPage />} />
-              {/* További útvonalak és komponensek */}
             </Routes>
           </div>
           <Hover />

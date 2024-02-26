@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KonyvtarBackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a226b4f752f550b92aa71769e7ad0a313d01b905")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a8002dc8af060599ed787ff0bbca6f345fa5729")]
->>>>>>> 5f2861dd862f514e7e948eae05d85476b0beb3d6
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b0358862d76b7f7f10f55dffb291fd351761e2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("KonyvtarBackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KonyvtarBackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

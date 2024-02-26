@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './AvatarSelector.css'; // Az útvonalat szükség szerint módosítsd
+import './AvatarSelector.css';
 
 function AvatarSelector({ onClose }) {
   const [avatars, setAvatars] = useState([]);
@@ -7,12 +7,10 @@ function AvatarSelector({ onClose }) {
   useEffect(() => {
     const fetchAvatars = async () => {
       try {
-        // Adatbázisból avatárok lekérése
         const response = await fetch('https://localhost:7275/Tanulók');
         if (response.ok) {
-          const imgPaths = await response.json(); // Az adatok közvetlenül az elérési útvonalakat tartalmazzák
-          setAvatars(imgPaths || []);
-          console.log(imgPaths);
+          const avatarsData = await response.json();
+          setAvatars(avatarsData || []);
         } else {
           console.error('Avatárok lekérése sikertelen');
         }
@@ -22,7 +20,12 @@ function AvatarSelector({ onClose }) {
     };
   
     fetchAvatars();
-  }, []); // Az üres dependency array megakadályozza a useEffect újra futtatását
+  }, []);
+
+  // A fájlnév kinyerése az elérési útvonalból
+  const getFileName = (path) => {
+    return path.split('/').pop().split('.')[0];
+  };
 
   return (
     <div className="avatar-selector-container">
@@ -30,7 +33,8 @@ function AvatarSelector({ onClose }) {
       <div className="avatars-container">
         {avatars.map((avatar, index) => (
           <div key={index} className="avatar-item">
-            <img src={avatar} alt={`Avatar ${index + 1}`} />
+            {/* Az alt attribútum kiszámítása a fájl elérési útvonalának utolsó részéből */}
+            <img src={avatar.imgPath} alt={getFileName(avatar.imgPath) || `Avatar ${index + 1}`} />
           </div>
         ))}
       </div>

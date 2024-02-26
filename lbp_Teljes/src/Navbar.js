@@ -78,7 +78,7 @@ const Navbar = () => {
     } else {
       setIsLoggedIn(false);
       setIsProfileMenuOpen(false);
-      setProfilePicturePath(0); // Beállítjuk a profil képet az avatarlogos első elemére
+      setProfilePicturePath(0); // Set the profile picture to the first element of avatar logos
     }
   }, [localStorage.getItem('authToken')]);
 

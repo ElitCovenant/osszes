@@ -7,11 +7,13 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
+
+
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const login = (token) => {
-    localStorage.setItem('authToken', token);
+  const login = (troken) => {
+    localStorage.setItem('authToken', troken);
     setIsLoggedIn(true);
   };
 

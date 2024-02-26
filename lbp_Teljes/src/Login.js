@@ -46,9 +46,9 @@ const Login = ({ isLoggedIn, toggleLogin = () => {} }) => {
                   <input type="text" name="userName" value={userName} onChange={(e) => setUserName(e.target.value)} />
                 </div>
                 <div className="field padding-bottom--24">
-                  <label htmlFor="hash">Password</label>
+                  <label htmlFor="password">Password</label>
                   <input
-                    type={passwordVisible ? 'text' : 'hash'}
+                    type={passwordVisible ? 'text' : 'password'}
                     name="hash"
                     value={hash}
                     onChange={(e) => setPassword(e.target.value)}
