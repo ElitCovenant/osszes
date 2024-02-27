@@ -1,0 +1,44 @@
+.cookie-consent {
+    display: none; /* Alapértelmezetten rejtve van */
+  }
+  
+  .cookie-consent.visible {
+    display: block; /* Megjelenítés, ha látható */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sötétített átlátszó háttér */
+    z-index: 9999; /* Biztosítja, hogy minden más tartalom fölött legyen */
+  }
+  
+  .cookie-consent .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  /* Oldal gördülésének letiltása, amikor a cookie consent megjelenik */
+  .no-scroll {
+    overflow: hidden;
+  }
+  .cookie-consent .modal button {
+    background-color: #101d10;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .cookie-consent .modal button:hover {
+    background-color: #383838;
+  }
+  

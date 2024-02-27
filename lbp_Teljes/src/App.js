@@ -9,6 +9,7 @@ import Login from './Login';
 import {Hover} from './Hover';
 import './App.css';
 import UserPage from './UserPage';
+import CookieConsent from './CookieConsent';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,6 +17,7 @@ const App = () => {
   return (
     <Router>
       <div className="app-container">
+        <CookieConsent />
         <AuthProvider>
           <Navbar setSearchTerm={setSearchTerm} />
           <div className="content-container">
