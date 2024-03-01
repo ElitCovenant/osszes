@@ -84,6 +84,39 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
+        [HttpGet("/önkép/{id}")]
+        public ActionResult<AccountImgDto> GetMyPic(int id)
+        {
+            using (var context = new KonyvtarDbContext())
+            {
+                if (context != null)
+                {
+                    try
+                    {
+                        var kerdezett = context.Users.FirstOrDefault(x => x.Id == id);
+                        if (kerdezett != null)
+                        {
+                            return Ok(kerdezett.IdAccountImg);
+                        }
+                        else
+                        {
+                            return NotFound("Nincs ilyen felhasználó");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
+                        return StatusCode(404, "Hiba lépett fel a lekérdezés során : "+e.Message);
+                    }
+                }
+                else
+                {
+                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                }
+
+            }
+        }
+
         [HttpGet("/Tanulók")]
         public ActionResult<AccountImgDto> GetStudentPics()
         {
