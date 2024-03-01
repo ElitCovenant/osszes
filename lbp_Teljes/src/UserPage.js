@@ -9,10 +9,12 @@ import teacher1_logo from './img/teacher1_prof_picture.png';
 import teacher2_logo from './img/teacher2_prof_picture.png';
 
 function UserPage() {
-  const avatarlogos = [def_logo,teacher1_logo,teacher2_logo,quest1_logo,quest2_logo]
+  const avatarlogos = [def_logo, teacher1_logo, teacher2_logo, quest1_logo, quest2_logo]
   const [isMailboxOpen, setIsMailboxOpen] = useState(false);
   const [isRoleSelectorOpen, setIsRoleSelectorOpen] = useState(false);
   const [profilePicturePath, setProfilePicturePath] = useState(null);
+  const [decodedEmail, setDecodedEmail] = useState("");
+  const [decodedrole, setDecodedRole] = useState("")
 
   const toggleMailbox = (e) => {
     e.stopPropagation(); // Megakadályozza a klikk esemény terjedését
@@ -30,29 +32,34 @@ function UserPage() {
   useEffect(() => {
     const fetchProfilePicturePath = async () => {
       try {
-          const troken = localStorage.getItem('authToken');
-          if (troken) {
-            const decodedToken = jwt_decode(troken);
-            if (decodedToken && decodedToken.actor) {         
-              const imgPath = decodedToken.actor;
-                setProfilePicturePath(imgPath)
-            }
-          }    
+        const troken = localStorage.getItem('authToken');
+        if (troken) {
+          const decodedToken = jwt_decode(troken);
+          if (decodedToken && decodedToken.actor) {
+            const imgPath = decodedToken.actor;
+            setProfilePicturePath(imgPath);
+            setDecodedEmail(decodedToken.emailaddress.split("@")[0].toUpperCase());
+            if(decodedToken.role === "Admin")
+              setDecodedRole("Librarian");
+            else
+              setDecodedRole("Student");
+          }
+        }
       } catch (error) {
         console.error('Error fetching profile picture path:', error);
       }
     };
-  
+
     fetchProfilePicturePath();
   }, []);
 
   return (
     <div className="facebook-profile">
       <div className="profile-header" onClick={toggleRoleSelector}>
-        <img src={profilePicturePath > 0 ?avatarlogos[profilePicturePath-1]:avatarlogos[profilePicturePath]} alt="Profile" className="profile-picture" />
+        <img src={profilePicturePath > 0 ? avatarlogos[profilePicturePath - 1] : avatarlogos[profilePicturePath]} alt="Profile" className="profile-picture" />
         <div>
-          <h2>Jane Doe</h2>
-          <p>Software Developer at Google</p>
+          <h2>Welcome {decodedEmail}</h2> {/* decodedEmail-re cseréltük */}
+          <p>{decodedrole}</p>
         </div>
         <img src="faEmail.png" alt="Mailbox" className="mail-icon" onClick={toggleMailbox} />
       </div>
@@ -70,7 +77,7 @@ function UserPage() {
           <button onClick={toggleMailbox}>Bezár</button>
         </div>
       )}
-      </div>
+    </div>
   );
 }
 

@@ -101,6 +101,7 @@ namespace KonyvtarBackEnd.Controllers
                 new Claim(ClaimTypes.Role,context.Rules.FirstOrDefault(x=>x.Id==user.IdRule).Name),
                 new Claim(ClaimTypes.Email,user.Usarname),
                 new Claim(ClaimTypes.Actor,user.IdAccountImg.ToString()),
+                new Claim(ClaimTypes.Dns,user.Id.ToString()),
 
             };
 
