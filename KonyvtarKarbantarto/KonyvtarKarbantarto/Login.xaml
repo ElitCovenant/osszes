@@ -9,12 +9,23 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="windowchanger" Height="50" Width="100" Content="Wáltádzs" Click="windowchanger_Click"/>
+        <StackPanel VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Email : " VerticalAlignment="Center" Margin="10 10 0 10" FontSize="25"/>
+                <TextBox Name="EmailAdress" VerticalAlignment="Center" Width="150" Height="40" FontSize="25" Margin="0 10 10 10"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Password : " VerticalAlignment="Center" Margin="0 10 0 10" FontSize="25"/>
+                <TextBox Name="Password" VerticalAlignment="Center" Width="150" Height="40" FontSize="25" Margin="0 10 10 10"/>
+            </StackPanel>
+        </StackPanel>
+       
+
+        <Button x:Name="windowchanger" Height="50" Width="100" HorizontalAlignment="Left" Margin="100 10 10 10" Grid.Column="0" Grid.Row="1" Content="Login" Click="windowchanger_Click"/>
     </Grid>
 </Window>
