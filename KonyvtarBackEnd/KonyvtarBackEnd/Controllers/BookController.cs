@@ -74,7 +74,7 @@ namespace KonyvtarBackEnd.Controllers
             {
                 if (context != null)
                 {
-                    return Ok(context.Books.Select(x => new { x.Author, x.Title, x.ReleaseDate, x.BookImg }).ToList());
+                    return Ok(context.Books.Select(x => new {x.Id    ,x.Author, x.Title, x.ReleaseDate, x.BookImg }).ToList());
                 }
                 else
                 {

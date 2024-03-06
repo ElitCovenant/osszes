@@ -2274,23 +2274,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\peter\\.nuget\\packages\\": {},
+    "C:\\Users\\ambrusk\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\ambrusk\\Desktop\\library_repo\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
       "projectName": "KonyvtarBackEnd",
-      "projectPath": "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
-      "packagesPath": "C:\\Users\\peter\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\peter\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\obj\\",
+      "projectPath": "C:\\Users\\ambrusk\\Desktop\\library_repo\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\KonyvtarBackEnd.csproj",
+      "packagesPath": "C:\\Users\\ambrusk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ambrusk\\Desktop\\library_repo\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\peter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ambrusk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2384,7 +2384,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
