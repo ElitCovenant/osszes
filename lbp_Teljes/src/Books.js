@@ -1,76 +1,126 @@
 import React, { useState, useEffect } from 'react';
 import './Books.css';
 import Modal from './Modal';
-import Loader from './Loader'; // A Loader komponens importálása
-import BooksPagination from './BooksPagination'; // Az új komponens importálása
+import Loader from './Loader';
+import BooksPagination from './BooksPagination';
+import jwt_decode from './jwt_decode';
+import Popup from './Popup';
 
 const Books = () => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [books, setBooks] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1); // Az aktuális oldalszám állapota
-  const [isLoading, setIsLoading] = useState(true); // Állapot hozzáadása az oldal betöltésének állapotának követésére
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFirstRun, setIsFirstRun] = useState(true);
+  const [decodedrole, setDecodedRole] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedBookIdForPopup, setSelectedBookIdForPopup] = useState(null); 
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      // Fetch request to get updated books data
-      const fetchData = async () => {
-        try {
-          const response = await fetch('https://localhost:7275/GuestInformations');
-          const booksData = await response.json();
-          setBooks(booksData);
-          setIsLoading(false); // A betöltés vége, állapot frissítése
-        } catch (error) {
-          console.error('Error fetching data:', error);
-          setIsLoading(false); // Hiba esetén is frissítjük az állapotot
-        }
-      };
-  
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://localhost:7275/GuestInformations');
+        const booksData = await response.json();
+        setBooks(booksData);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setIsLoading(false);
+      }
+    };
+
+    if (isFirstRun) {
       fetchData();
-    }, 5000); // Az időzítés beállítása 5000 ms-re (5 másodperc)
-  
-    // A komponens unmountolásakor töröljük az időzítést
-    return () => clearInterval(intervalId);
+      setIsFirstRun(false);
+    } else {
+      const intervalId = setInterval(fetchData, 5000);
+      return () => clearInterval(intervalId);
+    }
+  }, [isFirstRun]);
+
+  useEffect(() => {
+    const fetchProfilePicturePath = async () => {
+      try {
+        const token = localStorage.getItem('authToken');
+        if (token) {
+          const decodedToken = jwt_decode(token);
+          const response = await fetch(`https://localhost:7275/önkép/${decodedToken.dns}`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data != null) {
+              setDecodedRole(decodedToken.role === "Admin");
+            } else {
+              console.error('Nincs profilkép az adatokban');
+            }
+          } else {
+            console.error('Hiba történt a profilkép lekérésekor:', response.status);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching profile picture path:', error);
+      }
+    };
+
+    fetchProfilePicturePath();
   }, []);
 
-  // Az oldalak számának kiszámítása
   const totalPages = Math.ceil(books.length / 16);
-
-  // Az aktuális oldal könyveinek kiszámítása
   const startIndex = (currentPage - 1) * 16;
   const endIndex = startIndex + 16;
   const currentBooks = books.slice(startIndex, endIndex);
 
   const handleInfoClick = (bookId) => {
     const book = books.find((book) => book.id === bookId);
-    setSelectedBook(book);
-    document.body.style.overflow = 'hidden'; // Letiltja a háttér görgetését
+    if (book) {
+      setSelectedBook(book);
+      document.body.style.overflow = 'hidden'; 
+    } else {
+      console.error(`Book with id ${bookId} not found.`);
+    }
   };
 
   const handleCloseModal = () => {
     setSelectedBook(null);
-    document.body.style.overflow = 'auto'; // Visszaállítja a görgetést
+    document.body.style.overflow = 'auto'; 
+  };
+
+  const handlePopupOpen = (bookId) => {
+    setSelectedBookIdForPopup(bookId);
+    setShowPopup(true);
+    document.body.style.overflow = 'hidden'; 
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    document.body.style.overflow = 'auto'; 
   };
 
   return (
     <main className="page-content">
-      {/* Loader megjelenítése, amíg az adatok betöltődnek */}
       {isLoading && <Loader />}
+      
 
       {!isLoading && currentBooks.map((book) => (
-        <div key={book.id} className="card">
+        <div key={book.id} className="card" style={{ backgroundImage: `url(${book.bookImg})` }}>
           <div className="content">
             <h2 className="title">{book.title}</h2>
-            <button className="btn" onClick={() => handleInfoClick(book.id)}>Info</button>
+            <div className="btn-container">
+              <button className="btn" onClick={() => handleInfoClick(book.id)}>Info</button>
+              {decodedrole && <button className="btn" onClick={() => handlePopupOpen(book.id)}>Change</button>}
+            </div>
           </div>
         </div>
       ))}
 
       {selectedBook && <Modal book={selectedBook} onClose={handleCloseModal} />}
 
-      {/* Oldalak közötti navigációs gombok */}
       <BooksPagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
+      
+      {showPopup && <Popup onClose={handlePopupClose} bookId={selectedBookIdForPopup} />} 
+      
     </main>
   );
 };
 
 export default Books;
+

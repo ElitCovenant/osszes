@@ -88,11 +88,19 @@ const Navbar = () => {
         if (isLoggedIn) {
           const troken = localStorage.getItem('authToken');
           if (troken) {
+            const decodedToken = jwt_decode(troken);     
+            const userId = decodedToken.dns;
             
-            const decodedToken = jwt_decode(troken);
-            if (decodedToken && decodedToken.actor) {         
-              const imgPath = decodedToken.actor;
-                setProfilePicturePath(imgPath)
+            const response = await fetch(`https://localhost:7275/önkép/${userId}`);
+            if (response.ok) {
+              const data = await response.json();
+              if (data != null) {
+                setProfilePicturePath(data);
+              } else {
+                console.error('Nincs profilkép az adatokban');
+              }
+            } else {
+              console.error('Hiba történt a profilkép lekérésekor:', response.status);
             }
           }
         }

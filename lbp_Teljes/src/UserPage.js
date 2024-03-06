@@ -35,15 +35,20 @@ function UserPage() {
         const troken = localStorage.getItem('authToken');
         if (troken) {
           const decodedToken = jwt_decode(troken);
-          if (decodedToken && decodedToken.actor) {
-            const imgPath = decodedToken.actor;
-            setProfilePicturePath(imgPath);
-            setDecodedEmail(decodedToken.emailaddress.split("@")[0].toUpperCase());
-            if(decodedToken.role === "Admin")
-              setDecodedRole("Librarian");
-            else
-              setDecodedRole("Student");
+          const response = await fetch(`https://localhost:7275/önkép/${decodedToken.dns}`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data != null) {
+              setProfilePicturePath(data);
+              setDecodedEmail(decodedToken.emailaddress.split("@")[0].toUpperCase());
+              setDecodedRole(decodedToken.role === "Admin" ? "Librarian" : "Student");
+            } else {
+              console.error('Nincs profilkép az adatokban');
+            }
+          } else {
+            console.error('Hiba történt a profilkép lekérésekor:', response.status);
           }
+          
         }
       } catch (error) {
         console.error('Error fetching profile picture path:', error);
@@ -56,9 +61,9 @@ function UserPage() {
   return (
     <div className="facebook-profile">
       <div className="profile-header" onClick={toggleRoleSelector}>
-        <img src={profilePicturePath > 0 ? avatarlogos[profilePicturePath - 1] : avatarlogos[profilePicturePath]} alt="Profile" className="profile-picture" />
+      <img src={profilePicturePath > 0 ?avatarlogos[profilePicturePath-1]:avatarlogos[profilePicturePath]} alt="Profile" height={80} />
         <div>
-          <h2>Welcome {decodedEmail}</h2> {/* decodedEmail-re cseréltük */}
+          <h2>Welcome {decodedEmail}</h2>
           <p>{decodedrole}</p>
         </div>
         <img src="faEmail.png" alt="Mailbox" className="mail-icon" onClick={toggleMailbox} />

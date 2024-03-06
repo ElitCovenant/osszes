@@ -3,10 +3,12 @@ import React from 'react';
 const BooksPagination = ({ currentPage, totalPages, setCurrentPage }) => {
   const goToPreviousPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1)); // Csökkenti az aktuális oldalszámot, de legalább 1-ig
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Felgördül az oldal tetejére
   };
 
   const goToNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages)); // Növeli az aktuális oldalszámot, de legfeljebb a maximális oldalszámig
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Felgördül az oldal tetejére
   };
 
   return (

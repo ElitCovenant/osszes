@@ -40,11 +40,9 @@ function AvatarSelector({ onClose }) {
         const troken = localStorage.getItem('authToken');
         if (troken) {
           const decodedToken = jwt_decode(troken);
-          if (decodedToken && decodedToken.actor) {
             const imgPath = decodedToken.actor;
             setProfilePicturePath(imgPath);
             setIsAdmin(decodedToken.role === 'Admin');
-          }
         }
       } catch (error) {
         console.error('Error fetching profile picture path:', error);
@@ -82,7 +80,8 @@ function AvatarSelector({ onClose }) {
 
   return (
     <div className="avatar-selector-container">
-      <button onClick={onClose}>Bezár</button>
+            <h1>Avatar Selector</h1>
+      <button onClick={onClose}>Close</button>
       <div className="avatars-container">
         {avatarlogos.map((avatar, index) => (
           <div key={index} className="avatar-item">
