@@ -23,5 +23,12 @@ namespace KonyvtarKarbantarto.Windows
         {
             InitializeComponent();
         }
+
+        private void Felh_Szerk_Click(object sender, RoutedEventArgs e)
+        {
+            Felhszerk felhszerk = new Felhszerk();
+            felhszerk.Show();
+            this.Close();
+        }
     }
 }

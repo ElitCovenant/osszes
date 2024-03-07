@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="KarbantartoEloszto" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Button Height="50" Width="200" Click="Felh_Szerk_Click" x:Name="Felh_Szerk" Content="Felhasználó Szerkesztő" FontSize="19"/>
     </Grid>
 </Window>

@@ -120,6 +120,17 @@
     <Compile Include="Connection.cs" />
     <Compile Include="Dto\LoginDto.cs" />
     <Compile Include="Dto\Token.cs" />
+    <Compile Include="Models\AccountImg.cs" />
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\LoanHistory.cs" />
+    <Compile Include="Models\Publisher.cs" />
+    <Compile Include="Models\Rule.cs" />
+    <Compile Include="Models\Series.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Windows\Felhszerk.xaml.cs">
+      <DependentUpon>Felhszerk.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\KarbantartoEloszto.xaml.cs">
       <DependentUpon>KarbantartoEloszto.xaml</DependentUpon>
     </Compile>
@@ -135,9 +146,13 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\KarbantartoEloszto.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Windows\Felhszerk.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\KarbantartoEloszto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -182,8 +197,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
