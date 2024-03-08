@@ -23,8 +23,10 @@ namespace KonyvtarKarbantarto.Windows
     /// </summary>
     public partial class Felhszerk : Window
     {
-        public Felhszerk()
+        string token = string.Empty;
+        public Felhszerk(string tok)
         {
+            token = tok;
             InitializeComponent();
         }
         Connection connection = new Connection();
@@ -37,7 +39,7 @@ namespace KonyvtarKarbantarto.Windows
             {
                 List<User> users = new List<User>();
                 
-                string result =  webClient.DownloadString(connection.Url() + "GuestInformations");
+                string result =  webClient.DownloadString(connection.Url() + "User");
                 users = JsonConvert.DeserializeObject<List<User>>(result).ToList();
                 //MessageBox.Show(result);
                 Griddo.ItemsSource = users;
@@ -48,6 +50,17 @@ namespace KonyvtarKarbantarto.Windows
                 MessageBox.Show("Error : "+r.Message);
             }
             
+        }
+
+        private void Write_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show((Griddo.SelectedItem as User).Usarname);
+        }
+
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            FelhCreate create = new FelhCreate(token);
+            create.Show();
         }
     }
 }

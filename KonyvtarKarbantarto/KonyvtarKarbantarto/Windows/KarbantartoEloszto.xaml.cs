@@ -19,15 +19,24 @@ namespace KonyvtarKarbantarto.Windows
     /// </summary>
     public partial class KarbantartoEloszto : Window
     {
-        public KarbantartoEloszto()
+        string token = string.Empty;
+        public KarbantartoEloszto(string tok)
         {
+            token = tok;
             InitializeComponent();
         }
 
         private void Felh_Szerk_Click(object sender, RoutedEventArgs e)
         {
-            Felhszerk felhszerk = new Felhszerk();
+            Felhszerk felhszerk = new Felhszerk(token);
             felhszerk.Show();
+            this.Close();
+        }
+
+        private void KonyKez_Click(object sender, RoutedEventArgs e)
+        {
+            KonyvKezelo konyvKezelo = new KonyvKezelo(token);
+            konyvKezelo.Show();
             this.Close();
         }
     }

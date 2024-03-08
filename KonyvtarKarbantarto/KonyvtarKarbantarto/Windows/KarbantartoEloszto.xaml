@@ -18,5 +18,6 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Button Height="50" Width="200" Click="Felh_Szerk_Click" x:Name="Felh_Szerk" Content="Felhasználó Szerkesztő" FontSize="19"/>
+        <Button Grid.Column="1" Height="50" Width="200" Click="KonyKez_Click" x:Name="KonyKez" Content="Könyv Szerkesztő" FontSize="19"/>
     </Grid>
 </Window>

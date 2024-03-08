@@ -24,6 +24,7 @@ namespace KonyvtarKarbantarto
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class Login : Window
     {
         
@@ -48,7 +49,7 @@ namespace KonyvtarKarbantarto
                 var jwtSecurityToken = handler.ReadJwtToken(JsonConvert.DeserializeObject<Token>(result).troken);
                 if (jwtSecurityToken.Claims.First(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Value == "Admin")
                 {
-                    KarbantartoEloszto eloszto = new KarbantartoEloszto();
+                    KarbantartoEloszto eloszto = new KarbantartoEloszto(JsonConvert.DeserializeObject<Token>(result).troken);
                     eloszto.Show();
                     this.Close();
                 }

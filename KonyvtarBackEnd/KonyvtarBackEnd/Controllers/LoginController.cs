@@ -21,7 +21,7 @@ namespace KonyvtarBackEnd.Controllers
             _configuration = configuration;
         }
 
-        [HttpPut("/Register"),Authorize(Roles = "Admin")]
+        [HttpPost("/Register"),Authorize(Roles = "Admin")]
         public ActionResult<RegisterDto> Register(RegisterDto registerDto)
         {
             var UjFelhasznalo = new User

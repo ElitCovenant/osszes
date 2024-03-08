@@ -50,7 +50,7 @@ namespace KonyvtarBackEnd.Controllers
             {
                 if (context != null)
                 {
-                    return Ok(context.Users.ToList());
+                    return Ok(context.Users.Select(x=> new {x.Id,x.MembershipStart,x.MembershipEnd,x.Usarname,x.IdRule,x.IdAccountImg}).ToList());
                 }
                 else
                 {

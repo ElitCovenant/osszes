@@ -16,10 +16,6 @@ namespace KonyvtarKarbantarto.Models
 
         public string Usarname { get; set; }
 
-        public string Hash { get; set; }
-
-        public string Token { get; set; }
-
         public int IdRule { get; set; }
 
         public int IdAccountImg { get; set; }

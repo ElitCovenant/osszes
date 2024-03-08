@@ -119,6 +119,7 @@
     </ApplicationDefinition>
     <Compile Include="Connection.cs" />
     <Compile Include="Dto\LoginDto.cs" />
+    <Compile Include="Dto\Register.cs" />
     <Compile Include="Dto\Token.cs" />
     <Compile Include="Models\AccountImg.cs" />
     <Compile Include="Models\Author.cs" />
@@ -128,11 +129,17 @@
     <Compile Include="Models\Rule.cs" />
     <Compile Include="Models\Series.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Windows\FelhCreate.xaml.cs">
+      <DependentUpon>FelhCreate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Felhszerk.xaml.cs">
       <DependentUpon>Felhszerk.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\KarbantartoEloszto.xaml.cs">
       <DependentUpon>KarbantartoEloszto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\KonyvKezelo.xaml.cs">
+      <DependentUpon>KonyvKezelo.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +153,10 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\FelhCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Felhszerk.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -153,6 +164,10 @@
     <Page Include="Windows\KarbantartoEloszto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\KonyvKezelo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
