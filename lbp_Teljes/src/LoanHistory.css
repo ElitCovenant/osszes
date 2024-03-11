@@ -1,0 +1,19 @@
+.loan-history {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .loan-history h3 {
+    margin-bottom: 10px;
+  }
+  
+  .loan-history ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .loan-history ul li {
+    margin-bottom: 5px;
+  }
+  

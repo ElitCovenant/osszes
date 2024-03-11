@@ -7,9 +7,9 @@ const WelcomeSection = () => {
         <div className="typed-out">
           <br />
           <p>
-            Köszöntünk minden kedves látogatót, tanárt és diákot az Miskolci SZC Kandó Kálmán Informatikai Technikum online könyvtár oldalán! 
+          Welcome to all our dear visitors, teachers, and students to the online library page of Miskolc SZC Kandó Kálmán Information Technology High School! 
             <br />
-            Az iskolai könyvtár célja, hogy támogassa az oktatást és a tanulást.
+            The goal of the school library is to support education and learning.
             <br />
           </p>
         </div>

@@ -1,0 +1,8 @@
+1. Adminisztrációs Interfész Tervezése
+Az admin felületnek tartalmaznia kell formokat könyvek hozzáadásához és egy listát a meglévő könyvekről, amelyek mellett törlés gombok is találhatók.
+
+2. Backend API
+Hozz létre egy REST API-t a könyvek kezelésére. Ez magában foglalja az endpointokat a könyvek listázására, hozzáadására és törlésére. Például, használhatsz egy Node.js + Express backendet, amely kapcsolódik egy MongoDB vagy SQL adatbázishoz.
+
+3. Frontend Integráció
+Integráld az admin felületet a frontenddel. Használhatsz fetch vagy axios hívásokat az adatok API-ról való lekéréséhez és módosításához.

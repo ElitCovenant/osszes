@@ -1,0 +1,50 @@
+.library_filter_container {
+  background-color: #f5f5f5; /* Háttérszín */
+  padding: 10px;
+  border-radius: 5px; /* Keret sugara */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Árnyék */
+  width: 20%; /* Szélesség */
+  position: relative;
+  float: left;
+  top: 17px; /* Eltolás */
+  min-height: 200px; /* Minimális magasság */
+}
+
+
+  
+  .library_filter_form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .filter_section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .filter_section label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .filter_section input[type="text"], .filter_section select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .filter_button {
+    cursor: pointer;
+    background-color: #007bff; /* Gomb háttérszíne */
+    color: white; /* Szöveg színe */
+    border: none;
+    padding: 10px;
+    border-radius: 4px; /* Gomb keretének sugara */
+  }
+  
+  .filter_button:hover {
+    background-color: #0056b3; /* Gomb háttérszín változása */
+  }
+  
