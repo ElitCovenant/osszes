@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonyvtarKarbantarto.Models
 {
-    internal class User
+    public class User
     {
         public uint Id { get; set; }
 

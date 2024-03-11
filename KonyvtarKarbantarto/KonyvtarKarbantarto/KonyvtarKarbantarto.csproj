@@ -118,9 +118,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Connection.cs" />
+    <Compile Include="Dto\AccountImgDto.cs" />
     <Compile Include="Dto\LoginDto.cs" />
     <Compile Include="Dto\Register.cs" />
+    <Compile Include="Dto\RulesDto.cs" />
     <Compile Include="Dto\Token.cs" />
+    <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Models\AccountImg.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
@@ -129,6 +132,9 @@
     <Compile Include="Models\Rule.cs" />
     <Compile Include="Models\Series.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Windows\FelhasznaloEdit.xaml.cs">
+      <DependentUpon>FelhasznaloEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\FelhCreate.xaml.cs">
       <DependentUpon>FelhCreate.xaml</DependentUpon>
     </Compile>
@@ -153,6 +159,10 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\FelhasznaloEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\FelhCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

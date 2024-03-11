@@ -54,13 +54,35 @@ namespace KonyvtarKarbantarto.Windows
 
         private void Write_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show((Griddo.SelectedItem as User).Usarname);
+            if (Griddo.SelectedItem != null)
+            {
+                MessageBox.Show((Griddo.SelectedItem as User).Usarname);
+            }
+            else
+            {
+                MessageBox.Show("Nincs kijelölve semmi.");
+            }
+            
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             FelhCreate create = new FelhCreate(token);
             create.Show();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            KarbantartoEloszto eloszto = new KarbantartoEloszto(token);
+            eloszto.Show();
+            this.Close();
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            FelhasznaloEdit edit = new FelhasznaloEdit(token,Griddo.SelectedItem as User);
+            edit.Show();
+            this.Close();
         }
     }
 }

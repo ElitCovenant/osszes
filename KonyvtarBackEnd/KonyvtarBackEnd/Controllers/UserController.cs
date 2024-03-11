@@ -1,5 +1,6 @@
 ﻿using KonyvtarBackEnd.Dto;
 using KonyvtarBackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KonyvtarBackEnd.Controllers
@@ -86,7 +87,7 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}"),Authorize(Roles = "Admin")]
         public ActionResult<FelhasznaloDto> Put(int id, ModifyFelhasznaloDto modifyFelhasznaloDto)
         {
             using (var context = new KonyvtarDbContext())
