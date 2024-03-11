@@ -1,6 +1,7 @@
 .cookie-consent {
-    display: none; /* Alapértelmezetten rejtve van */
-  }
+  display: none;
+
+}
   
   .cookie-consent.visible {
     display: block; /* Megjelenítés, ha látható */
@@ -15,13 +16,18 @@
   
   .cookie-consent .modal {
     position: absolute;
-    top: 50%;
+    top: 88%;
     left: 50%;
+    height: 20%;
+    width: 99%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
+    background-color: #ffffff;
+    padding: 10px;
     border-radius: 5px;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lágy árnyék hozzáadása */
+    border: 3px solid #332f2f; /* Halvány keret */
+    transition: transform 0.5s ease-out; /* Sima átmenet */
   }
   
   /* Oldal gördülésének letiltása, amikor a cookie consent megjelenik */
@@ -29,16 +35,63 @@
     overflow: hidden;
   }
   .cookie-consent .modal button {
-    background-color: #101d10;
+    background-color: #1b1919;
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
+    left: 50%;
+    
   }
   
   .cookie-consent .modal button:hover {
     background-color: #383838;
+  }
+  
+  .cookie-consent .modal button:active {
+    transform: scale(0.90); /* Kicsit összenyomja a gombot, amikor megnyomják */
+  }
+
+
+  .cookie-consent .modal h1 {
+    color: #333; /* Címsor színe */
+    margin-top: 5px; /* Felső margó */
+    text-align: start;
+    letter-spacing: 10px;
+    line-height: 1.5;
+    left: 51%;
+    padding: 12%;
+    
+  }
+  
+  .cookie-consent .modal p {
+    color: #666; /* Paragrafus szöveg színe */
+    margin: 20px 0; /* Margó a szöveg körül */
+    font-size: 16px; /* Szöveg mérete */
+    line-height: 1.5; /* Sorok közötti távolság */
+    text-align: start;
+    text-justify: inter-word;
+    padding: 2%;
+    
+  }
+
+  
+  .cookie-consent .modal p a {
+    color: #007bff; /* Hivatkozás színe */
+    text-decoration: none; /* Nincs aláhúzás */
+  }
+  
+  .cookie-consent .modal p a:hover {
+    text-decoration: underline; /* Aláhúzás ha ráviszed a kurzort */
+  }
+  
+  
+  @media (max-width: 600px) {
+    .cookie-consent .modal {
+      width: 90%; /* Kisebb képernyőkön szélesebb legyen */
+      top: 50%; /* Középre helyezés vertikálisan */
+    }
   }
   

@@ -5,13 +5,13 @@ import Loader from './Loader';
 import BooksPagination from './BooksPagination';
 import jwt_decode from './jwt_decode';
 import Popup from './Popup';
+import LibraryFilter from './LibraryFilter';
 
 const Books = () => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [isFirstRun, setIsFirstRun] = useState(true);
   const [decodedrole, setDecodedRole] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [selectedBookIdForPopup, setSelectedBookIdForPopup] = useState(null); 
@@ -29,15 +29,8 @@ const Books = () => {
       }
     };
 
-    if (isFirstRun) {
-      fetchData();
-      setIsFirstRun(false);
-    } else {
-      const intervalId = setInterval(fetchData, 5000);
-      return () => clearInterval(intervalId);
-    }
-  }, [isFirstRun]);
-
+    fetchData(); 
+  }, []); 
   useEffect(() => {
     const fetchProfilePicturePath = async () => {
       try {
@@ -96,10 +89,10 @@ const Books = () => {
   };
 
   return (
+    <div className="FilterSelection">
+    <LibraryFilter />
     <main className="page-content">
       {isLoading && <Loader />}
-      
-
       {!isLoading && currentBooks.map((book) => (
         <div key={book.id} className="card" style={{ backgroundImage: `url(${book.bookImg})` }}>
           <div className="content">
@@ -110,17 +103,18 @@ const Books = () => {
             </div>
           </div>
         </div>
-      ))}
 
+      ))}  
       {selectedBook && <Modal book={selectedBook} onClose={handleCloseModal} />}
+
 
       <BooksPagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
       
       {showPopup && <Popup onClose={handlePopupClose} bookId={selectedBookIdForPopup} />} 
-      
     </main>
+    </div>
+
   );
 };
 
 export default Books;
-
