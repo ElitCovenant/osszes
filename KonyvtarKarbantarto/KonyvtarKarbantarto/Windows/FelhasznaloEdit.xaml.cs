@@ -47,13 +47,16 @@ namespace KonyvtarKarbantarto.Windows
                 JogComb.Items.Add(item.Id+"-"+item.Name);
             }
             
-            converter = webClient.DownloadString(connection.Url() + "Profilképek");
+            converter = webClient.DownloadString(connection.Url() + "GetData");
             MessageBox.Show(converter);
             List<AccountImgDto> imgs = JsonConvert.DeserializeObject<List<AccountImgDto>>(converter).ToList();
             foreach (var item in imgs)
             {
-                AccountComb.Items.Add(item.Id + "-" + item.Name);
+                AccountComb.Items.Add(item.Id + "-" + item.ImgName);
             }
+
+            JogComb.SelectedIndex = 1;
+            AccountComb.SelectedIndex = 0;
 
         }
         private void Edit_Click(object sender, RoutedEventArgs e)

@@ -28,6 +28,23 @@ namespace KonyvtarKarbantarto.Windows
         {
             token = tok;
             InitializeComponent();
+            try
+            {
+                List<User> users = new List<User>();
+
+                WebClient webClient = new WebClient();
+                webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
+                webClient.Encoding = Encoding.UTF8;
+                string result = webClient.DownloadString(connection.Url() + "User");
+                users = JsonConvert.DeserializeObject<List<User>>(result).ToList();
+                //MessageBox.Show(result);
+                Griddo.ItemsSource = users;
+                Griddo.Items.Refresh();
+            }
+            catch (Exception r)
+            {
+                MessageBox.Show("Error : " + r.Message);
+            }
         }
         Connection connection = new Connection();
         private void GetData_Click(object sender, RoutedEventArgs e)
@@ -80,9 +97,17 @@ namespace KonyvtarKarbantarto.Windows
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            FelhasznaloEdit edit = new FelhasznaloEdit(token,Griddo.SelectedItem as User);
-            edit.Show();
-            this.Close();
+            if (Griddo.SelectedItem != null)
+            {
+                FelhasznaloEdit edit = new FelhasznaloEdit(token, Griddo.SelectedItem as User);
+                edit.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Nincs kijelölve semmi.");
+            }
+            
         }
     }
 }

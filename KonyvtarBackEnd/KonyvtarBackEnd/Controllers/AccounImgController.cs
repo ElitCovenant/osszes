@@ -42,13 +42,29 @@ namespace KonyvtarBackEnd.Controllers
         }
 
         [HttpGet,Authorize(Roles = "Admin")]
-        public ActionResult<AccountImgDto> GetAll()
+        public ActionResult<AccountImgDto> GetPath()
         {
             using (var context = new KonyvtarDbContext())
             {
                 if (context != null)
                 {
                     return Ok(context.AccountImgs.Select(x => new {x.ImgPath}).ToList());
+                }
+                else
+                {
+                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                }
+            }
+        }
+
+        [HttpGet("/GetData"), Authorize(Roles = "Admin")]
+        public ActionResult<AccountImgDto> GetData()
+        {
+            using (var context = new KonyvtarDbContext())
+            {
+                if (context != null)
+                {
+                    return Ok(context.AccountImgs.Select(x => new { x.Id,x.ImgName }).ToList());
                 }
                 else
                 {
