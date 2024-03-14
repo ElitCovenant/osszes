@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './UserPage.css';
-import AvatarSelector from './AvatarSelector'; // Feltételezve, hogy ez a komponens már megíródott
+import AvatarSelector from './AvatarSelector'; // Assuming this component has already been implemented
 import jwt_decode from './jwt_decode';
 import def_logo from './img/default_prof_picture.png';
 import quest1_logo from './img/quest1_prof_picture.png';
@@ -9,15 +9,15 @@ import teacher1_logo from './img/teacher1_prof_picture.png';
 import teacher2_logo from './img/teacher2_prof_picture.png';
 
 function UserPage() {
-  const avatarlogos = [def_logo, teacher1_logo, teacher2_logo, quest1_logo, quest2_logo]
+  const avatarlogos = [def_logo, teacher1_logo, teacher2_logo, quest1_logo, quest2_logo];
   const [isMailboxOpen, setIsMailboxOpen] = useState(false);
   const [isRoleSelectorOpen, setIsRoleSelectorOpen] = useState(false);
   const [profilePicturePath, setProfilePicturePath] = useState(null);
-  const [decodedEmail, setDecodedEmail] = useState("");
-  const [decodedrole, setDecodedRole] = useState("")
+  const [decodedEmail, setDecodedEmail] = useState('');
+  const [decodedrole, setDecodedRole] = useState('');
 
   const toggleMailbox = (e) => {
-    e.stopPropagation(); // Megakadályozza a klikk esemény terjedését
+    e.stopPropagation(); // Prevent click event propagation
     setIsMailboxOpen(!isMailboxOpen);
   };
 
@@ -40,28 +40,38 @@ function UserPage() {
             const data = await response.json();
             if (data != null) {
               setProfilePicturePath(data);
-              setDecodedEmail(decodedToken.emailaddress.split("@")[0].toUpperCase());
-              setDecodedRole(decodedToken.role === "Admin" ? "Librarian" : "Student");
+              setDecodedEmail(decodedToken.emailaddress.split('@')[0].toUpperCase());
+              setDecodedRole(decodedToken.role === 'Admin' ? 'Librarian' : 'Student');
             } else {
-              console.error('Nincs profilkép az adatokban');
+              console.error('No profile picture found in the data');
             }
           } else {
-            console.error('Hiba történt a profilkép lekérésekor:', response.status);
+            console.error('Error fetching profile picture:', response.status);
           }
-          
         }
       } catch (error) {
-        console.error('Error fetching profile picture path:', error);
+        console.error('Error fetching profile picture:', error);
       }
     };
 
     fetchProfilePicturePath();
   }, []);
 
+  const handleLibraryManagerDownload = () => {
+    // Create an anchor element
+    const anchor = document.createElement('a');
+    // Set href to the URL of the MSI file
+    anchor.href = 'http://img.library.nhely.hu/setup/KonyvtarKarbantarto_Setup.msi';
+    // Set the download attribute and the filename
+    anchor.download = 'KonyvtarKarbantarto_Setup.msi';
+    // Simulate a click on the anchor element
+    anchor.click();
+  };
+
   return (
     <div className="facebook-profile">
       <div className="profile-header" onClick={toggleRoleSelector}>
-      <img src={profilePicturePath > 0 ?avatarlogos[profilePicturePath-1]:avatarlogos[profilePicturePath]} alt="Profile" height={80} />
+        <img src={profilePicturePath > 0 ? avatarlogos[profilePicturePath - 1] : avatarlogos[profilePicturePath]} alt="Profile" height={80} />
         <div>
           <h2>Welcome {decodedEmail}</h2>
           <p>{decodedrole}</p>
@@ -78,8 +88,8 @@ function UserPage() {
       )}
       {isMailboxOpen && (
         <div className="mailbox">
-          {/* Mailbox tartalom */}
-          <button onClick={toggleMailbox}>Bezár</button>
+          <button onClick={handleLibraryManagerDownload}>Library Manager Download</button>
+          <button onClick={toggleMailbox}>Close</button>
         </div>
       )}
     </div>
