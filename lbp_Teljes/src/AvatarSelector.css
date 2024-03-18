@@ -4,13 +4,15 @@
   color: #333; /* Dark text color */
   text-align: center; /* Center align */
   font-size: 24px; /* Larger font size */
+
 }
 
 /* Avatar selector container */
 .avatar-selector-container {
   position: absolute;
   top: 20%;
-  left: 21%;
+  left: 100%;
+
   background-color: #fff; /* White background */
   padding: 10px; /* Increased padding */
   z-index: 100;

@@ -1,0 +1,90 @@
+.panel {
+  width: 50%; /* Szélesebb, hogy jobban elférjenek az elemek */
+  margin: 50px auto; /* Növeljük a felső és alsó margót */
+  border: 2px solid #007bff; /* Sötétkék keret */
+  padding: 20px;
+  background-color: #f9f9f9; /* Világosabb háttérszín */
+  border-radius: 8px; /* Lekerekített sarkok */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Doboz árnyék hozzáadása */
+  position: relative;
+}
+
+.prepare-message{
+  margin-left: 20px;
+  position: absolute;
+
+}
+
+.close-panel {
+  position: absolute;
+  right: 10px; /* Jobb oldali távolság */
+  bottom: 10px; /* Alsó távolság */
+  cursor: pointer; /* Mutató ikon változik, ha fölé viszed az egeret */
+}
+
+
+
+.message-window,
+.email-list-window {
+  margin-bottom: 30px;
+}
+
+.message-window input[type="text"],
+.email-list-window input[type="text"],
+.message-window textarea {
+  width: calc(100% - 20px); /* Számított szélesség a padding figyelembevételével */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Lekerekített sarkok az inputoknak és a textarea-nak */
+}
+
+.message-window button,
+.email-list-window button {
+  padding: 10px 15px;
+  background-color: #007bff; /* Sötétkék háttér */
+  color: #fff; /* Fehér szövegszín */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Átmenet hozzáadása */
+}
+
+.message-window button:hover,
+.email-list-window button:hover {
+  background-color: #0056b3; /* Sötétebb kék színre változik */
+}
+
+.email-list-window {
+  max-height: 200px; /* Megőrizzük */
+  overflow-y: auto; /* Megőrizzük */
+}
+
+.email-list-window ul {
+  list-style-type: none; /* Megőrizzük */
+  padding: 0; /* Megőrizzük */
+  margin: 0; /* Nullázzuk a felső margót */
+}
+
+.email-list-window li {
+  background-color: #e7f1ff; /* Világoskék háttér */
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 4px; /* Lekerekített sarkok */
+  display: flex; /* Flexbox használata az elrendezéshez */
+  justify-content: space-between; /* Távolítsuk el az elemeket egymástól */
+  align-items: center; /* Középre igazítás függőlegesen */
+}
+
+.remove-email {
+  cursor: pointer;
+  background-color: #ff4d4d; /* Piros háttér */
+  color: white; /* Fehér szövegszín */
+  border: none;
+  border-radius: 50%; /* Kör alakúra */
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
