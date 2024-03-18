@@ -76,7 +76,9 @@ function Loan() {
       if (!response.ok) {
         throw new Error('Hiba történt az üzenet küldése közben.');
       }
-  
+      
+      setRecipients('');
+      setMessage('');
       alert("Üzenet elküldve!");
     } catch (error) {
       console.error('Hiba történt az üzenet küldése közben:', error.message);
