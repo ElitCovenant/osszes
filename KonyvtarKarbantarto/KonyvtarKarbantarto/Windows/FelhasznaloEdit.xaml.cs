@@ -25,15 +25,31 @@ namespace KonyvtarKarbantarto.Windows
     public partial class FelhasznaloEdit : Window
     {
         string token;
-        User editenro = new User();
+        UserEditDto editenro = new UserEditDto();
+        uint id;
         Connection connection = new Connection();
         public FelhasznaloEdit(string tok,User user)
         {
+            editenro.id = user.Id;
+            editenro.membershipStart = Convert.ToString(user.MembershipStart);
+            editenro.membershipEnd = Convert.ToString(user.MembershipEnd);
+            editenro.userName = user.Usarname;
+            editenro.id_Rule = user.IdRule;
+            editenro.id_Account_Image = user.IdAccountImg;
+            id = user.Id;
             token = tok;
-            List<User> list = new List<User>();
+
             InitializeComponent();
-            list.Add(user);
-            Griddo.ItemsSource = list;
+
+            Ev.Text = DateFormer(editenro.membershipStart).Split('-')[0];
+            Honap.Text = DateFormer(editenro.membershipStart).Split('-')[1];
+            Nap.Text = DateFormer(editenro.membershipStart).Split('-')[2];
+
+            E_Ev.Text = DateFormer(editenro.membershipEnd).Split('-')[0];
+            E_Honap.Text = DateFormer(editenro.membershipEnd).Split('-')[1];
+            E_Nap.Text = DateFormer(editenro.membershipEnd).Split('-')[2];
+            Email.Text = user.Usarname;
+
             WebClient webClient = new WebClient();
             webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
             webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
@@ -42,26 +58,63 @@ namespace KonyvtarKarbantarto.Windows
             string converter = webClient.DownloadString(connection.Url() + "Rule");
             
             var jog = JsonConvert.DeserializeObject<List<RulesDto>>(converter).ToList();
-            foreach (var item in jog)
+            for (int i = 0; i < jog.Count; i++)
             {
-                JogComb.Items.Add(item.Id+"-"+item.Name);
+                JogComb.Items.Add(jog[i].Id + "-" + jog[i].Name);
+
+                if (jog[i].Id == user.IdRule)
+                {
+                    JogComb.SelectedIndex = i;
+                }
+                
             }
             
             converter = webClient.DownloadString(connection.Url() + "GetData");
             MessageBox.Show(converter);
             List<AccountImgDto> imgs = JsonConvert.DeserializeObject<List<AccountImgDto>>(converter).ToList();
-            foreach (var item in imgs)
+            for (int i = 0; i < imgs.Count; i++)
             {
-                AccountComb.Items.Add(item.Id + "-" + item.ImgName);
+                AccountComb.Items.Add(imgs[i].Id + "-" + imgs[i].ImgName);
+                if (imgs[i].Id == user.IdAccountImg)
+                {
+                    AccountComb.SelectedIndex = i;
+                }
             }
 
-            JogComb.SelectedIndex = 1;
-            AccountComb.SelectedIndex = 0;
 
         }
-        private void Edit_Click(object sender, RoutedEventArgs e)
+
+        public static string DateFormer(string cucc)
         {
+            if (cucc.Contains('.'))
+            {
+                string[] partone = cucc.Split(' ');
+
+                return partone[0].Replace('.', ' ').Trim() + "-" + partone[1].Replace('.', ' ').Trim() + "-" + partone[2].Replace('.', ' ').Trim();
+
+            }
+            else
+            {
+                return cucc;
+            }
             
+        }
+
+        public static string DateSecure(string cucc)
+        {
+            if (int.TryParse(cucc,out int D))
+            {
+                return cucc;
+            }
+            else
+            {
+                return "0000";
+            }
+        }
+
+        private async void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
 
             try
             {
@@ -71,8 +124,16 @@ namespace KonyvtarKarbantarto.Windows
                 webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
                 webClient.Encoding = Encoding.UTF8;
 
-                //string result = webClient.UploadString(connection.Url() + "Register", "POST", JsonConvert.SerializeObject(register));
-                //MessageBox.Show(result);
+                
+                editenro.userName = Email.Text;
+                editenro.membershipStart = DateSecure(Ev.Text)+"-"+DateSecure(Honap.Text)+"-"+DateSecure(Nap.Text);
+                editenro.membershipEnd = DateSecure(E_Ev.Text) + "-" + DateSecure(E_Honap.Text) + "-" + DateSecure(E_Nap.Text);
+                editenro.id_Rule = Convert.ToInt32(JogComb.SelectedItem.ToString().Split('-')[0]);
+                editenro.id_Account_Image = Convert.ToInt32(AccountComb.SelectedItem.ToString().Split('-')[0]);
+                MessageBox.Show(JsonConvert.SerializeObject(editenro));
+
+                string result = webClient.UploadString(connection.Url() + $"User/{id}", "PUT", JsonConvert.SerializeObject(editenro));
+                MessageBox.Show(DateTime.Now.ToString());
 
             }
             catch (Exception x)

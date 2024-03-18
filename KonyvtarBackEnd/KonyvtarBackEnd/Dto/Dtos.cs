@@ -1,8 +1,8 @@
 ﻿namespace KonyvtarBackEnd.Dto
 {
-    public record FelhasznaloDto(uint Id, string Name, DateTime MembershipStart, DateTime MembershipEnd, string UserName, int Id_Rule, int Id_Account_Image);
-    public record CreateFelhasznaloDto(string Name, DateTime MembershipStart, DateTime MembershipEnd, string UserName, string Hash, int Id_Rule, int Id_Account_Image);
-    public record ModifyFelhasznaloDto(uint Id, string Name, DateTime MembershipStart, DateTime MembershipEnd, string UserName, int Id_Rule, int Id_Account_Image);
+    public record FelhasznaloDto(uint Id, DateTime MembershipStart, DateTime MembershipEnd, string UserName, int Id_Rule, int Id_Account_Image);
+    public record CreateFelhasznaloDto(DateTime MembershipStart, DateTime MembershipEnd, string UserName, string Hash, int Id_Rule, int Id_Account_Image);
+    public record ModifyFelhasznaloDto(uint Id, DateTime MembershipStart, DateTime MembershipEnd, string UserName, int Id_Rule, int Id_Account_Image);
     public record ModifyJelszo(string Hash);
 
     public record RegisterDto(string UserName, string Hash);

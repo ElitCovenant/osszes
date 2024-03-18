@@ -124,6 +124,7 @@
     <Compile Include="Dto\RulesDto.cs" />
     <Compile Include="Dto\Token.cs" />
     <Compile Include="Dto\UserDto.cs" />
+    <Compile Include="Dto\UserEditDto.cs" />
     <Compile Include="Models\AccountImg.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />

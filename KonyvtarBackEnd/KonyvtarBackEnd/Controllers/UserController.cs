@@ -60,7 +60,7 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("/{id}")]
         public ActionResult<FelhasznaloDto> Get(int id)
         {
             using (var context = new KonyvtarDbContext())

@@ -11,14 +11,28 @@
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="67 10 10 10">
                 <Label Content="Email"/>
                 <TextBox x:Name="Email" Width="150"/>
+            </StackPanel>
+            <Label Content="Kezdés:"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Év: "/>
+                <TextBox x:Name="Ev" Width="50"/>
+                <Label Content="Hónap: "/>
+                <TextBox x:Name="Honap" Width="50"/>
+                <Label Content="Nap: "/>
+                <TextBox x:Name="Nap" Width="50"/>
+            </StackPanel>
+            <Label Content="Távozás:"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Év: "/>
+                <TextBox x:Name="E_Ev" Width="50"/>
+                <Label Content="Hónap: "/>
+                <TextBox x:Name="E_Honap" Width="50"/>
+                <Label Content="Nap: "/>
+                <TextBox x:Name="E_Nap" Width="50"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="34 10 10 10">
                 <Label Content="Jogosultság"/>
@@ -31,6 +45,6 @@
         </StackPanel>
         <Button Grid.Column="1" Height="20" Width="70" x:Name="Edit" Click="Edit_Click" Content="Edit" VerticalAlignment="Top" Margin="10 10 10 10"/>
         <Button Grid.Column="1" Height="20" Width="70" x:Name="Back" Click="Back_Click" Content="Back" VerticalAlignment="Bottom" Margin="10 10 10 10"/>
-        <DataGrid Grid.Row="1" x:Name="Griddo" Margin="10 10 10 10"/>
+        
     </Grid>
 </Window>
