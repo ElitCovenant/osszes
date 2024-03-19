@@ -8,6 +8,7 @@ import quest2_logo from './img/quest2_prof_picture.png';
 import teacher1_logo from './img/teacher1_prof_picture.png';
 import teacher2_logo from './img/teacher2_prof_picture.png';
 import Email from './Email';
+import Loan from './Loan';
 
 function UserPage() {
   const avatarlogos = [def_logo, teacher1_logo, teacher2_logo, quest1_logo, quest2_logo]
@@ -79,6 +80,7 @@ function UserPage() {
         )}
         {isAdmin && <button className="toggleLoan-button" onClick={toggleLoan}>Email</button>}
       </div>
+      <Loan/>
       {isLoanVisible && <Email />}
     </div>
   );
