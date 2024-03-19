@@ -1,0 +1,69 @@
+.download-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Átlátszó, sötétebb háttér */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.download-content {
+    background-color: #f9f9f9; /* Világosabb háttér */
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Nagyobb border sugarak */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Nagyobb és árnyék */
+    padding: 30px;
+    text-align: center;
+    display: flex; /* Flexbox elrendezés */
+    flex-direction: column; /* Oszlop irányú elrendezés */
+    align-items: center; /* Középre igazítás vízszintesen */
+}
+
+.download-content h2 {
+    color: #333; /* Sötétebb cím */
+    font-size: 24px; /* Nagyobb betűméret */
+}
+
+.download-content p {
+    color: #666; /* Világosabb szöveg */
+    font-size: 16px;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.download-button {
+    background-color: #4caf50; /* Zöld háttér */
+    color: #fff; /* Fehér szöveg */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Sima átmenet a színváltáshoz */
+    margin-top: 20px; /* További térköz a h2 elem alatt */
+}
+
+.download-button:hover {
+    background-color: #45a049; /* Sötétebb zöld szín hover állapotban */
+}
+
+.close-button {
+    background-color: #f44336; /* Piros háttér */
+    color: #fff; /* Fehér szöveg */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Sima átmenet a színváltáshoz */
+    margin-top: 10px; /* További térköz a letöltés gomb alatt */
+}
+
+.close-button:hover {
+    background-color: #d32f2f; /* Sötétebb piros szín hover állapotban */
+}
