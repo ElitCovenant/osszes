@@ -58,11 +58,6 @@ namespace KonyvtarKarbantarto.Windows
 
         }
 
-        private void ShowKonyvek_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show((Griddo.SelectedItem as Book).Title);
-        }
-
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             KarbantartoEloszto eloszto = new KarbantartoEloszto(token);

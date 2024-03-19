@@ -83,6 +83,22 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
 
+        [HttpGet("/Search/{nae}")]
+        public ActionResult<BookDto> Search(string nae)
+        {
+            using (var context = new KonyvtarDbContext())
+            {
+                if (context != null)
+                {
+                    return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).Where(x=>x.Title.Contains(nae)).ToList());
+                }
+                else
+                {
+                    return StatusCode(404, "Nincs ilyen könyv!");
+                }
+            }
+        }
+
         [HttpGet("/Konyvvalaszto")]
         public ActionResult<BookDto> GetSpecial(int elsoev, int masodikev, int iroId)
         {

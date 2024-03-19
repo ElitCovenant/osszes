@@ -222,3 +222,5 @@ C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbant
 C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\KonyvtarKarbantarto.csproj.CopyComplete
 C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\KonyvtarKarbantarto.exe
 C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\KonyvtarKarbantarto.pdb
+C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyvletrehozo.g.cs
+C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyvletrehozo.baml

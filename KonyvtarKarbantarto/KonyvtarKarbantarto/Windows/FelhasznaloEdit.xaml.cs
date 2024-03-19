@@ -70,7 +70,7 @@ namespace KonyvtarKarbantarto.Windows
             }
             
             converter = webClient.DownloadString(connection.Url() + "GetData");
-            MessageBox.Show(converter);
+            
             List<AccountImgDto> imgs = JsonConvert.DeserializeObject<List<AccountImgDto>>(converter).ToList();
             for (int i = 0; i < imgs.Count; i++)
             {
@@ -118,7 +118,6 @@ namespace KonyvtarKarbantarto.Windows
 
             try
             {
-                bool alkalmas = false;
                 WebClient webClient = new WebClient();
                 webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
                 webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
