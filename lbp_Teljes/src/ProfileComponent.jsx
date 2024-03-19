@@ -8,11 +8,13 @@ function ProfileComponent() {
 
   return (
     <div className='box'>
+      
       <h2>Felhasználó Email: {userEmail}</h2>
       <button onClick={() => setIsAvatarSelectorOpen(true)}>Válassz Avatart</button>
       {isAvatarSelectorOpen && <AvatarSelector onClose={() => setIsAvatarSelectorOpen(false)} />}
       <FavoriteBooks />
     </div>
+    
   );
 }
 

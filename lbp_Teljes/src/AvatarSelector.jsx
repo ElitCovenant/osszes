@@ -10,29 +10,9 @@ import teacher1_logo from './img/teacher1_prof_picture.png';
 import teacher2_logo from './img/teacher2_prof_picture.png';
 
 function AvatarSelector({ onClose }) {
-  const [avatars, setAvatars] = useState([]);
-  const [profilePicturePath, setProfilePicturePath] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
 
   const avatarlogos = [teacher1_logo, teacher2_logo, quest1_logo, quest2_logo];
-
-  useEffect(() => {
-    const fetchAvatars = async () => {
-      try {
-        const response = await fetch('https://localhost:7275/Tanulók');
-        if (response.ok) {
-          const avatarsData = await response.json();
-          setAvatars(avatarsData || []);
-        } else {
-          console.error('Avatárok lekérése sikertelen');
-        }
-      } catch (error) {
-        console.error('Hiba történt az avatárok lekérése során:', error);
-      }
-    };
-
-    fetchAvatars();
-  }, []);
 
   useEffect(() => {
     const fetchProfilePicturePath = async () => {
@@ -40,8 +20,6 @@ function AvatarSelector({ onClose }) {
         const troken = localStorage.getItem('authToken');
         if (troken) {
           const decodedToken = jwt_decode(troken);
-            const imgPath = decodedToken.actor;
-            setProfilePicturePath(imgPath);
             setIsAdmin(decodedToken.role === 'Admin');
         }
       } catch (error) {
@@ -69,6 +47,7 @@ function AvatarSelector({ onClose }) {
           if (response.ok) {
             toast.success('Avatar successfully changed!');
           } else {
+            toast.error('Something went wrong');
             console.error('Hiba történt az avatar frissítése során:', response.statusText);
           }
         }

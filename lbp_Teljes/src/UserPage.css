@@ -10,7 +10,7 @@
   flex-direction: column;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  
+  position: relative;
 }
 
 .profile-header {
@@ -20,6 +20,7 @@
   background-color: #f0f2f5;
   padding: 10px;
   border-radius: 8px;
+  
 }
 
 
@@ -29,15 +30,28 @@
   border-radius: 50%;
   border: 2px solid #007bff;
 }
-
-.mail-icon {
+.toggleLoan-button {
   cursor: pointer;
-  margin-left: auto; /* Mail ikon jobbra igazítása */
+  position: absolute; /* Pozicionálás a szülő .facebook-profile-hez képest */
+  top: 50px; /* A gomb felső margójától való távolság */
+  right: 40px; /* A gomb jobb margójától való távolság */
   transition: transform 0.2s ease-in-out;
+  padding: 10px 15px; /* Gomb padding beállítása */
+  background-color: #007bff; /* Gomb háttérszíne */
+  color: white; /* Gomb szövegének színe */
+  border: none; /* Eltávolítjuk a keretet */
+  border-radius: 5px; /* Lekerekített sarkok a gombnak */
 }
 
-.mail-icon:hover {
-  transform: scale(1.1);
+.toggleLoan-button:hover {
+  transform: scale(1.1); /* Nagyítás hover esetén */
+  background-color: #0056b3; /* Sötétebb árnyalatú háttérszín a hover állapotban */
+
+}
+
+.toggleLoan-button:active {
+  background-color: #004080; /* Még sötétebb árnyalatú háttérszín a lenyomott állapotban */
+  transform: scale(0.95); /* Kis méretcsökkenés a lenyomott állapotban, hogy "lenyomott" hatást keltsen */
 }
 
 .profile-info, .social-links {
@@ -76,6 +90,9 @@
 }
 
 
+
+
+
 /* Dinamikus reszponzivitás */
 @media (max-width: 768px) {
   .profile-header {
@@ -83,7 +100,7 @@
     align-items: flex-start;
   }
 
-  .mail-icon {
+  .toggleLoan-button {
     margin: 10px 0; /* Mobil nézetben a margó beállítása */
   }
 }

@@ -34,19 +34,19 @@
   
     .gallery__strip {
       &.one {
-        animation: 60s move-it ease alternate infinite 5s;
+        animation: 60s move-it ease-out alternate infinite 5s;
         transform: translateY(45%);
       }
       &.three {
-        animation: 70s move-it ease alternate infinite 6s;
+        animation: 61s move-it ease-out alternate infinite 6s;
         transform: translateY(45%);
       }
       &.two {
-        animation: 61s move-it-2 ease alternate infinite 5s;
+        animation: 60s move-it-2 ease alternate infinite 5s;
         transform: translateY(-50%);
       }
       &.four {
-        animation: 65s move-it-2 ease alternate infinite 5.5s;
+        animation: 61s move-it-2 ease alternate infinite 5.5s;
         transform: translateY(-50%);
       }
   
@@ -115,3 +115,13 @@
      transform: translateY(80%);
     }
    }
+
+   @keyframes move-diagonal {
+    0%, 100% {
+      transform: translate(0%, 0%);
+    }
+    50% {
+      transform: translate(30%, 50%);
+    }
+  }
+  
