@@ -105,13 +105,10 @@ const Books = () => {
         </div>
 
       ))}  
-      {selectedBook && <Modal book={selectedBook} onClose={handleCloseModal} />}
-
-
-      <BooksPagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
-      
+      {selectedBook && <Modal book={selectedBook} onClose={handleCloseModal} />} 
       {showPopup && <Popup onClose={handlePopupClose} bookId={selectedBookIdForPopup} />} 
     </main>
+    <BooksPagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
     </div>
 
   );
