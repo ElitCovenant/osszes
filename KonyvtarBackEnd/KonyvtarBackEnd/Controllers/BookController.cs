@@ -27,6 +27,7 @@ namespace KonyvtarBackEnd.Controllers
                 ReleaseDate = createOrModifyKonyvDto.Release_Date,
                 Price = createOrModifyKonyvDto.Price,
                 Comment = createOrModifyKonyvDto.Comment,
+                BookImg = createOrModifyKonyvDto.BookImg,
                 UserId = createOrModifyKonyvDto.User_Id
 
             };
@@ -174,6 +175,7 @@ namespace KonyvtarBackEnd.Controllers
                         valtoztatando.ReleaseDate = createOrModifyKonyvDto.Release_Date;
                         valtoztatando.Price = createOrModifyKonyvDto.Price;
                         valtoztatando.Comment = createOrModifyKonyvDto.Comment;
+                        valtoztatando.BookImg = createOrModifyKonyvDto.BookImg;
                         valtoztatando.UserId = createOrModifyKonyvDto.User_Id;
 
                         try

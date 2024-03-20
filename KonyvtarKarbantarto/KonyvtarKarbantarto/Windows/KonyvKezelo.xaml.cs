@@ -64,5 +64,11 @@ namespace KonyvtarKarbantarto.Windows
             eloszto.Show();
             this.Close();
         }
+
+        private void CreateBook_Click(object sender, RoutedEventArgs e)
+        {
+            Konyvletrehozo konyvletrehozo = new Konyvletrehozo(token);
+            konyvletrehozo.ShowDialog();
+        }
     }
 }

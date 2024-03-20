@@ -15,6 +15,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using KonyvtarKarbantarto.Dto;
+using System.IO;
+using System.Security.Policy;
 
 namespace KonyvtarKarbantarto.Windows
 {
@@ -53,14 +56,147 @@ namespace KonyvtarKarbantarto.Windows
             }
             Series.SelectedIndex = 0;
             
-            List<Publisher> publishers = new List<Publisher>();
+            List<PublisherObject> publishers = new List<PublisherObject>();
 
-            publishers = JsonConvert.DeserializeObject<List<Publisher>>(webClient.DownloadString(connection.Url() + "Publisher")).ToList();
+            publishers = JsonConvert.DeserializeObject<List<PublisherObject>>(webClient.DownloadString(connection.Url() + "Publisher")).ToList();
             for (int i = 0; i < publishers.Count; i++)
             {
                 PublisherId.Items.Add(publishers[i].Id + "-" + publishers[i].Name);
             }
             PublisherId.SelectedIndex = 0;
         }
+        BookDto book = new BookDto();
+        public static int Securer(string c)
+        {
+            if (int.TryParse(c,out int g))
+            {
+                return g;
+            }
+            else
+            {
+                    return 0000;
+            }
+        }
+
+        public static ushort SecurerShort(string c)
+        {
+            if (ushort.TryParse(c, out ushort g))
+            {
+                return g;
+            }
+            else
+            {
+                return 0000;
+            }
+        }
+
+        public static decimal SecurerDecimal(string c)
+        {
+            if (decimal.TryParse(c, out decimal g))
+            {
+                return g;
+            }
+            else
+            {
+                return 0000;
+            }
+        }
+
+        public static uint ComboSplitter(ComboBox combo)
+        {
+            return Convert.ToUInt32(combo.SelectedItem.ToString().Split('-')[0]);
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WebClient webClient = new WebClient();
+                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+                webClient.Encoding = Encoding.UTF8;
+
+                book.warehouse_Num = Securer(WarhNum.Text);
+                book.purchase_Date = Securer(Ev.Text).ToString() + "-" + Securer(Honap.Text).ToString() + "-" + Securer(Nap.Text).ToString();
+                book.author_Id = ComboSplitter(AuthorId);
+                book.title = Title.Text;
+                book.series_Id = ComboSplitter(Series);
+                book.isbn_Num = SecurerDecimal(Isbnnum.Text);
+                book.szakjelzet = SecurerDecimal(NobleNote.Text);
+                book.cutter_Jelzet = CutterSign.Text;
+                book.publisher_Id = ComboSplitter(PublisherId);
+                book.release_Date = SecurerShort(Releasedate.Text);
+                book.price = Securer(Price.Text);
+                book.comment = Comment.Text;
+                MessageBox.Show(JsonConvert.SerializeObject(book));
+                MessageBox.Show(webClient.UploadString(connection.Url() + "Book", "POST", JsonConvert.SerializeObject(book)));
+            }
+            catch (Exception p)
+            {
+
+                MessageBox.Show("Error! :"+p.Message);
+            }
+        }
+
+        private void Pic_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var fileDialog = new Microsoft.Win32.OpenFileDialog();
+                fileDialog.Multiselect = false;
+                fileDialog.DefaultExt = ".png";
+                fileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg";
+
+                // Show the dialog and check if the user selected a file
+                if (fileDialog.ShowDialog() == true)
+                {
+                    //    string filePath = fileDialog.FileName;
+                    //    MessageBox.Show(filePath);
+
+                    string ftpServerUrl = "://img.library.nhely.hu"; // Corrected FTP server URL
+                    //    string userName = "szovetsege"; // Replace with your FTP username
+                    //    string password = "Szovetsege241"; // Replace with your FTP password
+
+                    //    // Get the file name without the path
+                    //    string fileName = filePath.Split('\\').Last();
+
+                    //    // Create a WebClient instance
+                    //    using (WebClient client = new WebClient())
+                    //    {
+                    //        // Set FTP credentials
+                    //        client.Credentials = new NetworkCredential(userName, password);
+
+                    //        // Upload the file
+                    //        client.UploadFile($"{ftpServerUrl}/img/{filePath}", WebRequestMethods.Ftp.UploadFile, filePath);
+
+                    //        // Show success message
+                    //        MessageBox.Show("Upload File Complete");
+                    //    }
+                    MessageBox.Show("http" + ftpServerUrl + "/img/" + fileDialog.FileName.Split('\\').Last());
+                    book.bookImg = "http"+ftpServerUrl + "/img/" + fileDialog.FileName.Split('\\').Last();
+
+                }
+            }
+            catch (WebException ex)
+            {
+                // Handle WebException separately to provide specific error messages
+                if (ex.Response != null)
+                {
+                    FtpWebResponse response = (FtpWebResponse)ex.Response;
+                    MessageBox.Show($"FTP Error: {response.StatusCode}, {response.StatusDescription}");
+                }
+                else
+                {
+                    MessageBox.Show($"WebException: {ex.Message}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+
+
+        }
+
     }
 }
