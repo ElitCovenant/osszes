@@ -3,11 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\konyvtarkarbantarto\\windows\\karbantartoeloszto.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarkarbantarto\\konyvtarkarbantarto\\windows\\konyvletrehozo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:konyvtarkarbantarto\\windows\\konyvletrehozo.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarkarbantarto\\konyvtarkarbantarto\\windows\\konyvletrehozo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:konyvtarkarbantarto\\windows\\konyvletrehozo.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarkarbantarto\\konyvtarkarbantarto\\windows\\karbantartoeloszto.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:konyvtarkarbantarto\\windows\\karbantartoeloszto.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarkarbantarto\\konyvtarkarbantarto\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\konyvtarkarbantarto\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:konyvtarkarbantarto\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -50,44 +58,44 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\peter\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Felhszerk.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Windows\\Felhszerk.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Felhszerk.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Windows\\Felhszerk.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Series.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Models\\Series.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Rule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Models\\Rule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Models\\Publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\LoanHistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Models\\LoanHistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Felhszerk.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:KonyvtarKarbantarto\\Windows\\Felhszerk.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Models\\Book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Felhszerk.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:KonyvtarKarbantarto\\Windows\\Felhszerk.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Models\\Author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:KonyvtarKarbantarto\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\AccountImg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KonyvtarKarbantarto\\Models\\AccountImg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Series.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:KonyvtarKarbantarto\\Models\\Series.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Rule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:KonyvtarKarbantarto\\Models\\Rule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\LoanHistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:KonyvtarKarbantarto\\Models\\LoanHistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:KonyvtarKarbantarto\\Models\\Book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:KonyvtarKarbantarto\\Models\\Author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\AccountImg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE6CDC3-B247-4350-90A8-4B86B99755A0}|KonyvtarKarbantarto\\KonyvtarKarbantarto.csproj|solutionrelative:KonyvtarKarbantarto\\Models\\AccountImg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -97,11 +105,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "Konyvletrehozo.xaml",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Konyvletrehozo.xaml",
+              "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Windows\\Konyvletrehozo.xaml",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Konyvletrehozo.xaml",
+              "RelativeToolTip": "KonyvtarKarbantarto\\Windows\\Konyvletrehozo.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-20T13:43:24.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Konyvletrehozo.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Konyvletrehozo.xaml.cs",
+              "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Windows\\Konyvletrehozo.xaml.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Konyvletrehozo.xaml.cs",
+              "RelativeToolTip": "KonyvtarKarbantarto\\Windows\\Konyvletrehozo.xaml.cs",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAowEsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:22:29.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "packages.config",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\packages.config",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\packages.config",
@@ -113,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Login.xaml.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Login.xaml.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Login.xaml.cs",
@@ -121,25 +154,24 @@
               "RelativeToolTip": "KonyvtarKarbantarto\\Login.xaml.cs",
               "ViewState": "AQIAACAAAAAAAAAAAAAYwC8AAABxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T08:38:14.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-07T08:38:14.209Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "KarbantartoEloszto.xaml.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\KarbantartoEloszto.xaml.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Windows\\KarbantartoEloszto.xaml.cs",
               "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\KarbantartoEloszto.xaml.cs",
               "RelativeToolTip": "KonyvtarKarbantarto\\Windows\\KarbantartoEloszto.xaml.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAADwvxwAAAAMAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAADwvxwAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-07T08:38:14.756Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Token.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Dto\\Token.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Dto\\Token.cs",
@@ -151,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Connection.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Connection.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Connection.cs",
@@ -163,18 +195,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\App.xaml",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\App.xaml",
               "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\App.xaml",
               "RelativeToolTip": "KonyvtarKarbantarto\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-03-07T08:38:14.763Z"
+              "WhenOpened": "2024-03-07T08:38:14.763Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\App.xaml.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\App.xaml.cs",
@@ -186,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "KarbantartoEloszto.xaml",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\KarbantartoEloszto.xaml",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Windows\\KarbantartoEloszto.xaml",
@@ -197,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Login.xaml",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Login.xaml",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Login.xaml",
@@ -208,7 +241,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "Felhszerk.xaml.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Felhszerk.xaml.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Windows\\Felhszerk.xaml.cs",
@@ -220,7 +253,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "Felhszerk.xaml",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Windows\\Felhszerk.xaml",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Windows\\Felhszerk.xaml",
@@ -231,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\User.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Models\\User.cs",
@@ -243,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "Series.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Series.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Models\\Series.cs",
@@ -255,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "Rule.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Rule.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Models\\Rule.cs",
@@ -267,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 14,
               "Title": "Publisher.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Publisher.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Models\\Publisher.cs",
@@ -279,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "LoanHistory.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\LoanHistory.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Models\\LoanHistory.cs",
@@ -291,7 +324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "Book.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Book.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Models\\Book.cs",
@@ -303,7 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "Author.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\Author.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Models\\Author.cs",
@@ -315,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "AccountImg.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Models\\AccountImg.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Models\\AccountImg.cs",
@@ -327,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\Dto\\LoginDto.cs",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\Dto\\LoginDto.cs",
@@ -339,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ResourcePart.cs",
               "DocumentMoniker": "C:\\Users\\peter\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\peter\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
@@ -350,7 +383,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarKarbantarto\\KonyvtarKarbantarto\\App.config",
               "RelativeDocumentMoniker": "KonyvtarKarbantarto\\App.config",

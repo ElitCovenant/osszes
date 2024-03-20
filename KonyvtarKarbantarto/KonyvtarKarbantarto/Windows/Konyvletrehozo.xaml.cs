@@ -104,7 +104,7 @@ namespace KonyvtarKarbantarto.Windows
 
         public static uint ComboSplitter(ComboBox combo)
         {
-            return Convert.ToUInt32(combo.SelectedItem.ToString().Split('-')[0]);
+            return Convert.ToUInt32(combo.SelectedItem.ToString().Split('-')[0].Trim());
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -150,30 +150,31 @@ namespace KonyvtarKarbantarto.Windows
                 // Show the dialog and check if the user selected a file
                 if (fileDialog.ShowDialog() == true)
                 {
-                    //    string filePath = fileDialog.FileName;
-                    //    MessageBox.Show(filePath);
+                    string filePath = fileDialog.FileName;
+                    MessageBox.Show(filePath);
 
-                    string ftpServerUrl = "://img.library.nhely.hu"; // Corrected FTP server URL
-                    //    string userName = "szovetsege"; // Replace with your FTP username
-                    //    string password = "Szovetsege241"; // Replace with your FTP password
+                    string ftpUrl = "://img.library.nhely.hu";
+                    string ftpServerUrl = "ftp" + ftpUrl;
+                        string userName = "szovetsege";
+                    string password = "Szovetsege241";
 
-                    //    // Get the file name without the path
-                    //    string fileName = filePath.Split('\\').Last();
+                    // Get the file name without the path
+                    string fileName = filePath.Split('\\').Last();
 
-                    //    // Create a WebClient instance
-                    //    using (WebClient client = new WebClient())
-                    //    {
-                    //        // Set FTP credentials
-                    //        client.Credentials = new NetworkCredential(userName, password);
+                    // Create a WebClient instance
+                    using (WebClient client = new WebClient())
+                    {
+                        // Set FTP credentials
+                        client.Credentials = new NetworkCredential(userName, password);
 
-                    //        // Upload the file
-                    //        client.UploadFile($"{ftpServerUrl}/img/{filePath}", WebRequestMethods.Ftp.UploadFile, filePath);
+                        // Upload the file
+                        client.UploadFile($"{ftpServerUrl}/img/{filePath}", WebRequestMethods.Ftp.UploadFile, filePath);
 
-                    //        // Show success message
-                    //        MessageBox.Show("Upload File Complete");
-                    //    }
-                    MessageBox.Show("http" + ftpServerUrl + "/img/" + fileDialog.FileName.Split('\\').Last());
-                    book.bookImg = "http"+ftpServerUrl + "/img/" + fileDialog.FileName.Split('\\').Last();
+                        // Show success message
+                        MessageBox.Show("Upload File Complete");
+                    }
+                    MessageBox.Show("http" + ftpUrl + "/img/" + fileDialog.FileName.Split('\\').Last());
+                    book.bookImg = "http"+ftpUrl + "/img/" + fileDialog.FileName.Split('\\').Last();
 
                 }
             }

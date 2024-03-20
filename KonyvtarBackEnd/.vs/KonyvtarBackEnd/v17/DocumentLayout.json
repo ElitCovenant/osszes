@@ -1,0 +1,390 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\bookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\models\\konyvtardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\models\\konyvtardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\dto\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\dto\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\accounimgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\accounimgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\rulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\rulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\publishercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\publishercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\loanhistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\loanhistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\models\\token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\models\\token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\seriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\seriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\service\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\service\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\models\\loanhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\models\\loanhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\service\\iemailservices\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\service\\iemailservices\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|c:\\users\\szesz\\documents\\projektmunka\\osszes\\konyvtarbackend\\konyvtarbackend\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE8C609-AA90-4111-8662-03134C51AB87}|KonyvtarBackEnd\\KonyvtarBackEnd.csproj|solutionrelative:konyvtarbackend\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PublisherController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\PublisherController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\PublisherController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\PublisherController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\PublisherController.cs",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAUwGMAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RuleController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\RuleController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\RuleController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\RuleController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\RuleController.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAkwGgAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.076Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\BookController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\BookController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\BookController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\BookController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAADQAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\UserController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\UserController.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAAwMMAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAowBcAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AuthorController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\AuthorController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\AuthorController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\AuthorController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\AuthorController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAswGgAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.052Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Dtos.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Dto\\Dtos.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Dto\\Dtos.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Dto\\Dtos.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Dto\\Dtos.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAswBkAAAAhAQAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:08.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "KonyvtarDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\KonyvtarDbContext.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Models\\KonyvtarDbContext.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\KonyvtarDbContext.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Models\\KonyvtarDbContext.cs",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAlwBUAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccounImgController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\AccounImgController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\AccounImgController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\AccounImgController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\AccounImgController.cs",
+              "ViewState": "AQIAAKwAAAAAAAAAAAAwwEIAAABSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.121Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\appsettings.json",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\appsettings.json",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\appsettings.json",
+              "RelativeToolTip": "KonyvtarBackEnd\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-20T13:21:09.132Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\appsettings.Development.json",
+              "RelativeToolTip": "KonyvtarBackEnd\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-20T13:21:09.154Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoanHistoryController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\LoanHistoryController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\LoanHistoryController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\LoanHistoryController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\LoanHistoryController.cs",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAkwHUAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.164Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AQIAAGgSAAAAAAAAAAAUwH0SAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-03-01T23:42:45.138Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Program.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Program.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Program.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Program.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAADcAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Token.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\Token.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Models\\Token.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\Token.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Models\\Token.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.217Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SeriesController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\SeriesController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\SeriesController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\SeriesController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\SeriesController.cs",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAowGUAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\User.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\User.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "EmailController.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\EmailController.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Controllers\\EmailController.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Controllers\\EmailController.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Controllers\\EmailController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAUwBcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Service\\EmailService.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Service\\EmailService.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Service\\EmailService.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Service\\EmailService.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAA1wCIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "LoanHistory.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\LoanHistory.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Models\\LoanHistory.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\LoanHistory.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Models\\LoanHistory.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwA8AAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Service\\IEmailServices\\IEmailService.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Service\\IEmailServices\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Service\\IEmailServices\\IEmailService.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Service\\IEmailServices\\IEmailService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "KonyvtarBackEnd\\Models\\Book.cs",
+              "ToolTip": "C:\\Users\\szesz\\Documents\\Projektmunka\\osszes\\KonyvtarBackEnd\\KonyvtarBackEnd\\Models\\Book.cs",
+              "RelativeToolTip": "KonyvtarBackEnd\\Models\\Book.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-20T13:21:09.306Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

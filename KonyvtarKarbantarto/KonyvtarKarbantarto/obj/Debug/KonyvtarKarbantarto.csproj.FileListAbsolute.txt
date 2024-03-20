@@ -224,3 +224,11 @@ C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbant
 C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\KonyvtarKarbantarto.pdb
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyvletrehozo.g.cs
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyvletrehozo.baml
+C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\FelhasznaloEdit.g.cs
+C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\FelhCreate.g.cs
+C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\KonyvKezelo.g.cs
+C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyvletrehozo.g.cs
+C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\FelhasznaloEdit.baml
+C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\FelhCreate.baml
+C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\KonyvKezelo.baml
+C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyvletrehozo.baml
