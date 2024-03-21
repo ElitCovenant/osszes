@@ -28,6 +28,7 @@ namespace KonyvtarKarbantarto.Windows
     {
         string token;
         Connection connection = new Connection();
+        string PicPath;
         public Konyvletrehozo(string tok)
         {
             token = tok;
@@ -49,13 +50,13 @@ namespace KonyvtarKarbantarto.Windows
 
             List<Series> seriesList = new List<Series>();
 
-            seriesList = JsonConvert.DeserializeObject<List<Series>>(webClient.DownloadString(connection.Url()+"Series")).ToList();
+            seriesList = JsonConvert.DeserializeObject<List<Series>>(webClient.DownloadString(connection.Url() + "Series")).ToList();
             for (int i = 0; i < seriesList.Count; i++)
             {
                 Series.Items.Add(seriesList[i].Id + "-" + seriesList[i].Name);
             }
             Series.SelectedIndex = 0;
-            
+
             List<PublisherObject> publishers = new List<PublisherObject>();
 
             publishers = JsonConvert.DeserializeObject<List<PublisherObject>>(webClient.DownloadString(connection.Url() + "Publisher")).ToList();
@@ -68,13 +69,13 @@ namespace KonyvtarKarbantarto.Windows
         BookDto book = new BookDto();
         public static int Securer(string c)
         {
-            if (int.TryParse(c,out int g))
+            if (int.TryParse(c, out int g))
             {
                 return g;
             }
             else
             {
-                    return 0000;
+                return 0000;
             }
         }
 
@@ -128,13 +129,61 @@ namespace KonyvtarKarbantarto.Windows
                 book.release_Date = SecurerShort(Releasedate.Text);
                 book.price = Securer(Price.Text);
                 book.comment = Comment.Text;
+                book.user_Id = 1;
+                if (PicPath != string.Empty)
+                { 
+                string ftpUrl = "ftp://ftp.nethely.hu/img";
+                string userName = "szovetsege";
+                string password = "Szovetsege241";
+
+                // Get the file name without the path
+                var fileName = PicPath.Split('\\').Last();
+
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpUrl + "/" + fileName);
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.Credentials = new NetworkCredential(userName, password);
+                request.UseBinary = true;
+
+                byte[] fileContents;
+                using (FileStream fileStream = File.OpenRead(PicPath))
+                {
+                    fileContents = new byte[fileStream.Length];
+                    fileStream.Read(fileContents, 0, fileContents.Length);
+                }
+
+                // Upload file
+                using (Stream requestStream = request.GetRequestStream())
+                {
+                    requestStream.Write(fileContents, 0, fileContents.Length);
+                }
+
+                // Get response
+                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                {
+                    MessageBox.Show($"Upload complete. Server response: {response.StatusDescription}");
+                }
+            }
                 MessageBox.Show(JsonConvert.SerializeObject(book));
                 MessageBox.Show(webClient.UploadString(connection.Url() + "Book", "POST", JsonConvert.SerializeObject(book)));
+                PicPath = null;
+                book = new BookDto();
+            }
+            catch (WebException ex)
+            {
+                // Handle WebException separately to provide specific error messages
+                if (ex.Response != null)
+                {
+                    MessageBox.Show($"FTP Error: {ex.Message}");
+                }
+                else
+                {
+                    MessageBox.Show($"WebException: {ex.Message}");
+                }
             }
             catch (Exception p)
             {
 
-                MessageBox.Show("Error! :"+p.Message);
+                MessageBox.Show("Error! :" + p.Message);
             }
         }
 
@@ -150,45 +199,11 @@ namespace KonyvtarKarbantarto.Windows
                 // Show the dialog and check if the user selected a file
                 if (fileDialog.ShowDialog() == true)
                 {
-                    string filePath = fileDialog.FileName;
-                    MessageBox.Show(filePath);
+                    PicPath = fileDialog.FileName;
+                    string ftpServerUrl = "http://img.library.nhely.hu/";
+                    MessageBox.Show(ftpServerUrl +"img/" + fileDialog.FileName.Split('\\').Last());
+                    book.bookImg = ftpServerUrl +"img/" + fileDialog.FileName.Split('\\').Last();
 
-                    string ftpUrl = "://img.library.nhely.hu";
-                    string ftpServerUrl = "ftp" + ftpUrl;
-                        string userName = "szovetsege";
-                    string password = "Szovetsege241";
-
-                    // Get the file name without the path
-                    string fileName = filePath.Split('\\').Last();
-
-                    // Create a WebClient instance
-                    using (WebClient client = new WebClient())
-                    {
-                        // Set FTP credentials
-                        client.Credentials = new NetworkCredential(userName, password);
-
-                        // Upload the file
-                        client.UploadFile($"{ftpServerUrl}/img/{filePath}", WebRequestMethods.Ftp.UploadFile, filePath);
-
-                        // Show success message
-                        MessageBox.Show("Upload File Complete");
-                    }
-                    MessageBox.Show("http" + ftpUrl + "/img/" + fileDialog.FileName.Split('\\').Last());
-                    book.bookImg = "http"+ftpUrl + "/img/" + fileDialog.FileName.Split('\\').Last();
-
-                }
-            }
-            catch (WebException ex)
-            {
-                // Handle WebException separately to provide specific error messages
-                if (ex.Response != null)
-                {
-                    FtpWebResponse response = (FtpWebResponse)ex.Response;
-                    MessageBox.Show($"FTP Error: {response.StatusCode}, {response.StatusDescription}");
-                }
-                else
-                {
-                    MessageBox.Show($"WebException: {ex.Message}");
                 }
             }
             catch (Exception ex)

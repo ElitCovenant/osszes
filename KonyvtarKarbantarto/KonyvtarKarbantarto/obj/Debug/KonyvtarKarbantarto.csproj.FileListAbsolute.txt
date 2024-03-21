@@ -153,8 +153,6 @@ C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbant
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\bin\Debug\System.Text.Json.xml
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\bin\Debug\System.ValueTuple.xml
-C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\KonyvtarKarbantarto.csproj.SuggestedBindingRedirects.cache
-C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\KonyvtarKarbantarto.exe.config
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\FelhCreate.g.cs
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Felhszerk.g.cs
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\KonyvKezelo.g.cs

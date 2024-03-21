@@ -30,7 +30,15 @@ namespace KonyvtarKarbantarto.Windows
         {
             token = tok;
             InitializeComponent();
-            
+            WebClient webClient = new WebClient();
+            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+            webClient.Encoding = Encoding.UTF8;
+
+            string result = webClient.DownloadString(connection.Url() + "Book");
+            konys = JsonConvert.DeserializeObject<List<Book>>(result).ToList();
+            Griddo.ItemsSource = konys;
+
         }
         Connection connection = new Connection();
         private void GetDataKonyvek_Click(object sender, RoutedEventArgs e)
@@ -39,14 +47,10 @@ namespace KonyvtarKarbantarto.Windows
             webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
             webClient.Headers.Add(HttpRequestHeader.Authorization,"Bearer "+token);
             webClient.Encoding = Encoding.UTF8;
-            MessageBox.Show(token);
             try
             {
-                
-
                 string result = webClient.DownloadString(connection.Url()+"Book");
                 konys = JsonConvert.DeserializeObject<List<Book>>(result).ToList();
-                //MessageBox.Show(result);
                 Griddo.ItemsSource = konys;
                 Griddo.Items.Refresh();
             }
