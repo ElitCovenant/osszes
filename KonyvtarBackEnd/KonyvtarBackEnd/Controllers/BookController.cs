@@ -162,7 +162,6 @@ namespace KonyvtarBackEnd.Controllers
                     var valtoztatando = context.Books.FirstOrDefault(x => x.Id == id);
                     if (valtoztatando != null)
                     {
-                        valtoztatando.Id = createOrModifyKonyvDto.Id;
                         valtoztatando.WarehouseNum = createOrModifyKonyvDto.Warehouse_Num;
                         valtoztatando.PurchaseDate = createOrModifyKonyvDto.Purchase_Date;
                         valtoztatando.AuthorId = createOrModifyKonyvDto.Author_Id;

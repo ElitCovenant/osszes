@@ -74,5 +74,44 @@ namespace KonyvtarKarbantarto.Windows
             Konyvletrehozo konyvletrehozo = new Konyvletrehozo(token);
             konyvletrehozo.ShowDialog();
         }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (Griddo.SelectedItem != null)
+            {
+                WebClient webClient = new WebClient();
+                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+                webClient.Encoding = Encoding.UTF8;
+
+                string question = "Biztosan szeretné törölni az adott terméket?";
+                string cap = "Figyelem!";
+                MessageBoxButton button = MessageBoxButton.YesNo;
+                MessageBoxImage image = MessageBoxImage.Warning;
+                MessageBoxResult result;
+                result = MessageBox.Show(question, cap, button, image);
+                if (result.ToString() == "Yes")
+                {
+                    MessageBox.Show(webClient.UploadString(connection.Url() + $"Book/{(Griddo.SelectedItem as Book).Id}", "Delete", ""));
+                }
+                Griddo.ItemsSource = JsonConvert.DeserializeObject<List<Book>>(webClient.DownloadString(connection.Url()+"Book")).ToList();
+            }
+            
+        }
+
+        private void EditBook_Click(object sender, RoutedEventArgs e)
+        {
+            if (Griddo.SelectedItem != null)
+            {
+                WebClient webClient = new WebClient();
+                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+                webClient.Encoding = Encoding.UTF8;
+
+                KonyvSzerkeszto szerkeszto = new KonyvSzerkeszto(token, Griddo.SelectedItem as Book);
+                szerkeszto.ShowDialog();
+                Griddo.ItemsSource = JsonConvert.DeserializeObject<List<Book>>(webClient.DownloadString(connection.Url() + "Book")).ToList();
+            }
+        }
     }
 }

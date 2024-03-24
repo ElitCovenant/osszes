@@ -63,8 +63,6 @@ C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarban
 C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\bin\Debug\System.Text.Json.xml
 C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\bin\Debug\System.ValueTuple.xml
-C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\KonyvtarKarbantarto.csproj.SuggestedBindingRedirects.cache
-C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\KonyvtarKarbantarto.exe.config
 C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\bin\Debug\KonyvtarKarbantarto.exe.config
 C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\bin\Debug\KonyvtarKarbantarto.exe
 C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\bin\Debug\KonyvtarKarbantarto.pdb
@@ -230,3 +228,9 @@ C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbant
 C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\FelhCreate.baml
 C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\KonyvKezelo.baml
 C:\Users\szesz\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyvletrehozo.baml
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\FelhasznaloEdit.g.cs
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyvletrehozo.g.cs
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\FelhasznaloEdit.baml
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyvletrehozo.baml
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\KonyvSzerkeszto.g.cs
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\KonyvSzerkeszto.baml

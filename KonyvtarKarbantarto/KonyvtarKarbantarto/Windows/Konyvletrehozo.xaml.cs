@@ -79,6 +79,26 @@ namespace KonyvtarKarbantarto.Windows
             }
         }
 
+        public static string SecurerDate(string c)
+        {
+            if (int.TryParse(c, out int g))
+            {
+                if (g<10)
+                {
+                    return 0 + c;
+                }
+                else
+                {
+                    return c;
+                }
+                
+            }
+            else
+            {
+                return "0000";
+            }
+        }
+
         public static ushort SecurerShort(string c)
         {
             if (ushort.TryParse(c, out ushort g))
@@ -118,7 +138,7 @@ namespace KonyvtarKarbantarto.Windows
                 webClient.Encoding = Encoding.UTF8;
 
                 book.warehouse_Num = Securer(WarhNum.Text);
-                book.purchase_Date = Securer(Ev.Text).ToString() + "-" + Securer(Honap.Text).ToString() + "-" + Securer(Nap.Text).ToString();
+                book.purchase_Date = SecurerDate(Ev.Text).ToString() + "-" + SecurerDate(Honap.Text).ToString() + "-" + SecurerDate(Nap.Text).ToString();
                 book.author_Id = ComboSplitter(AuthorId);
                 book.title = Title.Text;
                 book.series_Id = ComboSplitter(Series);
@@ -130,39 +150,44 @@ namespace KonyvtarKarbantarto.Windows
                 book.price = Securer(Price.Text);
                 book.comment = Comment.Text;
                 book.user_Id = 1;
-                if (PicPath != string.Empty)
-                { 
-                string ftpUrl = "ftp://ftp.nethely.hu/img";
-                string userName = "szovetsege";
-                string password = "Szovetsege241";
-
-                // Get the file name without the path
-                var fileName = PicPath.Split('\\').Last();
-
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpUrl + "/" + fileName);
-                request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential(userName, password);
-                request.UseBinary = true;
-
-                byte[] fileContents;
-                using (FileStream fileStream = File.OpenRead(PicPath))
+                if (PicPath != null)
                 {
-                    fileContents = new byte[fileStream.Length];
-                    fileStream.Read(fileContents, 0, fileContents.Length);
-                }
+                    
+                    string ftpUrl = "ftp://ftp.nethely.hu/img";
+                    string userName = "szovetsege";
+                    string password = "Szovetsege241";
 
-                // Upload file
-                using (Stream requestStream = request.GetRequestStream())
-                {
-                    requestStream.Write(fileContents, 0, fileContents.Length);
-                }
+                    // Get the file name without the path
+                    var fileName = PicPath.Split('\\').Last();
+                    book.bookImg = Picture.Text;
+                    FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpUrl + "/" + fileName);
+                    request.Method = WebRequestMethods.Ftp.UploadFile;
+                    request.Credentials = new NetworkCredential(userName, password);
+                    request.UseBinary = true;
 
-                // Get response
-                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
-                {
-                    MessageBox.Show($"Upload complete. Server response: {response.StatusDescription}");
+                    byte[] fileContents;
+                    using (FileStream fileStream = File.OpenRead(PicPath))
+                    {
+                        fileContents = new byte[fileStream.Length];
+                        fileStream.Read(fileContents, 0, fileContents.Length);
+                    }
+
+                    // Upload file
+                    using (Stream requestStream = request.GetRequestStream())
+                    {
+                        requestStream.Write(fileContents, 0, fileContents.Length);
+                    }
+
+                    // Get response
+                    using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                    {
+                        MessageBox.Show($"Upload complete. Server response: {response.StatusDescription}");
+                    }
                 }
-            }
+                else
+                {
+                    book.bookImg = "http://img.library.nhely.hu/img/default_book_img.png";
+                }
                 MessageBox.Show(JsonConvert.SerializeObject(book));
                 MessageBox.Show(webClient.UploadString(connection.Url() + "Book", "POST", JsonConvert.SerializeObject(book)));
                 PicPath = null;
@@ -201,8 +226,7 @@ namespace KonyvtarKarbantarto.Windows
                 {
                     PicPath = fileDialog.FileName;
                     string ftpServerUrl = "http://img.library.nhely.hu/";
-                    MessageBox.Show(ftpServerUrl +"img/" + fileDialog.FileName.Split('\\').Last());
-                    book.bookImg = ftpServerUrl +"img/" + fileDialog.FileName.Split('\\').Last();
+                    Picture.Text = ftpServerUrl + "img/" + fileDialog.FileName.Split('\\').Last();
 
                 }
             }

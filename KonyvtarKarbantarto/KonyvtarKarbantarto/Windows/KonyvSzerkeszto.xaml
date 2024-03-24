@@ -1,0 +1,85 @@
+﻿<Window x:Class="KonyvtarKarbantarto.Windows.KonyvSzerkeszto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KonyvtarKarbantarto.Windows"
+        mc:Ignorable="d"
+        Title="Konyvtarletrehozo" Height="655" Width="360">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.55*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10 10 10 10">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 10 0 0">
+                <Label Content="Raktári szám :"/>
+                <TextBox x:Name="WarhNum" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Margin="0 0 77 0">
+                <Label Content="Megvételi Dátum:"/>
+            </StackPanel>
+            <StackPanel Margin="10 10 10 10">
+                <StackPanel Margin="10 0 0 10" Orientation="Horizontal" HorizontalAlignment="Right"> 
+                <Label Content="Év: "/>
+                <TextBox x:Name="Ev" Width="50"/>
+                </StackPanel>
+                <StackPanel Margin="10 10 0 10" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label Content="Hónap: "/>
+                <TextBox x:Name="Honap" Width="50"/>
+                </StackPanel>
+                <StackPanel Margin="10 10 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Nap: "/>
+                <TextBox x:Name="Nap" Width="50"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 10 0 0">
+                <Label Content="Szerző Azon :"/>
+                <ComboBox x:Name="AuthorId" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 10 0 0">
+                <Label Content="Cím :"/>
+                <TextBox x:Name="Title" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 10 0 0">
+                <Label Content="Sorozatazon :"/>
+                <ComboBox x:Name="Series" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 10 0 0">
+                <Label Content="Isbn szám :"/>
+                <TextBox x:Name="Isbnnum" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 10 0 0">
+                <Label Content="Szakkjegyzet :"/>
+                <TextBox x:Name="NobleNote" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 10 0 0">
+                <Label Content="Cutter Jelzet :"/>
+                <TextBox x:Name="CutterSign" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 10 0 0">
+                <Label Content="Kiadó Azon :"/>
+                <ComboBox x:Name="PublisherId" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Margin="0 10 0 0" Orientation="Horizontal">
+                <Label Content="Kiadási Dátum :"/>
+                <TextBox x:Name="Releasedate" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Margin="0 10 0 0" Orientation="Horizontal">
+                <Label Content="Ár :"/>
+                <TextBox x:Name="Price" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Margin="0 10 0 0" Orientation="Horizontal">
+                <Label Content="Komment :"/>
+                <TextBox x:Name="Comment" Width="100"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Margin="0 10 0 0" Orientation="Horizontal">
+                <Label Content="Kép :"/>
+                <TextBox x:Name="Picture" Width="100" Margin="10 0"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Button x:Name="Add" Content="Változtatás" Click="Add_Click" Grid.Column="1" Width="100" Height="40" Margin="0 10 0 0"/>
+        </StackPanel>
+    </Grid>
+</Window>

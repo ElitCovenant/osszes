@@ -119,6 +119,7 @@
     </ApplicationDefinition>
     <Compile Include="Connection.cs" />
     <Compile Include="Dto\AccountImgDto.cs" />
+    <Compile Include="Dto\BookDtoUpload.cs" />
     <Compile Include="Dto\BookDto.cs" />
     <Compile Include="Dto\LoginDto.cs" />
     <Compile Include="Dto\Register.cs" />
@@ -148,6 +149,9 @@
     </Compile>
     <Compile Include="Windows\KonyvKezelo.xaml.cs">
       <DependentUpon>KonyvKezelo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\KonyvSzerkeszto.xaml.cs">
+      <DependentUpon>KonyvSzerkeszto.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Konyvletrehozo.xaml.cs">
       <DependentUpon>Konyvletrehozo.xaml</DependentUpon>
@@ -183,6 +187,10 @@
     <Page Include="Windows\KonyvKezelo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\KonyvSzerkeszto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Konyvletrehozo.xaml">
       <SubType>Designer</SubType>
