@@ -9,142 +9,180 @@ namespace KonyvtarBackEnd.Controllers
     public class RuleController : ControllerBase
     {
         [HttpPost]
-        public ActionResult<RuleDto> Post(CreateOrModifyRuleDto createOrModifyRuleDto)
+        public async Task<ActionResult<RuleDto>> Post(CreateOrModifyRuleDto createOrModifyRuleDto)
         {
-            var UjJog = new Rule
+            try
             {
-                Id = createOrModifyRuleDto.Id,
-                Name = createOrModifyRuleDto.Name
-            };
-            using (var context = new KonyvtarDbContext())
-            {
-                if (context != null)
+                var UjJog = new Rule
                 {
-                    try
+                    Id = createOrModifyRuleDto.Id,
+                    Name = createOrModifyRuleDto.Name
+                };
+                using (var context = new KonyvtarDbContext())
+                {
+                    if (context != null)
                     {
                         context.Rules.Add(UjJog);
                         context.SaveChanges();
+
+                        return StatusCode(201, "Az adatok sikeresen eltárolva!");
                     }
-                    catch (Exception e)
+                    else
                     {
-                        return BadRequest("Hiba lépett fel : "+e.Message);
+                        return StatusCode(406, "Nem megfeleő az adat formátuma!");
                     }
-                    
-                    return StatusCode(201, "Az adatok sikeresen eltárolva!");
-                }
-                else
-                {
-                    return StatusCode(406, "Nem megfeleő az adat formátuma!");
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpGet]
-        public ActionResult<RuleDto> GetAll()
+        public async Task<ActionResult<RuleDto>> GetAll()
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    return Ok(context.Rules.ToList());
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    if (context != null)
+                    {
+                        return Ok(context.Rules.ToList());
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpGet("{id}")]
-        public ActionResult<RuleDto> Get(int id)
+        public async Task<ActionResult<RuleDto>> Get(int id)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                var kerdezett = context.Rules.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    if (kerdezett != null)
+                    var kerdezett = context.Rules.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
                     {
-                        return Ok(kerdezett);
+                        if (kerdezett != null)
+                        {
+                            return Ok(kerdezett);
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett jog nem létezik, vagy nincs eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett jog nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
 
 
+                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpPut("{id}")]
-        public ActionResult<RuleDto> Put(int id, CreateOrModifyRuleDto createOrModifyRuleDto)
+        public async Task<ActionResult<RuleDto>> Put(int id, CreateOrModifyRuleDto createOrModifyRuleDto)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    var valtoztatando = context.Rules.FirstOrDefault(x => x.Id == id);
-                    if (valtoztatando != null)
+                    if (context != null)
                     {
-                        valtoztatando.Id = createOrModifyRuleDto.Id;
-                        valtoztatando.Name = createOrModifyRuleDto.Name;
+                        var valtoztatando = context.Rules.FirstOrDefault(x => x.Id == id);
+                        if (valtoztatando != null)
+                        {
+                            valtoztatando.Id = createOrModifyRuleDto.Id;
+                            valtoztatando.Name = createOrModifyRuleDto.Name;
 
-                        try
-                        {
-                            context.Rules.Update(valtoztatando);
-                            context.SaveChanges();
+                            try
+                            {
+                                context.Rules.Update(valtoztatando);
+                                context.SaveChanges();
+                            }
+                            catch (Exception e)
+                            {
+                                return BadRequest("Hiba lépett fel : " + e.Message);
+                            }
+
+                            return Ok("Sikeres adatváltoztatás!");
                         }
-                        catch (Exception e)
+                        else
                         {
-                            return BadRequest("Hiba lépett fel : "+e.Message);
+                            return StatusCode(404, "A keresett jog nem létezik, vagy nincs eltárolva");
                         }
-                        
-                        return Ok("Sikeres adatváltoztatás!");
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett jog nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
                 }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<RuleDto> Delete(int id)
+        public async Task<ActionResult<RuleDto>> Delete(int id)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                var kerdezett = context.Rules.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    if (kerdezett != null)
+                    var kerdezett = context.Rules.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
                     {
-                        context.Rules.Remove(kerdezett);
-                        context.SaveChanges();
-                        return Ok("A jog eltávolítása sikeresen megtörtént");
+                        if (kerdezett != null)
+                        {
+                            context.Rules.Remove(kerdezett);
+                            context.SaveChanges();
+                            return Ok("A jog eltávolítása sikeresen megtörtént");
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett jog eddig sem létezett, vagy nem volt eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett jog eddig sem létezett, vagy nem volt eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
 
+                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
     }
 }

@@ -10,203 +10,259 @@ namespace KonyvtarBackEnd.Controllers
     public class UserController : ControllerBase
     {
         [HttpPost]
-        public ActionResult<FelhasznaloDto> Post(CreateFelhasznaloDto createFelhasznaloDto)
+        public async Task<ActionResult<FelhasznaloDto>> Post(CreateFelhasznaloDto createFelhasznaloDto)
         {
-            var UjFelhasznalo = new User
+            try
             {
-                MembershipStart = createFelhasznaloDto.MembershipStart,
-                MembershipEnd = createFelhasznaloDto.MembershipEnd,
-                Usarname = createFelhasznaloDto.UserName,
-                Hash = BCrypt.Net.BCrypt.HashPassword(createFelhasznaloDto.Hash),
-                IdRule = createFelhasznaloDto.Id_Rule,
-                IdAccountImg = createFelhasznaloDto.Id_Account_Image
-            };
-            using (var context = new KonyvtarDbContext())
-            {
-                if (context != null)
+                var UjFelhasznalo = new User
                 {
-                    try
+                    MembershipStart = createFelhasznaloDto.MembershipStart,
+                    MembershipEnd = createFelhasznaloDto.MembershipEnd,
+                    Usarname = createFelhasznaloDto.UserName,
+                    Hash = BCrypt.Net.BCrypt.HashPassword(createFelhasznaloDto.Hash),
+                    IdRule = createFelhasznaloDto.Id_Rule,
+                    IdAccountImg = createFelhasznaloDto.Id_Account_Image
+                };
+                using (var context = new KonyvtarDbContext())
+                {
+                    if (context != null)
                     {
                         context.Users.Add(UjFelhasznalo);
                         context.SaveChanges();
+
+                        return StatusCode(201, "Az adatok sikeresen eltárolva!");
                     }
-                    catch (Exception e )
+                    else
                     {
-                        return BadRequest("Hiba lépett fel : "+e.Message);
+                        return StatusCode(406, "Nem megfeleő az adat formátuma!");
                     }
-                    
-                    return StatusCode(201, "Az adatok sikeresen eltárolva!");
-                }
-                else
-                {
-                    return StatusCode(406, "Nem megfeleő az adat formátuma!");
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpGet]
-        public ActionResult<FelhasznaloDto> GetAll()
+        public async Task<ActionResult<FelhasznaloDto>> GetAll()
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    return Ok(context.Users.Select(x=> new {x.Id,x.MembershipStart,x.MembershipEnd,x.Usarname,x.IdRule,x.IdAccountImg}).ToList());
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    if (context != null)
+                    {
+                        return Ok(context.Users.Select(x => new { x.Id, x.MembershipStart, x.MembershipEnd, x.Usarname, x.IdRule, x.IdAccountImg }).ToList());
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpGet("/{id}")]
-        public ActionResult<FelhasznaloDto> Get(int id)
+        public async Task<ActionResult<FelhasznaloDto>> Get(int id)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                var kerdezett = context.Users.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    if (kerdezett != null)
+                    var kerdezett = context.Users.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
                     {
-                        return Ok(kerdezett);
+                        if (kerdezett != null)
+                        {
+                            return Ok(kerdezett);
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett felhasználó nem létezik, vagy nincs eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett felhasználó nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
 
 
+                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
-        [HttpPut("{id}"),Authorize(Roles = "Admin")]
-        public ActionResult<FelhasznaloDto> Put(int id, ModifyFelhasznaloDto modifyFelhasznaloDto)
+        [HttpPut("{id}"), Authorize(Roles = "Admin")]
+        public async Task<ActionResult<FelhasznaloDto>> Put(int id, ModifyFelhasznaloDto modifyFelhasznaloDto)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    var valtoztatando = context.Users.FirstOrDefault(x => x.Id == id);
-                    if (valtoztatando != null)
+                    if (context != null)
                     {
-                        valtoztatando.MembershipStart = modifyFelhasznaloDto.MembershipStart;
-                        valtoztatando.MembershipEnd = modifyFelhasznaloDto.MembershipEnd;
-                        valtoztatando.Usarname = modifyFelhasznaloDto.UserName;
-                        valtoztatando.IdRule = modifyFelhasznaloDto.Id_Rule;
-                        valtoztatando.IdAccountImg = modifyFelhasznaloDto.Id_Account_Image;
+                        var valtoztatando = context.Users.FirstOrDefault(x => x.Id == id);
+                        if (valtoztatando != null)
+                        {
+                            valtoztatando.MembershipStart = modifyFelhasznaloDto.MembershipStart;
+                            valtoztatando.MembershipEnd = modifyFelhasznaloDto.MembershipEnd;
+                            valtoztatando.Usarname = modifyFelhasznaloDto.UserName;
+                            valtoztatando.IdRule = modifyFelhasznaloDto.Id_Rule;
+                            valtoztatando.IdAccountImg = modifyFelhasznaloDto.Id_Account_Image;
 
-                        try
-                        {
-                            context.Users.Update(valtoztatando);
-                            context.SaveChanges();
+                            try
+                            {
+                                context.Users.Update(valtoztatando);
+                                context.SaveChanges();
+                            }
+                            catch (Exception e)
+                            {
+                                return BadRequest("Hiba lépett fel! : " + e.Message);
+                            }
+
+                            return Ok("Sikeres adatváltoztatás!");
                         }
-                        catch (Exception e)
+                        else
                         {
-                            return BadRequest("Hiba lépett fel! : "+e.Message);
+                            return StatusCode(404, "A keresett felhasználó nem létezik, vagy nincs eltárolva");
                         }
-                        
-                        return Ok("Sikeres adatváltoztatás!");
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett felhasználó nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
                 }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpPut("/jelszovaltas/{id}")]
-        public ActionResult<FelhasznaloDto> Jelszovaltas(int id, ModifyJelszo modifyJelszo)
+        public async Task<ActionResult<FelhasznaloDto>> Jelszovaltas(int id, ModifyJelszo modifyJelszo)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    var valtoztatando = context.Users.FirstOrDefault(x => x.Id == id);
-                    if (valtoztatando != null)
+                    if (context != null)
                     {
-                        valtoztatando.Hash = BCrypt.Net.BCrypt.HashPassword(modifyJelszo.Hash);
-                        context.Users.Update(valtoztatando);
-                        context.SaveChanges();
-                        return Ok("Sikeres adatváltoztatás!");
+                        var valtoztatando = context.Users.FirstOrDefault(x => x.Id == id);
+                        if (valtoztatando != null)
+                        {
+                            valtoztatando.Hash = BCrypt.Net.BCrypt.HashPassword(modifyJelszo.Hash);
+                            context.Users.Update(valtoztatando);
+                            context.SaveChanges();
+                            return Ok("Sikeres adatváltoztatás!");
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett felhasználó nem létezik, vagy nincs eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett felhasználó nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
                 }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpPut("/profilkepvaltas/{id}")]
-        public ActionResult<FelhasznaloDto> Profilkepvaltas(int id, int profId)
+        public async Task<ActionResult<FelhasznaloDto>> Profilkepvaltas(int id, int profId)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    var valtoztatando = context.Users.FirstOrDefault(x => x.Id == id);
-                    if (valtoztatando != null)
+                    if (context != null)
                     {
-                        valtoztatando.IdAccountImg = profId;
-                        context.Users.Update(valtoztatando);
-                        context.SaveChanges();
-                        return Ok("Sikeres adatváltoztatás!");
+                        var valtoztatando = context.Users.FirstOrDefault(x => x.Id == id);
+                        if (valtoztatando != null)
+                        {
+                            valtoztatando.IdAccountImg = profId;
+                            context.Users.Update(valtoztatando);
+                            context.SaveChanges();
+                            return Ok("Sikeres adatváltoztatás!");
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett felhasználó nem létezik, vagy nincs eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett felhasználó nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
                 }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<FelhasznaloDto> Delete(int id)
+        public async Task<ActionResult<FelhasznaloDto>> Delete(int id)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                var kerdezett = context.Users.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    if (kerdezett != null)
+                    var kerdezett = context.Users.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
                     {
-                        context.Users.Remove(kerdezett);
-                        context.SaveChanges();
-                        return Ok("A felhasználó eltávolítása sikeresen megtörtént");
+                        if (kerdezett != null)
+                        {
+                            context.Users.Remove(kerdezett);
+                            context.SaveChanges();
+                            return Ok("A felhasználó eltávolítása sikeresen megtörtént");
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett kiadó eddig sem létezett, vagy nem volt eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett kiadó eddig sem létezett, vagy nem volt eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
 
+                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
     }
 }

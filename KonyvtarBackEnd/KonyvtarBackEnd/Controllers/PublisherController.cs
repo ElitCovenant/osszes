@@ -9,141 +9,186 @@ namespace KonyvtarBackEnd.Controllers
     public class PublisherController : ControllerBase
     {
         [HttpPost]
-        public ActionResult<PublisherDto> Post(CreateOrModifyPublisherDto createOrModifyPublisherDto)
+        public async Task<ActionResult<PublisherDto>> Post(CreateOrModifyPublisherDto createOrModifyPublisherDto)
         {
-            var UjKiado = new Publisher
+            try
             {
-                Id = createOrModifyPublisherDto.Id,
-                Name = createOrModifyPublisherDto.Name
-            };
-            using (var context = new KonyvtarDbContext())
-            {
-                if (context != null)
+                var UjKiado = new Publisher
                 {
-                    try
+                    Id = createOrModifyPublisherDto.Id,
+                    Name = createOrModifyPublisherDto.Name
+                };
+                using (var context = new KonyvtarDbContext())
+                {
+                    if (context != null)
                     {
-                        context.Publishers.Add(UjKiado);
-                        context.SaveChanges();
-                    }
-                    catch (Exception e)
-                    {
-                        return BadRequest("Hiba lépett fel : "+e.Message);
-                    }
-                    
-                    return StatusCode(201, "Az adatok sikeresen eltárolva!");
-                }
-                else
-                {
-                    return StatusCode(406, "Nem megfeleő az adat formátuma!");
-                }
-            }
-        }
-
-        [HttpGet]
-        public ActionResult<PublisherDto> GetAll()
-        {
-            using (var context = new KonyvtarDbContext())
-            {
-                if (context != null)
-                {
-                    return Ok(context.Publishers.ToList());
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
-            }
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<PublisherDto> Get(int id)
-        {
-            using (var context = new KonyvtarDbContext())
-            {
-                var kerdezett = context.Publishers.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
-                {
-                    if (kerdezett != null)
-                    {
-                        return Ok(kerdezett);
-                    }
-                    else
-                    {
-                        return StatusCode(404, "A keresett kiadó nem létezik, vagy nincs eltárolva");
-                    }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
-
-
-            }
-        }
-
-        [HttpPut("{id}")]
-        public ActionResult<PublisherDto> Put(int id, CreateOrModifyPublisherDto createOrModifyPublisherDto)
-        {
-            using (var context = new KonyvtarDbContext())
-            {
-                if (context != null)
-                {
-                    var valtoztatando = context.Publishers.FirstOrDefault(x => x.Id == id);
-                    if (valtoztatando != null)
-                    {
-                        valtoztatando.Id = createOrModifyPublisherDto.Id;
-                        valtoztatando.Name = createOrModifyPublisherDto.Name;
                         try
                         {
-                            context.Publishers.Update(valtoztatando);
+                            context.Publishers.Add(UjKiado);
                             context.SaveChanges();
                         }
                         catch (Exception e)
                         {
-                            return BadRequest("Hiba lépett fel : "+e.Message);
+                            return BadRequest("Hiba lépett fel : " + e.Message);
                         }
-                        
-                        return Ok("Sikeres adatváltoztatás!");
+
+                        return StatusCode(201, "Az adatok sikeresen eltárolva!");
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett kiadó nem létezik, vagy nincs eltárolva");
+                        return StatusCode(406, "Nem megfeleő az adat formátuma!");
                     }
                 }
-                else
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<PublisherDto>> GetAll()
+        {
+            try
+            {
+                using (var context = new KonyvtarDbContext())
                 {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    if (context != null)
+                    {
+                        return Ok(context.Publishers.Select(x => new { x.Id, x.Name }).ToList());
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<PublisherDto>> Get(int id)
+        {
+            try
+            {
+                using (var context = new KonyvtarDbContext())
+                {
+                    var kerdezett = context.Publishers.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
+                    {
+                        if (kerdezett != null)
+                        {
+                            return Ok(kerdezett);
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett kiadó nem létezik, vagy nincs eltárolva");
+                        }
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
+
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<PublisherDto>> Put(int id, CreateOrModifyPublisherDto createOrModifyPublisherDto)
+        {
+            try
+            {
+                using (var context = new KonyvtarDbContext())
+                {
+                    if (context != null)
+                    {
+                        var valtoztatando = context.Publishers.FirstOrDefault(x => x.Id == id);
+                        if (valtoztatando != null)
+                        {
+                            valtoztatando.Id = createOrModifyPublisherDto.Id;
+                            valtoztatando.Name = createOrModifyPublisherDto.Name;
+                            try
+                            {
+                                context.Publishers.Update(valtoztatando);
+                                context.SaveChanges();
+                            }
+                            catch (Exception e)
+                            {
+                                return BadRequest("Hiba lépett fel : " + e.Message);
+                            }
+
+                            return Ok("Sikeres adatváltoztatás!");
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett kiadó nem létezik, vagy nincs eltárolva");
+                        }
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<PublisherDto> Delete(int id)
+        public async Task<ActionResult<PublisherDto>> Delete(int id)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                var kerdezett = context.Publishers.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    if (kerdezett != null)
+                    var kerdezett = context.Publishers.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
                     {
-                        context.Publishers.Remove(kerdezett);
-                        context.SaveChanges();
-                        return Ok("A kiadó eltávolítása sikeresen megtörtént");
+                        if (kerdezett != null)
+                        {
+                            context.Publishers.Remove(kerdezett);
+                            context.SaveChanges();
+                            return Ok("A kiadó eltávolítása sikeresen megtörtént");
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett kiadó eddig sem létezett, vagy nem volt eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett kiadó eddig sem létezett, vagy nem volt eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
 
+                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
     }
 }

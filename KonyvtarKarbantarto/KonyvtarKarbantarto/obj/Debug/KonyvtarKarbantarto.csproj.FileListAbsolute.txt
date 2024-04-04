@@ -236,3 +236,7 @@ C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarban
 C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\KonyvSzerkeszto.baml
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\KonyvSzerkeszto.g.cs
 C:\Users\peter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\KonyvSzerkeszto.baml
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\EgyebKezelo.g.cs
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\EgyebSzerkeszto.g.cs
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\EgyebKezelo.baml
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\EgyebSzerkeszto.baml

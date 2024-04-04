@@ -9,139 +9,184 @@ namespace KonyvtarBackEnd.Controllers
     public class SeriesController : ControllerBase
     {
         [HttpPost]
-        public ActionResult<SeriesDto> Post(CreateOrModifySeriesDto createOrModifySeriesDto)
+        public async Task<ActionResult<SeriesDto>> Post(CreateOrModifySeriesDto createOrModifySeriesDto)
         {
-            var UjSorozat = new Series
+            try
             {
-                Id = createOrModifySeriesDto.Id,
-                Name = createOrModifySeriesDto.Name
-            };
-            using (var context = new KonyvtarDbContext())
-            {
-                if (context != null)
+                var UjSorozat = new Series
                 {
-                    try
+                    Id = createOrModifySeriesDto.Id,
+                    Name = createOrModifySeriesDto.Name
+                };
+                using (var context = new KonyvtarDbContext())
+                {
+                    if (context != null)
                     {
-                        context.Series.Add(UjSorozat);
-                        context.SaveChanges();
+                        try
+                        {
+                            context.Series.Add(UjSorozat);
+                            context.SaveChanges();
+                        }
+                        catch (Exception e) { return BadRequest("Hiba lépett fel : " + e.Message); }
+
+                        return StatusCode(201, "Az adatok sikeresen eltárolva!");
                     }
-                    catch (Exception e) { return BadRequest("Hiba lépett fel : " + e.Message); }
-                    
-                    return StatusCode(201, "Az adatok sikeresen eltárolva!");
-                }
-                else
-                {
-                    return StatusCode(406, "Nem megfeleő az adat formátuma!");
+                    else
+                    {
+                        return StatusCode(406, "Nem megfeleő az adat formátuma!");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpGet]
-        public ActionResult<SeriesDto> GetAll()
+        public async Task<ActionResult<SeriesDto>> GetAll()
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    return Ok(context.Series.ToList());
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    if (context != null)
+                    {
+                        return Ok(context.Series.Select(x=> new {x.Id,x.Name}).ToList());
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpGet("{id}")]
-        public ActionResult<SeriesDto> Get(int id)
+        public async Task<ActionResult<SeriesDto>> Get(int id)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                var kerdezett = context.Series.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    if (kerdezett != null)
+                    var kerdezett = context.Series.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
                     {
-                        return Ok(kerdezett);
+                        if (kerdezett != null)
+                        {
+                            return Ok(kerdezett);
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett sorozat nem létezik, vagy nincs eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett sorozat nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
 
 
+                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpPut("{id}")]
-        public ActionResult<SeriesDto> Put(int id, CreateOrModifySeriesDto createOrModifySeriesDto)
+        public async Task<ActionResult<SeriesDto>> Put(int id, CreateOrModifySeriesDto createOrModifySeriesDto)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    var valtoztatando = context.Series.FirstOrDefault(x => x.Id == id);
-                    if (valtoztatando != null)
+                    if (context != null)
                     {
-                        valtoztatando.Id = createOrModifySeriesDto.Id;
-                        valtoztatando.Name = createOrModifySeriesDto.Name;
+                        var valtoztatando = context.Series.FirstOrDefault(x => x.Id == id);
+                        if (valtoztatando != null)
+                        {
+                            valtoztatando.Id = createOrModifySeriesDto.Id;
+                            valtoztatando.Name = createOrModifySeriesDto.Name;
 
-                        try
-                        {
-                            context.Series.Update(valtoztatando);
-                            context.SaveChanges();
+                            try
+                            {
+                                context.Series.Update(valtoztatando);
+                                context.SaveChanges();
+                            }
+                            catch (Exception e)
+                            {
+                                return BadRequest("Hiba lépett fel : " + e.Message);
+                            }
+
+                            return Ok("Sikeres adatváltoztatás!");
                         }
-                        catch (Exception e)
+                        else
                         {
-                            return BadRequest("Hiba lépett fel : "+e.Message);
+                            return StatusCode(404, "A keresett sorozat nem létezik, vagy nincs eltárolva");
                         }
-                        
-                        return Ok("Sikeres adatváltoztatás!");
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett sorozat nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
                 }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<SeriesDto> Delete(int id)
+        public async Task<ActionResult<SeriesDto>> Delete(int id)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                var kerdezett = context.Series.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    if (kerdezett != null)
+                    var kerdezett = context.Series.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
                     {
-                        context.Series.Remove(kerdezett);
-                        context.SaveChanges();
-                        return Ok("A sorozat eltávolítása sikeresen megtörtént");
+                        if (kerdezett != null)
+                        {
+                            context.Series.Remove(kerdezett);
+                            context.SaveChanges();
+                            return Ok("A sorozat eltávolítása sikeresen megtörtént");
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett sorozat eddig sem létezett, vagy nem volt eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett sorozat eddig sem létezett, vagy nem volt eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
 
+                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
     }
 }

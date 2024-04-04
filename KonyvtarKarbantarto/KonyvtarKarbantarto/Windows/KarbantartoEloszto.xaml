@@ -19,5 +19,8 @@
         </Grid.RowDefinitions>
         <Button Height="50" Width="200" Click="Felh_Szerk_Click" x:Name="Felh_Szerk" Content="Felhasználó Szerkesztő" FontSize="19"/>
         <Button Grid.Column="1" Height="50" Width="200" Click="KonyKez_Click" x:Name="KonyKez" Content="Könyv Szerkesztő" FontSize="19"/>
+        <Button Grid.Column="2" Height="50" Width="200" Click="AuthKez_Click" x:Name="AuthKez" Content="Szerző Szerkesztő" FontSize="19"/>
+        <Button Grid.Column="0" Grid.Row="1" Height="50" Width="200" Click="SeriesKez_Click" x:Name="SeriesKez" Content="Sorozat Szerkesztő" FontSize="19"/>
+        <Button Grid.Column="1" Grid.Row="1" Height="50" Width="200" Click="PublisherSzerk_Click" x:Name="PublisherSzerk" Content="Kiadó Szerkesztő" FontSize="19"/>
     </Grid>
 </Window>

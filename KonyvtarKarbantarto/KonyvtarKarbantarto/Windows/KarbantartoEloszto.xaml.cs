@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KonyvtarKarbantarto.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,27 @@ namespace KonyvtarKarbantarto.Windows
         {
             KonyvKezelo konyvKezelo = new KonyvKezelo(token);
             konyvKezelo.Show();
+            this.Close();
+        }
+
+        private void AuthKez_Click(object sender, RoutedEventArgs e)
+        {
+            EgyebKezelo egyeb = new EgyebKezelo(token, "Author");
+            egyeb.Show();
+            this.Close();
+        }
+
+        private void SeriesKez_Click(object sender, RoutedEventArgs e)
+        {
+            EgyebKezelo egyeb = new EgyebKezelo(token, "Series");
+            egyeb.Show();
+            this.Close();
+        }
+
+        private void PublisherSzerk_Click(object sender, RoutedEventArgs e)
+        {
+            EgyebKezelo egyeb = new EgyebKezelo(token, "Publisher");
+            egyeb.Show();
             this.Close();
         }
     }

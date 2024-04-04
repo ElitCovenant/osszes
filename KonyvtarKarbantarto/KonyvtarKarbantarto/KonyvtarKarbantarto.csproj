@@ -121,6 +121,7 @@
     <Compile Include="Dto\AccountImgDto.cs" />
     <Compile Include="Dto\BookDtoUpload.cs" />
     <Compile Include="Dto\BookDto.cs" />
+    <Compile Include="Dto\EgyebDto.cs" />
     <Compile Include="Dto\LoginDto.cs" />
     <Compile Include="Dto\Register.cs" />
     <Compile Include="Dto\RulesDto.cs" />
@@ -135,6 +136,12 @@
     <Compile Include="Models\Rule.cs" />
     <Compile Include="Models\Series.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Windows\EgyebKezelo.xaml.cs">
+      <DependentUpon>EgyebKezelo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EgyebSzerkeszto.xaml.cs">
+      <DependentUpon>EgyebSzerkeszto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\FelhasznaloEdit.xaml.cs">
       <DependentUpon>FelhasznaloEdit.xaml</DependentUpon>
     </Compile>
@@ -168,6 +175,14 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\EgyebKezelo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EgyebSzerkeszto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\FelhasznaloEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

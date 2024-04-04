@@ -21,75 +21,93 @@ namespace KonyvtarBackEnd.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost("/Register"),Authorize(Roles = "Admin")]
-        public ActionResult<RegisterDto> Register(RegisterDto registerDto)
+        [HttpPost("/Register"), Authorize(Roles = "Admin")]
+        public async Task<ActionResult<RegisterDto>> Register(RegisterDto registerDto)
         {
-            var UjFelhasznalo = new User
+            try
             {
-                MembershipStart = DateTime.Now,
-                MembershipEnd = DateTime.Now.AddYears(4),
-                Usarname = registerDto.UserName,
-                Hash = BCrypt.Net.BCrypt.HashPassword(registerDto.Hash)
-            };
-            using (var context = new KonyvtarDbContext())
-            {
-                if (context != null)
+                var UjFelhasznalo = new User
                 {
-                    try
-                    {
-                        context.Users.Add(UjFelhasznalo);
-                        context.SaveChanges();
-                    }
-                    catch (Exception e)
-                    {
-                        return BadRequest("Hiba lépett fel : " + e.Message);
-                    }
-                    
-                    return StatusCode(201, "Az adatok sikeresen eltárolva!");
-                }
-                else
+                    MembershipStart = DateTime.Now,
+                    MembershipEnd = DateTime.Now.AddYears(4),
+                    Usarname = registerDto.UserName,
+                    Hash = BCrypt.Net.BCrypt.HashPassword(registerDto.Hash)
+                };
+                using (var context = new KonyvtarDbContext())
                 {
-                    return StatusCode(406, "Nem megfeleő az adat formátuma!");
-                }
-            }
-        }
-
-        [HttpPost("/Login")]
-        public ActionResult<LoginDto> Login(LoginDto loginDto)
-        {
-            using (var context = new KonyvtarDbContext())
-            {
-                if (context != null)
-                {
-                    var kerdezett = context.Users.FirstOrDefault(x => x.Usarname == loginDto.UserName);
-                    if (kerdezett != null)
+                    if (context != null)
                     {
-                        if (!BCrypt.Net.BCrypt.Verify(loginDto.Hash, kerdezett.Hash))
+                        try
                         {
-                            return StatusCode(406, "Hibás adatok!");
-                        }
-                        else
-                        {
-                            string token = CreateToken(kerdezett);
-                            kerdezett.Token = token;
-                            context.Users.Update(kerdezett);
+                            context.Users.Add(UjFelhasznalo);
                             context.SaveChanges();
-                            Token Troken = new Token();
-                            Troken.Troken = token;
-                            return Ok(Troken);
+                        }
+                        catch (Exception e)
+                        {
+                            return BadRequest("Hiba lépett fel : " + e.Message);
                         }
 
+                        return StatusCode(201, "Az adatok sikeresen eltárolva!");
                     }
                     else
                     {
-                        return StatusCode(404, "Nem létezik ilyen felhasználó!");
+                        return StatusCode(406, "Nem megfeleő az adat formátuma!");
                     }
                 }
-                else
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
+        }
+
+        [HttpPost("/Login")]
+        public async Task<ActionResult<LoginDto>> Login(LoginDto loginDto)
+        {
+            try
+            {
+                using (var context = new KonyvtarDbContext())
                 {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    if (context != null)
+                    {
+                        var kerdezett = context.Users.FirstOrDefault(x => x.Usarname == loginDto.UserName);
+                        if (kerdezett != null)
+                        {
+                            if (!BCrypt.Net.BCrypt.Verify(loginDto.Hash, kerdezett.Hash))
+                            {
+                                return StatusCode(406, "Hibás adatok!");
+                            }
+                            else
+                            {
+                                string token = CreateToken(kerdezett);
+                                kerdezett.Token = token;
+                                context.Users.Update(kerdezett);
+                                context.SaveChanges();
+                                Token Troken = new Token();
+                                Troken.Troken = token;
+                                return Ok(Troken);
+                            }
+
+                        }
+                        else
+                        {
+                            return StatusCode(404, "Nem létezik ilyen felhasználó!");
+                        }
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         private string CreateToken(User user)
@@ -112,13 +130,13 @@ namespace KonyvtarBackEnd.Controllers
                     claims: claims,
                     expires: DateTime.Now.AddDays(1),
                     audience: _configuration.GetValue<string>("Authentication:Schemes:Bearer:ValidAudiences:0"),
-                    issuer : _configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
+                    issuer: _configuration.GetSection("Authentication:Schemes:Bearer:ValidIssuer").Value,
                     signingCredentials: creds);
                 var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-                
+
                 return jwt;
             }
         }
     }
-    
+
 }

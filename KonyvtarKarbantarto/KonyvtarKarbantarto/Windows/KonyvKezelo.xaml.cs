@@ -84,7 +84,7 @@ namespace KonyvtarKarbantarto.Windows
                 webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
                 webClient.Encoding = Encoding.UTF8;
 
-                string question = "Biztosan szeretné törölni az adott terméket?";
+                string question = "Biztosan szeretné törölni az adott könyvet?";
                 string cap = "Figyelem!";
                 MessageBoxButton button = MessageBoxButton.YesNo;
                 MessageBoxImage image = MessageBoxImage.Warning;

@@ -11,170 +11,224 @@ namespace KonyvtarBackEnd.Controllers
     public class LoanHistoryController : ControllerBase
     {
         [HttpPost]
-        public ActionResult<LoanHistoryDto> Post(CreateLoanHistoryDto createOrModifyLoanHistory)
+        public async Task<ActionResult<LoanHistoryDto>> Post(CreateLoanHistoryDto createOrModifyLoanHistory)
         {
-            var UjKolcsonzesTortenet = new LoanHistory
+            try
             {
-                Id = createOrModifyLoanHistory.Id,
-                BookId = createOrModifyLoanHistory.Book_Id,
-                UserId = createOrModifyLoanHistory.User_Id,
-                Date = DateTime.Now,
-                DateEnd = DateTime.Now.AddDays(createOrModifyLoanHistory.Deadline),
-                Returned = false,
-                Comment = createOrModifyLoanHistory.Comment
+                var UjKolcsonzesTortenet = new LoanHistory
+                {
+                    Id = createOrModifyLoanHistory.Id,
+                    BookId = createOrModifyLoanHistory.Book_Id,
+                    UserId = createOrModifyLoanHistory.User_Id,
+                    Date = DateTime.Now,
+                    DateEnd = DateTime.Now.AddDays(createOrModifyLoanHistory.Deadline),
+                    Returned = false,
+                    Comment = createOrModifyLoanHistory.Comment
 
-                
-            };
-            using (var context = new KonyvtarDbContext())
-            {
-                if (context != null)
+
+                };
+                using (var context = new KonyvtarDbContext())
                 {
-                    try
+                    if (context != null)
                     {
-                        context.LoanHistories.Add(UjKolcsonzesTortenet);
-                        context.SaveChanges();
+                        try
+                        {
+                            context.LoanHistories.Add(UjKolcsonzesTortenet);
+                            context.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            return BadRequest("Hiba lépett fel : " + e.Message);
+                        }
+
+                        return StatusCode(201, "Az adatok sikeresen eltárolva!");
                     }
-                    catch (Exception e)
+                    else
                     {
-                        return BadRequest("Hiba lépett fel : "+e.Message);
+                        return StatusCode(406, "Nem megfeleő az adat formátuma!");
                     }
-                    
-                    return StatusCode(201, "Az adatok sikeresen eltárolva!");
-                }
-                else
-                {
-                    return StatusCode(406, "Nem megfeleő az adat formátuma!");
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpGet]
-        public ActionResult<LoanHistoryDto> GetAll()
+        public async Task<ActionResult<LoanHistoryDto>> GetAll()
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    return Ok(context.LoanHistories.ToList());
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    if (context != null)
+                    {
+                        return Ok(context.LoanHistories.ToList());
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpGet("/Notreturned")]
         public async Task<ActionResult> GetReturnt()
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    return Ok(context.LoanHistories.Include(x => x.User).Include(x=>x.Book).Where(x => x.Returned == false).Select(x => new NewRecord(x.Book.Id, x.Book.Title, x.User.Id, x.User.Usarname)).ToList());
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    if (context != null)
+                    {
+                        return Ok(context.LoanHistories.Include(x => x.User).Include(x => x.Book).Where(x => x.Returned == false).Select(x => new NewRecord(x.Book.Id, x.Book.Title, x.User.Id, x.User.Usarname)).ToList());
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpGet("{id}")]
-        public ActionResult<LoanHistoryDto> Get(int id)
+        public async Task<ActionResult<LoanHistoryDto>> Get(int id)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                var kerdezett = context.LoanHistories.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    if (kerdezett != null)
+                    var kerdezett = context.LoanHistories.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
                     {
-                        return Ok(kerdezett);
+                        if (kerdezett != null)
+                        {
+                            return Ok(kerdezett);
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett Kölcsönzéstörténet nem létezik, vagy nincs eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett Kölcsönzéstörténet nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
 
 
+                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpPut("{id}")]
-        public ActionResult<LoanHistoryDto> Put(int id, ModifyLoanHistoryDto createOrModifyLoanHistoryDto)
+        public async Task<ActionResult<LoanHistoryDto>> Put(int id, ModifyLoanHistoryDto createOrModifyLoanHistoryDto)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    var valtoztatando = context.LoanHistories.FirstOrDefault(x => x.Id == id);
-                    if (valtoztatando != null)
+                    if (context != null)
                     {
-                        valtoztatando.Id = createOrModifyLoanHistoryDto.Id;
-                        valtoztatando.BookId = createOrModifyLoanHistoryDto.Book_Id;
-                        valtoztatando.UserId = createOrModifyLoanHistoryDto.User_Id;
-                        valtoztatando.Date = createOrModifyLoanHistoryDto.Date;
-                        valtoztatando.DateEnd = createOrModifyLoanHistoryDto.Date_End;
-                        valtoztatando.Returned = createOrModifyLoanHistoryDto.Returned;
-                        valtoztatando.Comment = createOrModifyLoanHistoryDto.Comment;
+                        var valtoztatando = context.LoanHistories.FirstOrDefault(x => x.Id == id);
+                        if (valtoztatando != null)
+                        {
+                            valtoztatando.Id = createOrModifyLoanHistoryDto.Id;
+                            valtoztatando.BookId = createOrModifyLoanHistoryDto.Book_Id;
+                            valtoztatando.UserId = createOrModifyLoanHistoryDto.User_Id;
+                            valtoztatando.Date = createOrModifyLoanHistoryDto.Date;
+                            valtoztatando.DateEnd = createOrModifyLoanHistoryDto.Date_End;
+                            valtoztatando.Returned = createOrModifyLoanHistoryDto.Returned;
+                            valtoztatando.Comment = createOrModifyLoanHistoryDto.Comment;
 
-                        try
-                        {
-                            context.LoanHistories.Update(valtoztatando);
-                            context.SaveChanges();
+                            try
+                            {
+                                context.LoanHistories.Update(valtoztatando);
+                                context.SaveChanges();
+                            }
+                            catch (Exception e)
+                            {
+                                return BadRequest("Hiba lépett fel : " + e.Message);
+                            }
+
+                            return Ok("Sikeres adatváltoztatás!");
                         }
-                        catch (Exception e)
+                        else
                         {
-                            return BadRequest("Hiba lépett fel : "+e.Message);
+                            return StatusCode(404, "A keresett kölcsönzéstörténet nem létezik, vagy nincs eltárolva");
                         }
-                        
-                        return Ok("Sikeres adatváltoztatás!");
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett kölcsönzéstörténet nem létezik, vagy nincs eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
                 }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<LoanHistoryDto> Delete(int id)
+        public async Task<ActionResult<LoanHistoryDto>> Delete(int id)
         {
-            using (var context = new KonyvtarDbContext())
+            try
             {
-                var kerdezett = context.LoanHistories.FirstOrDefault(x => x.Id == id);
-
-                if (context != null)
+                using (var context = new KonyvtarDbContext())
                 {
-                    if (kerdezett != null)
+                    var kerdezett = context.LoanHistories.FirstOrDefault(x => x.Id == id);
+
+                    if (context != null)
                     {
-                        context.LoanHistories.Remove(kerdezett);
-                        context.SaveChanges();
-                        return Ok("A kölcsönzéstörténet eltávolítása sikeresen megtörtént");
+                        if (kerdezett != null)
+                        {
+                            context.LoanHistories.Remove(kerdezett);
+                            context.SaveChanges();
+                            return Ok("A kölcsönzéstörténet eltávolítása sikeresen megtörtént");
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett kölcsönzéstörténet eddig sem létezett, vagy nem volt eltárolva");
+                        }
                     }
                     else
                     {
-                        return StatusCode(404, "A keresett kölcsönzéstörténet eddig sem létezett, vagy nem volt eltárolva");
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
                     }
-                }
-                else
-                {
-                    return StatusCode(503, "A szerver jelenleg nem elérhető");
-                }
 
+                }
             }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
         }
     }
 
