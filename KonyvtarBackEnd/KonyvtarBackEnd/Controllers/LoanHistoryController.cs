@@ -1,6 +1,7 @@
 ﻿using KonyvtarBackEnd.Dto;
 using KonyvtarBackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace KonyvtarBackEnd.Controllers
@@ -55,6 +56,22 @@ namespace KonyvtarBackEnd.Controllers
                 if (context != null)
                 {
                     return Ok(context.LoanHistories.ToList());
+                }
+                else
+                {
+                    return StatusCode(503, "A szerver jelenleg nem elérhető");
+                }
+            }
+        }
+
+        [HttpGet("/Notreturned")]
+        public async Task<ActionResult> GetReturnt()
+        {
+            using (var context = new KonyvtarDbContext())
+            {
+                if (context != null)
+                {
+                    return Ok(context.LoanHistories.Include(x => x.User).Include(x=>x.Book).Where(x => x.Returned == false).Select(x => new NewRecord(x.Book.Id, x.Book.Title, x.User.Id, x.User.Usarname)).ToList());
                 }
                 else
                 {
@@ -160,4 +177,6 @@ namespace KonyvtarBackEnd.Controllers
             }
         }
     }
+
+    internal record NewRecord(uint Id, string Title, uint UserId, string? Usarname);
 }

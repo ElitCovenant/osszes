@@ -45,7 +45,7 @@ namespace KonyvtarKarbantarto.Windows
             CutterSign.Text = ook.CutterJelzet.ToString();
             Releasedate.Text = ook.ReleaseDate.ToString();
             Price.Text = ook.Price.ToString();
-            Comment.Text = ook.Comment.ToString();
+                Comment.Text = ook.Comment;
             Picture.Text = ook.BookImg.ToString();
             WebClient webClient = new WebClient();
             webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
@@ -105,11 +105,11 @@ namespace KonyvtarKarbantarto.Windows
 
         public static string SecurerDate(string c)
         {
-            if (int.TryParse(c, out int g))
+            if (int.TryParse(c.Trim(), out int g))
             {
-                if (g<10)
+                if (g<10&&!c.Contains('0'))
                 {
-                    return c;
+                    return "0"+c;
                 }
                 else
                 {
@@ -119,7 +119,7 @@ namespace KonyvtarKarbantarto.Windows
             }
             else
             {
-                return "0000";
+                return "00";
             }
         }
 

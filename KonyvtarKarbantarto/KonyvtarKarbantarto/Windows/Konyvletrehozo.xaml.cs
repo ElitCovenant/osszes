@@ -83,7 +83,7 @@ namespace KonyvtarKarbantarto.Windows
         {
             if (int.TryParse(c, out int g))
             {
-                if (g<10)
+                if (g < 10 && !c.Contains('0'))
                 {
                     return 0 + c;
                 }
