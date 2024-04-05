@@ -57,9 +57,9 @@ const Books = () => {
     fetchProfilePicturePath();
   }, []);
 
-  const totalPages = Math.ceil(books.length / 16);
-  const startIndex = (currentPage - 1) * 16;
-  const endIndex = startIndex + 16;
+  const totalPages = Math.ceil(books.length / 12);
+  const startIndex = (currentPage - 1) * 12;
+  const endIndex = startIndex + 12;
   const currentBooks = books.slice(startIndex, endIndex);
 
   const handleInfoClick = (bookId) => {

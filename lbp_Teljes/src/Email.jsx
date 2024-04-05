@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import './Email.css';
 
@@ -31,7 +32,8 @@ function Loan() {
 
   const saveEmail = async (email) => {
     try {
-      const response = await fetch('https://localhost:7275/User', {
+
+        const response = await fetch('https://localhost:7275/User', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -93,7 +95,6 @@ function Loan() {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFile(file);
-    // Itt lehetne a fájl tartalmát kezelni, például olvasással vagy egy szerverre való feltöltéssel
   };
 
   

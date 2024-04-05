@@ -3,6 +3,7 @@ import './Myprofile.css';
 
 const myprofile = ({ userName, email, bio, profilePicture, onUpdateProfilePicture }) => {
   const [newProfilePicture, setNewProfilePicture] = useState('');
+  
 
   const handleProfilePictureChange = (e) => {
     setNewProfilePicture(e.target.value);
