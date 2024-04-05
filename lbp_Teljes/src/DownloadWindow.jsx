@@ -22,7 +22,7 @@ const DownloadWindow = ({ onClose }) => {
   <div className="download-content">
     <h2>Downloadable Contents</h2>
     <h3>Adminisztrációs panel (WPF):</h3>
-    <button onClick={handleDownload} className="download-button">Letöltés</button> {/* Letöltés gomb */}
+    <button onClick={handleDownload} className="download-button">Download</button> {/* Letöltés gomb */}
     <button onClick={onClose} className="close-button">Close</button> {/* Bezárás gomb */}
   </div>
 </div>
