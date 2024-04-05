@@ -1,10 +1,11 @@
 ﻿using KonyvtarBackEnd.Dto;
 using KonyvtarBackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KonyvtarBackEnd.Controllers
 {
-    [ApiController]
+    [ApiController,Authorize(Roles = "Admin")]
     [Route("/Rule")]
     public class RuleController : ControllerBase
     {

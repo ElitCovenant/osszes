@@ -71,7 +71,7 @@ namespace KonyvtarKarbantarto.Windows
                         name = Name.Text,
                     };
 
-                    MessageBox.Show(webClient.UploadString(connection.Url() + $"{currenttask}/{identificator}", "POST", JsonConvert.SerializeObject(egyebDto)));
+                    MessageBox.Show(webClient.UploadString(connection.Url() + $"{currenttask}", "POST", JsonConvert.SerializeObject(egyebDto)));
                 }
             }
             catch (Exception z)

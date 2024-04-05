@@ -1,12 +1,13 @@
 ﻿using KonyvtarBackEnd.Dto;
 using KonyvtarBackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace KonyvtarBackEnd.Controllers
 {
-    [ApiController]
+    [ApiController,Authorize(Roles = "Admin")]
     [Route("/LoanHistory")]
     public class LoanHistoryController : ControllerBase
     {

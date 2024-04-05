@@ -46,7 +46,6 @@ namespace KonyvtarKarbantarto.Windows
                     this.Title = "NotFound";
                     break;
             }
-            
 
             WebClient webClient = new WebClient();
             webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
@@ -55,8 +54,20 @@ namespace KonyvtarKarbantarto.Windows
 
             string result = webClient.DownloadString(connection.Url() + $"{currenttask}");
             var data = JsonConvert.DeserializeObject<List<EgyebDto>>(result).ToList();
+            //List<EgyebDto> egyeb = new List<EgyebDto>()
+            //{
+            //    new EgyebDto()
+            //    {
+            //        id = 1,
+            //        name = "cucc"
+            //    },
+            //    new EgyebDto()
+            //    {
+            //        id = 2,
+            //        name = "bcucc"
+            //    }
+            //};
             Griddo.ItemsSource = data;
-
         }
 
         Connection connection = new Connection();

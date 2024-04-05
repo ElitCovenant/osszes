@@ -1,11 +1,12 @@
 ﻿using KonyvtarBackEnd.Dto;
 using KonyvtarBackEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KonyvtarBackEnd.Controllers
 {
     [ApiController]
-    [Route("/Publisher")]
+    [Route("/Publisher"),Authorize(Roles = "Admin")]
     public class PublisherController : ControllerBase
     {
         [HttpPost]
