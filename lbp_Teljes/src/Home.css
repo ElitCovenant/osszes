@@ -1,0 +1,38 @@
+
+  /* A Home komponens alap stílusa */
+  .home-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* A WelcomeSection alap stílusa */
+  .welcome-section {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* A BookGallery alap stílusa */
+  .book-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Reszponzív stílusok */
+  @media (max-width: 768px) {
+    .book-gallery {
+      grid-template-columns: repeat(2, 1fr); /* Kisebb képernyőkön kevesebb oszlop */
+    }
+  }
+  
+  @media (max-width: 480px)  {
+    .book-gallery {
+      grid-template-columns: 1fr; /* Nagyon kis képernyőkön csak egy oszlop */
+    }
+  
+    .welcome-section {
+      padding: 10px;
+    }
+  }
+  

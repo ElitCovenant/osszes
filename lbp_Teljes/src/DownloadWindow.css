@@ -67,3 +67,23 @@
 .close-button:hover {
     background-color: #d32f2f; /* Sötétebb piros szín hover állapotban */
 }
+
+@media (max-width: 657px) {
+    .download-content {
+        padding: 20px; /* Kisebb padding */
+        width: 80%; /* Szélesebb tartalom mobil eszközökön */
+    }
+
+    .download-content h2 {
+        font-size: 20px; /* Kis betűméret */
+    }
+
+    .download-content p {
+        font-size: 14px; /* Kis betűméret */
+    }
+
+    .download-button, .close-button {
+        padding: 8px 16px; /* Kisebb padding */
+        font-size: 16px; /* Kis betűméret */
+    }
+}

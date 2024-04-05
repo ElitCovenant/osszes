@@ -6,9 +6,11 @@
   word-wrap: break-word;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
 }
+
 body {
-    min-height: 100%;
+  min-height: 100vh;
 }
+
 h1 {
     letter-spacing: -1px;
 }
@@ -22,6 +24,8 @@ a {
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
+    justify-content: center;
+    align-items: center;
 }
 .loginbackground {
     min-height: 692px;
@@ -60,6 +64,7 @@ a {
   justify-content: center;
   margin: 0 -2%;
   transform: rotate(-12deg) skew(-12deg);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Dinamikus oszlopok */
 }
 
 .box-divider--light-all-2 {
@@ -193,3 +198,54 @@ a.ssolink {
     margin: 0 10px;
 }
 
+@media (max-width: 600px) {
+  .login-root, .flex-flex, .align-center, .center-center {
+    flex-direction: column;
+  }
+
+  .formbg {
+    max-width: 100%;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .formbg {
+    max-width: 600px; /* Növelheted az űrlap méretét */
+    padding: 40px; /* Nagyobb belső tér */
+  }
+
+  .login-root {
+    justify-content: center; /* Középre igazítás */
+  }
+}
+@media (min-width: 3840px) {
+  body {
+    font-size: 22px; /* Nagyobb alapbetűméret */
+  }
+
+  h1 {
+    font-size: 48px; /* Nagyobb címsorok */
+    margin-bottom: 24px; /* Nagyobb alsó margó a címsorok alatt */
+  }
+
+  .formbg {
+    max-width: 800px; /* Nagyobb űrlap szélesség */
+    padding: 60px; /* Nagyobb belső tér */
+  }
+
+  .field input, .field-checkbox input {
+    font-size: 20px; /* Nagyobb input mező betűméret */
+    padding: 12px 24px; /* Nagyobb input mező padding */
+  }
+
+  input[type="submit"] {
+    padding: 15px 30px; /* Nagyobb beküldő gomb */
+    font-size: 20px; /* Nagyobb gomb betűméret */
+  }
+
+  .listing a {
+    font-size: 18px; /* Link mérete */
+    margin: 0 15px; /* Nagyobb margó a linkek között */
+  }
+}

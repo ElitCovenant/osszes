@@ -88,7 +88,7 @@
   }
   
   
-  @media (max-width: 600px) {
+  @media (max-width: 657px) {
     .cookie-consent .modal {
       width: 90%; /* Kisebb képernyőkön szélesebb legyen */
       top: 50%; /* Középre helyezés vertikálisan */

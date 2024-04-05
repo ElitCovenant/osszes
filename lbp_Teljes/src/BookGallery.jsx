@@ -1,7 +1,6 @@
 import React from 'react';
 import './BookGallery.css';
 import { Link } from 'react-router-dom';
-
 function BookGallery() {
   return (
     <div className="gallery">
@@ -42,7 +41,7 @@ function BookGallery() {
   </div>
 </div>
 <div className="gallery__strip__wrapper">
-  <div className="gallery__strip two">
+  <div className="gallery__strip four">
     <div className="photo">
       <div className="photo__image">
         <Link to="/books">
@@ -54,7 +53,7 @@ function BookGallery() {
   </div>
 </div>
 <div className="gallery__strip__wrapper">
-  <div className="gallery__strip one">
+  <div className="gallery__strip five">
     <div className="photo">
       <div className="photo__image">
         <Link to="/books">
@@ -66,7 +65,7 @@ function BookGallery() {
   </div>
 </div>
 <div className="gallery__strip__wrapper">
-  <div className="gallery__strip two">
+  <div className="gallery__strip six">
     <div className="photo">
       <div className="photo__image">
         <Link to="/books">
@@ -78,7 +77,7 @@ function BookGallery() {
   </div>
 </div>
 <div className="gallery__strip__wrapper">
-  <div className="gallery__strip three">
+  <div className="gallery__strip seven">
     <div className="photo">
       <div className="photo__image">
         <Link to="/books">
@@ -90,18 +89,67 @@ function BookGallery() {
   </div>
 </div>
 <div className="gallery__strip__wrapper">
-      <div className="gallery__strip four">
+      <div className="gallery__strip eight">
         <div className="photo">
           <div className="photo__image">
             <Link to="/books">
-              <img src="https://s01.static.libri.hu/cover/c8/9/6705677_4.jpg" alt="" />
+              <img src="https://s06.static.libri.hu/cover/86/b/9851949_4.jpg" alt=""   />
             </Link>
           </div>
           <div className="photo__name">Az<br/>utolsó<br/>boszorkány</div>
         </div>
       </div>
     </div>
+    <div className="gallery__strip__wrapper">
+  <div className="gallery__strip nine">
+    <div className="photo">
+      <div className="photo__image">
+        <Link to="/books">
+          <img src="https://dibook.hu/storage/books/pr_3906/cover-big.jpg" alt="" />
+        </Link>
+      </div>
+      <div className="photo__name">Jónás<br/>könyve</div>
+    </div>
+  </div>
 </div>
+<div className="gallery__strip__wrapper">
+  <div className="gallery__strip ten">
+    <div className="photo">
+      <div className="photo__image">
+        <Link to="/books">
+          <img src="https://dibook.hu/storage/books/pr_3906/cover-big.jpg" alt="" />
+        </Link>
+      </div>
+      <div className="photo__name">Jónás<br/>könyve</div>
+    </div>
+  </div>
+</div>
+<div className="gallery__strip__wrapper">
+  <div className="gallery__strip eleven">
+    <div className="photo">
+      <div className="photo__image">
+        <Link to="/books">
+          <img src="https://dibook.hu/storage/books/pr_3906/cover-big.jpg" alt="" />
+        </Link>
+      </div>
+      <div className="photo__name">Jónás<br/>könyve</div>
+    </div>
+  </div>
+</div>
+<div className="gallery__strip__wrapper">
+  <div className="gallery__strip twelve">
+    <div className="photo">
+      <div className="photo__image">
+        <Link to="/books">
+          <img src="https://dibook.hu/storage/books/pr_3906/cover-big.jpg" alt="" />
+        </Link>
+      </div>
+      <div className="photo__name">Jónás<br/>könyve</div>
+    </div>
+  </div>
+</div>
+</div>
+
   );
 }
 

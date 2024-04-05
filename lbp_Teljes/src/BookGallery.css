@@ -6,8 +6,8 @@
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
-    max-width: 1000px;
-    margin: auto;
+    max-width: 1005px; /* A maximális szélesség meghatározása */
+    margin: auto; /* Automatikus középre igazítás */
   }
   
   .gallery__strip {
@@ -21,39 +21,72 @@
     position: relative;
   }
   
-  @media (min-width: 250px) {
+  @media (min-width: 2500px) {
     .gallery__strip__wrapper {
-      flex: 0 0 100%;
+      flex: 0 0 20%; /* Nagy képernyőjű eszközökön öt elem egy sorban */
     }
   }
   
   @media (min-width: 250px) {
     .gallery {
-      height: 99vh;
+      height: 90vh;
     }
   
     .gallery__strip {
-      &.one {
-        animation: 60s move-it ease-out alternate infinite 5s;
-        transform: translateY(45%);
-      }
-      &.three {
-        animation: 61s move-it ease-out alternate infinite 6s;
-        transform: translateY(45%);
-      }
-      &.two {
-        animation: 60s move-it-2 ease alternate infinite 5s;
-        transform: translateY(-50%);
-      }
-      &.four {
-        animation: 61s move-it-2 ease alternate infinite 5.5s;
-        transform: translateY(-50%);
-      }
-  
       &:hover {
         animation-play-state: paused;
       }
+    
+      &.one {
+        animation: 5s move-up-1 linear infinite;
+      }
+    
+      &.two {
+        animation: 10s move-down-1 linear infinite;
+      }
+    
+      &.three {
+        animation: 5s move-up-1 linear infinite;
+      }
+    
+      &.four {
+        animation: 10s move-down-1 linear infinite;
+      }
+    
+      &.five {
+        animation: 5s move-up-1 linear infinite;
+      }
+
+      &.six {
+        animation: 10s move-down-1 linear infinite;
+      }
+
+      &.seven {
+        animation: 5s move-up-1 linear infinite;
+      }
+
+      &.eight {
+        animation: 10s move-down-1 linear infinite;
+      }
+
+      &.nine {
+        animation: 5s move-up-1 linear infinite;
+      }
+
+      &.ten {
+        animation: 10s move-down-1 linear infinite;
+      }
+
+      &.eleven {
+        animation: 5s move-up-1 linear infinite;
+      }
+
+      &.twelve {
+        animation: 10s move-down-1 linear infinite;
+      } 
+
     }
+    
   
     .gallery__strip__wrapper {
       flex: 0 0 5%;
@@ -69,9 +102,14 @@
   
   .photo__image img {
     width: 50%;
-    transform: translateX(30%);
+    transform: translateX(50%);
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
+    
   }
+
+  .photo__image {
+   size: 80vh;
+  } 
   
   .photo__name {
     text-transform: uppercase;
@@ -94,34 +132,25 @@
     color: #fff;
   }
   
-  @keyframes move-it {
-    0%,
-    90%,
+  @keyframes move-up-1 {
+    0% {
+      transform: translateY(0%);
+    }
     100% {
-     transform: translateY(70%);
-    }
-    45% {
-     transform: translateY(-70%);
-    }
-   }
-   
-   @keyframes move-it-2 {
-    0%,
-    90%,
-    100% {
-     transform: translateY(-50%);
-    }
-    45% {
-     transform: translateY(80%);
-    }
-   }
-
-   @keyframes move-diagonal {
-    0%, 100% {
-      transform: translate(0%, 0%);
-    }
-    50% {
-      transform: translate(30%, 50%);
+      transform: translateY(-100%); /* A tartalom egyszerűbb felfelé mozgatása */
     }
   }
+  
+  @keyframes move-down-1 {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0%); /* A tartalom egyszerűbb lefelé mozgatása */
+    }
+  }
+  
+  
+  
+  
   

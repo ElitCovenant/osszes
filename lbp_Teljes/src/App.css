@@ -1,36 +1,34 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .content-container {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  @media (max-width: 952px) {
-    .content-container {
-      padding: 10px;
-    }
-  }
-  
-  @media (max-width: 858px) {
-    .app-container {
-      flex-direction: column;
-    }
-  
-    .content-container {
-      padding: 10px;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  body{
-    background-image: url(/src/Surrealism.jpg);
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-position:auto;
-    background-size: top;
+.content-container {
+  flex: 1;
+  padding: 20px;
+}
 
+
+body {
+  background-image: url(/src/Surrealism.jpg);
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:auto; /* A teljes kép látható, de lehetnek üres területek */
+}
+
+/* Kis eszközök (okostelefonok) */
+@media (max-width: 600px) {
+  body {
+    background-position: top right; /* Állíthatod a háttérkép pozícióját, ha szükséges */
   }
-  
+}
+
+/* Nagy felbontású kijelzők, mint a 4K monitorok */
+@media (min-width: 3840px) {
+  body {
+    background-position: center; /* Biztosítja, hogy a kép középpontja legyen látható a nagy felbontású kijelzőkön */
+  }
+}
+

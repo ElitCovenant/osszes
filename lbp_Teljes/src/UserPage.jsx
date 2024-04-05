@@ -80,7 +80,7 @@ function UserPage() {
         )}
         {isAdmin && <button className="toggleLoan-button" onClick={toggleLoan}>Email</button>}
       </div>
-      <Loan/>
+      {isAdmin && <Loan/>}
       {isLoanVisible && <Email />}
     </div>
   );

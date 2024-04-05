@@ -64,3 +64,63 @@
 .avatar-item:hover img {
   border-color: #333; /* Dark border on hover */
 }
+
+
+@media (max-width: 657px) {
+  .avatar-selector-container {
+    top: 10%;
+    left: 50%;
+    width: 90%; /* Szélesebbé tesszük mobil eszközökön */
+  }
+
+  .avatar-item img {
+    width: 80px; /* Kisebb méretű avatarok */
+    height: 80px;
+  }
+}
+
+@media (min-width: 2560px) {
+  /* Nagy felbontású kijelzők (4K) */
+  .avatar-selector-container {
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%; /* Alkalmazkodik a széles képernyőhöz */
+    padding: 20px; /* Nagyobb padding */
+  }
+
+  .avatar-item img {
+    width: 120px; /* Nagyobb avatar képek */
+    height: 120px;
+  }
+}
+
+@media (max-width: 1440px) {
+  /* Laptopok */
+  .avatar-selector-container {
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%; /* Illeszkedés a kisebb képernyőhöz */
+  }
+
+  .avatar-item img {
+    width: 90px; /* Kis méretűbb avatarok */
+    height: 90px;
+  }
+}
+
+@media (max-width: 425px)  {
+  /* Mobil eszközök */
+  .avatar-selector-container {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* Még szélesebb a mobilokon */
+  }
+
+  .avatar-item img {
+    width: 80px; /* Még kisebb avatarok */
+    height: 80px;
+  }
+}

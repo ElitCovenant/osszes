@@ -5,7 +5,7 @@ import WelcomeSection from './WelcomeSection';
 
 const Home = () => {
   return (
-      <div>
+      <div >
           <div>
               <div>
 

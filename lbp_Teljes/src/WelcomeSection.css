@@ -1,10 +1,13 @@
 .container {
-    display: contents;
+    display: flex; /* Vagy 'display: grid;' használata, ha az jobban megfelel */
+    flex-direction: column; /* Ha 'flex', akkor ezt be kell állítani */
     align-items: center;
-    justify-content: center; /* Added to center horizontally */
-    height: auto; /* Changed from 0vh to auto for dynamic height */
+    justify-content: center; /* Középre igazítás vízszintesen és függőlegesen */
+    height: auto;
     text-align: center;
+    
 }
+
 
 .typed-out {
     overflow: hidden;
@@ -12,11 +15,47 @@
     color: #000000;
     white-space: nowrap;
     animation: typing 5s forwards;
-    font-size: 1.5rem;
+    font-size: 1,5rem;
     width: 90%; /* Changed from 70% to 90% for responsiveness */
 }
 
 @keyframes typing {
     from { width: 0 }
     to { width: 100% }
+}
+
+@media (min-width: 3840px) {
+    .container {
+        max-width: 80%;
+        margin: 0 auto; /* Középre igazítás */
+    }
+
+    .typed-out {
+        font-size: 2rem; /* Nagyobb betűméret a jobb láthatóságért */
+        margin: 0 0 20px; /* Nagyobb térköz */
+    }
+}
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .container {
+        padding: 20px;
+    }
+
+    .typed-out {
+        font-size: 1.5rem;
+        margin: 0 0 15px; /* Közepes térköz */
+    }
+}
+@media (max-width: 425px) {
+    .container {
+        padding: 10px;
+    }
+
+    .typed-out {
+        font-size: 1.6rem; /* Kisebb betűméret a helymegtakarítás érdekében */
+        margin: 0 0 50px; /* Kisebb térköz */
+        width: 100%; /* Teljes szélesség kihasználása */
+        white-space: pre-line;
+  
+
+    }
 }
