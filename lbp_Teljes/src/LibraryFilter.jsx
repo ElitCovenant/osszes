@@ -57,7 +57,6 @@ const LibraryFilter = ({ onSubmit }) => {
       }
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
       setFilteredBooks(data);
       onSubmit(data); // Szűrt könyvek átadása a Books komponensnek
     } catch (error) {

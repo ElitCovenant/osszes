@@ -56,9 +56,9 @@ const Popup = ({ onClose, bookId }) => {
         const response = await fetch('https://localhost:7275/User');
         if (response.ok) {
           const userData = await response.json();
-          // Csak a felhasználóneveket tároljuk
-          const modifiedUsernames = ["No-one", ...userData.map(user => user.usarname)];
-          setUsernames(modifiedUsernames);
+          // Felhasználók tárolása id-val
+          const modifiedUsers = [{ id: 0, username: "No-one" }, ...userData.map(user => ({ id: user.id, username: user.usarname }))];
+          setUsers(modifiedUsers);
         } else {
           console.error(`Error fetching user data: ${response.status}`);
         }
@@ -69,7 +69,12 @@ const Popup = ({ onClose, bookId }) => {
 
     const fetchPublishers = async () => {
       try {
-        const response = await fetch('https://localhost:7275/Publisher');
+        const authToken = localStorage.getItem('authToken'); // Auth token kinyerése local storage-ból
+        const response = await fetch('https://localhost:7275/Publisher', {
+          headers: {
+            Authorization: `Bearer ${authToken}` // Auth token hozzáadása az Authorization fejléchez
+          }
+        });
         if (response.ok) {
           const publisherData = await response.json();
           setPublishers([{ id: 0, name: "No-one" }, ...publisherData]);
@@ -249,8 +254,8 @@ const Popup = ({ onClose, bookId }) => {
               value={selectedUser}
               onChange={handleUserChange} // Handle user change event
             >
-              {usernames.map(username => (
-                <option key={username} value={username}>{username}</option>
+              {users.map(user => (
+                <option key={user.id} value={user.id}>{user.username}</option>
               ))}
             </select>
           </>
