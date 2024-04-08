@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KonyvtarBackEnd.Controllers
 {
-    [ApiController,Authorize(Roles = "Admin")]
+    [ApiController]
     [Route("/Author")]
     public class AuthorController : ControllerBase
     {
@@ -98,7 +98,7 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<AuthorDto>> Put(int id, CreateOrModifyAuthorDto createOrModifyAuthorDto)
         {
             try
@@ -140,7 +140,7 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<AuthorDto>> Delete(int id)
         {
             try

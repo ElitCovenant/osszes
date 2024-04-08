@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Books.css';
 import Modal from './Modal';
 import Loader from './Loader';
@@ -31,6 +31,7 @@ const Books = () => {
 
     fetchData(); 
   }, []); 
+
   useEffect(() => {
     const fetchProfilePicturePath = async () => {
       try {
@@ -88,29 +89,31 @@ const Books = () => {
     document.body.style.overflow = 'auto'; 
   };
 
+  const handleFilterSubmit = useCallback((filteredBooks) => {
+    setBooks(filteredBooks);
+  }, []);
+
   return (
     <div className="FilterSelection">
-    <LibraryFilter />
-    <main className="page-content">
-      {isLoading && <Loader />}
-      {!isLoading && currentBooks.map((book) => (
-        <div key={book.id} className="card" style={{ backgroundImage: `url(${book.bookImg})` }}>
-          <div className="content">
-            <h2 className="title">{book.title}</h2>
-            <div className="btn-container">
-              <button className="btn" onClick={() => handleInfoClick(book.id)}>Info</button>
-              {decodedrole && <button className="btn" onClick={() => handlePopupOpen(book.id)}>Change</button>}
+      <LibraryFilter onSubmit={handleFilterSubmit} />
+      <main className="page-content">
+        {isLoading && <Loader />}
+        {!isLoading && currentBooks.map((book) => (
+          <div key={book.id} className="card" style={{ backgroundImage: `url(${book.bookImg})` }}>
+            <div className="content">
+              <h2 className="title">{book.title}</h2>
+              <div className="btn-container">
+                <button className="btn" onClick={() => handleInfoClick(book.id)}>Info</button>
+                {decodedrole && <button className="btn" onClick={() => handlePopupOpen(book.id)}>Change</button>}
+              </div>
             </div>
           </div>
-        </div>
-
-      ))}  
-      {selectedBook && <Modal book={selectedBook} onClose={handleCloseModal} />} 
-      {showPopup && <Popup onClose={handlePopupClose} bookId={selectedBookIdForPopup} />} 
-    </main>
-    <BooksPagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
+        ))}  
+        {selectedBook && <Modal book={selectedBook} onClose={handleCloseModal} />} 
+        {showPopup && <Popup onClose={handlePopupClose} bookId={selectedBookIdForPopup} />} 
+      </main>
+      <BooksPagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
     </div>
-
   );
 };
 

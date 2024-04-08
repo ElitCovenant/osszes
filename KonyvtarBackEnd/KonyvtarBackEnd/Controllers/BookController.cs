@@ -2,6 +2,7 @@
 using KonyvtarBackEnd.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.Intrinsics.X86;
 
 namespace KonyvtarBackEnd.Controllers
 {
@@ -111,8 +112,8 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
-        [HttpGet("/Search/{nae}")]
-        public async Task<ActionResult<BookDto>> Search(string nae, int au)
+        [HttpGet("/Search/{au}")]
+        public async Task<ActionResult<BookDto>> Search(string? nae, int au)
         {
             try
             {
@@ -121,9 +122,17 @@ namespace KonyvtarBackEnd.Controllers
 
                     if (context != null)
                     {
-                        if (au != 0)
+                        if (nae == null && au == 0)
+                        {
+                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).ToList());
+                        }
+                        else if (au == 0)
                         {
                             return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).Where(x => x.Title.Contains(nae)).ToList());
+                        }
+                        else if (nae == null)
+                        {
+                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).Where(x => x.Author.Id == au).ToList());
                         }
                         else
                         {
