@@ -112,15 +112,23 @@ namespace KonyvtarBackEnd.Controllers
         }
 
         [HttpGet("/Search/{nae}")]
-        public async Task<ActionResult<BookDto>> Search(string nae)
+        public async Task<ActionResult<BookDto>> Search(string nae, int au)
         {
             try
             {
                 using (var context = new KonyvtarDbContext())
                 {
+
                     if (context != null)
                     {
-                        return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).Where(x => x.Title.Contains(nae)).ToList());
+                        if (au != 0)
+                        {
+                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).Where(x => x.Title.Contains(nae)).ToList());
+                        }
+                        else
+                        {
+                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).Where(x => x.Title.Contains(nae)&&x.Author.Id == au).ToList());
+                        }
                     }
                     else
                     {
