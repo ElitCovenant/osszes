@@ -1,11 +1,15 @@
 .settings-container {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 220px;
   }
   
   .panel {
     width: 45%;
+    margin: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(75, 75, 75, 0.1);
@@ -30,7 +34,9 @@
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     color: #000; /* Fekete szöveg */
     font-weight: bold; /* Félkövér szöveg */
     text-align: center;
@@ -58,3 +64,64 @@
   height: 75%; /* Teljesen kitölti a kártyát */
 }
   
+/* Médialekérdezések */
+
+/* Nagy képernyők, pl. 4K */
+@media (min-width: 2560px) {
+  .panel {
+    width: 40%; /* Szűkebb panelek nagy képernyőkön */
+    margin: 20px auto; /* Nagyobb középre igazítás */
+  }
+
+  .card-settings {
+    width: calc(25% - 10px); /* Kis méretű kártyák nagy képernyőkön */
+  }
+}
+
+/* Laptopok */
+@media (max-width: 1440px) {
+  .panel {
+    width: 70%; /* Szélesebb nézet laptopokon */
+    margin: 20px auto; /* Középre igazítás */
+  }
+
+  .card-settings {
+    width: calc(33.33% - 10px); /* Mérsékelt méretű kártyák laptopokon */
+  }
+}
+
+/* Tabletek */
+@media (max-width: 1024px) {
+  .panel {
+    width: 90%; /* Tágasabb nézet tableteken */
+    margin: 10px auto; /* Középre igazítás */
+  }
+  
+  .card-settings {
+    width: calc(50% - 10px); /* Nagyobb kártyák tableteken */
+  }
+}
+
+/* Nagyobb telefonok */
+@media (max-width: 768px) {
+  .panel {
+    width: 90%; /* Szélesebb nézet nagyobb telefonokon */
+    margin: 10px auto; /* Középre igazítás */
+  }
+
+  .card-settings {
+    width: calc(50% - 10px); /* Nagyobb kártyák nagyobb telefonokon */
+  }
+}
+
+/* Nagyon kis telefonok */
+@media (max-width: 480px) {
+  .panel {
+    width: 100%; /* Teljes szélesség a kis eszközökön */
+    margin: 10px 0; /* Eltávolítjuk a bal és jobb margót */
+  }
+  
+  .card-settings {
+    width: 100%; /* Teljes szélességű kártyák a nagyon kis eszközökön */
+  }
+}

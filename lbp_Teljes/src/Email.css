@@ -6,6 +6,7 @@
   background-color: #f9f9f9; /* Világosabb háttérszín */
   border-radius: 8px; /* Lekerekített sarkok */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Doboz árnyék hozzáadása */
+  right: 10%;
   position: relative;
 }
 
@@ -87,4 +88,101 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 2560px) {
+  .panel {
+    max-width: 1200px; /* Nagyobb szélesség */
+    padding: 30px; /* Nagyobb padding */
+  }
+}
+
+/* Laptopok */
+@media (max-width: 1440px) {
+  .panel {
+    max-width: 70%; /* Kisebb szélesség */
+  }
+}
+
+/* Tabletek */
+@media (max-width: 1024px) {
+  .panel {
+    max-width: 80%; /* Százalékos szélesség jobb alkalmazkodásért */
+  }
+}
+
+/* Telefonok */
+@media (max-width: 600px) {
+  .panel, .prepare-message, .message-window input[type="text"],
+  .email-list-window input[type="text"], .message-window textarea {
+    width: 100%; /* Teljes szélesség használata */
+    margin-right: 0;
+    padding: 10px; /* Kisebb padding a jobb helykihasználás érdekében */
+  }
+
+  .prepare-message {
+    margin-left: 10px; /* Kisebb bal margó */
+  }
+
+  .close-panel {
+    right: 5px; /* Kisebb jobb margó */
+    bottom: 5px; /* Kisebb alsó margó */
+  }
+
+  .email-list-window {
+    max-height: 150px; /* Kisebb magasság */
+  }
+
+  .email-list-window li, .remove-email {
+    padding: 5px; /* Kisebb padding */
+  }
+
+  .remove-email {
+    width: 15px; /* Kisebb méret */
+    height: 15px; /* Kisebb méret */
+  }
+}
+
+/* Médialekérdezések */
+
+/* Nagyon kis telefonok, például 320px alatti szélességűek */
+@media (max-width: 320px) {
+  .panel {
+    width: 100%; /* Teljes szélesség használata */
+    margin: 20px 0; /* Csökkentett margó */
+    padding: 10px; /* Csökkentett padding */
+  }
+
+  .prepare-message {
+    margin-left: 5px; /* Tovább csökkentett bal margó */
+  }
+
+  .close-panel {
+    right: 5px; /* Csökkentett jobb margó */
+    bottom: 5px; /* Csökkentett alsó margó */
+  }
+
+  .message-window input[type="text"],
+  .email-list-window input[type="text"],
+  .message-window textarea {
+    width: calc(100% - 10px); /* Számított szélesség a csökkentett padding figyelembevételével */
+    padding: 5px; /* Csökkentett padding */
+  }
+
+  .email-list-window {
+    max-height: 120px; /* Tovább csökkentett magasság */
+  }
+
+  .email-list-window li, .remove-email {
+    padding: 5px; /* Tovább csökkentett padding */
+  }
+
+  .remove-email {
+    width: 15px; /* Csökkentett szélesség */
+    height: 15px; /* Csökkentett magasság */
+  }
+  
+  .message-window button, .email-list-window button {
+    padding: 5px 10px; /* Kisebb gombokhoz igazított padding */
+  }
 }

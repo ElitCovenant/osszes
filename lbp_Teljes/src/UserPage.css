@@ -3,6 +3,7 @@
   max-width: 600px;
   size: 1000%;
   margin: 20px auto;
+  right: 10%;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
@@ -84,34 +85,98 @@
   left: 22%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  background-color: white;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+}
+.role-selector-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.644);
+  z-index: 10;
 }
 
+@media (min-width: 2560px) {
+  .facebook-profile {
+    max-width: 1200px; /* Nagyobb szélesség */
+    padding: 40px; /* Nagyobb padding */
+  }
 
-
-
-
-/* Dinamikus reszponzivitás */
-@media (max-width: 768px) {
-  .profile-header {
-    flex-direction: column;
-    align-items: flex-start;
+  .profile-header img.profile-picture {
+    width: 200px;
+    height: 200px; /* Nagyobb profil kép */
   }
 
   .toggleLoan-button {
-    margin: 10px 0; /* Mobil nézetben a margó beállítása */
+    top: 60px;
+    right: 60px;
+    padding: 15px 20px; /* Nagyobb gomb */
   }
 }
 
+/* Laptopok */
+@media (max-width: 1440px) {
+  .facebook-profile {
+    max-width: 800px; /* Szűkebb szélesség */
+  }
+}
+
+/* Tabletek */
+@media (max-width: 1024px) {
+  .facebook-profile {
+    max-width: 90%; /* Teljes szélesség használata százalékban */
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .toggleLoan-button {
+    position: static; /* Statikus pozicionálás */
+    margin-top: 20px;
+  }
+}
+
+/* Telefonok */
+@media (max-width: 768px) {
+  .facebook-profile {
+    padding: 15px;
+  }
+
+  .profile-header img.profile-picture {
+    width: 80px;
+    height: 80px; /* Kisebb profil kép */
+  }
+}
+
+/* Nagyon kis telefonok */
 @media (max-width: 480px) {
   .facebook-profile {
     padding: 10px;
   }
 
   .profile-header img.profile-picture {
-    width: 40px;
-    height: 40px; /* Kisebb profil kép mobil nézeten */
+    width: 60px;
+    height: 60px; /* Még kisebb profil kép */
+  }
+}
+
+@media (max-width: 320px) {
+  .facebook-profile {
+    padding: 5px;
+  }
+
+  .profile-header img.profile-picture {
+    width: 50px;
+    height: 50px; /* Nagyon kis profil kép */
+  }
+
+  .toggleLoan-button {
+    top: 10px;
+    right: 10px;
+    padding: 8px 10px; /* Nagyon kis gomb */
   }
 }

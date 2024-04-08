@@ -4,7 +4,6 @@ import './LibraryFilter.css';
 const LibraryFilter = () => {
   const [books, setBooks] = useState([]);
   const [searchTitle, setSearchTitle] = useState('');
-  const [highlightedBook, setHighlightedBook] = useState(null);
   const [authors, setAuthors] = useState([]);
   const [selectedAuthor, setSelectedAuthor] = useState('all');
 
@@ -38,8 +37,6 @@ const LibraryFilter = () => {
 
   const handleFilterSubmit = (e) => {
     e.preventDefault();
-    const foundBook = books.find(book => book.title.toLowerCase().includes(searchTitle.toLowerCase()));
-    setHighlightedBook(foundBook);
   };
 
   const handleAuthorChange = (e) => {
@@ -77,13 +74,6 @@ const LibraryFilter = () => {
         <button type="submit" className="filter_button">Filter Books</button>
       </form>
       
-      {/* Kiemelt könyv megjelenítése */}
-      {highlightedBook && (
-        <div>
-          <h3>Highlighted Book</h3>
-          <p>Title: {highlightedBook.title}</p>
-        </div>
-      )}
     </div>
   );
 };
