@@ -70,6 +70,7 @@ function UserPage() {
             <p>{decodedrole}</p>
           </div>
         </div>
+        
         {isRoleSelectorOpen && (
           <>
             <div className="role-selector-modal-overlay" onClick={toggleRoleSelector}></div>

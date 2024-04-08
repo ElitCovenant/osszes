@@ -3,12 +3,12 @@ import './LanguageSelector.css';
 
 function LanguageSelector() {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedLanguage, setSelectedLanguage] = useState('English (US)');
+    const [selectedLanguage, setSelectedLanguage] = useState('(US)');
 
     const languages = [
-        { name: 'English (US)', code: 'us'  },
+        { name: '(US)', code: 'us'  },
 
-        { name: 'Hungary (HUN)' , code: 'hun' },
+        { name: '(HUN)' , code: 'hun' },
     
     ];
 

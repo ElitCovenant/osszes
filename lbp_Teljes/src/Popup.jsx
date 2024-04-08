@@ -22,6 +22,7 @@ const Popup = ({ onClose, bookId }) => {
   const [releaseDate, setReleaseDate] = useState('');
   const [price, setPrice] = useState('');
   const [comment, setComment] = useState('');
+  const [usernames, setUsernames] = useState([]);
 
   useEffect(() => {
     const fetchBookData = async () => {
@@ -55,7 +56,9 @@ const Popup = ({ onClose, bookId }) => {
         const response = await fetch('https://localhost:7275/User');
         if (response.ok) {
           const userData = await response.json();
-          setUsers([{ id: 0, username: "No-one" }, ...userData]);
+          // Csak a felhasználóneveket tároljuk
+          const modifiedUsernames = ["No-one", ...userData.map(user => user.usarname)];
+          setUsernames(modifiedUsernames);
         } else {
           console.error(`Error fetching user data: ${response.status}`);
         }
@@ -129,7 +132,8 @@ const Popup = ({ onClose, bookId }) => {
           releaseDate: releaseDate,
           price: price,
           comment: comment,
-          authorId: selectedAuthor // Send selected authorId in the request body
+          authorId: selectedAuthor,
+          userId: selectedUser // Adding selected user id to the request body
         }),
       });
       if (response.ok) {
@@ -243,10 +247,10 @@ const Popup = ({ onClose, bookId }) => {
             <select
               className="inputbuttontext"
               value={selectedUser}
-              onChange={handleUserChange}
+              onChange={handleUserChange} // Handle user change event
             >
-              {users.map(user => (
-                <option key={user.id} value={user.id}>{user.username}</option>
+              {usernames.map(username => (
+                <option key={username} value={username}>{username}</option>
               ))}
             </select>
           </>

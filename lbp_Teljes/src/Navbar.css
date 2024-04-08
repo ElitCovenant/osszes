@@ -131,117 +131,78 @@
   position: relative; /* Módosítás: relative helyett */
 }
 
+/* Médialekérdezések */
+
+/* Nagy képernyők, pl. 4K */
 @media (min-width: 2560px) {
-  /* Stílusok a nagy felbontású kijelzőkhöz */
   .navbar {
-    padding: 20px 40px; /* Nagyobb padding a tágasabb elrendezéshez */
-  }
-
-  .navbar-logo {
-    font-size: 2em; /* Nagyobb logó a jobb láthatóság érdekében */
+    padding: 20px;
+    justify-content: space-evenly;
   }
 
   .navbar-menu li {
-    margin-right: 30px; /* Nagyobb térköz az elemek között */
+    margin-right: 30px; /* Nagyobb margó az elemek között */
   }
 
-  .navbar-menu a, .profile-button, .login-button {
-    font-size: 1.8em; /* Nagyobb betűméret a könnyebb olvashatóságért */
-    padding: 15px 30px; /* Nagyobb padding a jobb tapinthatóság érdekében */
+  .profile-button, .login-button {
+    padding: 15px 30px; /* Nagyobb padding */
   }
 }
 
+/* Laptopok */
 @media (max-width: 1440px) {
-  /* Stílusok a laptop méretű képernyőkhöz */
-  .navbar {
-    padding: 15px 30px; /* Kis méretű padding a kompaktabb elrendezéshez */
-  }
-
-  .navbar-logo {
-    font-size: 1.8em; /* Kis méretű logó */
-  }
-
-  .navbar-menu li {
-    margin-right: 20px; /* Kis méretű térköz az elemek között */
-  }
-
-  .navbar-menu a, .profile-button, .login-button {
-    font-size: 1.5em; /* Kis méretű betűméret a helymegtakarítás érdekében */
-    padding: 10px 15px; /* Kis méretű padding */
-  }
+  /* Kisebb változtatások lehetnek szükségesek, ha a design ezt megköveteli */
 }
 
+/* Tabletek */
 @media (max-width: 1024px) {
-  /* Stílusok a tablet többképernyőkhöz */
   .navbar {
-    padding: 15px 20px; /* Kisebb padding a kompaktabb elrendezéshez */
+    flex-direction: column;
+    align-items: center;
   }
 
-}
-
-
-@media (min-width: 2560px) {
-  /* Stílusok a nagy felbontású kijelzőkhöz */
-  .navbar {
-    padding: 20px 40px; /* Nagyobb padding a tágasabb elrendezéshez */
-  }
-
-  .navbar-logo {
-    font-size: 2em; /* Nagyobb logó a jobb láthatóság érdekében */
-  }
-
-  .navbar-menu li {
-    margin-right: 30px; /* Nagyobb térköz az elemek között */
-  }
-
-  .navbar-menu a, .profile-button, .login-button {
-    font-size: 1.8em; /* Nagyobb betűméret a könnyebb olvashatóságért */
-    padding: 15px 30px; /* Nagyobb padding a jobb tapinthatóság érdekében */
+  .navbar-right {
+    margin-top: 10px;
   }
 }
 
-@media (max-width: 1440px) {
-  /* Stílusok a laptop méretű képernyőkhöz */
-  .navbar {
-    padding: 15px 30px; /* Kis méretű padding a kompaktabb elrendezéshez */
-  }
-
-  .navbar-logo {
-    font-size: 1.8em; /* Kis méretű logó */
+/* Nagyobb telefonok */
+@media (max-width: 768px) {
+  .navbar-menu {
+    flex-direction: column;
+    align-items: center;
   }
 
   .navbar-menu li {
-    margin-right: 20px; /* Kis méretű térköz az elemek között */
-  }
-
-  .navbar-menu a, .profile-button, .login-button {
-    font-size: auto; /* Kis méretű betűméret a helymegtakarítás érdekében */
-    padding: 20px 20px; /* Kis méretű padding */
+    margin-bottom: 5px; /* Elemek vertikális elrendezése */
   }
 }
-@media (max-width: 425px) {
-  .navbar-menu, .navbar-right {
-    flex-direction: row-reverse;
-    justify-content: center;
-    flex-wrap: wrap; 
-  }
 
-  .navbar-menu li {
-    margin-right: 15px; /* Kis térköz */
-  }
-
-  .navbar-menu a, .profile-button, .login-button {
-    font-size: 0.8em; /* Tovább csökkentett betűméret */
-    padding: 6px 12px; /* Kis padding a helymegtakarítás érdekében */
-  }
-
-  .search-input, .search-button {
-    padding: 2px 6px; /* Még kisebb padding */
-    font-size: 0.8em; /* Tovább csökkentett betűméret */
-    border-radius: 5px;
+/* Nagyon kis telefonok */
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
   }
 
   .navbar-logo {
-    font-size: 1.2em; /* Kis méretű logó */
+    margin-bottom: 10px;
+  }
+
+  .navbar-menu, .navbar-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-menu li {
+    margin-right: 0;
+    margin-bottom: 5px;
+    align-items: center;
+  }
+
+  .search-input, .search-button, .profile-button, .login-button {
+    width: 100%; /* Teljes szélesség használata */
+    margin-bottom: 5px; /* Elemek vertikális elrendezése */
+    text-align: center;
   }
 }

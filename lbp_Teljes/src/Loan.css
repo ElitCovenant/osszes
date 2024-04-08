@@ -1,7 +1,7 @@
 .loan-container {
   max-width: 400px;
-  margin: 20px auto 20px auto;
-  padding: 20px;
+  margin: 40px auto;
+  padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
@@ -78,4 +78,76 @@
   }
   
   
+  /* Nagy képernyők, pl. 4K */
+@media (min-width: 2560px) {
+  .loan-container {
+    max-width: 800px; /* Nagyobb szélesség */
+    padding: 30px; /* Nagyobb padding */
+  }
+}
+
+/* Laptopok */
+@media (max-width: 1440px) {
+  .loan-container {
+    max-width: 600px; /* Kisebb szélesség */
+  }
+}
+
+/* Tabletek */
+@media (max-width: 1024px) {
+  .loan-container {
+    max-width: 80%; /* Százalékos szélesség jobb alkalmazkodásért */
+    margin-top: 20px; /* Kisebb felső margó */
+  }
+}
+
+/* Telefonok */
+@media (max-width: 600px) {
+  .loan-container {
+    flex-direction: column; /* Felülvizsgálható, ha szükséges */
+    margin: 20px auto; /* Alacsonyabb margó */
+    padding: 10px; /* Kisebb padding */
+  }
   
+  .select-all-tab, .emails-container, .email-card {
+    flex-direction: column; /* A tartalmak egymás alá rendezése */
+  }
+
+  .email-card input[type="checkbox"] {
+    margin: auto; /* Középre igazítás */
+  }
+  
+  .send-message {
+    padding: 15px 0; /* Nagyobb padding a gombon, könnyebb kattinthatóság */
+  }
+}
+
+/* Nagyon kicsi telefonok */
+@media (max-width: 320px) {
+  .loan-container {
+    margin: 10px auto; /* Még kisebb margó */
+    padding: 5px; /* Még kisebb padding */
+  }
+
+  .select-all-tab, .emails-container, .email-card {
+    flex-direction: column; /* A tartalmak egymás alá rendezése */
+  }
+
+  .email-card {
+    flex-direction: column;
+    margin-bottom: 5px; /* Kisebb margó az email kártyák között */
+    padding: 5px; /* Kisebb padding az email kártyákon */
+  }
+
+  .email-card input[type="checkbox"] {
+    margin: 0 0 5px 0; /* Jobb elrendezés a checkboxoknak */
+  }
+
+  .send-message {
+    padding: 10px 0; /* Kis méretű eszközökhöz igazított gomb padding */
+  }
+
+  .email-info {
+    font-size: 14px; /* Kis méretű eszközökhöz igazított betűméret */
+  }
+}

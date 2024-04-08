@@ -46,14 +46,19 @@ function AvatarSelector({ onClose }) {
           });
           if (response.ok) {
             toast.success('Avatar successfully changed!');
+            setTimeout(() => {
+              window.location.reload();
+            }, 6100);
           } else {
             toast.error('Something went wrong');
             console.error('Hiba történt az avatar frissítése során:', response.statusText);
+            
           }
         }
       }
     } catch (error) {
       console.error('Hiba történt az avatar frissítése során:', error);
+      
     }
   };
 
