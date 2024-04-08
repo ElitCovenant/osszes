@@ -10,7 +10,7 @@ const LibraryFilter = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch('https://localhost:7275/GuestInformations');
+        const response = await fetch(`https://localhost:7275/Search/${encodeURIComponent(searchTitle)}`);
         const data = await response.json();
         setBooks(data);
       } catch (error) {
@@ -18,8 +18,14 @@ const LibraryFilter = () => {
       }
     };
 
-    fetchBooks();
-  }, []);
+    // Csak ha van valami beírva a Title input mezőbe, hívjuk meg a keresést
+    if (searchTitle.trim() !== '') {
+      fetchBooks();
+    } else {
+      // Ha a Title input üres, visszaállítjuk az összes könyvet
+      setBooks([]);
+    }
+  }, [searchTitle]);
 
   useEffect(() => {
     const fetchAuthors = async () => {
@@ -37,6 +43,7 @@ const LibraryFilter = () => {
 
   const handleFilterSubmit = (e) => {
     e.preventDefault();
+    // Itt lehetne további szűrési logika, ha szükséges
   };
 
   const handleAuthorChange = (e) => {

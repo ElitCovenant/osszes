@@ -9,8 +9,14 @@ const Loan = () => {
 
   useEffect(() => {
     // Fetch data from the endpoint
-    axios.get('https://localhost:7275/Notreturned')
-      .then(response => {
+    const fetchEmails = async () => {
+      try {
+        const token = localStorage.getItem('authToken'); // Get token from localStorage
+        const response = await axios.get('https://localhost:7275/Notreturned', {
+          headers: {
+            Authorization: `Bearer ${token}` // Add token to headers
+          }
+        });
         // Upon successful response, update the state with fetched data
         setEmails(response.data);
         // Initialize the checked status for each email
@@ -19,11 +25,13 @@ const Loan = () => {
           initialCheckedStatus[index] = false;
         });
         setCheckedStatus(initialCheckedStatus);
-      })
-      .catch(error => {
+      } catch (error) {
         // Handle errors here
         console.error('Error fetching data:', error);
-      });
+      }
+    };
+
+    fetchEmails();
   }, []); // Empty dependency array ensures the effect runs only once
 
   const toggleCheckbox = (index) => {
@@ -65,19 +73,12 @@ const Loan = () => {
         });
       }
     });
-  
-    // Uncheck all checkboxes after sending the message
-    const uncheckedStatus = {};
-    Object.keys(checkedStatus).forEach(index => {
-      uncheckedStatus[index] = false;
-    });
-    setCheckedStatus(uncheckedStatus);
   };
 
   return (
     <div className="loan-container">
       <div className="select-all-tab">
-      <h3 id='loanname'>Loan History</h3>
+        <h3 id='loanname'>Loan History</h3>
         <input
           type="checkbox"
           checked={selectAllChecked}
@@ -90,6 +91,7 @@ const Loan = () => {
           <div key={index} className="email-item">
             <input
               type="checkbox"
+              className="styled-checkbox"
               checked={checkedStatus[index]}
               onChange={() => toggleCheckbox(index)}
             />
