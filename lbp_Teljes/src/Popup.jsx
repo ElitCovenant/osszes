@@ -3,7 +3,6 @@ import './Popup.css';
 
 const Popup = ({ onClose, bookId }) => {
   const [bookData, setBookData] = useState(null);
-  const [authorName, setAuthorName] = useState(null);
   const [users, setUsers] = useState([{ id: 0, username: "No-one" }]);
   const [selectedUser, setSelectedUser] = useState(0);
   const [publishers, setPublishers] = useState([{ id: 0, name: "No-one" }]);
@@ -22,7 +21,6 @@ const Popup = ({ onClose, bookId }) => {
   const [releaseDate, setReleaseDate] = useState('');
   const [price, setPrice] = useState('');
   const [comment, setComment] = useState('');
-  const [usernames, setUsernames] = useState([]);
 
   useEffect(() => {
     const fetchBookData = async () => {
@@ -33,7 +31,7 @@ const Popup = ({ onClose, bookId }) => {
           setBookData(data);
           setBookTitle(data.title || '');
           setWarehouseNum(data.warehouseNum || '');
-          setPurchaseDate(data.purchaseDate || '');
+          setPurchaseDate(data.purchaseDate ? new Date(data.purchaseDate).toISOString().split('T')[0] : ''); // Default date set from fetched data
           setSeriesId(data.seriesId || '');
           setIsbnNum(data.isbnNum || '');
           setSzakkjelzet(data.szakkjelzet || '');
@@ -56,7 +54,7 @@ const Popup = ({ onClose, bookId }) => {
         const response = await fetch('https://localhost:7275/User');
         if (response.ok) {
           const userData = await response.json();
-          // Felhasználók tárolása id-val
+          // Store users with their ids
           const modifiedUsers = [{ id: 0, username: "No-one" }, ...userData.map(user => ({ id: user.id, username: user.usarname }))];
           setUsers(modifiedUsers);
         } else {
@@ -69,10 +67,10 @@ const Popup = ({ onClose, bookId }) => {
 
     const fetchPublishers = async () => {
       try {
-        const authToken = localStorage.getItem('authToken'); // Auth token kinyerése local storage-ból
+        const authToken = localStorage.getItem('authToken'); // Get auth token from local storage
         const response = await fetch('https://localhost:7275/Publisher', {
           headers: {
-            Authorization: `Bearer ${authToken}` // Auth token hozzáadása az Authorization fejléchez
+            Authorization: `Bearer ${authToken}` // Add auth token to Authorization header
           }
         });
         if (response.ok) {
@@ -120,25 +118,27 @@ const Popup = ({ onClose, bookId }) => {
 
   const handleConfirm = async () => {
     try {
+      console.log("Bookid: "+bookId + " Warehouse: " + warehouseNum+ " Purchase: " + purchaseDate+ " Author: " + selectedAuthor+ " Title: " +bookTitle+ " Series: " + seriesId+ " ISBN: " +isbnNum+ " Szakk: " + szakkjelzet+ " Cutter: " + cutterJelzet+ " Publisher: " + selectedPublisher+ " Release: " + releaseDate+ " Price: " + price+ " Comment: " + comment+ " User: " + selectedUser)
       const response = await fetch(`https://localhost:7275/Book/${bookId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          id: bookId,
+          warehouse_Num: warehouseNum,
+          purchase_Date: purchaseDate,
+          author_Id: selectedAuthor,
           title: bookTitle,
-          warehouseNum: warehouseNum,
-          purchaseDate: purchaseDate,
-          seriesId: seriesId,
-          isbnNum: isbnNum,
-          szakkjelzet: szakkjelzet,
-          cutterJelzet: cutterJelzet,
-          publisherId: selectedPublisher,
-          releaseDate: releaseDate,
+          series_Id: seriesId,
+          isbn_Num: isbnNum,
+          szakjelzet: szakkjelzet,
+          cutter_Jelzet: cutterJelzet,
+          publisher_Id: selectedPublisher,
+          release_Date: releaseDate,
           price: price,
           comment: comment,
-          authorId: selectedAuthor,
-          userId: selectedUser // Adding selected user id to the request body
+          user_Id: selectedUser
         }),
       });
       if (response.ok) {
@@ -186,7 +186,7 @@ const Popup = ({ onClose, bookId }) => {
             <input
               type="date"
               className="inputbuttontext"
-              value={new Date(bookData.purchaseDate).toISOString().split('T')[0]}
+              value={purchaseDate}
               onChange={(e) => setPurchaseDate(e.target.value)}
             />
             <h3>Series:</h3>
@@ -218,22 +218,24 @@ const Popup = ({ onClose, bookId }) => {
               onChange={(e) => setCutterJelzet(e.target.value)}
             />
             <h3>Publisher:</h3>
-            <select
-              className="inputbuttontext"
-              value={selectedPublisher}
-              onChange={handlePublisherChange}
-            >
-              {publishers.map(publisher => (
-                <option key={publisher.id} value={publisher.id}>{publisher.name}</option>
-              ))}
-            </select>
+<select
+  className="inputbuttontext"
+  value={selectedPublisher}
+  onChange={handlePublisherChange}
+>
+  {publishers.map(publisher => (
+    <option key={publisher.id} value={publisher.id}>
+      {publisher.id === publisherId ? publisher.name : "No-one"}
+    </option>
+  ))}
+</select>
             <h3>Release date:</h3>
-            <input
-              type="date"
-              className="inputbuttontext"
-              value={bookData.releaseDate ? new Date(bookData.releaseDate).toISOString().split('T')[0] : ''}
-              onChange={(e) => setReleaseDate(e.target.value)}
-            />
+<input
+  type="text"
+  className="inputbuttontext"
+  placeholder={releaseDate || bookData.releaseDate || "No data"}
+  onChange={(e) => setReleaseDate(e.target.value)}
+/>
             <h3>Price:</h3>
             <input
               type="text"
