@@ -17,7 +17,10 @@
                 <Label Content="Jelszó : " Margin="42 0 10 0" FontSize="20"/>
                 <TextBox Width="150" Height="30" Margin="10 0 10 0" x:Name="Password" FontSize="20" VerticalAlignment="Center"/>
             </StackPanel>
-            <Button x:Name="Register" Click="Register_Click" Content="Felhasználó Regisztrálása" Width="170" Height="25" FontSize="15" HorizontalAlignment="Left" Margin="10 5 10 10"/>
+            <StackPanel Orientation="Horizontal">
+            <Button x:Name="Register" Click="Register_Click" Content="Felhasználó Regisztrálása" Width="170" Height="25" FontSize="15" HorizontalAlignment="Left" Margin="10 5 30 10"/>
+            <Button x:Name="ReadFromFile" Content="Fileból beolvasás" Click="ReadFromFile_Click" Width="170" Height="25" FontSize="15" HorizontalAlignment="Left" Margin="30 5 10 10"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

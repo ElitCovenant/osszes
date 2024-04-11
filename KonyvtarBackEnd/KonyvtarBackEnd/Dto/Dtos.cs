@@ -6,6 +6,7 @@
     public record ModifyJelszo(string Hash);
 
     public record RegisterDto(string UserName, string Hash);
+    public record Transfer(string transfer);
     public record LoginDto(string UserName, string Hash);
 
     public record AuthorDto(uint Id, string Name);
@@ -18,6 +19,8 @@
     public record CreateOrModifySeriesDto(uint Id, string Name);
 
     public record LoanHistoryDto(uint Id, int Book_Id, int User_Id, DateTime Date, DateTime Date_End, bool Returned, string Comment);
+    public record Returnednt(uint Id, string Title, uint UserId, string? Usarname);
+    public record Borrowed(string title,DateTime? returndate);
     public record CreateLoanHistoryDto(uint Id, uint Book_Id, uint User_Id, uint Deadline, bool Returned, string Comment);
 
     public record ModifyLoanHistoryDto(uint Id, uint Book_Id, uint User_Id, DateTime Date, DateTime Date_End, bool Returned, string Comment);

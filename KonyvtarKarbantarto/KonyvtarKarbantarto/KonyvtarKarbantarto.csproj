@@ -135,6 +135,7 @@
     <Compile Include="Models\PublisherObject.cs" />
     <Compile Include="Models\Rule.cs" />
     <Compile Include="Models\Series.cs" />
+    <Compile Include="Dto\Transfer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Windows\EgyebKezelo.xaml.cs">
       <DependentUpon>EgyebKezelo.xaml</DependentUpon>

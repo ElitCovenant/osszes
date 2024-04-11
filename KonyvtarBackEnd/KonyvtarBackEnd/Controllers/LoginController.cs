@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Win32;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace KonyvtarBackEnd.Controllers
 {
@@ -41,6 +43,58 @@ namespace KonyvtarBackEnd.Controllers
                         {
                             context.Users.Add(UjFelhasznalo);
                             context.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            return BadRequest("Hiba lépett fel : " + e.Message);
+                        }
+
+                        return StatusCode(201, "Az adatok sikeresen eltárolva!");
+                    }
+                    else
+                    {
+                        return StatusCode(406, "Nem megfeleő az adat formátuma!");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
+        }
+
+        [HttpPost("/AOERegister"), Authorize(Roles = "Admin")]
+        public async Task<ActionResult<string>> AOERegister(Transfer transfer)
+        {
+            try
+            {
+                using (var context = new KonyvtarDbContext())
+                {
+                    if (context != null)
+                    {
+                        try
+                        {
+                            List<RegisterDto> registers = new List<RegisterDto>();
+                            string[] data = transfer.transfer.Split(',');
+                            foreach (string line in data)
+                            {
+                                registers.Add(new RegisterDto(line.Split(';')[0].Trim(),line.Split(';')[1].Trim()));
+                            }
+                            foreach (var user in registers)
+                            {
+                                var UjFelhasznalo = new User
+                                {
+                                    MembershipStart = DateTime.Now,
+                                    MembershipEnd = DateTime.Now.AddYears(4),
+                                    Usarname = user.UserName,
+                                    Hash = BCrypt.Net.BCrypt.HashPassword(user.Hash)
+                                };
+                                await context.Users.AddAsync(UjFelhasznalo);
+                                await context.SaveChangesAsync();
+                            }
+                            
                         }
                         catch (Exception e)
                         {

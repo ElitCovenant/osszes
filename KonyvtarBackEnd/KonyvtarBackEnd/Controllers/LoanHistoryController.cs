@@ -3,15 +3,16 @@ using KonyvtarBackEnd.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace KonyvtarBackEnd.Controllers
 {
-    [ApiController,Authorize(Roles = "Admin")]
+    [ApiController]
     [Route("/LoanHistory")]
     public class LoanHistoryController : ControllerBase
     {
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Admin")]
         public async Task<ActionResult<LoanHistoryDto>> Post(CreateLoanHistoryDto createOrModifyLoanHistory)
         {
             try
@@ -58,7 +59,7 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Admin")]
         public async Task<ActionResult<LoanHistoryDto>> GetAll()
         {
             try
@@ -83,7 +84,43 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
-        [HttpGet("/Notreturned")]
+        [HttpGet("/BorrowedBooks/{id}"), Authorize(Roles = "Admin,Guest")]
+        public async Task<ActionResult<LoanHistoryDto>> GetBorrowed(int id)
+        {
+            try
+            {
+                using (var context = new KonyvtarDbContext())
+                {
+                    
+
+                    if (context != null)
+                    {
+                        var kerdezett = context.LoanHistories.Include(x => x.Book).Where(x => x.UserId == id && x.Returned == false).Select(x=>new Borrowed(x.Book.Title,x.DateEnd)).ToList();
+                        if (kerdezett != null)
+                        {
+                            return Ok(kerdezett);
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett Kölcsönzéstörténet nem létezik, vagy nincs eltárolva");
+                        }
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
+
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet("/Notreturned"), Authorize(Roles = "Admin")]
         public async Task<ActionResult> GetReturnt()
         {
             try
@@ -92,7 +129,7 @@ namespace KonyvtarBackEnd.Controllers
                 {
                     if (context != null)
                     {
-                        return Ok(context.LoanHistories.Include(x => x.User).Include(x => x.Book).Where(x => x.Returned == false).Select(x => new NewRecord(x.Book.Id, x.Book.Title, x.User.Id, x.User.Usarname)).ToList());
+                        return Ok(context.LoanHistories.Include(x => x.User).Include(x => x.Book).Where(x => x.Returned == false).Select(x => new Returnednt(x.Book.Id, x.Book.Title, x.User.Id, x.User.Usarname)).ToList());
                     }
                     else
                     {
@@ -108,7 +145,7 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<LoanHistoryDto>> Get(int id)
         {
             try
@@ -144,7 +181,7 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<LoanHistoryDto>> Put(int id, ModifyLoanHistoryDto createOrModifyLoanHistoryDto)
         {
             try
@@ -195,7 +232,7 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<LoanHistoryDto>> Delete(int id)
         {
             try
@@ -233,5 +270,5 @@ namespace KonyvtarBackEnd.Controllers
         }
     }
 
-    internal record NewRecord(uint Id, string Title, uint UserId, string? Usarname);
+    
 }

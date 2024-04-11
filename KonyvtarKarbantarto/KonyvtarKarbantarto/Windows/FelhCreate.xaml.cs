@@ -13,7 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KonyvtarKarbantarto.Dto;
+using Microsoft.Win32;
 using Newtonsoft.Json;
+using System.IO;
+using KonyvtarKarbantarto.Models;
 
 namespace KonyvtarKarbantarto.Windows
 {
@@ -49,6 +52,43 @@ namespace KonyvtarKarbantarto.Windows
             {
 
                 MessageBox.Show("Error! :"+x.Message);
+            }
+        }
+
+        private void ReadFromFile_Click(object sender, RoutedEventArgs e)
+        {
+            WebClient webClient = new WebClient();
+            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+            webClient.Encoding = Encoding.UTF8;
+
+            try
+            {
+                OpenFileDialog open = new OpenFileDialog();
+                open.Multiselect = false;
+                open.DefaultExt = ".txt";
+                open.ShowDialog();
+                string[] data = File.ReadAllLines(open.FileName);
+                Transfer transfer = new Transfer();
+                for (int i = 0; i < data.Length; i++)
+                {
+                    if (i<data.Length-1)
+                    {
+                        transfer.transfer += data[i]+",";
+                    }
+                    else
+                    {
+                        transfer.transfer += data[i];
+                    }
+                    
+                }
+                //MessageBox.Show(JsonConvert.SerializeObject(transfer));
+                MessageBox.Show(webClient.UploadString(connection.Url() + "AOERegister","POST", JsonConvert.SerializeObject(transfer)));
+            }
+
+            catch (Exception r)
+            {
+                MessageBox.Show("Error :" + r.Message);
             }
         }
     }
