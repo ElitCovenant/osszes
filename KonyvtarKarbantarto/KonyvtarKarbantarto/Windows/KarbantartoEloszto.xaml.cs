@@ -1,4 +1,5 @@
 ﻿using KonyvtarKarbantarto.Models;
+using KonyvtarKarbantarto.Windows.Kolcsonzes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +60,13 @@ namespace KonyvtarKarbantarto.Windows
         {
             EgyebKezelo egyeb = new EgyebKezelo(token, "Publisher");
             egyeb.Show();
+            this.Close();
+        }
+
+        private void KolcsonzesSzerk_Click(object sender, RoutedEventArgs e)
+        {
+            KolcsonzesFooldal kolcsonzes = new KolcsonzesFooldal(token);
+            kolcsonzes.Show();
             this.Close();
         }
     }

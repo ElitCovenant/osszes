@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\App.xaml
-101782060590
+12801967742
 
-35-242531979
+382072635583
 29-1246354356
-Login.xaml;Windows\EgyebKezelo.xaml;Windows\EgyebSzerkeszto.xaml;Windows\FelhasznaloEdit.xaml;Windows\FelhCreate.xaml;Windows\Felhszerk.xaml;Windows\KarbantartoEloszto.xaml;Windows\KonyvKezelo.xaml;Windows\KonyvSzerkeszto.xaml;Windows\Konyvletrehozo.xaml;
+Login.xaml;Windows\Egyeb\EgyebKezelo.xaml;Windows\Egyeb\EgyebSzerkeszto.xaml;Windows\Felhasznalo\FelhasznaloEdit.xaml;Windows\Felhasznalo\FelhCreate.xaml;Windows\Felhasznalo\Felhszerk.xaml;Windows\KarbantartoEloszto.xaml;Windows\Kolcsonzes\KolcsonzesAdd.xaml;Windows\Kolcsonzes\KolcsonzesFooldal.xaml;Windows\Konyv\KonyvKezelo.xaml;Windows\Konyv\KonyvSzerkeszto.xaml;Windows\Konyv\Konyvletrehozo.xaml;
 
-False
+True
 

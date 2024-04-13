@@ -21,7 +21,7 @@
     public record LoanHistoryDto(uint Id, int Book_Id, int User_Id, DateTime Date, DateTime Date_End, bool Returned, string Comment);
     public record Returnednt(uint Id, string Title, uint UserId, string? Usarname);
     public record Borrowed(string title,DateTime? returndate);
-    public record CreateLoanHistoryDto(uint Id, uint Book_Id, uint User_Id, uint Deadline, bool Returned, string Comment);
+    public record CreateLoanHistoryDto(uint Id, uint Book_Id, uint User_Id,DateTime StartDate, DateTime Deadline, bool Returned, string Comment);
 
     public record ModifyLoanHistoryDto(uint Id, uint Book_Id, uint User_Id, DateTime Date, DateTime Date_End, bool Returned, string Comment);
 

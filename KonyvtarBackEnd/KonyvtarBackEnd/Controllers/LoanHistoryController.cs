@@ -22,8 +22,8 @@ namespace KonyvtarBackEnd.Controllers
                     Id = createOrModifyLoanHistory.Id,
                     BookId = createOrModifyLoanHistory.Book_Id,
                     UserId = createOrModifyLoanHistory.User_Id,
-                    Date = DateTime.Now,
-                    DateEnd = DateTime.Now.AddDays(createOrModifyLoanHistory.Deadline),
+                    Date = createOrModifyLoanHistory.StartDate,
+                    DateEnd = createOrModifyLoanHistory.Deadline,
                     Returned = false,
                     Comment = createOrModifyLoanHistory.Comment
 

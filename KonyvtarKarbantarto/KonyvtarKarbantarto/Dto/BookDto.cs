@@ -19,7 +19,7 @@ namespace KonyvtarKarbantarto.Dto
         public string cutter_Jelzet { get; set; }
         public uint publisher_Id { get; set; }
         public ushort release_Date { get; set; }
-        public int price { get; set; }
+        public double price { get; set; }
         public string comment { get; set; }
         public string bookImg { get; set; }
         public uint user_Id { get; set; }

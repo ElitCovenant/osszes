@@ -1,0 +1,42 @@
+﻿<Window x:Class="KonyvtarKarbantarto.Windows.Kolcsonzes.KolcsonzesAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KonyvtarKarbantarto.Windows.Kolcsonzes"
+        mc:Ignorable="d"
+        Title="KolcsonzesAdd" Height="330" Width="275">
+    <Grid>
+        <StackPanel HorizontalAlignment="Right">
+            <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label Content="Azon (nem kötelező) :"/>
+                <TextBox Width="100" x:Name="Id" Margin="0 0 10 0"/>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Label Content="KönyvAzon :"/>
+                <ComboBox x:Name="BookId" Width="160"/>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Label Content="Felhasználó :"/>
+                <ComboBox x:Name="UserId" Width="160"/>
+            </StackPanel>
+            <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label Content="Kezdet :"/>
+                <ComboBox x:Name="YearS" Width="70" Margin="0 0 10 0"/>
+                <ComboBox x:Name="MonthS" Width="40" Margin="0 0 10 0"/>
+                <ComboBox x:Name="DayS" Width="40" Margin="0 0 10 0"/>
+            </StackPanel>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Label Content="Határidő :"/>
+                <ComboBox x:Name="YearE" Width="70" Margin="0 0 10 0"/>
+                <ComboBox x:Name="MonthE" Width="40" Margin="0 0 10 0"/>
+                <ComboBox x:Name="DayE" Width="40" Margin="0 0 10 0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Megjegyzés (opcionális) :"/>
+                <TextBox x:Name="Comment" Width="100"/>
+            </StackPanel>
+            <Button x:Name="Add" Content="Hozzáad" Width="150" Click="Add_Click" Margin="10" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</Window>
