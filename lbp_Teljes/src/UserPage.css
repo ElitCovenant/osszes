@@ -1,17 +1,23 @@
+.mail-icon {
+  width: 20px;
+  height: 20px;
+  float: right; /* A kép balra igazítása */
+  margin-left: 10px; /* Távolság hozzáadása a gomb szövege és a kép között */
+}
 .facebook-profile {
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  max-width: 600px;
-  size: 1000%;
+  max-width: 500px;
   margin: 20px auto;
-  right: 10%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: none;
+  border-radius: 12px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #f7f7f7;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.15);
   position: relative;
+  top: 5px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Sima áttűnés az animációhoz */
 }
 
 .profile-header {
@@ -20,10 +26,23 @@
   gap: 20px;
   background-color: #f0f2f5;
   padding: 10px;
-  border-radius: 8px;
-  
+  border-radius: 20px;
+  position: relative; /* Abszolút pozíció miatt szükséges */
 }
-
+.profile-header:hover {
+  background-color: #e6e6e6; /* Sötétebb háttérszín hover állapotban */
+}
+.profile-header::after {
+  content: ''; /* Pszeudo elem */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #ddd; /* Vonal színe és vastagsága */
+  border-radius: 20px; /* Azonos kerekítés, mint a háttérrel */
+  box-sizing: border-box;
+}
 
 .profile-header img.profile-picture {
   width: 100px;
@@ -31,29 +50,51 @@
   border-radius: 50%;
   border: 2px solid #007bff;
 }
+
 .toggleLoan-button {
   cursor: pointer;
-  position: absolute; /* Pozicionálás a szülő .facebook-profile-hez képest */
-  top: 50px; /* A gomb felső margójától való távolság */
-  right: 40px; /* A gomb jobb margójától való távolság */
-  transition: transform 0.2s ease-in-out;
-  padding: 10px 15px; /* Gomb padding beállítása */
-  background-color: #007bff; /* Gomb háttérszíne */
-  color: white; /* Gomb szövegének színe */
-  border: none; /* Eltávolítjuk a keretet */
-  border-radius: 5px; /* Lekerekített sarkok a gombnak */
+  position: relative;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 10px; /* Csökkentett lekerekítés */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  overflow: hidden;
+  margin-top: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Átmenet a háttér- és szövegszín megváltoztatásához */
+}
+
+.toggleLoan-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: width 0.3s ease-out, height 0.3s ease-out, top 0.3s ease-out, left 0.3s ease-out;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
+.toggleLoan-button:hover::after {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
 }
 
 .toggleLoan-button:hover {
-  transform: scale(1.1); /* Nagyítás hover esetén */
-  background-color: #0056b3; /* Sötétebb árnyalatú háttérszín a hover állapotban */
-
+  color: #f7f7f7;
+  background-color: #07b8e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Árnyék a hover eseményre */
 }
 
-.toggleLoan-button:active {
-  background-color: #004080; /* Még sötétebb árnyalatú háttérszín a lenyomott állapotban */
-  transform: scale(0.95); /* Kis méretcsökkenés a lenyomott állapotban, hogy "lenyomott" hatást keltsen */
-}
+
 
 .profile-info, .social-links {
   margin-top: 20px;

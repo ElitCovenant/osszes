@@ -4,7 +4,8 @@
     justify-content: center;
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-left: 220px;
+    margin-left: 100px;
+    max-width: 1000px;
   }
   
   .panel {

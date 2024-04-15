@@ -105,10 +105,10 @@ function BookGallery() {
     <div className="photo">
       <div className="photo__image">
         <Link to="/books">
-          <img src="https://dibook.hu/storage/books/pr_3906/cover-big.jpg" alt="" />
+          <img src="https://p2-ssl.vatera.hu/photos/85/0e/gorog-dramak-e06c_1_big.jpg?v=1" alt="" />
         </Link>
       </div>
-      <div className="photo__name">Jónás<br/>könyve</div>
+      <div className="photo__name">Görög<br/>Drámák</div>
     </div>
   </div>
 </div>
@@ -117,10 +117,10 @@ function BookGallery() {
     <div className="photo">
       <div className="photo__image">
         <Link to="/books">
-          <img src="https://dibook.hu/storage/books/pr_3906/cover-big.jpg" alt="" />
+          <img src="https://lira.erbacdn.net/upload/M_28/rek1/572/1309572.jpg" alt="" />
         </Link>
       </div>
-      <div className="photo__name">Jónás<br/>könyve</div>
+      <div className="photo__name">Magyar<br/>helyesírási szótár</div>
     </div>
   </div>
 </div>
@@ -129,10 +129,10 @@ function BookGallery() {
     <div className="photo">
       <div className="photo__image">
         <Link to="/books">
-          <img src="https://dibook.hu/storage/books/pr_3906/cover-big.jpg" alt="" />
+          <img src="https://moly.hu/system/covers/big/covers_327277.jpg?1416343985" alt="" />
         </Link>
       </div>
-      <div className="photo__name">Jónás<br/>könyve</div>
+      <div className="photo__name">Éjjeli<br/>őrjárat</div>
     </div>
   </div>
 </div>
@@ -144,7 +144,7 @@ function BookGallery() {
           <img src="https://dibook.hu/storage/books/pr_3906/cover-big.jpg" alt="" />
         </Link>
       </div>
-      <div className="photo__name">Jónás<br/>könyve</div>
+      <div className="photo__name">Magyarózdi<br/>toronyalja</div>
     </div>
   </div>
 </div>

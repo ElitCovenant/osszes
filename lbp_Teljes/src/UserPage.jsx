@@ -9,6 +9,8 @@ import teacher1_logo from './img/teacher1_prof_picture.png';
 import teacher2_logo from './img/teacher2_prof_picture.png';
 import Email from './Email';
 import Loan from './Loan';
+import BookHistory from './BookHistory';
+import mailIcon from './img_icons/mail.png'; 
 
 function UserPage() {
   const avatarlogos = [def_logo, teacher1_logo, teacher2_logo, quest1_logo, quest2_logo]
@@ -79,9 +81,11 @@ function UserPage() {
             </div>
           </>
         )}
-        {isAdmin && <button className="toggleLoan-button" onClick={toggleLoan}>Email</button>}
+        {isAdmin && <button className="toggleLoan-button" onClick={toggleLoan}>Send Email <img src={mailIcon} alt="Logout Icon" className="mail-icon" /></button>}
       </div>
       {isAdmin && <Loan/>}
+      <BookHistory bookHistory={["History item 1", "History item 2", "History item 3"]} />
+
       {isLoanVisible && <Email />}
     </div>
   );

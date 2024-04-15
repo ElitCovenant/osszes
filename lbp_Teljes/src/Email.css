@@ -1,19 +1,18 @@
 .panel {
-  width: 50%; /* Szélesebb, hogy jobban elférjenek az elemek */
-  margin: 50px auto; /* Növeljük a felső és alsó margót */
+  max-width: 50%; /* Szélesség csökkentése */
+  margin: 10px auto; /* Felső és alsó margó növelése */
   border: 2px solid #007bff; /* Sötétkék keret */
   padding: 20px;
   background-color: #f9f9f9; /* Világosabb háttérszín */
   border-radius: 8px; /* Lekerekített sarkok */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Doboz árnyék hozzáadása */
-  right: 10%;
   position: relative;
+  left: 22%;
 }
 
-.prepare-message{
+.prepare-message {
   margin-left: 20px;
   position: absolute;
-
 }
 
 .close-panel {
@@ -22,8 +21,6 @@
   bottom: 10px; /* Alsó távolság */
   cursor: pointer; /* Mutató ikon változik, ha fölé viszed az egeret */
 }
-
-
 
 .message-window,
 .email-list-window {
@@ -92,7 +89,7 @@
 
 @media (min-width: 2560px) {
   .panel {
-    max-width: 1200px; /* Nagyobb szélesség */
+    max-width: 1000px; /* Nagyobb szélesség */
     padding: 30px; /* Nagyobb padding */
   }
 }

@@ -1,4 +1,8 @@
-
+.logout-icon {
+  width: 15px; /* Válaszd megfelelő méretre */
+  height: 15px; /* Válaszd megfelelő méretre */
+  
+}
 .navbar {
   background-color: #000000a5;
   padding: 10px;
@@ -92,6 +96,7 @@
   background-color: #007bff; /* Módosítsd a "Log in" gomb háttérszínét */
 }
 
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -104,16 +109,45 @@
   border-radius: 10px;
 }
 
+.dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: 25px;
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #f9f9f9 transparent;
+}
+.dropdown-content a {
+  border-bottom: 1px solid #ccc; /* Szegély a menüpontok között */
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none; /* Utolsó menüpont alatti szegély eltávolítása */
+}
 .dropdown-content a, .profile-button, .login-button {
   display: block;
   padding: 10px 20px; /* Állítsd be a megfelelő padding-et */
   color: #333;
   text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Áttűnés az animációhoz */
 }
 
 .dropdown-content a:hover, .profile-button:hover, .login-button:hover {
-  background-color: #ddd;
-  border-radius: 10px;
+  background-color: #f0f0f0; /* Világosabb háttérszín */
+  border-radius: 10px; /* Kerekített sarkok */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Enyhe árnyékolás */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Sima áttűnés az animációhoz */
+  transform: translateY(-2px); /* Egy kicsit feljebb mozog a hover hatásra */
+}
+.profile-button, .login-button {
+  background-color: transparent; /* Átlátszó háttérszín */
+  border-radius: 5px; /* Kerekített sarkok */
+}
+
+.profile-button:hover, .login-button:hover {
+  color: #fff; /* Szövegszín a hover hatásra */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Áttűnés az animációhoz */
 }
 
 /* Show the dropdown menu on hover */
@@ -206,3 +240,4 @@
     text-align: center;
   }
 }
+

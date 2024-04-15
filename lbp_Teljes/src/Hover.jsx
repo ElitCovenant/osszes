@@ -27,8 +27,10 @@ export const Hover = () => {
 
   // Vissza a tetejére gombra kattintáskor végrehajtott funkció
   const topFunction = () => {
-    document.body.scrollTop = 0; // Safari támogatás
-    document.documentElement.scrollTop = 0; // Chrome, Firefox, IE és Opera támogatás
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Felgördülő animáció bekapcsolása
+    });
   };
 
   // A komponens JSX kódja
