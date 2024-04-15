@@ -36,7 +36,7 @@ namespace KonyvtarBackEnd.Controllers
                         try
                         {
                             context.LoanHistories.Add(UjKolcsonzesTortenet);
-                            context.SaveChanges();
+                            await context.SaveChangesAsync();
                         }
                         catch (Exception e)
                         {
@@ -196,15 +196,15 @@ namespace KonyvtarBackEnd.Controllers
                             valtoztatando.Id = createOrModifyLoanHistoryDto.Id;
                             valtoztatando.BookId = createOrModifyLoanHistoryDto.Book_Id;
                             valtoztatando.UserId = createOrModifyLoanHistoryDto.User_Id;
-                            valtoztatando.Date = createOrModifyLoanHistoryDto.Date;
-                            valtoztatando.DateEnd = createOrModifyLoanHistoryDto.Date_End;
+                            valtoztatando.Date = createOrModifyLoanHistoryDto.StartDate;
+                            valtoztatando.DateEnd = createOrModifyLoanHistoryDto.Deadline;
                             valtoztatando.Returned = createOrModifyLoanHistoryDto.Returned;
                             valtoztatando.Comment = createOrModifyLoanHistoryDto.Comment;
 
                             try
                             {
                                 context.LoanHistories.Update(valtoztatando);
-                                context.SaveChanges();
+                                await context.SaveChangesAsync();
                             }
                             catch (Exception e)
                             {
@@ -232,6 +232,8 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
+        
+
         [HttpDelete("{id}"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<LoanHistoryDto>> Delete(int id)
         {
@@ -246,7 +248,7 @@ namespace KonyvtarBackEnd.Controllers
                         if (kerdezett != null)
                         {
                             context.LoanHistories.Remove(kerdezett);
-                            context.SaveChanges();
+                            await context.SaveChangesAsync();
                             return Ok("A kölcsönzéstörténet eltávolítása sikeresen megtörtént");
                         }
                         else

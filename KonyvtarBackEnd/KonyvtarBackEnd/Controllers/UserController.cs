@@ -71,7 +71,7 @@ namespace KonyvtarBackEnd.Controllers
 
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<FelhasznaloDto>> Get(int id)
         {
             try

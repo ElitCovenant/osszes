@@ -1,4 +1,5 @@
-﻿using KonyvtarKarbantarto.Dto;
+﻿using KonyvtarBackEnd.Models;
+using KonyvtarKarbantarto.Dto;
 using KonyvtarKarbantarto.Models;
 using Newtonsoft.Json;
 using System;
@@ -25,6 +26,7 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
     {
         string token;
         Connection connection = new Connection();
+        List<Book> books = new List<Book>();
         public KolcsonzesAdd(string tok)
         {
             token = tok;
@@ -35,12 +37,12 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
             webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
             webClient.Encoding = Encoding.UTF8;
 
-            for (int i = 2000; i <= DateTime.Now.AddYears(1).Year; i++)
+            for (int i = 2000; i <= DateTime.Now.AddYears(5).Year; i++)
             {
                 YearE.Items.Add(i);
                 YearS.Items.Add(i);
             }
-            YearE.SelectedItem = DateTime.Now.Year;
+            YearE.SelectedItem = DateTime.Now.AddYears(5).Year;
             YearS.SelectedItem = DateTime.Now.Year;
 
             for (int i = 1; i <= 12; i++)
@@ -48,7 +50,7 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                 MonthE.Items.Add(i);
                 MonthS.Items.Add(i);
             }
-            MonthE.SelectedItem = DateTime.Now.Month;
+            MonthE.SelectedItem = 6;
             MonthS.SelectedItem = DateTime.Now.Month;
 
             for (int i = 1; i <= 31; i++)
@@ -56,13 +58,13 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                 DayE.Items.Add(i);
                 DayS.Items.Add(i);
             }
-            DayE.SelectedItem = DateTime.Now.Day;
+            DayE.SelectedItem = 16;
             DayS.SelectedItem = DateTime.Now.Day;
 
-            var books = JsonConvert.DeserializeObject<List<BookDto>>(webClient.DownloadString(connection.Url()+"Book"));
+            books = JsonConvert.DeserializeObject<List<Book>>(webClient.DownloadString(connection.Url() + "Book")).ToList();
             foreach (var book in books)
             {
-                BookId.Items.Add($"{book.id} , {book.title}");
+                BookId.Items.Add($"{book.Id} , {book.Title}");
             }
             BookId.SelectedIndex = 0;
 
@@ -97,31 +99,50 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-            try
+            if (books.First(x => x.Id == Convert.ToInt32(BookId.SelectedItem.ToString().Split(',')[0].Trim())).UserId != 1)
             {
-                LoanHistoryDto history = new LoanHistoryDto()
+                MessageBox.Show("A könyv már ki van kölcsönözve");
+                this.Close();
+            }
+            else
+            {
+                WebClient webClient = new WebClient();
+                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+                webClient.Encoding = Encoding.UTF8;
+                try
                 {
-                    id = 0,
-                    book_Id = Convert.ToInt32(BookId.SelectedItem.ToString().Split(',')[0].Trim()),
-                    user_Id = Convert.ToInt32(UserId.SelectedItem.ToString().Split(',')[0].Trim()),
-                    startDate = $"{YearS.SelectedItem}-{SecurerDate((MonthS.SelectedItem.ToString()))}-{DayS.SelectedItem}",
-                    deadline = $"{YearE.SelectedItem}-{SecurerDate(MonthE.SelectedItem.ToString())}-{DayE.SelectedItem}",
-                    returned = false,
-                    comment = Comment.Text
-                };
+                    LoanHistoryDto history = new LoanHistoryDto()
+                    {
+                        id = 0,
+                        book_Id = Convert.ToInt32(BookId.SelectedItem.ToString().Split(',')[0].Trim()),
+                        user_Id = Convert.ToInt32(UserId.SelectedItem.ToString().Split(',')[0].Trim()),
+                        startDate = $"{YearS.SelectedItem}-{SecurerDate((MonthS.SelectedItem.ToString()))}-{DayS.SelectedItem}",
+                        deadline = $"{YearE.SelectedItem}-{SecurerDate(MonthE.SelectedItem.ToString())}-{DayE.SelectedItem}",
+                        returned = false,
+                        comment = Comment.Text
+                    };
+                        BorrowUserChangeDto borrow = new BorrowUserChangeDto()
+                        {
+                            id = (uint)history.user_Id
+                        };
+                    MessageBox.Show(webClient.UploadString(connection.Url() + "LoanHistory", "POST", JsonConvert.SerializeObject(history)));
 
-                //MessageBox.Show(JsonConvert.SerializeObject(history));
-                MessageBox.Show(webClient.UploadString(connection.Url()+"LoanHistory","POST",JsonConvert.SerializeObject(history)));
+                    webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+
+                    webClient.Encoding = Encoding.UTF8;
+
+                    webClient.UploadString(connection.Url() + "BorrowUserChange/" + history.book_Id.ToString(), "PUT", JsonConvert.SerializeObject(borrow));
+
+                    this.Close();
+                }
+                catch (Exception r)
+                {
+                    MessageBox.Show("Error! :" + r.Message);
+                }
 
             }
-            catch (Exception r)
-            { 
-                MessageBox.Show("Error! :"+r.Message);
-            }
+
         }
     }
 }

@@ -39,6 +39,24 @@ namespace KonyvtarKarbantarto.Windows
             webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
             webClient.Encoding = Encoding.UTF8;
 
+            for (int i = 2000; i <= DateTime.Now.AddYears(1).Year; i++)
+            {
+                Ev.Items.Add(i);
+            }
+            Ev.SelectedItem = DateTime.Now.Year;
+
+            for (int i = 1; i <= 12; i++)
+            {
+                Honap.Items.Add(i);
+            }
+            Honap.SelectedItem = DateTime.Now.Month;
+
+            for (int i = 1; i <= 31; i++)
+            {
+                Nap.Items.Add(i);
+            }
+            Nap.SelectedItem = DateTime.Now.Day;
+
             List<Author> authors = new List<Author>();
 
             authors = JsonConvert.DeserializeObject<List<Author>>(webClient.DownloadString(connection.Url() + "Author")).ToList();
@@ -138,7 +156,7 @@ namespace KonyvtarKarbantarto.Windows
                 webClient.Encoding = Encoding.UTF8;
 
                 book.warehouse_Num = Securer(WarhNum.Text);
-                book.purchase_Date = SecurerDate(Ev.Text).ToString() + "-" + SecurerDate(Honap.Text).ToString() + "-" + SecurerDate(Nap.Text).ToString();
+                book.purchase_Date = Ev.SelectedItem.ToString() + "-" + SecurerDate(Honap.SelectedItem.ToString()).ToString() + "-" + SecurerDate(Nap.SelectedItem.ToString()).ToString();
                 book.author_Id = ComboSplitter(AuthorId);
                 book.title = Title.Text;
                 book.series_Id = ComboSplitter(Series);
@@ -150,7 +168,7 @@ namespace KonyvtarKarbantarto.Windows
                 book.price = Securer(Price.Text);
                 book.comment = Comment.Text;
                 book.user_Id = 1;
-                if (PicPath != null)
+                if (PicPath != null&&Uploading.IsChecked == true)
                 {
                     
                     string ftpUrl = "ftp://ftp.nethely.hu/img";

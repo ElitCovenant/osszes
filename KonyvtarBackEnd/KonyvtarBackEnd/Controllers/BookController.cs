@@ -253,7 +253,7 @@ namespace KonyvtarBackEnd.Controllers
                             try
                             {
                                 context.Books.Update(valtoztatando);
-                                context.SaveChanges();
+                                await context.SaveChangesAsync();
                             }
                             catch (Exception e)
                             {
@@ -265,6 +265,51 @@ namespace KonyvtarBackEnd.Controllers
                         else
                         {
                             return StatusCode(404, "A keresett könyv nem létezik, vagy nincs eltárolva");
+                        }
+                    }
+                    else
+                    {
+                        return StatusCode(503, "A szerver jelenleg nem elérhető");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+
+        }
+
+        [HttpPut("/BorrowUserChange/{id}"), Authorize(Roles = "Admin")]
+        public async Task<ActionResult<BorrowUserChange>> PutBorrowChanger(int id, BorrowUserChange borrow)
+        {
+            try
+            {
+                using (var context = new KonyvtarDbContext())
+                {
+                    if (context != null)
+                    {
+                        var valtoztatando = context.Books.FirstOrDefault(x => x.Id == id);
+                        if (valtoztatando != null)
+                        {
+                            valtoztatando.UserId = borrow.id;
+
+                            try
+                            {
+                                context.Books.Update(valtoztatando);
+                                await context.SaveChangesAsync();
+                            }
+                            catch (Exception e)
+                            {
+                                return BadRequest("Hiba lépett fel : " + e.Message);
+                            }
+
+                            return Ok("Sikeres adatváltoztatás!");
+                        }
+                        else
+                        {
+                            return StatusCode(404, "A keresett kölcsönzéstörténet nem létezik, vagy nincs eltárolva");
                         }
                     }
                     else
@@ -295,7 +340,7 @@ namespace KonyvtarBackEnd.Controllers
                         if (kerdezett != null)
                         {
                             context.Books.Remove(kerdezett);
-                            context.SaveChanges();
+                            await context.SaveChangesAsync();
                             return Ok("A sorozat eltávolítása sikeresen megtörtént");
                         }
                         else

@@ -42,7 +42,7 @@ namespace KonyvtarBackEnd.Controllers
                         try
                         {
                             context.Users.Add(UjFelhasznalo);
-                            context.SaveChanges();
+                            await context.SaveChangesAsync();
                         }
                         catch (Exception e)
                         {

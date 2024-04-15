@@ -21,9 +21,10 @@
     public record LoanHistoryDto(uint Id, int Book_Id, int User_Id, DateTime Date, DateTime Date_End, bool Returned, string Comment);
     public record Returnednt(uint Id, string Title, uint UserId, string? Usarname);
     public record Borrowed(string title,DateTime? returndate);
+    public record BorrowUserChange(uint id);
     public record CreateLoanHistoryDto(uint Id, uint Book_Id, uint User_Id,DateTime StartDate, DateTime Deadline, bool Returned, string Comment);
 
-    public record ModifyLoanHistoryDto(uint Id, uint Book_Id, uint User_Id, DateTime Date, DateTime Date_End, bool Returned, string Comment);
+    public record ModifyLoanHistoryDto(uint Id, uint Book_Id, uint User_Id, DateTime StartDate, DateTime Deadline, bool Returned, string Comment);
 
     public record BookDto(uint Id, int Warehouse_Num, DateTime Purchase_Date, uint Author_Id, string Title, int Series_Id, decimal Isbn_Num, decimal Szakjelzet, string Cutter_Jelzet, uint Publisher_Id, ushort Release_Date, decimal Price, string Comment,string BookImg, uint User_Id);
     public record CreateOrModifyKonyvDto(uint Id, uint Warehouse_Num, DateTime Purchase_Date, uint Author_Id, string Title, uint Series_Id, decimal Isbn_Num, decimal Szakjelzet, string Cutter_Jelzet, uint Publisher_Id, ushort Release_Date, decimal Price, string Comment, string BookImg, uint User_Id);

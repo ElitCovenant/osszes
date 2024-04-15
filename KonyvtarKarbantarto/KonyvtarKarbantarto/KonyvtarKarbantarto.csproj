@@ -121,6 +121,7 @@
     <Compile Include="Dto\AccountImgDto.cs" />
     <Compile Include="Dto\BookDtoUpload.cs" />
     <Compile Include="Dto\BookDto.cs" />
+    <Compile Include="Dto\BorrowUserChangeDto.cs" />
     <Compile Include="Dto\EgyebDto.cs" />
     <Compile Include="Dto\LoanHistoryDto.cs" />
     <Compile Include="Dto\LoginDto.cs" />
@@ -158,6 +159,9 @@
     </Compile>
     <Compile Include="Windows\Kolcsonzes\KolcsonzesAdd.xaml.cs">
       <DependentUpon>KolcsonzesAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Kolcsonzes\KolcsonzesEdit.xaml.cs">
+      <DependentUpon>KolcsonzesEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Kolcsonzes\KolcsonzesFooldal.xaml.cs">
       <DependentUpon>KolcsonzesFooldal.xaml</DependentUpon>
@@ -208,6 +212,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Kolcsonzes\KolcsonzesAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Kolcsonzes\KolcsonzesEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

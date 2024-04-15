@@ -174,7 +174,7 @@ namespace KonyvtarKarbantarto.Windows
                 book.release_Date = SecurerShort(Releasedate.Text);
                 book.price = Securer(Price.Text);
                 book.comment = Comment.Text;
-                book.user_Id = 1;
+                book.user_Id = (uint)oo.UserId;
                 book.bookImg = Picture.Text;
                 MessageBox.Show(JsonConvert.SerializeObject(book));
                 MessageBox.Show(webClient.UploadString(connection.Url() + $"Book/{oo.Id}", "PUT", JsonConvert.SerializeObject(book)));
