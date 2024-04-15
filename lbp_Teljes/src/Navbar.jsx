@@ -8,9 +8,10 @@ import quest1_logo from './img/quest1_prof_picture.png';
 import quest2_logo from './img/quest2_prof_picture.png';
 import teacher1_logo from './img/teacher1_prof_picture.png';
 import teacher2_logo from './img/teacher2_prof_picture.png';
-import logoutIcon from './logout.png'; 
-import settingsIcon from './settings.png'; 
-import userIcon from './user.png'; 
+import logoutIcon from './img_icons/logout.png'; 
+import settingsIcon from './img_icons/settings.png'; 
+import userIcon from './img_icons/user.png'; 
+
 
 const Navbar = () => {
   const avatarlogos = [def_logo,teacher1_logo,teacher2_logo,quest1_logo,quest2_logo]
