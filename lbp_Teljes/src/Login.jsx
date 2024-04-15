@@ -39,32 +39,43 @@ const Login = ({ isLoggedIn, toggleLogin = () => {} }) => {
         <div className="formbg-outer">
           <div className="formbg">
             <div className="formbg-inner padding-horizontal--48">
-              <span className="padding-bottom--15">Sign in to your account</span>
+              <span className="padding-bottom--15">
+                <p className='login-name' >Sign in to your account</p>
+              </span>
               <form onSubmit={login}>
+                
+              <div className="field padding-bottom--24">
+              <label className="userName" htmlFor="userName">Email</label>
+              <input
+                type="text"
+                name="userName"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                placeholder="Enter your email..."
+              />
+            </div>
+            <div className="field padding-bottom--24">
+              <label className="password" htmlFor="password">Password</label>
+              <input
+                type={passwordVisible ? 'text' : 'password'}
+                name="hash"
+                value={hash}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password..."
+              />
+              <div className="field-checkbox padding-top--8">
+                <label className="Show-Password">
+                  <input 
+                    type="checkbox"
+                    checked={passwordVisible}
+                    onChange={() => setPasswordVisible(!passwordVisible)}
+                  /> Show Password
+                </label>
+              </div>
+            </div>
+
                 <div className="field padding-bottom--24">
-                  <label htmlFor="userName">Email</label>
-                  <input type="text" name="userName" value={userName} onChange={(e) => setUserName(e.target.value)} />
-                </div>
-                <div className="field padding-bottom--24">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type={passwordVisible ? 'text' : 'password'}
-                    name="hash"
-                    value={hash}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <div className="field-checkbox padding-top--8">
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={passwordVisible}
-                        onChange={() => setPasswordVisible(!passwordVisible)}
-                      /> Show Password
-                    </label>
-                  </div>
-                </div>
-                <div className="field padding-bottom--24">
-                  <input type="submit" name="submit" value="Sign in" />
+                  <button type="submit" className="submit">Sign in</button>
                 </div>
               </form>
             </div>
@@ -73,6 +84,7 @@ const Login = ({ isLoggedIn, toggleLogin = () => {} }) => {
       </div>
     </div>
   );
+  
 };
 
 export default Login;
