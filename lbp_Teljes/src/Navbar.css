@@ -1,4 +1,8 @@
-
+.logout-icon {
+  width: 15px; /* Válaszd megfelelő méretre */
+  height: 15px; /* Válaszd megfelelő méretre */
+  
+}
 .navbar {
   background-color: #000000a5;
   padding: 10px;
@@ -226,3 +230,4 @@
     text-align: center;
   }
 }
+

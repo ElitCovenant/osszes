@@ -8,6 +8,9 @@ import quest1_logo from './img/quest1_prof_picture.png';
 import quest2_logo from './img/quest2_prof_picture.png';
 import teacher1_logo from './img/teacher1_prof_picture.png';
 import teacher2_logo from './img/teacher2_prof_picture.png';
+import logoutIcon from './logout.png'; 
+import settingsIcon from './settings.png'; 
+import userIcon from './user.png'; 
 
 const Navbar = () => {
   const avatarlogos = [def_logo,teacher1_logo,teacher2_logo,quest1_logo,quest2_logo]
@@ -125,12 +128,12 @@ const Navbar = () => {
               <div className="dropdown-content">
                 {isLoggedIn ? (
                   <>
-                    <Link to="/UserPage">My Profile</Link>
-                    <Link to="/settings">Settings</Link>
-                    <Link to="/" onClick={handleLogout}>Logout</Link>
+                    <Link to="/UserPage"><img src={userIcon} alt="Logout Icon" className="logout-icon" /> My Profile</Link>
+                    <Link to="/settings"><img src={settingsIcon} alt="Logout Icon" className="logout-icon" /> Settings</Link>
+                    <Link to="/" onClick={handleLogout}><img src={logoutIcon} alt="Logout Icon" className="logout-icon" /> Logout</Link>
                   </>
                 ) : (
-                  <Link to="/login">Log in</Link>
+                  <Link to="/login"><img src={userIcon} alt="Logout Icon" className="logout-icon" /> Log in</Link>
                   
                 )}
               </div>
