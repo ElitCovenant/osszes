@@ -1,9 +1,9 @@
 .facebook-profile {
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  max-width: 600px;
-  size: 1000%;
+  max-width: 500px;
+  size: 900%;
   margin: 20px auto;
-  right: 10%;
+  left: 0%;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
@@ -12,6 +12,7 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: relative;
+  top: 5px;
 }
 
 .profile-header {

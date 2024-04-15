@@ -1,0 +1,69 @@
+.book-history-container {
+    max-width: 360px;
+    margin: 40px auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #afafaf;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 70%;
+    margin-top: -12%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .select-all-tab {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .history-items-container {
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  
+  .history-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .history-item input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+
+  
+  .history-info {
+    font-size: 15px;
+  }
+  
+  #bookhistoryname {
+    margin-right: 10px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    /* Ez a médialekérdezés úgy van beállítva, hogy a stílusok alkalmazva legyenek, ha a képernyő szélessége 768px vagy annál kisebb */
+    .book-history-container {
+      margin: 20px auto; /* Kisebb margó a kisebb készülékekhez */
+      padding: 10px; /* Kisebb padding a kisebb készülékekhez */
+      max-width: 95%; /* Maximális szélesség beállítása a kisebb készülékekhez */
+    }
+  
+    .select-all-tab {
+      margin-bottom: 10px; /* Kisebb margó a kisebb készülékekhez */
+    }
+  
+    .history-info {
+      font-size: 14px; /* Kisebb betűméret a kisebb készülékekhez */
+    }
+  }
