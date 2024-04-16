@@ -282,3 +282,23 @@
   float: left; /* A kép balra igazítása */
   margin-left: 20px;
 }
+.maintain-button{
+  margin-left: 342px;
+  background: none;
+  border: none;
+  padding: 0; 
+}
+.maintain-button:focus {
+  outline: none; /* Ha meg szeretnéd távolítani az alapértelmezett focus körvonalat */
+}
+.maintain-icon{
+  width: 20px;
+  height: 20px;
+  float: right; /* A kép balra igazítása */
+  margin-left: 20px;
+}
+.maintain-icon:hover{
+  background-color: #dfe0e0;
+  border-radius: 50%; /* Kerekítés */
+  padding: 1px; /* Opcionális: adjunk némi térközt az ikon körül */
+}
