@@ -31,22 +31,15 @@ namespace KonyvtarKarbantarto.Windows
             token = tok;
             InitializeComponent();
         }
-        Connection connection = new Connection();
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
             try
             {
                 Register register = new Register();
                 register.userName = Email_Adress.Text.ToLower().Trim()+"@kkszki.hu";
                 register.hash = Password.Text;
-                string result = webClient.UploadString(connection.Url() + "Register", "POST", JsonConvert.SerializeObject(register));
-                MessageBox.Show(result);
-
+                MessageBox.Show(CRUD.RegisterUser(token,register));
+                this.Close();
             }
             catch (Exception x)
             {
@@ -57,11 +50,6 @@ namespace KonyvtarKarbantarto.Windows
 
         private void ReadFromFile_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
             try
             {
                 OpenFileDialog open = new OpenFileDialog();
@@ -79,11 +67,9 @@ namespace KonyvtarKarbantarto.Windows
                     else
                     {
                         transfer.transfer += data[i];
-                    }
-                    
+                    }                
                 }
-                //MessageBox.Show(JsonConvert.SerializeObject(transfer));
-                MessageBox.Show(webClient.UploadString(connection.Url() + "AOERegister","POST", JsonConvert.SerializeObject(transfer)));
+                MessageBox.Show(CRUD.AOEregister(token,transfer));
             }
 
             catch (Exception r)

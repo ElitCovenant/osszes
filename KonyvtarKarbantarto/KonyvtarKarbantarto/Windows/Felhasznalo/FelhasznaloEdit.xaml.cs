@@ -26,8 +26,6 @@ namespace KonyvtarKarbantarto.Windows
     {
         string token;
         UserEditDto editenro = new UserEditDto();
-        uint id;
-        Connection connection = new Connection();
         public FelhasznaloEdit(string tok,User user)
         {
             editenro.id = user.Id;
@@ -36,7 +34,6 @@ namespace KonyvtarKarbantarto.Windows
             editenro.userName = user.Usarname;
             editenro.id_Rule = user.IdRule;
             editenro.id_Account_Image = user.IdAccountImg;
-            id = user.Id;
             token = tok;
 
             InitializeComponent();
@@ -54,7 +51,6 @@ namespace KonyvtarKarbantarto.Windows
                     E_Ev.SelectedItem = i;
                 }
             }
-
 
             for (int i = 1; i <= 12; i++)
             {
@@ -86,14 +82,8 @@ namespace KonyvtarKarbantarto.Windows
 
             Email.Text = user.Usarname;
 
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
 
-            string converter = webClient.DownloadString(connection.Url() + "Rule");
-            
-            var jog = JsonConvert.DeserializeObject<List<RulesDto>>(converter).ToList();
+            var jog = CRUD.GetRules(token);
             for (int i = 0; i < jog.Count; i++)
             {
                 JogComb.Items.Add(jog[i].Id + "-" + jog[i].Name);
@@ -105,9 +95,7 @@ namespace KonyvtarKarbantarto.Windows
                 
             }
             
-            converter = webClient.DownloadString(connection.Url() + "GetData");
-            
-            List<AccountImgDto> imgs = JsonConvert.DeserializeObject<List<AccountImgDto>>(converter).ToList();
+            List<AccountImgDto> imgs = CRUD.GetProfPics(token);
             for (int i = 0; i < imgs.Count; i++)
             {
                 AccountComb.Items.Add(imgs[i].Id + "-" + imgs[i].ImgName);
@@ -142,25 +130,15 @@ namespace KonyvtarKarbantarto.Windows
 
         private async void Edit_Click(object sender, RoutedEventArgs e)
         {
-
-
             try
             {
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-                webClient.Encoding = Encoding.UTF8;
-
-                
                 editenro.userName = Email.Text;
                 editenro.membershipStart = Ev.SelectedItem.ToString()+"-"+SecurerDate(Honap.SelectedItem.ToString())+"-"+SecurerDate(Nap.SelectedItem.ToString());
                 editenro.membershipEnd = E_Ev.SelectedItem.ToString() + "-" + SecurerDate(E_Honap.SelectedItem.ToString()) + "-" + SecurerDate(E_Nap.SelectedItem.ToString());
                 editenro.id_Rule = Convert.ToInt32(JogComb.SelectedItem.ToString().Split('-')[0]);
                 editenro.id_Account_Image = Convert.ToInt32(AccountComb.SelectedItem.ToString().Split('-')[0]);
                 
-
-                string result = webClient.UploadString(connection.Url() + $"User/{id}", "PUT", JsonConvert.SerializeObject(editenro));
-                MessageBox.Show(result);
+                MessageBox.Show(CRUD.PutUser(token,editenro));
                 this.Close();
             }
             catch (Exception x)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonyvtarKarbantarto.Dto
 {
-    internal class AccountImgDto
+    public class AccountImgDto
     {
         public int Id { get; set; }
         public string ImgName { get; set; }

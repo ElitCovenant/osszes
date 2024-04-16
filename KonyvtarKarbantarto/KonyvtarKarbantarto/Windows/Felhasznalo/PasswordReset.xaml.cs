@@ -25,8 +25,7 @@ namespace KonyvtarKarbantarto.Windows.Felhasznalo
     {
         string token;
         User resetpassword;
-        Connection connection = new Connection();
-        public PasswordReset(string tok,User user)
+        public PasswordReset(string tok, User user)
         {
             token = tok;
             resetpassword = user;
@@ -35,21 +34,18 @@ namespace KonyvtarKarbantarto.Windows.Felhasznalo
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
+            
             try
             {
                 UserPasswordReset passwordReset = new UserPasswordReset() { hash = NewPassword.Text };
-                MessageBox.Show(webClient.UploadString(connection.Url() + "jelszovaltas/" + resetpassword.Id, "PUT", JsonConvert.SerializeObject(passwordReset)));
+                MessageBox.Show(CRUD.PasswordReset(token,passwordReset,resetpassword.Id));
                 this.Close();
             }
             catch (Exception h)
             {
-                MessageBox.Show("Error! : "+h.Message);
+                MessageBox.Show("Error! : " + h.Message);
             }
-            
+
         }
     }
 }

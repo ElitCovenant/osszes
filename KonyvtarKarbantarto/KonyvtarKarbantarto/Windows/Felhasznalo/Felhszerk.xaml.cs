@@ -31,15 +31,7 @@ namespace KonyvtarKarbantarto.Windows
             InitializeComponent();
             try
             {
-                List<User> users = new List<User>();
-
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
-                webClient.Encoding = Encoding.UTF8;
-                string result = webClient.DownloadString(connection.Url() + "User");
-                users = JsonConvert.DeserializeObject<List<User>>(result).ToList();
-                //MessageBox.Show(result);
-                Griddo.ItemsSource = users;
+                Griddo.ItemsSource = CRUD.GetUsers(token);
                 Griddo.Items.Refresh();
             }
             catch (Exception r)
@@ -47,20 +39,11 @@ namespace KonyvtarKarbantarto.Windows
                 MessageBox.Show("Error : " + r.Message);
             }
         }
-        Connection connection = new Connection();
         private void GetData_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
-            webClient.Encoding = Encoding.UTF8;
             try
             {
-                List<User> users = new List<User>();
-                
-                string result =  webClient.DownloadString(connection.Url() + "User");
-                users = JsonConvert.DeserializeObject<List<User>>(result).ToList();
-                //MessageBox.Show(result);
-                Griddo.ItemsSource = users;
+                Griddo.ItemsSource = CRUD.GetUsers(token);
                 Griddo.Items.Refresh();
             }
             catch (Exception r)
@@ -73,7 +56,9 @@ namespace KonyvtarKarbantarto.Windows
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             FelhCreate create = new FelhCreate(token);
-            create.Show();
+            create.ShowDialog();
+            Griddo.ItemsSource = CRUD.GetUsers(token);
+            Griddo.Items.Refresh();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -89,30 +74,21 @@ namespace KonyvtarKarbantarto.Windows
             {
                 FelhasznaloEdit edit = new FelhasznaloEdit(token, Griddo.SelectedItem as User);
                 edit.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Nincs kijelölve semmi.");
+                Griddo.ItemsSource = CRUD.GetUsers(token);
+                Griddo.Items.Refresh();
             }
             
         }
 
         private void PReset_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
             if (Griddo.SelectedItem != null)
             {
                 PasswordReset passwordReset = new PasswordReset(token,Griddo.SelectedItem as User);
                 passwordReset.ShowDialog();
             }
-            string result = webClient.DownloadString(connection.Url() + "User");
-            var users = JsonConvert.DeserializeObject<List<User>>(result).ToList();
             //MessageBox.Show(result);
-            Griddo.ItemsSource = users;
+            Griddo.ItemsSource = CRUD.GetUsers(token);
             Griddo.Items.Refresh();
         }
     }

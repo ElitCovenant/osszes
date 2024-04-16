@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonyvtarKarbantarto.Dto
 {
-    internal class Register
+    public class Register
     {
         public string userName { get; set; }
         public string hash { get; set; }
