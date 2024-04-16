@@ -241,6 +241,11 @@
   float: right; /* A kép balra igazítása */
   margin-left: 20px;
 }
+.info-icon:hover{
+  background-color: #dfe0e0;
+  border-radius: 50%; /* Kerekítés */
+  padding: 1px; /* Opcionális: adjunk némi térközt az ikon körül */
+}
 .info-button:focus {
   outline: none; /* Ha meg szeretnéd távolítani az alapértelmezett focus körvonalat */
 }
