@@ -20,6 +20,11 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Sima áttűnés az animációhoz */
 }
 
+.facebook-profile:hover {
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
 .profile-header {
   display: flex;
   align-items: center;

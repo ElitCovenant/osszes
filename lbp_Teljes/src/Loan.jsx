@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './Loan.css';
 import axios from 'axios'; // Import axios for making HTTP requests
+import mailIcon from './img_icons/mail.png'; 
+import loanIcon from './img_icons/loanbook.png'; 
+import infoIcon from './img_icons/information.png'; 
+import exampleIcon from './img_icons/example.png'; 
+import { ToastContainer, toast } from 'react-toastify'; // Importáljuk a ToastContainer-t és a toast függvényt
+import 'react-toastify/dist/ReactToastify.css'; // Importáljuk a Toast styling-ot
 
 const Loan = () => {
   const [emails, setEmails] = useState([]);
   const [checkedStatus, setCheckedStatus] = useState({});
   const [selectAllChecked, setSelectAllChecked] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Állapot a modális ablak megjelenítéséhez
+
+  // Információs panel megjelenítésének kezelése
+  const toggleInfoPanel = () => {
+    setShowModal(!showModal); // Állapot beállítása a modális ablak megjelenítéséhez
+  };
 
   useEffect(() => {
     // Fetch data from the endpoint
@@ -73,19 +85,44 @@ const Loan = () => {
         });
       }
     });
+  
+    // Reset all checkboxes to unchecked state
+    setCheckedStatus({});
+  
+    // Show success message using Toastify
+    toast.success('All selected emails now sent');
   };
 
   return (
     <div className="loan-container">
       <div className="select-all-tab">
-        <h3 id='loanname'>Loan History</h3>
         <input
           type="checkbox"
+          className="styled-checkbox"
           checked={selectAllChecked}
           onChange={toggleSelectAll}
         />
-        <label>Összes kijelölése</label>
+        <label id="select-all-label">Select all</label>
+        <button className="info-button" onClick={toggleInfoPanel}>
+          <img src={infoIcon} alt="Info Icon" className="info-icon" />
+        </button>
+        <h3 id='loanname'>Loan History <img src={loanIcon} alt="Logout Icon" className="loanbook-icon" /></h3>
       </div>
+      {showModal && (
+  <div className="modal">
+    <div className="modal-content">
+      <button className="close-button" onClick={toggleInfoPanel}>&times;</button>
+      <div className='info-tag'>
+        <img src={infoIcon} alt="Logout Icon" className="example-icon" />
+        Here are the book borrowings. In the first part, you can find the borrower's email, and in the second part, you can find the borrowed book.
+      </div>
+      <div className='info-tag'>
+        <img src={exampleIcon} alt="Logout Icon" className="example-icon" />
+        Examples: example@kkszki.hu - ExampleBook
+      </div>
+    </div>
+  </div>
+)}
       <div className="emails-container">
         {emails.map((email, index) => (
           <div key={index} className="email-item">
@@ -99,8 +136,8 @@ const Loan = () => {
           </div>
         ))}
       </div>
-
-      <button onClick={sendMessage} className="send-message">Üzenet küldése</button>
+      <ToastContainer />
+      <button onClick={sendMessage} className="send-message">Send Email(s) <img src={mailIcon} alt="Logout Icon" className="mail-icon" /></button>
     </div>
   );
 };
