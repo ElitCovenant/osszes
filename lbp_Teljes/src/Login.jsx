@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import { ToastContainer, toast } from 'react-toastify'; // Importáljuk a ToastContainer-t és a toast függvényt
+import 'react-toastify/dist/ReactToastify.css'; // Importáljuk a Toast styling-ot
+
 const Login = ({ isLoggedIn, toggleLogin = () => {} }) => {
   const [userName, setUserName] = useState('');
   const [hash, setPassword] = useState('');
@@ -20,18 +23,21 @@ const Login = ({ isLoggedIn, toggleLogin = () => {} }) => {
       const data = await response.json();
       if (response.ok && data.troken) {
         localStorage.setItem('authToken', data.troken);
-        toggleLogin();
+        toggleLogin(true);
         navigate('/');
       } else {
         console.error('Bejelentkezés sikertelen, válasz státusz:', response.status);
+        toast.error('Login failed. Please try again!'); // Toast hívása sikertelen bejelentkezés esetén
       }
     } catch (error) {
       console.error('Hiba történt a bejelentkezés során:', error);
+      toast.error('Login failed. Please try again!'); // Toast hívása sikertelen bejelentkezés esetén
     }
   };
 
   return (
     <div className="login-root">
+      <ToastContainer /> {/* A ToastContainer komponens megjeleníti a toast-eket */}
       <div className="box-root padding-top--24 flex-flex flex-direction--column" style={{ flexGrow: 1, zIndex: 9 }}>
         <div className="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
           <h1>LibraryLogin</h1>
