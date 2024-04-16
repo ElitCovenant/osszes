@@ -1,4 +1,5 @@
 ﻿using KonyvtarBackEnd.Models;
+using KonyvtarKarbantarto.Dto;
 using KonyvtarKarbantarto.Models;
 using Newtonsoft.Json;
 using System;
@@ -26,9 +27,21 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
         string token;
         Connection connection = new Connection();
         List<Book> books = new List<Book>();
-        public KolcsonzesEdit(string tok, LoanHistory loan)
+        LoanHistoryDto history = new LoanHistoryDto();
+        public KolcsonzesEdit(string tok, LoanHistory putloan)
         {
             token = tok;
+            history = new LoanHistoryDto
+            {
+                id = (int)putloan.Id,
+                book_Id = (int)putloan.BookId,
+                user_Id = (int)putloan.UserId,
+                startDate = DateFormer(putloan.Date.ToString()),
+                deadline = DateFormer(putloan.DateEnd.ToString()),
+                returned = putloan.Returned,
+                comment = putloan.Comment
+
+            };
             InitializeComponent();
 
             WebClient webClient = new WebClient();
@@ -36,19 +49,19 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
             webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
             webClient.Encoding = Encoding.UTF8;
 
-            MessageBox.Show($"{loan.Date.ToString().Split('.')[0].Trim()}");
+            MessageBox.Show($"{putloan.Date.ToString().Split('.')[0].Trim()}");
 
             for (int i = 2000; i <= DateTime.Now.AddYears(5).Year; i++)
             {
                 YearE.Items.Add(i);
-                if (loan.DateEnd.ToString().Split('.')[0].Trim() == i.ToString())
+                if (Convert.ToInt32(putloan.DateEnd.ToString().Split('.')[0]) == i)
                 {
-                    YearE.SelectedIndex = i;
+                    YearE.SelectedItem = i;
                 }
                 YearS.Items.Add(i);
-                if (loan.Date.ToString().Split('.')[0].Trim() == i.ToString())
+                if (Convert.ToInt32(putloan.Date.ToString().Split('.')[0].Trim()) == i)
                 {
-                    YearS.SelectedIndex = i;
+                    YearS.SelectedItem = i;
                 }
             }
 
@@ -57,28 +70,28 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
             for (int i = 1; i <= 12; i++)
             {
                 MonthE.Items.Add(i);
-                if (loan.DateEnd.ToString().Split('.')[1].Trim() == i.ToString())
+                if (Convert.ToInt32(putloan.DateEnd.ToString().Split('.')[1].Trim()) == i)
                 {
-                    MonthE.SelectedIndex = i;
+                    MonthE.SelectedItem = i;
                 }
                 MonthS.Items.Add(i);
-                if (loan.Date.ToString().Split('.')[1].Trim() == i.ToString())
+                if (Convert.ToInt32(putloan.Date.ToString().Split('.')[1].Trim()) == i)
                 {
-                    MonthS.SelectedIndex = i;
+                    MonthS.SelectedItem = i;
                 }
             }
 
             for (int i = 1; i <= 31; i++)
             {
                 DayE.Items.Add(i);
-                if (loan.DateEnd.ToString().Split('.')[2].Trim() == i.ToString())
+                if (Convert.ToInt32(putloan.DateEnd.ToString().Split('.')[2].Trim()) == i)
                 {
-                    DayE.SelectedIndex = i;
+                    DayE.SelectedItem = i;
                 }
                 DayS.Items.Add(i);
-                if (loan.Date.ToString().Split('.')[2].Trim() == i.ToString())
+                if (Convert.ToInt32(putloan.Date.ToString().Split('.')[2].Trim()) == i)
                 {
-                    DayS.SelectedIndex = i;
+                    DayS.SelectedItem = i;
                 }
             }
 
@@ -87,19 +100,60 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
             {
                 BookId.Items.Add($"{book.Id} , {book.Title}");
             }
-            BookId.SelectedItem = $"{loan.BookId} , {books.FirstOrDefault(x => x.Id == loan.BookId).Title}";
+            BookId.SelectedItem = $"{putloan.BookId} , {books.FirstOrDefault(x => x.Id == putloan.BookId).Title}";
 
             var users = JsonConvert.DeserializeObject<List<User>>(webClient.DownloadString(connection.Url() + "User"));
             foreach (var user in users)
             {
                 UserId.Items.Add($"{user.Id} , {user.Usarname}");
             }
-            UserId.SelectedItem = $"{loan.UserId} , {users.FirstOrDefault(x=>x.Id == loan.UserId).Usarname}";
+            UserId.SelectedItem = $"{putloan.UserId} , {users.FirstOrDefault(x => x.Id == putloan.UserId).Usarname}";
+        }
+
+        public static string DateFormer(string g)
+        {
+            return $"{g.Split('.')[0].Trim()}-{g.Split('.')[1].Trim()}-{g.Split('.')[2].Trim()}";
+        }
+
+        public static string SecurerDate(string c)
+        {
+            if (int.TryParse(c, out int g))
+            {
+                if (g < 10 && !c.Contains('0'))
+                {
+                    return 0 + c;
+                }
+                else
+                {
+                    return c;
+                }
+
+            }
+            else
+            {
+                return "00";
+            }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            WebClient webClient = new WebClient();
+            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+            webClient.Encoding = Encoding.UTF8;
 
+            LoanHistoryDto loan = new LoanHistoryDto() { 
+                id = history.id,
+                book_Id = Convert.ToInt32(BookId.SelectedItem.ToString().Split(',')[0].Trim()),
+                user_Id = Convert.ToInt32(UserId.SelectedItem.ToString().Split(',')[0].Trim()),
+                startDate = $"{YearS.SelectedItem}-{SecurerDate((MonthS.SelectedItem.ToString()))}-{DayS.SelectedItem}",
+                deadline = $"{YearE.SelectedItem}-{SecurerDate(MonthE.SelectedItem.ToString())}-{DayE.SelectedItem}",
+                returned = history.returned,
+                comment = Comment.Text
+            };
+
+            MessageBox.Show(webClient.UploadString(connection.Url() + "LoanHistory/"+history.id, "PUT", JsonConvert.SerializeObject(loan)));
+            this.Close();
         }
     }
 }

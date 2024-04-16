@@ -41,13 +41,49 @@ namespace KonyvtarKarbantarto.Windows
 
             InitializeComponent();
 
-            Ev.Text = DateFormer(editenro.membershipStart).Split('-')[0];
-            Honap.Text = DateFormer(editenro.membershipStart).Split('-')[1];
-            Nap.Text = DateFormer(editenro.membershipStart).Split('-')[2];
+            for (int i = 2000; i <= DateTime.Now.AddYears(5).Year; i++)
+            {
+                Ev.Items.Add(i);
+                if (Convert.ToInt32(editenro.membershipStart.ToString().Split('.')[0]) == i)
+                {
+                    Ev.SelectedItem = i;
+                }
+                E_Ev.Items.Add(i);
+                if (Convert.ToInt32(editenro.membershipEnd.ToString().Split('.')[0].Trim()) == i)
+                {
+                    E_Ev.SelectedItem = i;
+                }
+            }
 
-            E_Ev.Text = DateFormer(editenro.membershipEnd).Split('-')[0];
-            E_Honap.Text = DateFormer(editenro.membershipEnd).Split('-')[1];
-            E_Nap.Text = DateFormer(editenro.membershipEnd).Split('-')[2];
+
+            for (int i = 1; i <= 12; i++)
+            {
+                Honap.Items.Add(i);
+                if (Convert.ToInt32(editenro.membershipStart.ToString().Split('.')[1].Trim()) == i)
+                {
+                    Honap.SelectedItem = i;
+                }
+                E_Honap.Items.Add(i);
+                if (Convert.ToInt32(editenro.membershipEnd.ToString().Split('.')[1].Trim()) == i)
+                {
+                    E_Honap.SelectedItem = i;
+                }
+            }
+
+            for (int i = 1; i <= 31; i++)
+            {
+                Nap.Items.Add(i);
+                if (Convert.ToInt32(editenro.membershipStart.ToString().Split('.')[2].Trim()) == i)
+                {
+                    Nap.SelectedItem = i;
+                }
+                E_Nap.Items.Add(i);
+                if (Convert.ToInt32(editenro.membershipEnd.ToString().Split('.')[2].Trim()) == i)
+                {
+                    E_Nap.SelectedItem = i;
+                }
+            }
+
             Email.Text = user.Usarname;
 
             WebClient webClient = new WebClient();
@@ -84,31 +120,23 @@ namespace KonyvtarKarbantarto.Windows
 
         }
 
-        public static string DateFormer(string cucc)
+        public static string SecurerDate(string c)
         {
-            if (cucc.Contains('.'))
+            if (int.TryParse(c, out int g))
             {
-                string[] partone = cucc.Split(' ');
-
-                return partone[0].Replace('.', ' ').Trim() + "-" + partone[1].Replace('.', ' ').Trim() + "-" + partone[2].Replace('.', ' ').Trim();
+                if (g < 10 && !c.Contains('0'))
+                {
+                    return 0 + c;
+                }
+                else
+                {
+                    return c;
+                }
 
             }
             else
             {
-                return cucc;
-            }
-            
-        }
-
-        public static string DateSecure(string cucc)
-        {
-            if (int.TryParse(cucc,out int D))
-            {
-                return cucc;
-            }
-            else
-            {
-                return "0000";
+                return "00";
             }
         }
 
@@ -125,15 +153,15 @@ namespace KonyvtarKarbantarto.Windows
 
                 
                 editenro.userName = Email.Text;
-                editenro.membershipStart = DateSecure(Ev.Text)+"-"+DateSecure(Honap.Text)+"-"+DateSecure(Nap.Text);
-                editenro.membershipEnd = DateSecure(E_Ev.Text) + "-" + DateSecure(E_Honap.Text) + "-" + DateSecure(E_Nap.Text);
+                editenro.membershipStart = Ev.SelectedItem.ToString()+"-"+SecurerDate(Honap.SelectedItem.ToString())+"-"+SecurerDate(Nap.SelectedItem.ToString());
+                editenro.membershipEnd = E_Ev.SelectedItem.ToString() + "-" + SecurerDate(E_Honap.SelectedItem.ToString()) + "-" + SecurerDate(E_Nap.SelectedItem.ToString());
                 editenro.id_Rule = Convert.ToInt32(JogComb.SelectedItem.ToString().Split('-')[0]);
                 editenro.id_Account_Image = Convert.ToInt32(AccountComb.SelectedItem.ToString().Split('-')[0]);
-                MessageBox.Show(JsonConvert.SerializeObject(editenro));
+                
 
                 string result = webClient.UploadString(connection.Url() + $"User/{id}", "PUT", JsonConvert.SerializeObject(editenro));
-                MessageBox.Show(DateTime.Now.ToString());
-
+                MessageBox.Show(result);
+                this.Close();
             }
             catch (Exception x)
             {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KonyvtarKarbantarto.Windows"
         mc:Ignorable="d"
-        Title="FelhasznaloEdit" Height="320" Width="500">
+        Title="FelhasznaloEdit" Height="280" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -16,23 +16,17 @@
                 <Label Content="Email"/>
                 <TextBox x:Name="Email" Width="150"/>
             </StackPanel>
-            <Label Content="Kezdés:"/>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Év: "/>
-                <TextBox x:Name="Ev" Width="50"/>
-                <Label Content="Hónap: "/>
-                <TextBox x:Name="Honap" Width="50"/>
-                <Label Content="Nap: "/>
-                <TextBox x:Name="Nap" Width="50"/>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Label Content="Kezdés:"/>
+                <ComboBox x:Name="Ev" Width="80"/>
+                <ComboBox x:Name="Honap" Width="50" Margin="10 0 10 0"/>
+                <ComboBox x:Name="Nap" Width="50"/>
             </StackPanel>
-            <Label Content="Távozás:"/>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Év: "/>
-                <TextBox x:Name="E_Ev" Width="50"/>
-                <Label Content="Hónap: "/>
-                <TextBox x:Name="E_Honap" Width="50"/>
-                <Label Content="Nap: "/>
-                <TextBox x:Name="E_Nap" Width="50"/>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Label Content="Távozás:"/>
+                <ComboBox x:Name="E_Ev" Width="80"/>
+                <ComboBox x:Name="E_Honap" Width="50" Margin="10 0 10 0"/>
+                <ComboBox x:Name="E_Nap" Width="50"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="34 10 10 10">
                 <Label Content="Jogosultság"/>

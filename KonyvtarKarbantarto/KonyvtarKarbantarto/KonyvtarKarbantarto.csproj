@@ -118,6 +118,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Connection.cs" />
+    <Compile Include="CRUD.cs" />
     <Compile Include="Dto\AccountImgDto.cs" />
     <Compile Include="Dto\BookDtoUpload.cs" />
     <Compile Include="Dto\BookDto.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Dto\Token.cs" />
     <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Dto\UserEditDto.cs" />
+    <Compile Include="Dto\UserPasswordReset.cs" />
     <Compile Include="Models\AccountImg.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
@@ -153,6 +155,9 @@
     </Compile>
     <Compile Include="Windows\Felhasznalo\Felhszerk.xaml.cs">
       <DependentUpon>Felhszerk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Felhasznalo\PasswordReset.xaml.cs">
+      <DependentUpon>PasswordReset.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\KarbantartoEloszto.xaml.cs">
       <DependentUpon>KarbantartoEloszto.xaml</DependentUpon>
@@ -206,6 +211,10 @@
     <Page Include="Windows\Felhasznalo\Felhszerk.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Felhasznalo\PasswordReset.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\KarbantartoEloszto.xaml">
       <Generator>MSBuild:Compile</Generator>

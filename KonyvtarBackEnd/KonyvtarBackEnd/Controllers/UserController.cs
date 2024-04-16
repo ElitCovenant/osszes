@@ -157,7 +157,7 @@ namespace KonyvtarBackEnd.Controllers
         }
 
         [HttpPut("/jelszovaltas/{id}")]
-        public async Task<ActionResult<FelhasznaloDto>> Jelszovaltas(int id, ModifyJelszo modifyJelszo)
+        public async Task<ActionResult<ModifyJelszo>> Jelszovaltas(int id, ModifyJelszo modifyJelszo)
         {
             try
             {

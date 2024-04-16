@@ -1,5 +1,6 @@
 ﻿using KonyvtarKarbantarto.Dto;
 using KonyvtarKarbantarto.Models;
+using KonyvtarKarbantarto.Windows.Felhasznalo;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -69,19 +70,6 @@ namespace KonyvtarKarbantarto.Windows
             
         }
 
-        private void Write_Click(object sender, RoutedEventArgs e)
-        {
-            if (Griddo.SelectedItem != null)
-            {
-                MessageBox.Show((Griddo.SelectedItem as User).Usarname);
-            }
-            else
-            {
-                MessageBox.Show("Nincs kijelölve semmi.");
-            }
-            
-        }
-
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             FelhCreate create = new FelhCreate(token);
@@ -100,8 +88,7 @@ namespace KonyvtarKarbantarto.Windows
             if (Griddo.SelectedItem != null)
             {
                 FelhasznaloEdit edit = new FelhasznaloEdit(token, Griddo.SelectedItem as User);
-                edit.Show();
-                this.Close();
+                edit.ShowDialog();
             }
             else
             {
@@ -110,6 +97,23 @@ namespace KonyvtarKarbantarto.Windows
             
         }
 
-        
+        private void PReset_Click(object sender, RoutedEventArgs e)
+        {
+            WebClient webClient = new WebClient();
+            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+            webClient.Encoding = Encoding.UTF8;
+
+            if (Griddo.SelectedItem != null)
+            {
+                PasswordReset passwordReset = new PasswordReset(token,Griddo.SelectedItem as User);
+                passwordReset.ShowDialog();
+            }
+            string result = webClient.DownloadString(connection.Url() + "User");
+            var users = JsonConvert.DeserializeObject<List<User>>(result).ToList();
+            //MessageBox.Show(result);
+            Griddo.ItemsSource = users;
+            Griddo.Items.Refresh();
+        }
     }
 }

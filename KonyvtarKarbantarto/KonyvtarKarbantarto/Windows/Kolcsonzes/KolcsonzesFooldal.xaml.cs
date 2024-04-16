@@ -41,11 +41,20 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
 
         private void EditLoan_Click(object sender, RoutedEventArgs e)
         {
+            WebClient webClient = new WebClient();
+            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+            webClient.Encoding = Encoding.UTF8;
+
             if (Griddo.SelectedItem != null)
             {
                 KolcsonzesEdit edit = new KolcsonzesEdit(token, Griddo.SelectedItem as LoanHistory);
                 edit.ShowDialog();
             }
+
+            string result = webClient.DownloadString(connection.Url() + "LoanHistory");
+            Griddo.ItemsSource = JsonConvert.DeserializeObject<List<LoanHistory>>(result).ToList();
+            Griddo.Items.Refresh();
 
         }
 
