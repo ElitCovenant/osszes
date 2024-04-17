@@ -1,128 +1,141 @@
 .settings-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 100px;
-    max-width: 1000px;
-  }
-  
-  .panel {
-    width: 45%;
-    margin: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(75, 75, 75, 0.1);
-  }
-  
-  .panel-header {
-    padding: 10px;
-    background-color: #f0f0f0;
-    margin: 0;
-    cursor: pointer;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .panel-content {
-    padding: 10px;
-  }
-  
-  .card-settings {
-    width: calc(33.33% - 10px);
-    height: 100px;
-    margin: 5px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #000; /* Fekete szöveg */
-    font-weight: bold; /* Félkövér szöveg */
-    text-align: center;
-    position: relative;
-  }
-  
-  .card-settings:hover {
-    background-color: #f5f5f5;
-    border-color: #373737; /* Szegély színe */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Enyhe árnyék */
-    transition: all 0.3s ease; /* Sima átmenet */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  max-width: 1000px;
+  border-radius: 10px;
+  padding: 20px; /* Belső tér a konténerben */
 }
+
+.panel {
+  width: 45%;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  transition: transform 0.3s ease;
+}
+
+.panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.panel-header {
+  padding: 10px;
+  background-color: #3498db;
+  margin: 0;
+  cursor: pointer;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.panel-content {
+  padding: 10px;
+}
+
+.card-settings {
+  width: calc(33.33% - 10px);
+  height: 100px;
+  margin: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card-settings:hover {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #12bff3;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
 .card-settings::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -50%;
   left: 0;
   width: 100%;
-  height: 0;
-  background-image: linear-gradient(to top, rgba(79, 78, 78, 0.8) 0%, transparent 100%); /* Áttetsző gradient */
-  transition: height 0.3s ease; /* Sima átmenet */
+  height: 200%;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  transition: transform 0.3s ease;
+  z-index: -1;
 }
 
 .card-settings:hover::after {
-  height: 75%; /* Teljesen kitölti a kártyát */
+  transform: translateY(-100%);
 }
-  
+
+
+
 /* Médialekérdezések */
 
 /* Nagy képernyők, pl. 4K */
 @media (min-width: 2560px) {
   .panel {
-    width: 40%; /* Szűkebb panelek nagy képernyőkön */
-    margin: 20px auto; /* Nagyobb középre igazítás */
+    width: 40%;
   }
 
   .card-settings {
-    width: calc(25% - 10px); /* Kis méretű kártyák nagy képernyőkön */
+    width: calc(25% - 10px);
   }
 }
 
 /* Laptopok */
 @media (max-width: 1440px) {
   .panel {
-    width: 70%; /* Szélesebb nézet laptopokon */
-    margin: 20px auto; /* Középre igazítás */
+    width: 70%;
   }
 
   .card-settings {
-    width: calc(33.33% - 10px); /* Mérsékelt méretű kártyák laptopokon */
+    width: calc(33.33% - 10px);
   }
 }
 
 /* Tabletek */
 @media (max-width: 1024px) {
   .panel {
-    width: 90%; /* Tágasabb nézet tableteken */
-    margin: 10px auto; /* Középre igazítás */
+    width: 90%;
   }
   
   .card-settings {
-    width: calc(50% - 10px); /* Nagyobb kártyák tableteken */
+    width: calc(50% - 10px);
   }
 }
 
 /* Nagyobb telefonok */
 @media (max-width: 768px) {
   .panel {
-    width: 90%; /* Szélesebb nézet nagyobb telefonokon */
-    margin: 10px auto; /* Középre igazítás */
+    width: 90%;
   }
 
   .card-settings {
-    width: calc(50% - 10px); /* Nagyobb kártyák nagyobb telefonokon */
+    width: calc(50% - 10px);
   }
 }
 
 /* Nagyon kis telefonok */
 @media (max-width: 480px) {
   .panel {
-    width: 100%; /* Teljes szélesség a kis eszközökön */
-    margin: 10px 0; /* Eltávolítjuk a bal és jobb margót */
+    width: 100%;
+    margin: 10px 0;
   }
   
   .card-settings {
-    width: 100%; /* Teljes szélességű kártyák a nagyon kis eszközökön */
+    width: 100%;
   }
 }
