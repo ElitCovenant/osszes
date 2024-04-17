@@ -42,14 +42,8 @@ namespace KonyvtarKarbantarto.Windows
             identificator = egyeb.id;
             Name.Text = egyeb.name;
         }
-        Connection connection = new Connection();
         private void Execute_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
             try
             {
                 if (edit == true)
@@ -60,7 +54,7 @@ namespace KonyvtarKarbantarto.Windows
                         name = Name.Text,
                     };
 
-                    MessageBox.Show(webClient.UploadString(connection.Url() + $"{currenttask}/{identificator}", "PUT", JsonConvert.SerializeObject(egyebDto)));
+                    MessageBox.Show(CRUD.APSPut(token,currenttask,identificator,egyebDto));
 
                 }
                 else
@@ -71,7 +65,7 @@ namespace KonyvtarKarbantarto.Windows
                         name = Name.Text,
                     };
 
-                    MessageBox.Show(webClient.UploadString(connection.Url() + $"{currenttask}", "POST", JsonConvert.SerializeObject(egyebDto)));
+                    MessageBox.Show(CRUD.APSPost(token,currenttask,egyebDto));
                 }
             }
             catch (Exception z)

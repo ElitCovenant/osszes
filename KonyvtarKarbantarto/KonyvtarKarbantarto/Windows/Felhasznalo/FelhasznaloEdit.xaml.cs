@@ -128,7 +128,7 @@ namespace KonyvtarKarbantarto.Windows
             }
         }
 
-        private async void Edit_Click(object sender, RoutedEventArgs e)
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
             try
             {

@@ -30,27 +30,15 @@ namespace KonyvtarKarbantarto.Windows
         {
             token = tok;
             InitializeComponent();
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
-            string result = webClient.DownloadString(connection.Url() + "Book");
-            konys = JsonConvert.DeserializeObject<List<Book>>(result).ToList();
+            konys = CRUD.GetBooks(token);
             Griddo.ItemsSource = konys;
 
         }
-        Connection connection = new Connection();
         private void GetDataKonyvek_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization,"Bearer "+token);
-            webClient.Encoding = Encoding.UTF8;
             try
             {
-                string result = webClient.DownloadString(connection.Url()+"Book");
-                konys = JsonConvert.DeserializeObject<List<Book>>(result).ToList();
+                konys = CRUD.GetBooks(token);
                 Griddo.ItemsSource = konys;
                 Griddo.Items.Refresh();
             }
@@ -58,8 +46,6 @@ namespace KonyvtarKarbantarto.Windows
             {
                 MessageBox.Show("Error : " + r.Message);
             }
-
-
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -79,10 +65,6 @@ namespace KonyvtarKarbantarto.Windows
         {
             if (Griddo.SelectedItem != null)
             {
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-                webClient.Encoding = Encoding.UTF8;
 
                 string question = "Biztosan szeretné törölni az adott könyvet?";
                 string cap = "Figyelem!";
@@ -92,9 +74,9 @@ namespace KonyvtarKarbantarto.Windows
                 result = MessageBox.Show(question, cap, button, image);
                 if (result.ToString() == "Yes")
                 {
-                    MessageBox.Show(webClient.UploadString(connection.Url() + $"Book/{(Griddo.SelectedItem as Book).Id}", "Delete", ""));
+                    MessageBox.Show(CRUD.DeleteBook(token, (Griddo.SelectedItem as Book).Id));
                 }
-                Griddo.ItemsSource = JsonConvert.DeserializeObject<List<Book>>(webClient.DownloadString(connection.Url()+"Book")).ToList();
+                Griddo.ItemsSource = CRUD.GetBooks(token);
             }
             
         }
@@ -103,14 +85,10 @@ namespace KonyvtarKarbantarto.Windows
         {
             if (Griddo.SelectedItem != null)
             {
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-                webClient.Encoding = Encoding.UTF8;
-
                 KonyvSzerkeszto szerkeszto = new KonyvSzerkeszto(token, Griddo.SelectedItem as Book);
                 szerkeszto.ShowDialog();
-                Griddo.ItemsSource = JsonConvert.DeserializeObject<List<Book>>(webClient.DownloadString(connection.Url() + "Book")).ToList();
+                Griddo.ItemsSource = CRUD.GetBooks(token);
+                Griddo.Items.Refresh();
             }
         }
     }

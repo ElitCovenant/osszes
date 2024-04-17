@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonyvtarKarbantarto.Dto
 {
-    internal class BookDto
+    public class BookDto
     {
         public uint id { get; set; }
         public int warehouse_Num { get; set; }

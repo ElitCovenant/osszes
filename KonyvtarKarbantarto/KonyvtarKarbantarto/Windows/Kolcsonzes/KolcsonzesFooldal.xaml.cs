@@ -25,35 +25,23 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
     public partial class KolcsonzesFooldal : Window
     {
         string token;
-        Connection connection = new Connection();
         public KolcsonzesFooldal(string tok)
         {
             token = tok;
             InitializeComponent();
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
 
-            string result = webClient.DownloadString(connection.Url() + "LoanHistory");
-            Griddo.ItemsSource = JsonConvert.DeserializeObject<List<LoanHistory>>(result).ToList();
+            Griddo.ItemsSource = CRUD.GetLoans(token);
         }
 
         private void EditLoan_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
             if (Griddo.SelectedItem != null)
             {
                 KolcsonzesEdit edit = new KolcsonzesEdit(token, Griddo.SelectedItem as LoanHistory);
                 edit.ShowDialog();
             }
 
-            string result = webClient.DownloadString(connection.Url() + "LoanHistory");
-            Griddo.ItemsSource = JsonConvert.DeserializeObject<List<LoanHistory>>(result).ToList();
+            Griddo.ItemsSource = CRUD.GetLoans(token);
             Griddo.Items.Refresh();
 
         }
@@ -62,24 +50,13 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
         {
             KolcsonzesAdd add = new KolcsonzesAdd(token);
             add.ShowDialog();
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
-            string result = webClient.DownloadString(connection.Url() + "LoanHistory");
-            Griddo.ItemsSource = JsonConvert.DeserializeObject<List<LoanHistory>>(result).ToList();
+            Griddo.ItemsSource = CRUD.GetLoans(token);
         }
 
         private void GetDataLoan_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
-            string result = webClient.DownloadString(connection.Url() + "LoanHistory");
-            Griddo.ItemsSource = JsonConvert.DeserializeObject<List<LoanHistory>>(result).ToList();
+            Griddo.ItemsSource = CRUD.GetLoans(token);
+            Griddo.Items.Refresh();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -98,11 +75,6 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
         {
             try
             {
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-                webClient.Encoding = Encoding.UTF8;
-
                 if (Griddo.SelectedItem != null)
                 {
                     if ((Griddo.SelectedItem as LoanHistory).Returned)
@@ -121,22 +93,15 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                             returned = true,
                             comment = (Griddo.SelectedItem as LoanHistory).Comment
                         };
-                        webClient.UploadString(connection.Url() + "LoanHistory/" + historyDto.id, "PUT", JsonConvert.SerializeObject(historyDto));
-
-                        webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                        webClient.Encoding = Encoding.UTF8;
+                        CRUD.PutLoan(token, historyDto.id, historyDto);
 
                         BorrowUserChangeDto changeDto = new BorrowUserChangeDto()
                         {
                             id = 1
                         };
+                        CRUD.BorrowChange(token, historyDto.book_Id, changeDto);
 
-                        webClient.UploadString(connection.Url() + "BorrowUserChange/" + historyDto.book_Id, "PUT", JsonConvert.SerializeObject(changeDto));
-
-                        webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                        webClient.Encoding = Encoding.UTF8;
-
-                        Griddo.ItemsSource = JsonConvert.DeserializeObject<List<LoanHistory>>(webClient.DownloadString(connection.Url() + "LoanHistory")).ToList();
+                        Griddo.ItemsSource = CRUD.GetLoans(token);
                         Griddo.Items.Refresh();
                     }
                 }

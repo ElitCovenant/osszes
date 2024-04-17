@@ -27,16 +27,15 @@ namespace KonyvtarKarbantarto.Windows
     public partial class KonyvSzerkeszto : Window
     {
         string token;
-        Connection connection = new Connection();
         string PicPath;
         Book oo = new Book();
-        public KonyvSzerkeszto(string tok,Book ook)
+        public KonyvSzerkeszto(string tok, Book ook)
         {
             token = tok;
             oo = ook;
             InitializeComponent();
             WarhNum.Text = ook.WarehouseNum.ToString();
-            Ev.Text = ook.PurchaseDate.ToString().Split('.')[0].Replace('.',' ').Trim();
+            Ev.Text = ook.PurchaseDate.ToString().Split('.')[0].Replace('.', ' ').Trim();
             Honap.Text = ook.PurchaseDate.ToString().Split('.')[1].Replace('.', ' ').Trim();
             Nap.Text = ook.PurchaseDate.ToString().Split('.')[2].Replace('.', ' ').Trim();
             Title.Text = ook.Title.ToString();
@@ -45,16 +44,11 @@ namespace KonyvtarKarbantarto.Windows
             CutterSign.Text = ook.CutterJelzet.ToString();
             Releasedate.Text = ook.ReleaseDate.ToString();
             Price.Text = ook.Price.ToString();
-                Comment.Text = ook.Comment;
+            Comment.Text = ook.Comment;
             Picture.Text = ook.BookImg.ToString();
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
 
-            List<Author> authors = new List<Author>();
+            List<Author> authors = CRUD.GetAuthors(token);
 
-            authors = JsonConvert.DeserializeObject<List<Author>>(webClient.DownloadString(connection.Url() + "Author")).ToList();
             for (int i = 0; i < authors.Count; i++)
             {
                 AuthorId.Items.Add(authors[i].Id + "-" + authors[i].Name);
@@ -64,9 +58,7 @@ namespace KonyvtarKarbantarto.Windows
                 }
             }
 
-            List<Series> seriesList = new List<Series>();
-
-            seriesList = JsonConvert.DeserializeObject<List<Series>>(webClient.DownloadString(connection.Url() + "Series")).ToList();
+            List<Series> seriesList = CRUD.GetSeries(token);
             for (int i = 0; i < seriesList.Count; i++)
             {
                 Series.Items.Add(seriesList[i].Id + "-" + seriesList[i].Name);
@@ -77,9 +69,7 @@ namespace KonyvtarKarbantarto.Windows
             }
             Series.SelectedIndex = 0;
 
-            List<PublisherObject> publishers = new List<PublisherObject>();
-
-            publishers = JsonConvert.DeserializeObject<List<PublisherObject>>(webClient.DownloadString(connection.Url() + "Publisher")).ToList();
+            List<PublisherObject> publishers = CRUD.GetPublisher(token);
             for (int i = 0; i < publishers.Count; i++)
             {
                 PublisherId.Items.Add(publishers[i].Id + "-" + publishers[i].Name);
@@ -90,7 +80,7 @@ namespace KonyvtarKarbantarto.Windows
             }
             PublisherId.SelectedIndex = 0;
         }
-        
+
         public static int Securer(string c)
         {
             if (int.TryParse(c, out int g))
@@ -107,15 +97,15 @@ namespace KonyvtarKarbantarto.Windows
         {
             if (int.TryParse(c.Trim(), out int g))
             {
-                if (g<10&&!c.Contains('0'))
+                if (g < 10 && !c.Contains('0'))
                 {
-                    return "0"+c;
+                    return "0" + c;
                 }
                 else
                 {
                     return c;
                 }
-                
+
             }
             else
             {
@@ -157,10 +147,6 @@ namespace KonyvtarKarbantarto.Windows
             try
             {
                 BookDtoUpload book = new BookDtoUpload();
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-                webClient.Encoding = Encoding.UTF8;
 
                 book.warehouse_Num = Securer(WarhNum.Text);
                 book.purchase_Date = SecurerDate(Ev.Text).ToString() + "-" + SecurerDate(Honap.Text).ToString() + "-" + SecurerDate(Nap.Text).ToString();
@@ -176,8 +162,7 @@ namespace KonyvtarKarbantarto.Windows
                 book.comment = Comment.Text;
                 book.user_Id = (uint)oo.UserId;
                 book.bookImg = Picture.Text;
-                MessageBox.Show(JsonConvert.SerializeObject(book));
-                MessageBox.Show(webClient.UploadString(connection.Url() + $"Book/{oo.Id}", "PUT", JsonConvert.SerializeObject(book)));
+                MessageBox.Show(CRUD.PutBook(token, oo.Id, book));
                 PicPath = null;
                 book = new BookDtoUpload();
             }

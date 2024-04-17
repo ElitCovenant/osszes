@@ -25,7 +25,6 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
     public partial class KolcsonzesEdit : Window
     {
         string token;
-        Connection connection = new Connection();
         List<Book> books = new List<Book>();
         LoanHistoryDto history = new LoanHistoryDto();
         public KolcsonzesEdit(string tok, LoanHistory putloan)
@@ -44,13 +43,6 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
             };
             InitializeComponent();
 
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
-            MessageBox.Show($"{putloan.Date.ToString().Split('.')[0].Trim()}");
-
             for (int i = 2000; i <= DateTime.Now.AddYears(5).Year; i++)
             {
                 YearE.Items.Add(i);
@@ -64,8 +56,6 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                     YearS.SelectedItem = i;
                 }
             }
-
-            MessageBox.Show($"{YearS.SelectedItem}");
 
             for (int i = 1; i <= 12; i++)
             {
@@ -95,14 +85,14 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                 }
             }
 
-            books = JsonConvert.DeserializeObject<List<Book>>(webClient.DownloadString(connection.Url() + "Book")).ToList();
+            books = CRUD.GetBooks(token);
             foreach (var book in books)
             {
                 BookId.Items.Add($"{book.Id} , {book.Title}");
             }
             BookId.SelectedItem = $"{putloan.BookId} , {books.FirstOrDefault(x => x.Id == putloan.BookId).Title}";
 
-            var users = JsonConvert.DeserializeObject<List<User>>(webClient.DownloadString(connection.Url() + "User"));
+            var users = CRUD.GetUsers(token);
             foreach (var user in users)
             {
                 UserId.Items.Add($"{user.Id} , {user.Usarname}");
@@ -137,10 +127,6 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
 
             LoanHistoryDto loan = new LoanHistoryDto() { 
                 id = history.id,
@@ -152,7 +138,7 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                 comment = Comment.Text
             };
 
-            MessageBox.Show(webClient.UploadString(connection.Url() + "LoanHistory/"+history.id, "PUT", JsonConvert.SerializeObject(loan)));
+            MessageBox.Show(CRUD.PutLoan(token,history.id,loan));
             this.Close();
         }
     }

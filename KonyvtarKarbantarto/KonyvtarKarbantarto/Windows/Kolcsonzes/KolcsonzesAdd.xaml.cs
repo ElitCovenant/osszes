@@ -32,11 +32,6 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
             token = tok;
             InitializeComponent();
 
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
             for (int i = 2000; i <= DateTime.Now.AddYears(5).Year; i++)
             {
                 YearE.Items.Add(i);
@@ -61,14 +56,14 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
             DayE.SelectedItem = 16;
             DayS.SelectedItem = DateTime.Now.Day;
 
-            books = JsonConvert.DeserializeObject<List<Book>>(webClient.DownloadString(connection.Url() + "Book")).ToList();
+            books = CRUD.GetBooks(token);
             foreach (var book in books)
             {
                 BookId.Items.Add($"{book.Id} , {book.Title}");
             }
             BookId.SelectedIndex = 0;
 
-            var users = JsonConvert.DeserializeObject<List<User>>(webClient.DownloadString(connection.Url() + "User"));
+            var users = CRUD.GetUsers(token);
             foreach (var user in users)
             {
                 UserId.Items.Add($"{user.Id} , {user.Usarname}");
@@ -106,10 +101,7 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
             }
             else
             {
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-                webClient.Encoding = Encoding.UTF8;
+                
                 try
                 {
                     LoanHistoryDto history = new LoanHistoryDto()
@@ -126,14 +118,7 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                         {
                             id = (uint)history.user_Id
                         };
-                    MessageBox.Show(webClient.UploadString(connection.Url() + "LoanHistory", "POST", JsonConvert.SerializeObject(history)));
-
-                    webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-
-                    webClient.Encoding = Encoding.UTF8;
-
-                    webClient.UploadString(connection.Url() + "BorrowUserChange/" + history.book_Id.ToString(), "PUT", JsonConvert.SerializeObject(borrow));
-
+                    MessageBox.Show(CRUD.PostLoan(token,history)+"\n"+CRUD.BorrowChange(token, history.id, borrow));
                     this.Close();
                 }
                 catch (Exception r)

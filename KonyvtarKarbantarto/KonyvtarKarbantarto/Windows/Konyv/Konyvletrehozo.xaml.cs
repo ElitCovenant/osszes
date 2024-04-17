@@ -27,17 +27,11 @@ namespace KonyvtarKarbantarto.Windows
     public partial class Konyvletrehozo : Window
     {
         string token;
-        Connection connection = new Connection();
         string PicPath;
         public Konyvletrehozo(string tok)
         {
             token = tok;
             InitializeComponent();
-
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
 
             for (int i = 2000; i <= DateTime.Now.AddYears(1).Year; i++)
             {
@@ -57,27 +51,21 @@ namespace KonyvtarKarbantarto.Windows
             }
             Nap.SelectedItem = DateTime.Now.Day;
 
-            List<Author> authors = new List<Author>();
-
-            authors = JsonConvert.DeserializeObject<List<Author>>(webClient.DownloadString(connection.Url() + "Author")).ToList();
+            List<Author> authors = CRUD.GetAuthors(token);
             for (int i = 0; i < authors.Count; i++)
             {
                 AuthorId.Items.Add(authors[i].Id + "-" + authors[i].Name);
             }
             AuthorId.SelectedIndex = 0;
 
-            List<Series> seriesList = new List<Series>();
-
-            seriesList = JsonConvert.DeserializeObject<List<Series>>(webClient.DownloadString(connection.Url() + "Series")).ToList();
+            List<Series> seriesList = CRUD.GetSeries(token);
             for (int i = 0; i < seriesList.Count; i++)
             {
                 Series.Items.Add(seriesList[i].Id + "-" + seriesList[i].Name);
             }
             Series.SelectedIndex = 0;
 
-            List<PublisherObject> publishers = new List<PublisherObject>();
-
-            publishers = JsonConvert.DeserializeObject<List<PublisherObject>>(webClient.DownloadString(connection.Url() + "Publisher")).ToList();
+            List<PublisherObject> publishers = CRUD.GetPublisher(token);
             for (int i = 0; i < publishers.Count; i++)
             {
                 PublisherId.Items.Add(publishers[i].Id + "-" + publishers[i].Name);
@@ -150,10 +138,6 @@ namespace KonyvtarKarbantarto.Windows
         {
             try
             {
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-                webClient.Encoding = Encoding.UTF8;
 
                 book.warehouse_Num = Securer(WarhNum.Text);
                 book.purchase_Date = Ev.SelectedItem.ToString() + "-" + SecurerDate(Honap.SelectedItem.ToString()).ToString() + "-" + SecurerDate(Nap.SelectedItem.ToString()).ToString();
@@ -206,8 +190,7 @@ namespace KonyvtarKarbantarto.Windows
                 {
                     book.bookImg = "http://img.library.nhely.hu/img/default_book_img.png";
                 }
-                MessageBox.Show(JsonConvert.SerializeObject(book));
-                MessageBox.Show(webClient.UploadString(connection.Url() + "Book", "POST", JsonConvert.SerializeObject(book)));
+                MessageBox.Show(CRUD.PostBooks(token,book));
                 PicPath = null;
                 book = new BookDto();
             }

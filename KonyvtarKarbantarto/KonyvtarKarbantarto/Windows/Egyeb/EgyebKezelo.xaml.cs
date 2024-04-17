@@ -47,60 +47,32 @@ namespace KonyvtarKarbantarto.Windows
                     break;
             }
 
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
-            string result = webClient.DownloadString(connection.Url() + $"{currenttask}");
-            var data = JsonConvert.DeserializeObject<List<EgyebDto>>(result).ToList();
-            Griddo.ItemsSource = data;
+            Griddo.ItemsSource = CRUD.APSGet(token,currenttask);
+            Griddo.Items.Refresh();
         }
 
-        Connection connection = new Connection();
+
 
         private void GetData_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
-            string result = webClient.DownloadString(connection.Url() + $"{currenttask}");
-            var data = JsonConvert.DeserializeObject<List<EgyebDto>>(result).ToList();
-            Griddo.ItemsSource = data;
+            Griddo.ItemsSource = CRUD.APSGet(token, currenttask);
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            WebClient webClient = new WebClient();
-            webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-            webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-            webClient.Encoding = Encoding.UTF8;
-
             EgyebSzerkeszto egyeb = new EgyebSzerkeszto(token, currenttask);
             egyeb.ShowDialog();
-
-            string result = webClient.DownloadString(connection.Url() + $"{currenttask}");
-            var data = JsonConvert.DeserializeObject<List<EgyebDto>>(result).ToList();
-            Griddo.ItemsSource = data;
+            Griddo.ItemsSource = CRUD.APSGet(token, currenttask);
+            Griddo.Items.Refresh();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             if (Griddo.SelectedItem != null)
             {
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-                webClient.Encoding = Encoding.UTF8;
-
                 EgyebSzerkeszto egyeb = new EgyebSzerkeszto(token, currenttask, Griddo.SelectedItem as EgyebDto);
                 egyeb.ShowDialog();
-
-                string result = webClient.DownloadString(connection.Url() + $"{currenttask}");
-                var data = JsonConvert.DeserializeObject<List<EgyebDto>>(result).ToList();
-                Griddo.ItemsSource = data;
+                Griddo.ItemsSource = CRUD.APSGet(token, currenttask);
             }
 
         }
@@ -109,12 +81,7 @@ namespace KonyvtarKarbantarto.Windows
         {
             if (Griddo.SelectedItem != null)
             {
-                WebClient webClient = new WebClient();
-                webClient.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
-                webClient.Encoding = Encoding.UTF8;
-
-                string question = "Biztosan szeretné törölni az adott terméket?";
+                string question = "Biztosan szeretné törölni az adott elemet?";
                 string cap = "Figyelem!";
                 MessageBoxButton button = MessageBoxButton.YesNo;
                 MessageBoxImage image = MessageBoxImage.Warning;
@@ -122,9 +89,10 @@ namespace KonyvtarKarbantarto.Windows
                 result = MessageBox.Show(question, cap, button, image);
                 if (result.ToString() == "Yes")
                 {
-                    MessageBox.Show(webClient.UploadString(connection.Url() + $"{currenttask}/{(Griddo.SelectedItem as EgyebDto).id}", "Delete", ""));
+                    MessageBox.Show(CRUD.APSDelete(token, (Griddo.SelectedItem as EgyebDto).id, currenttask));
                 }
-                Griddo.ItemsSource = JsonConvert.DeserializeObject<List<Book>>(webClient.DownloadString(connection.Url() + "Book")).ToList();
+                Griddo.ItemsSource = CRUD.APSGet(token, currenttask);
+                Griddo.Items.Refresh();
             }
         }
 
