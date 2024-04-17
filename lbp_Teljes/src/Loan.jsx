@@ -91,6 +91,7 @@ const Loan = () => {
       })
       .then(response => {
         console.log('Message sent to', username);
+        toast.success('All selected emails now sent');
       })
       .catch(error => {
         console.error('Error sending message to', username, ':', error);
@@ -100,9 +101,6 @@ const Loan = () => {
 
   // Reset all checkboxes to unchecked state
   setCheckedStatus({});
-
-  // Show success message using Toastify
-  toast.success('All selected emails now sent');
 };
 
   return (
@@ -131,7 +129,7 @@ const Loan = () => {
       <footer>New text:</footer>
       <input type="text" placeholder="Enter the new email text" className='maintenance-input'/>
       <footer>Old text:</footer>
-      <input type="text" placeholder={localStorage.getItem('emailChanger') || 'Kedves Olvasónk! Ne feledje, hogy a kölcsönzött könyv(ek) visszahozatali határideje hamarosan lejár.'} className='premaintenance-input'/>
+      <textarea placeholder={localStorage.getItem('emailChanger') || 'Kedves Olvasónk! Ne feledje, hogy a kölcsönzött könyv(ek) visszahozatali határideje hamarosan lejár.'} className='premaintenance-input'/>
       <button className="change-button" onClick={() => { handleMaintenanceChange(); setShowMaintainModal(false); }}>Change</button>
       <button className="reset-button" onClick={() => { resetText(); setShowMaintainModal(false); }}>Reset Text</button>
     </div>

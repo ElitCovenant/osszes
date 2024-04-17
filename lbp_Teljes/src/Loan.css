@@ -364,7 +364,7 @@
   border-radius: 5px; /* Kerekítés */
   transition: border-color 0.3s; /* Átmenet */
   /* Engedélyezzük a bevitelt a szövegmezőben */
-  pointer-events:fill;
+  pointer-events:none;
 }
 
 .premaintenance-input:focus {
