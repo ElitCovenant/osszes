@@ -6,6 +6,7 @@ import loanIcon from './img_icons/loanbook.png';
 import infoIcon from './img_icons/information.png'; 
 import exampleIcon from './img_icons/example.png'; 
 import maintainIcon from './img_icons/maintain.png'; 
+import warningIcon from './img_icons/warning.png'; 
 import { ToastContainer, toast } from 'react-toastify'; // Importáljuk a ToastContainer-t és a toast függvényt
 import 'react-toastify/dist/ReactToastify.css'; // Importáljuk a Toast styling-ot
 
@@ -67,32 +68,42 @@ const Loan = () => {
     setCheckedStatus(updatedCheckedStatus);
   };
 
-  const sendMessage = () => {
-    // Logic to send a message via HTTP POST request
-    // Use the index from checkedStatus to send emails
-    Object.entries(checkedStatus).forEach(([index, isChecked]) => {
-      if (isChecked) {
-        const username = emails[index].usarname;
-        axios.post('https://localhost:7275/Email', {
-          to: username,
-          subject: 'Könyvtár kölcsönzés',
-          body: 'Kedves Olvasónk! Ne feledje, hogy a kölcsönzött könyv(ek) visszahozatali határideje hamarosan lejár.'
-        })
-        .then(response => {
-          console.log('Message sent to', username);
-        })
-        .catch(error => {
-          console.error('Error sending message to', username, ':', error);
-        });
-      }
-    });
-  
-    // Reset all checkboxes to unchecked state
-    setCheckedStatus({});
-  
-    // Show success message using Toastify
-    toast.success('All selected emails now sent');
+  const handleMaintenanceChange = () => {
+    const maintenanceText = document.querySelector('.maintenance-input').value;
+    localStorage.setItem('emailChanger', maintenanceText);
   };
+
+  const resetText = () => {
+    localStorage.removeItem('emailChanger');
+  };
+  
+ const sendMessage = () => {
+  // Logic to send a message via HTTP POST request
+  // Use the index from checkedStatus to send emails
+  Object.entries(checkedStatus).forEach(([index, isChecked]) => {
+    if (isChecked) {
+      const username = emails[index].usarname;
+      const emailBody = localStorage.getItem('emailChanger') || 'Kedves Olvasónk! Ne feledje, hogy a kölcsönzött könyv(ek) visszahozatali határideje hamarosan lejár.';
+      axios.post('https://localhost:7275/Email', {
+        to: username,
+        subject: 'Könyvtár kölcsönzés',
+        body: emailBody
+      })
+      .then(response => {
+        console.log('Message sent to', username);
+      })
+      .catch(error => {
+        console.error('Error sending message to', username, ':', error);
+      });
+    }
+  });
+
+  // Reset all checkboxes to unchecked state
+  setCheckedStatus({});
+
+  // Show success message using Toastify
+  toast.success('All selected emails now sent');
+};
 
   return (
     <div className="loan-container">
@@ -116,9 +127,13 @@ const Loan = () => {
   <div className="modal">
     <div className="modal-content">
       <button className="close-button" onClick={() => setShowMaintainModal(false)}>&times;</button>
-      <p info-tag>Maintenance Information:</p>
-      <input type="text" placeholder="Enter maintenance information" />
-      <button className="change-button">Change</button>
+      <p>Maintenance Text:</p>
+      <footer>New text:</footer>
+      <input type="text" placeholder="Enter the new email text" className='maintenance-input'/>
+      <footer>Old text:</footer>
+      <input type="text" placeholder={localStorage.getItem('emailChanger') || 'Kedves Olvasónk! Ne feledje, hogy a kölcsönzött könyv(ek) visszahozatali határideje hamarosan lejár.'} className='premaintenance-input'/>
+      <button className="change-button" onClick={() => { handleMaintenanceChange(); setShowMaintainModal(false); }}>Change</button>
+      <button className="reset-button" onClick={() => { resetText(); setShowMaintainModal(false); }}>Reset Text</button>
     </div>
   </div>
 )}
@@ -137,6 +152,10 @@ const Loan = () => {
       <div className='info-tag'>
         <img src={maintainIcon} alt="Maintain" className="example-icon" />
         Here you can change what type of message you want to send to the users.
+      </div>
+      <div className='warning-tag'>
+        <img src={warningIcon} alt="Warning" className="warning-icon" />
+        Be careful with the <img src={maintainIcon} alt="Maintain" className="settings-info-icon" />, because if you change the loan text, it will be set like that from then on.
       </div>
     </div>
   </div>

@@ -302,3 +302,86 @@
   border-radius: 50%; /* Kerekítés */
   padding: 1px; /* Opcionális: adjunk némi térközt az ikon körül */
 }
+.warning-tag {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #6a6767;
+  background-color: #e59898;
+  border: 1px solid #515151;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+.warning-icon{
+  width: 25px;
+  height: 25px;
+  float: left; /* A kép balra igazítása */
+  margin-left: 0px;
+}
+.settings-info-icon{
+  width: 15px;
+  height: 15px; /* A kép balra igazítása */
+  margin-left: 0px;
+}
+/* Input Field */
+.maintenance-input {
+  width: 100%; /* Teljes szélesség */
+  padding: 8px; /* Belső térköz */
+  margin-top: 8px; /* Felső margó */
+  margin-bottom: 16px; /* Alsó margó */
+  border: 1px solid #ddd; /* Keret */
+  border-radius: 5px; /* Kerekítés */
+  transition: border-color 0.3s; /* Átmenet */
+}
+
+.maintenance-input:focus {
+  outline: none; /* Fókusz körvonal eltávolítása */
+  border-color: #3498db; /* Keret szín változása fókuszban */
+}
+
+/* Change Button */
+.change-button {
+  background-color: #3498db; /* Háttérszín */
+  color: #fff; /* Szövegszín */
+  border: none; /* Keret eltávolítása */
+  border-radius: 5px; /* Kerekítés */
+  padding: 8px 16px; /* Belső térköz */
+  cursor: pointer; /* Mutató */
+  transition: background-color 0.3s, color 0.3s; /* Átmenetek */
+}
+
+.change-button:hover {
+  background-color: #2980b9; /* Háttérszín hover állapotban */
+}
+/* Input Field */
+.premaintenance-input {
+  width: 100%; /* Teljes szélesség */
+  padding: 8px; /* Belső térköz */
+  margin-top: 8px; /* Felső margó */
+  margin-bottom: 16px; /* Alsó margó */
+  border: 1px solid #ddd; /* Keret */
+  border-radius: 5px; /* Kerekítés */
+  transition: border-color 0.3s; /* Átmenet */
+  /* Engedélyezzük a bevitelt a szövegmezőben */
+  pointer-events:fill;
+}
+
+.premaintenance-input:focus {
+  outline: none; /* Fókusz körvonal eltávolítása */
+  border-color: #3498db; /* Keret szín változása fókuszban */
+}
+.reset-button {
+  background-color: #db5034; /* Háttérszín */
+  color: #fff; /* Szövegszín */
+  border: none; /* Keret eltávolítása */
+  border-radius: 5px; /* Kerekítés */
+  padding: 8px 16px; /* Belső térköz */
+  cursor: pointer; /* Mutató */
+  transition: background-color 0.3s, color 0.3s; /* Átmenetek */
+  margin-left: 5px;
+}
+
+.reset-button:hover {
+  background-color: #b93529; /* Háttérszín hover állapotban */
+}

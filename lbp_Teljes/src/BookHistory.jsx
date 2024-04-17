@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import jwt_decode from './jwt_decode';
 import './BookHistory.css';
+import bookhistoryIcon from './img_icons/bookhistory.png'; 
 
 const BookHistory = () => {
   const [historyItems, setHistoryItems] = useState([]);
@@ -46,9 +47,9 @@ const BookHistory = () => {
   return (
     <div className="book-history-container">
       <div className="select-all-tab">
-        <h2 id="bookhistoryname">Book History</h2>
+        <h2 id="bookhistoryname"><img src={bookhistoryIcon} alt="Maintain Icon" className="book-history-icon" />Book History</h2>
       </div>
-      <span>Book Loaned - Return Date</span>
+      <span className="span-book-date-info">Book Loaned - Return Date</span>
       <div className="history-items-container">
         {historyItems.length > 0 ? (
           historyItems.map((item, index) => (

@@ -4,12 +4,16 @@
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #afafaf;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.15);
     margin-right: 70%;
     margin-top: -12%;
     display: flex;
     flex-direction: column;
+  }
+  .book-history-container:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
   }
   
   .select-all-tab {
@@ -20,35 +24,53 @@
   }
   
   .history-items-container {
-    max-height: 150px;
+    max-height: 200px;
     overflow-y: auto;
     padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 2px solid #1d93d8;
+    border-radius: 4px;
     background-color: #fff;
-    display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+  
+    /* Overflow görgető testreszabása */
+    scrollbar-width:thin; /* Firefox-hoz */
+    scrollbar-color: #3498db #f9f9f9; /* Firefox-hoz */
+  }
+  .history-items-container::-webkit-scrollbar {
+    width: 8px; /* A görgető szélessége */
+  }
+  
+  .history-items-container::-webkit-scrollbar-track {
+    background: #f9f9f9; /* Görgető sáv háttere */
+  }
+  
+  .history-items-container::-webkit-scrollbar-thumb {
+    background-color: #3498db; /* Görgető hüvely ujja */
+    border-radius: 10px; /* Görgető hüvely ujja lekerekítése */
+    border: 2px solid #f9f9f9; /* Görgető hüvely ujja körvonalának beállítása */
   }
   
   .history-item {
     display: flex;
-    align-items: center;
-    margin-bottom: 8px;
+  align-items: center;
+  padding: 10px;
+  background-color: #eeeeee;
+  border-radius: 5px;
+  box-shadow: 4px 5px 4px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
   }
-  
-  .history-item input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  
-
-  
+  .history-item:hover {
+    transform: translateY(-5px);
+  } 
   .history-info {
     font-size: 15px;
   }
   
   #bookhistoryname {
-    margin-right: 10px;
+    margin-right: 90px;
   }
   
   @media screen and (max-width: 768px) {
@@ -66,4 +88,15 @@
     .history-info {
       font-size: 14px; /* Kisebb betűméret a kisebb készülékekhez */
     }
+  }
+  .book-history-icon{
+    width: 25px;
+    height: 25px;
+    float: left; /* A kép balra igazítása */
+    margin-right: 60px;
+  }
+  .span-book-date-info{
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;  
   }
