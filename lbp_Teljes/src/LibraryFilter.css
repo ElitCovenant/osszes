@@ -2,14 +2,17 @@
   background-color: #f5f5f5; /* Háttérszín */
   padding: 10px;
   border-radius: 5px; /* Keret sugara */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Árnyék */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.15);
   width: 20%; /* Szélesség */
   position: relative;
   float: left;
   top: 17px; /* Eltolás */
   min-height: 200px; /* Minimális magasság */
 }
-
+.library_filter_container:hover {
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
 
   
   .library_filter_form {
@@ -19,32 +22,41 @@
   }
   
   .filter_section {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 10px;
   }
   
   .filter_section label {
-    margin-bottom: 5px;
     font-weight: bold;
   }
   
-  .filter_section input[type="text"], .filter_section select {
+  .filter_section select,
+  .filter_section input[type="text"] {
+    width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
   }
+  
+
   
   .filter_button {
     cursor: pointer;
-    background-color: #007bff; /* Gomb háttérszíne */
+    background-color: #3498db;
     color: white; /* Szöveg színe */
     border: none;
-    padding: 10px;
-    border-radius: 4px; /* Gomb keretének sugara */
+      padding: 8px;
+    border-radius: 3px; /* Gomb keretének sugara */
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Átmenet a háttér- és szövegszín megváltoztatásához */
   }
   
   .filter_button:hover {
-    background-color: #0056b3; /* Gomb háttérszín változása */
+    color: #f7f7f7;
+  background-color: #07b8e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Árnyék a hover eseményre */
   }
   

@@ -83,7 +83,7 @@ function UserPage() {
         )}
         {isAdmin && <button className="toggleLoan-button" onClick={toggleLoan}>Send Email <img src={mailIcon} alt="Logout Icon" className="mail-icon" /></button>}
       </div>
-      <BookHistory bookHistory={["History item 1", "History item 2", "History item 3"]} />
+      {isAdmin==false && <BookHistory bookHistory={["History item 1", "History item 2", "History item 3"]} />}
       {isAdmin && <Loan/>}
       
 
