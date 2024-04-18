@@ -8,9 +8,9 @@ namespace KonyvtarKarbantarto.Dto
 {
     public class LoanHistoryDto
     {
-        public int id {  get; set; }
-        public int book_Id { get; set; }
-        public int user_Id { get; set; }
+        public uint id {  get; set; }
+        public uint book_Id { get; set; }
+        public uint user_Id { get; set; }
         public string startDate { get; set; }
         public string deadline { get; set; }
         public bool returned { get; set; }

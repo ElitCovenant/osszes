@@ -85,9 +85,9 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                     {
                         LoanHistoryDto historyDto = new LoanHistoryDto()
                         {
-                            id = (int)(Griddo.SelectedItem as LoanHistory).Id,
-                            book_Id = (int)(Griddo.SelectedItem as LoanHistory).BookId,
-                            user_Id = (int)(Griddo.SelectedItem as LoanHistory).UserId,
+                            id = (Griddo.SelectedItem as LoanHistory).Id,
+                            book_Id = (Griddo.SelectedItem as LoanHistory).BookId,
+                            user_Id = (uint)(Griddo.SelectedItem as LoanHistory).UserId,
                             startDate = DateFormer((Griddo.SelectedItem as LoanHistory).Date.ToString()),
                             deadline = DateFormer((Griddo.SelectedItem as LoanHistory).DateEnd.ToString()),
                             returned = true,
