@@ -5,8 +5,10 @@ using KonyvtarKarbantarto.Windows.Felhasznalo;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +30,10 @@ namespace KonyvtarKarbantarto
             webClient.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
             webClient.Encoding = Encoding.UTF8;
 
-            return JsonConvert.DeserializeObject<List<User>>(webClient.DownloadString(connection.Url() + "User")).ToList();
+            var handler = new JwtSecurityTokenHandler();
+            var apart =  handler.ReadJwtToken(token);
+
+            return JsonConvert.DeserializeObject<List<User>>(webClient.DownloadString(connection.Url() + "User")).Where(x=>x.Id != Convert.ToUInt32(apart.Claims.First(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/dns").Value)).ToList();
 
         }
 
@@ -179,7 +184,7 @@ namespace KonyvtarKarbantarto
             return JsonConvert.DeserializeObject<List<LoanHistory>>(webClient.DownloadString(connection.Url() + "LoanHistory")).ToList();
         }
 
-        public static string PutLoan(string token,int id,LoanHistoryDto loan)
+        public static string PutLoan(string token,uint id,LoanHistoryDto loan)
         {
             Connection connection = new Connection();
             WebClient webClient = new WebClient();
@@ -190,7 +195,7 @@ namespace KonyvtarKarbantarto
             return webClient.UploadString(connection.Url() + "LoanHistory/" + id, "PUT", JsonConvert.SerializeObject(loan));
         }
 
-        public static string BorrowChange(string token,int id,BorrowUserChangeDto borrow)
+        public static string BorrowChange(string token,uint id,BorrowUserChangeDto borrow)
         {
             Connection connection = new Connection();
             WebClient webClient = new WebClient();

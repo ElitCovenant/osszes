@@ -32,9 +32,9 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
             token = tok;
             history = new LoanHistoryDto
             {
-                id = (int)putloan.Id,
-                book_Id = (int)putloan.BookId,
-                user_Id = (int)putloan.UserId,
+                id = putloan.Id,
+                book_Id = putloan.BookId,
+                user_Id = (uint)putloan.UserId,
                 startDate = DateFormer(putloan.Date.ToString()),
                 deadline = DateFormer(putloan.DateEnd.ToString()),
                 returned = putloan.Returned,
@@ -130,8 +130,8 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
 
             LoanHistoryDto loan = new LoanHistoryDto() { 
                 id = history.id,
-                book_Id = Convert.ToInt32(BookId.SelectedItem.ToString().Split(',')[0].Trim()),
-                user_Id = Convert.ToInt32(UserId.SelectedItem.ToString().Split(',')[0].Trim()),
+                book_Id = Convert.ToUInt32(BookId.SelectedItem.ToString().Split(',')[0].Trim()),
+                user_Id = Convert.ToUInt32(UserId.SelectedItem.ToString().Split(',')[0].Trim()),
                 startDate = $"{YearS.SelectedItem}-{SecurerDate((MonthS.SelectedItem.ToString()))}-{DayS.SelectedItem}",
                 deadline = $"{YearE.SelectedItem}-{SecurerDate(MonthE.SelectedItem.ToString())}-{DayE.SelectedItem}",
                 returned = history.returned,

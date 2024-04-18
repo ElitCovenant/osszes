@@ -107,8 +107,8 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                     LoanHistoryDto history = new LoanHistoryDto()
                     {
                         id = 0,
-                        book_Id = Convert.ToInt32(BookId.SelectedItem.ToString().Split(',')[0].Trim()),
-                        user_Id = Convert.ToInt32(UserId.SelectedItem.ToString().Split(',')[0].Trim()),
+                        book_Id = Convert.ToUInt32(BookId.SelectedItem.ToString().Split(',')[0].Trim()),
+                        user_Id = Convert.ToUInt32(UserId.SelectedItem.ToString().Split(',')[0].Trim()),
                         startDate = $"{YearS.SelectedItem}-{SecurerDate((MonthS.SelectedItem.ToString()))}-{DayS.SelectedItem}",
                         deadline = $"{YearE.SelectedItem}-{SecurerDate(MonthE.SelectedItem.ToString())}-{DayE.SelectedItem}",
                         returned = false,
@@ -116,9 +116,9 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                     };
                         BorrowUserChangeDto borrow = new BorrowUserChangeDto()
                         {
-                            id = (uint)history.user_Id
+                            id = history.user_Id
                         };
-                    MessageBox.Show(CRUD.PostLoan(token,history)+"\n"+CRUD.BorrowChange(token, history.id, borrow));
+                    MessageBox.Show(CRUD.PostLoan(token,history)+"\n"+CRUD.BorrowChange(token, history.book_Id, borrow));
                     this.Close();
                 }
                 catch (Exception r)
