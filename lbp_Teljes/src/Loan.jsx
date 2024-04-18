@@ -159,7 +159,8 @@ const Loan = () => {
   </div>
 )}
       <div className="emails-container">
-        {emails.map((email, index) => (
+        {emails.length > 0 ? (
+        emails.map((email, index) => (
           <div key={index} className="email-item">
             <input
               type="checkbox"
@@ -169,7 +170,10 @@ const Loan = () => {
             />
             <span className="email-info">{email.usarname} - {email.title}</span>
           </div>
-        ))}
+        ))
+        ) : (
+          <div className="no-books">No Books Loaned</div>
+        )}
       </div>
       <ToastContainer />
       <button onClick={sendMessage} className="send-message">Send Email(s) <img src={mailIcon} alt="Logout Icon" className="mail-icon" /></button>

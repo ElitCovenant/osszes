@@ -9,7 +9,7 @@ const Modal = ({ book, onClose }) => {
                 <h1>{book.author.name}</h1>
                 <h2>{book.title}</h2>
                 <p>{book.description || "Nincs elérhető leírás."}</p>
-                {book.userId != null && <p>Ez a könyv már ki lett kölcsönözve!</p>}
+                {book.userId != 1 && <p>Ez a könyv már ki lett kölcsönözve!</p>}
                 <button className="btn" onClick={onClose}>Close</button>
             </div>
         </div>
