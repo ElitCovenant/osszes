@@ -96,7 +96,7 @@ namespace KonyvtarBackEnd.Controllers
                 {
                     if (context != null)
                     {
-                        return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).ToList());
+                        return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg, x.UserId }).ToList());
                     }
                     else
                     {
@@ -124,15 +124,15 @@ namespace KonyvtarBackEnd.Controllers
                     {
                         if (nae == null && au == 0)
                         {
-                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).ToList());
+                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg ,x.UserId}).ToList());
                         }
                         else if (au == 0)
                         {
-                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).Where(x => x.Title.Contains(nae)).ToList());
+                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg, x.UserId}).Where(x => x.Title.Contains(nae)).ToList());
                         }
                         else if (nae == null)
                         {
-                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg }).Where(x => x.Author.Id == au).ToList());
+                            return Ok(context.Books.Select(x => new { x.Id, x.Author, x.Title, x.ReleaseDate, x.BookImg, x.UserId}).Where(x => x.Author.Id == au).ToList());
                         }
                         else
                         {
@@ -162,7 +162,7 @@ namespace KonyvtarBackEnd.Controllers
                 {
                     if (context != null)
                     {
-                        var response = context.Books.Where(x => x.ReleaseDate < masodikev && x.ReleaseDate > elsoev && x.AuthorId == iroId).Select(x => new { x.Author, x.Title, x.ReleaseDate, x.BookImg }).ToList();
+                        var response = context.Books.Where(x => x.ReleaseDate < masodikev && x.ReleaseDate > elsoev && x.AuthorId == iroId).Select(x => new { x.Author, x.Title, x.ReleaseDate, x.BookImg ,x.UserId}).ToList();
                         if (response != null)
                         {
                             return Ok(response);
