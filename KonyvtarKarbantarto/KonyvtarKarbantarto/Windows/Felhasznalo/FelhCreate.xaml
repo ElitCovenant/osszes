@@ -19,7 +19,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
             <Button x:Name="Register" Click="Register_Click" Content="Felhasználó Regisztrálása" Width="170" Height="25" FontSize="15" HorizontalAlignment="Left" Margin="10 5 30 10"/>
-            <Button x:Name="ReadFromFile" Content="Fileból beolvasás" Click="ReadFromFile_Click" Width="170" Height="25" FontSize="15" HorizontalAlignment="Left" Margin="30 5 10 10"/>
+            <Button x:Name="ReadFromFile" Content="File-ból beolvasás" Click="ReadFromFile_Click" Width="170" Height="25" FontSize="15" HorizontalAlignment="Left" Margin="30 5 10 10"/>
             </StackPanel>
         </StackPanel>
     </Grid>

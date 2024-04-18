@@ -17,11 +17,11 @@
         </Grid.RowDefinitions>
         <DataGrid IsReadOnly="True" x:Name="Griddo"/>
         <StackPanel Grid.Column="1">
-            <Button x:Name="GetDataKonyvek" Content="Refresh" Click="GetDataKonyvek_Click" Grid.Column="1" Height="30" Width="150" VerticalAlignment="Top" Margin="10 10 10 10"/>
+            <Button x:Name="GetDataKonyvek" Content="Frissít" Click="GetDataKonyvek_Click" Grid.Column="1" Height="30" Width="150" VerticalAlignment="Top" Margin="10 10 10 10"/>
             <Button x:Name="CreateBook" Click="CreateBook_Click" Height="30" Width="150" VerticalAlignment="Top" Content="Könyv hozzáadása"/>
             <Button x:Name="EditBook" Click="EditBook_Click" Content="Változtat" VerticalAlignment="Top" Width="150" Height="30" Margin="10 10 10 0"/>
-            <Button x:Name="Delete" Content="Delete" Width="150" Height="30" VerticalAlignment="Top" Margin="10 10 10 10" Click="Delete_Click"/>
+            <Button x:Name="Delete" Content="Törlés" Width="150" Height="30" VerticalAlignment="Top" Margin="10 10 10 10" Click="Delete_Click"/>
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row="1" x:Name="Back" Click="Back_Click" Content="Back" Height="30" Width="150"/>
+        <Button Grid.Column="1" Grid.Row="1" x:Name="Back" Click="Back_Click" Content="Vissza" Height="30" Width="150"/>
     </Grid>
 </Window>
