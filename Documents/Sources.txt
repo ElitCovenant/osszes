@@ -6,6 +6,10 @@ https://dotnet.microsoft.com/en-us/apps/aspnet
 https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet
 https://umbraco.com/knowledge-base/aspnet/
 https://dotnet.microsoft.com/en-us/apps/aspnet/mvc
+https://www.hostinger.com/tutorials/what-is-wamp
+https://www.simplilearn.com/tutorials/reactjs-tutorial/what-is-reactjs
+https://www.geeksforgeeks.org/what-are-the-limitations-of-react-js/
+https://www.phpmyadmin.net/
 https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/
 https://www.codecademy.com/article/what-is-crud
@@ -13,3 +17,4 @@ https://kanglerian.medium.com/implementasi-crud-api-sederhana-dengan-json-server
 https://www.geeksforgeeks.org/json-web-token-jwt/
 https://www.prisma.io/dataguide/types/relational/what-is-an-orm
 https://learn.microsoft.com/en-us/dotnet/desktop/wpf/overview/?view=netdesktop-8.0
+
