@@ -6,3 +6,10 @@ https://dotnet.microsoft.com/en-us/apps/aspnet
 https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet
 https://umbraco.com/knowledge-base/aspnet/
 https://dotnet.microsoft.com/en-us/apps/aspnet/mvc
+https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/
+https://www.codecademy.com/article/what-is-crud
+https://kanglerian.medium.com/implementasi-crud-api-sederhana-dengan-json-server-menggunakan-axios-8e903f4516de
+https://www.geeksforgeeks.org/json-web-token-jwt/
+https://www.prisma.io/dataguide/types/relational/what-is-an-orm
+https://learn.microsoft.com/en-us/dotnet/desktop/wpf/overview/?view=netdesktop-8.0
