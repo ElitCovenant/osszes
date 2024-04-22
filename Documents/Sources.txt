@@ -7,3 +7,6 @@ https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet
 https://umbraco.com/knowledge-base/aspnet/
 https://dotnet.microsoft.com/en-us/apps/aspnet/mvc
 https://www.hostinger.com/tutorials/what-is-wamp
+https://www.simplilearn.com/tutorials/reactjs-tutorial/what-is-reactjs
+https://www.geeksforgeeks.org/what-are-the-limitations-of-react-js/
+https://www.phpmyadmin.net/
