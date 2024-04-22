@@ -22,7 +22,7 @@ const Footer = () => {
           <a href="https://cms.kando.intezmeny.edir.hu/uploads/adatvedelmi_tajekoztato_2_dbb7b7e9f6.pdf" className="link-1">Adatkezelési irányelvek</a>
           <a href="/">Impresszum</a>
         </p>
-        <p className="footer-company-name">2023 • Miskolci SZC Kandó Kálmán Informatikai Technikum</p>
+        <p className="footer-company-name">2024 • Miskolci SZC Kandó Kálmán Informatikai Technikum</p>
       </div>
 
       <div className="footer-center span">
