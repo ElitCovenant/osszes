@@ -17,4 +17,5 @@ https://kanglerian.medium.com/implementasi-crud-api-sederhana-dengan-json-server
 https://www.geeksforgeeks.org/json-web-token-jwt/
 https://www.prisma.io/dataguide/types/relational/what-is-an-orm
 https://learn.microsoft.com/en-us/dotnet/desktop/wpf/overview/?view=netdesktop-8.0
-
+https://www.netguru.com/glossary/node-js
+https://www.turing.com/kb/ultimate-guide-visual-studio-vs-visual-studio-code
