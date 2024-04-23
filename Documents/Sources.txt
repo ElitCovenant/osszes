@@ -19,3 +19,8 @@ https://www.prisma.io/dataguide/types/relational/what-is-an-orm
 https://learn.microsoft.com/en-us/dotnet/desktop/wpf/overview/?view=netdesktop-8.0
 https://www.netguru.com/glossary/node-js
 https://www.turing.com/kb/ultimate-guide-visual-studio-vs-visual-studio-code
+https://www.techtarget.com/searchnetworking/definition/File-Transfer-Protocol-FTP
+https://support.atlassian.com/trello/docs/what-is-trello/
+https://www.simplilearn.com/tutorials/git-tutorial/what-is-github
+https://swagger.io/docs/specification/about/
+https://apidog.com/blog/what-is-postman/
