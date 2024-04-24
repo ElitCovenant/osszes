@@ -151,7 +151,6 @@ namespace KonyvtarKarbantarto.Windows
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Felhszerk felhszerk = new Felhszerk(token);
-            felhszerk.Show();
             this.Close();
         }
     }
