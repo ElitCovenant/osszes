@@ -43,7 +43,7 @@ namespace KonyvtarKarbantarto
             {
                 LoginDto loginDto = new LoginDto();
                 loginDto.userName = EmailAdress.Text;
-                loginDto.hash = Password.Text;
+                loginDto.hash = Password.Password;
                 string result = webClient.UploadString(connection.Url()+"Login","POST",JsonConvert.SerializeObject(loginDto));
                 var handler = new JwtSecurityTokenHandler();
                 var jwtSecurityToken = handler.ReadJwtToken(JsonConvert.DeserializeObject<Token>(result).troken);
@@ -65,5 +65,6 @@ namespace KonyvtarKarbantarto
             }
             
         }
+
     }
 }

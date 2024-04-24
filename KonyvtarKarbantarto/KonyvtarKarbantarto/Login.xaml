@@ -17,11 +17,11 @@
         <StackPanel VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="Email : " VerticalAlignment="Center" Margin="40 10 0 10" FontSize="25"/>
-                <TextBox Name="EmailAdress" VerticalAlignment="Center" Width="150" Height="40" FontSize="25" Margin="0 10 10 10"/>
+                <TextBox Name="EmailAdress" VerticalAlignment="Center" Width="150" Height="30" FontSize="17" Margin="0 10 10 10"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="Jelszó : " VerticalAlignment="Center" Margin="26 10 0 10" FontSize="25"/>
-                <TextBox x:Name="Password" Width="150" Height="40" FontSize="25" RenderTransformOrigin="0.891,0.513"/>
+                <PasswordBox x:Name="Password"  Width="150" Height="30" FontSize="15" RenderTransformOrigin="0.891,0.513"/>
             </StackPanel>
         </StackPanel>
        
