@@ -83,26 +83,36 @@ namespace KonyvtarKarbantarto.Windows.Kolcsonzes
                     }
                     else
                     {
-                        LoanHistoryDto historyDto = new LoanHistoryDto()
+                        string question = "Biztosan befejezettnek jelöli a kölcsönzést? A művelet nem vonható vissza!";
+                        string cap = "Figyelem!";
+                        MessageBoxButton button = MessageBoxButton.YesNo;
+                        MessageBoxImage image = MessageBoxImage.Warning;
+                        MessageBoxResult result;
+                        result = MessageBox.Show(question, cap, button, image);
+                        if (result.ToString()=="Yes")
                         {
-                            id = (Griddo.SelectedItem as LoanHistory).Id,
-                            book_Id = (Griddo.SelectedItem as LoanHistory).BookId,
-                            user_Id = (uint)(Griddo.SelectedItem as LoanHistory).UserId,
-                            startDate = DateFormer((Griddo.SelectedItem as LoanHistory).Date.ToString()),
-                            deadline = DateFormer((Griddo.SelectedItem as LoanHistory).DateEnd.ToString()),
-                            returned = true,
-                            comment = (Griddo.SelectedItem as LoanHistory).Comment
-                        };
-                        CRUD.PutLoan(token, historyDto.id, historyDto);
+                            LoanHistoryDto historyDto = new LoanHistoryDto()
+                            {
+                                id = (Griddo.SelectedItem as LoanHistory).Id,
+                                book_Id = (Griddo.SelectedItem as LoanHistory).BookId,
+                                user_Id = (uint)(Griddo.SelectedItem as LoanHistory).UserId,
+                                startDate = DateFormer((Griddo.SelectedItem as LoanHistory).Date.ToString()),
+                                deadline = DateFormer((Griddo.SelectedItem as LoanHistory).DateEnd.ToString()),
+                                returned = true,
+                                comment = (Griddo.SelectedItem as LoanHistory).Comment
+                            };
+                            CRUD.PutLoan(token, historyDto.id, historyDto);
 
-                        BorrowUserChangeDto changeDto = new BorrowUserChangeDto()
-                        {
-                            id = 1
-                        };
-                        CRUD.BorrowChange(token, historyDto.book_Id, changeDto);
+                            BorrowUserChangeDto changeDto = new BorrowUserChangeDto()
+                            {
+                                id = 1
+                            };
+                            CRUD.BorrowChange(token, historyDto.book_Id, changeDto);
 
-                        Griddo.ItemsSource = CRUD.GetLoans(token);
-                        Griddo.Items.Refresh();
+                            Griddo.ItemsSource = CRUD.GetLoans(token);
+                            Griddo.Items.Refresh();
+                        }
+                        
                     }
                 }
             }
