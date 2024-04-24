@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonyvtarKarbantarto", "Kony
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "KonyvtarKarbantarto_Setup", "KonyvtarKarbantarto_Setup\KonyvtarKarbantarto_Setup.vdproj", "{5D926F0D-ABA4-4378-8DC1-3AB94B834218}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatatransferTests", "DatatransferTests\DatatransferTests.csproj", "{FA38ABE7-ACC1-4CA5-8EC8-AECFA573F16E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{BAE6CDC3-B247-4350-90A8-4B86B99755A0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5D926F0D-ABA4-4378-8DC1-3AB94B834218}.Debug|Any CPU.ActiveCfg = Debug
 		{5D926F0D-ABA4-4378-8DC1-3AB94B834218}.Release|Any CPU.ActiveCfg = Release
+		{FA38ABE7-ACC1-4CA5-8EC8-AECFA573F16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA38ABE7-ACC1-4CA5-8EC8-AECFA573F16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA38ABE7-ACC1-4CA5-8EC8-AECFA573F16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA38ABE7-ACC1-4CA5-8EC8-AECFA573F16E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

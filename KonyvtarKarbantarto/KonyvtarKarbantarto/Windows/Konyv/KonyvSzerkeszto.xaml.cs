@@ -46,6 +46,32 @@ namespace KonyvtarKarbantarto.Windows
             Price.Text = ook.Price.ToString();
             Comment.Text = ook.Comment;
             Picture.Text = ook.BookImg.ToString();
+            for (int i = 1900; i <= DateTime.Now.AddYears(5).Year; i++)
+            {
+                Ev.Items.Add(i);
+                if (Convert.ToInt32(ook.PurchaseDate.ToString().Split('.')[0].Replace('.', ' ').Trim()) == i)
+                {
+                    Ev.SelectedItem = i;
+                }
+            }
+
+            for (int i = 1; i <= 12; i++)
+            {
+                Honap.Items.Add(i);
+                if (Convert.ToInt32(ook.PurchaseDate.ToString().Split('.')[1].Replace('.', ' ').Trim()) == i)
+                {
+                    Honap.SelectedItem = i;
+                }
+            }
+
+            for (int i = 1; i <= 31; i++)
+            {
+                Nap.Items.Add(i);
+                if (Convert.ToInt32(ook.PurchaseDate.ToString().Split('.')[2].Replace('.', ' ').Trim()) == i)
+                {
+                    Nap.SelectedItem = i;
+                }
+            }
 
             List<Author> authors = CRUD.GetAuthors(token);
 
@@ -149,7 +175,7 @@ namespace KonyvtarKarbantarto.Windows
                 BookDtoUpload book = new BookDtoUpload();
 
                 book.warehouse_Num = Securer(WarhNum.Text);
-                book.purchase_Date = SecurerDate(Ev.Text).ToString() + "-" + SecurerDate(Honap.Text).ToString() + "-" + SecurerDate(Nap.Text).ToString();
+                book.purchase_Date = SecurerDate(Ev.SelectedItem.ToString())+ "-" + SecurerDate(Honap.SelectedItem.ToString()) + "-" + SecurerDate(Nap.SelectedItem.ToString());
                 book.author_Id = ComboSplitter(AuthorId);
                 book.title = Title.Text;
                 book.series_Id = ComboSplitter(Series);
@@ -165,6 +191,7 @@ namespace KonyvtarKarbantarto.Windows
                 MessageBox.Show(CRUD.PutBook(token, oo.Id, book));
                 PicPath = null;
                 book = new BookDtoUpload();
+                this.Close();
             }
             catch (Exception p)
             {

@@ -270,3 +270,7 @@ C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbant
 C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyv\KonyvKezelo.baml
 C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyv\KonyvSzerkeszto.baml
 C:\Users\ambrusk\Desktop\library_repo\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Konyv\Konyvletrehozo.baml
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Felhasznalo\PasswordReset.g.cs
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Kolcsonzes\KolcsonzesEdit.g.cs
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Felhasznalo\PasswordReset.baml
+C:\Users\Péter\Documents\Projektmunka\osszes\KonyvtarKarbantarto\KonyvtarKarbantarto\obj\Debug\Windows\Kolcsonzes\KolcsonzesEdit.baml
