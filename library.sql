@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2024. Ápr 18. 08:04
+-- Létrehozás ideje: 2024. Ápr 29. 08:06
 -- Kiszolgáló verziója: 8.0.31
 -- PHP verzió: 8.0.26
 
@@ -137,10 +137,10 @@ CREATE TABLE IF NOT EXISTS `book` (
 --
 
 INSERT INTO `book` (`id`, `warehouse_num`, `purchase_date`, `author_id`, `title`, `series_id`, `isbn_num`, `szakkjelzet`, `cutter_jelzet`, `publisher_id`, `release_date`, `price`, `comment`, `book_img`, `user_id`) VALUES
-(1, 1, '1967-01-09', 2, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'http://img.library.nhely.hu/img/ady_osszesvers_book_img.png', 1),
+(1, 1, '1967-01-09', 2, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'http://img.library.nhely.hu/img/ady_osszesvers_book_img.png', 4),
 (2, 2, '1967-01-09', 2, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'http://img.library.nhely.hu/img/ady_osszesvers_book_img.png', 1),
 (3, 3, '1967-01-09', 2, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'http://img.library.nhely.hu/img/ady_osszesvers_book_img.png', 1),
-(4, 4, '1967-01-09', 2, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'http://img.library.nhely.hu/img/ady_osszesvers_book_img.png', 1),
+(4, 4, '1967-01-09', 2, 'Összes versei 1-2', NULL, NULL, NULL, 'A 25', NULL, NULL, '75.00', NULL, 'http://img.library.nhely.hu/img/ady_osszesvers_book_img.png', 3),
 (5, 5, '1967-01-09', 3, 'Összes költeményei', NULL, NULL, NULL, 'A 76', NULL, NULL, '110.00', NULL, 'http://img.library.nhely.hu/img/arany_osszeskolt_book_img.png', 1),
 (6, 6, '1967-01-09', 3, 'Toldi trilógia', NULL, NULL, NULL, 'A 76', NULL, NULL, '6.00', NULL, 'http://img.library.nhely.hu/img/toldi_trilogia_book_img.PNG', 1),
 (7, 8, '1967-01-09', 3, 'Toldi trilógia', NULL, NULL, NULL, 'A 76', NULL, NULL, '6.00', NULL, 'http://img.library.nhely.hu/img/toldi_trilogia_book_img.PNG', 1),
@@ -256,7 +256,15 @@ CREATE TABLE IF NOT EXISTS `loan_history` (
   PRIMARY KEY (`id`),
   KEY `fk_konyv_id_idx` (`book_id`),
   KEY `fk_tag_id_idx` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+
+--
+-- A tábla adatainak kiíratása `loan_history`
+--
+
+INSERT INTO `loan_history` (`id`, `book_id`, `user_id`, `date`, `date_end`, `returned`, `comment`) VALUES
+(1, 4, 3, '2024-04-22', '2029-06-16', 0, ''),
+(2, 1, 4, '2024-04-22', '2029-06-16', 0, '');
 
 -- --------------------------------------------------------
 
@@ -310,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `series` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 --
 -- A tábla adatainak kiíratása `series`
@@ -345,9 +353,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `membership_start`, `membership_end`, `usarname`, `HASH`, `token`, `id_rule`, `id_account_img`) VALUES
-(1, '2024-02-19', '2028-02-19', 'string@kkszki.hu', '$2a$11$O9CC4SduJTI3IP9FRx5qSeuBfwDTdqMCgypF2yDR3mbmLJOrG.rIa', 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6InN0cmluZ0Bra3N6a2kuaHUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9kbnMiOiIxIiwiZXhwIjoxNzEzNTEzNjAwLCJpc3MiOiJkb3RuZXQtdXNlci1qd3RzIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIn0.6RSAzhdymoZDC2j9NSa00eGXmqOLxtSx3htz6JgE9MNHyhG6A3l6t93JpA-5whl0g0ZPA4vBtYJKMUfxSIrLtA', 1, 2),
-(2, '2024-02-19', '2028-02-19', 'string2@kkszki.hu', '$2a$11$Zi8gAeq3mkpQqLShqZbs5etvHKQw5aH5waZ//RrxU0rpwveCzRzH6', 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJHdWVzdCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6InN0cmluZzJAa2tzemtpLmh1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZG5zIjoiMiIsImV4cCI6MTcxMzUxMTA5NCwiaXNzIjoiZG90bmV0LXVzZXItand0cyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJ9.sGimfbB5qrk8qzt2MghXmKlPInIDh8ZFGpRhjexl6z4euHR6n-6pjW0Qg5bt-rWyCmOQoNX1grR4gx1qSeAKBg', 2, 4),
-(3, '2024-04-05', '2028-04-05', 'ambrusk@kkszki.hu', '$2a$11$bznOtToEjXSxbd5i.7Djf.e6Uo4nRkWQt/4Vck6qZ8avbMeWW8mgK', NULL, 2, 4),
+(1, '2024-02-19', '2028-02-19', 'string@kkszki.hu', '$2a$11$O9CC4SduJTI3IP9FRx5qSeuBfwDTdqMCgypF2yDR3mbmLJOrG.rIa', 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6InN0cmluZ0Bra3N6a2kuaHUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9kbnMiOiIxIiwiZXhwIjoxNzE0NDYyNDI1LCJpc3MiOiJkb3RuZXQtdXNlci1qd3RzIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIn0.KOloafQ-loG5scZgIOxx6T8lBqyJCcbDrvJF47HymSzRZe9dCV1Q-jObNTtNaYjo_WriNvZQlqlsCwXQuuEWvQ', 1, 2),
+(2, '2024-02-19', '2028-02-19', 'string2@kkszki.hu', '$2a$11$Zi8gAeq3mkpQqLShqZbs5etvHKQw5aH5waZ//RrxU0rpwveCzRzH6', 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJHdWVzdCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6InN0cmluZzJAa2tzemtpLmh1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZG5zIjoiMiIsImV4cCI6MTcxNDExMjIwMCwiaXNzIjoiZG90bmV0LXVzZXItand0cyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJ9.vqHayP2GsWF5WFXaKuG7GOvpBAQUPT3JWuB1kJQGYBu663QveplsmyR6hSm_HZiBAisAyIsphuFrv40cG0N6iw', 2, 4),
+(3, '2024-04-05', '2028-04-05', 'ambrusk@kkszki.hu', '$2a$11$bznOtToEjXSxbd5i.7Djf.e6Uo4nRkWQt/4Vck6qZ8avbMeWW8mgK', 'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJHdWVzdCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFtYnJ1c2tAa2tzemtpLmh1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZG5zIjoiMyIsImV4cCI6MTcxNDExMjI1NSwiaXNzIjoiZG90bmV0LXVzZXItand0cyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJ9.RkptnUcomHi7l09ezj7lwInktn7sHzMM4MiHsQxhwJA072oNhz6iysbX-u6OrozuTkWcSZFRFK-R_M5hZ241pw', 2, 4),
 (4, '2024-04-05', '2028-04-05', 'szesztaip@kkszki.hu', '$2a$11$taTLT2/MhXul8jc.pe0JVuccriFWVNBOzalUf2O1pYXfb7.hLtsTW', NULL, 2, 4);
 
 --
