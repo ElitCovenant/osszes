@@ -1,19 +1,22 @@
 import React from 'react';
+import { useLanguage } from './LanguageProvider';
 import './WelcomeSection.css';
 
 const WelcomeSection = () => {
+  const { translations } = useLanguage();
+
   return (
-      <div className="container" >
-        <div className="typed-out">
+    <div className="container">
+      <div className="typed-out">
+        <br />
+        <p>
+          {translations.welcome_message}
           <br />
-          <p>
-            Welcome to all our dear visitors, teachers, and students to the online library page of Miskolc SZC Kandó Kálmán Information Technology <br /> High School! 
-            <br />
-            The goal of the school library is to support education and learning.
-            <br />
-          </p>
-        </div>
+          {translations.library_goal}
+          <br />
+        </p>
       </div>
+    </div>
   );
 };
 

@@ -68,10 +68,13 @@
     background-color: #d32f2f; /* Sötétebb piros szín hover állapotban */
 }
 
-@media (max-width: 657px) {
+/* Médialekérdezések */
+
+/* Nagyon kis telefonok, például 320px alatti szélességűek */
+@media (max-width: 320px) {
     .download-content {
-        padding: 20px; /* Kisebb padding */
-        width: 80%; /* Szélesebb tartalom mobil eszközökön */
+        padding: 15px; /* Kisebb padding */
+        width: 90%; /* Szélesebb tartalom mobil eszközökön */
     }
 
     .download-content h2 {

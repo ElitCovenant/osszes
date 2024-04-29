@@ -95,3 +95,34 @@
     }
   }
   
+  @media (max-width: 425px) and (min-width: 320px) {
+    .cookie-consent .modal {
+      width: 100%; /* Kisebb képernyőkön szélesebb legyen */
+      top: 50%; /* Középre helyezés vertikálisan */
+      left: 50%; /* Középre helyezés vízszintesen */
+      transform: translate(-50%, -50%); /* Középre pozícionálás */
+      height: 20%; /* Csökkentett magasság */
+      padding: 5px; /* Kisebb padding */
+    }
+  
+    .cookie-consent .modal h1 {
+      max-height: 140%;
+      width: 100%;
+      padding: 5px; /* Kisebb padding a címsorhoz */
+      margin-top: 10px; /* Növelt felső margó */
+      font-size: 20px; /* Kisobb betűméret */
+      letter-spacing: 5px; /* Kisobb karaktertávolság */
+    }
+  
+    .cookie-consent .modal p {
+      font-size: 12px; /* Kisobb betűméret a szöveghez */
+      margin: 10px 0; /* Növelt margó a szöveg körül */
+      padding: 2px; /* Kisobb padding a szöveghez */
+    }
+  
+    .cookie-consent .modal button {
+      padding: 5px 10px; /* Kisobb padding a gombhoz */
+      font-size: 15px; /* Kisobb betűméret a gombhoz */
+    }
+  }
+  

@@ -44,40 +44,6 @@
   align-items: center;
 }
 
-/* Search input */
-.search-input {
-  padding: 4px 8px; /* Increased padding */
-  margin-right: 10px;
-  border: 1px solid #ccc; /* Add border */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 14px; /* Increase font size */
-}
-
-.frame {
-  width: 90%;
-  text-align: center;
-}
-
-.search-input:focus {
-  outline: none; /* Remove outline on focus */
-  border-color: #007bff; /* Change border color on focus */
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Add box shadow on focus */
-}
-
-/* Search button */
-.search-button {
-  background: linear-gradient(0deg, rgba(49, 18, 18, 0.577) 0%, rgb(39, 38, 38) 100%);
-  color: #fffdfd;
-  padding: 8px 16px; /* Adjust padding */
-  cursor: pointer;
-  border: none;
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s ease; /* Smooth transition */
-}
-
-.search-button:hover {
-  background: linear-gradient(135deg, rgba(94, 60, 60, 0.8) 0%, rgba(71, 46, 46, 0.8) 100%);
-}
 
 /* Profile Menu */
 .profile-menu {
@@ -176,6 +142,9 @@
 
   .navbar-menu li {
     margin-right: 30px; /* Nagyobb margó az elemek között */
+    width: 50px; /* Nagyobb szélesség */
+    display: flex;
+    justify-content:space-around;
   }
 
   .profile-button, .login-button {
@@ -200,44 +169,61 @@
   }
 }
 
+
 /* Nagyobb telefonok */
-@media (max-width: 768px) {
+@media (max-width: 310px) {
   .navbar-menu {
-    flex-direction: column;
-    align-items: center;
+    display: none; /* Menü elemek rejtése alapértelmezetten */
+    flex-direction: column; /* Elemek vertikális elrendezése */
+    align-items: flex-start; /* Balra igazítás */
+    position: absolute; /* Abszolút pozícionálás */
+    top: 70px; /* Felső margó beállítása */
+    left: 0; /* Balra igazítás */
+    width: 100%; /* Teljes szélesség */
+    background-color: #000000a5; /* Háttérszín */
+    border-radius: 0 0 10px 10px; /* Kerekítés csak az alsó sarkokon */
+  }
+
+  .navbar-menu.show {
+    display: contents; /* Menü elemek megjelenítése, ha a .show osztály van rajtuk */
   }
 
   .navbar-menu li {
-    margin-bottom: 5px; /* Elemek vertikális elrendezése */
-  }
-}
-
-/* Nagyon kis telefonok */
-@media (max-width: 480px) {
-  .navbar {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .navbar-logo {
-    margin-bottom: 10px;
-  }
-
-  .navbar-menu, .navbar-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .navbar-menu li {
-    margin-right: 0;
-    margin-bottom: 5px;
-    align-items: center;
-  }
-
-  .search-input, .search-button, .profile-button, .login-button {
+    margin-bottom: 10px; /* Elemek közötti távolság növelése */
     width: 100%; /* Teljes szélesség használata */
-    margin-bottom: 5px; /* Elemek vertikális elrendezése */
-    text-align: center;
+  }
+
+  .navbar-actions {
+    position: relative; /* Relatív pozícionálás */
+  }
+
+  .profile-menu {
+    position: static; /* Alapértelmezett pozícionálás */
+    margin-right: 0; /* Margó eltávolítása */
+  }
+
+  .dropdown-content {
+    position: static; /* Alapértelmezett pozícionálás */
+    min-width: auto; /* Alapértelmezett szélesség */
+    box-shadow: none; /* Árnyékolás eltávolítása */
+    border-radius: 0; /* Kerekítés eltávolítása */
+    background-color: transparent; /* Átlátszó háttérszín */
+    border: none; /* Keret eltávolítása */
+    top: 0; /* Felső margó visszaállítása */
+    right: 0; /* Jobb margó visszaállítása */
+  }
+
+  .dropdown-content::before {
+    display: none; /* Előző háttérszín eltávolítása */
+  }
+
+  .navbar-right {
+    flex-direction: column; /* Elemek vertikális elrendezése */
+    align-items: flex-start; /* Balra igazítás */
+  }
+
+  .profile-button, .login-button {
+    width: 100%; /* Teljes szélesség használata */
+    margin-bottom: 10px; /* Elemek közötti távolság növelése */
   }
 }
-

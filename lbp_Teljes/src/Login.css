@@ -1,81 +1,70 @@
 * {
   padding: 0;
   margin: 0;
-  color: #000000;
   box-sizing: border-box;
   word-wrap: break-word;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, sans-serif;
 }
 
 .h1 {
-    letter-spacing: -1px;
-}
-
-
-.body{
-  min-width: 100vh;
+  letter-spacing: -1px;
 }
 
 .login-name {
-  color:rgb(206, 200, 172);
+  color: rgb(206, 200, 172);
   margin-left: 24%;
   margin-top: 12px; /* Például 20px távolság a felső elem aljától */
-
 }
 
-.userName{
+.userName,
+.password,
+.Show-Password {
   margin-left: 50px;
-  color:rgb(206, 200, 172);
-
+  color: rgb(206, 200, 172);
 }
-.password{
-  margin-left: 50px;
-  color:rgb(206, 200, 172);
-}
-
-.Show-Password{
-  margin-left: 50px;
-  color:rgb(206, 200, 172);
-}
-
-
-
 
 .login-root {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
+
 .loginbackground {
-    min-height: 692px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 0;
-    overflow: hidden;
+  min-height: 692px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  overflow: hidden;
 }
+
 .flex-flex {
-    display: flex;
+  display: flex;
 }
+
 .align-center {
   align-items: center; 
 }
+
 .center-center {
   align-items: center;
   justify-content: center;
 }
+
 .box-root {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .flex-direction--column {
-    -ms-flex-direction: column;
-    flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
+
 .loginbackground-gridContainer {
   display: -ms-grid;
   display: grid;
@@ -90,32 +79,41 @@
 }
 
 .box-divider--light-all-2 {
-    box-shadow: inset 0 0 0 2px #000000;
+  box-shadow: inset 0 0 0 2px #000000;
 }
+
 .box-background--blue {
-    background-color: #5469d4;
+  background-color: #5469d4;
 }
+
 .box-background--white {
   background-color: #ffffff; 
 }
+
 .box-background--blue800 {
-    background-color: #002fff;
+  background-color: #002fff;
 }
+
 .padding-top--64 {
   padding-top: 64px;
 }
+
 .padding-top--24 {
   padding-top: 24px;
 }
+
 .padding-top--48 {
   padding-top: 48px;
 }
+
 .padding-bottom--24 {
   padding-bottom: 24px;
 }
+
 .padding-horizontal--48 {
   padding: 48px;
 }
+
 .padding-bottom--15 {
   padding-bottom: 15px;
 }
@@ -127,61 +125,64 @@
 }
 
 .formbg {
-    margin: 0px auto;
-    max-height: 450px;
-    max-width: 530px;
-    background-image: url('https://st.depositphotos.com/2504887/4298/i/450/depositphotos_42982647-stock-photo-dark-leather-cover.jpg');
-    background-position: top;
-    background-size:cover;
-    box-shadow: rgba(0, 0, 0, 0.61) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+  margin: 0px auto;
+  max-height: 500px;
+  max-width: 530px;
+  background-image: url('/src/LoginBack.jpg');
+  background-position: top;
+  background-size:cover;
+  box-shadow: rgba(0, 0, 0, 0.61) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
 }
-span {
-    display:block;
-    font-size: 20px;
-    line-height: 28px;
-   
-  }
 
+
+span {
+  display:block;
+  font-size: 20px;
+  line-height: 28px;
+}
 
 label {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
-.reset-pass a,label {
-    font-size: 14px;
-    font-weight: 400px;
-    display: block;
+
+.reset-pass a,
+label {
+  font-size: 14px;
+  font-weight: 400px;
+  display: block;
 }
+
 .reset-pass > a {
-    text-align: right;
-    margin-bottom: 10px;
+  text-align: right;
+  margin-bottom: 10px;
 }
+
 .grid--50-50 {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
 }
+
 
 .field input {
-    font-size: 15px;
-    top: -50px;
-    margin-left: 45px;
-    line-height: 28px;
-    padding: 8px 16px;
-    width: 80%;
-    min-height: 30px;
-    border: unset;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.342);
-    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px, 
-                rgb(0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(194, 194, 194, 0.16) 0px 0px 0px 1px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                rgb(0, 0, 0) 0px 0px 0px 0px;
+  font-size: 15px;
+  top: -50px;
+  margin-left: 45px;
+  line-height: 28px;
+  padding: 8px 16px;
+  width: 80%;
+  min-height: 30px;
+  border: unset;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.342);
+  box-shadow: rgba(0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(194, 194, 194, 0.16) 0px 0px 0px 1px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
+              rgb(0, 0, 0) 0px 0px 0px 0px;
 }
-
-
 
 .submit {
   background-color: -webkit-repeating-linear-gradient(left, rgba(255, 238, 170, 0) 0%, rgba(255, 238, 170, 0) 3%, rgba(255, 238, 170, .1) 3.75%),
@@ -223,86 +224,77 @@ label {
 
 .submit:active {
   -webkit-transform: translateY(2px);
-  transform: translateY(2px);}
-
-
+  transform: translateY(2px);
+}
 
 .field-checkbox input {
-    width: 20px;
-    height: 15px;
-    margin-right: 5px; 
-    box-shadow: unset;
-    min-height: unset;
+  width: 20px;
+  height: 15px;
+  margin-right: 5px; 
+  box-shadow: unset;
+  min-height: unset;
 }
+
 .field-checkbox label {
-    display: flex;
-    align-items: center;
-    margin: 0;
+  display: flex;
+  align-items: center;
+  margin: 0;
 }
+
 a.ssolink {
-    display: block;
-    text-align: center;
-    font-weight: 600;
+  display: block;
+  text-align: center;
+  font-weight: 600;
 }
-.footer-linkk span {
-    font-size: 14px;
-    text-align: center;
-    
-}
+
+
+
 .listing a {
-    color: #000000;
-    font-weight: 600;
-    margin: 0 10px;
+  color: #000000;
+  font-weight: 600;
+  margin: 0 10px;
 }
 
 @media (max-width: 600px) {
-  .login-root, .flex-flex, .align-center, .center-center {
-    flex-direction: column;
+  .login-name {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+
+  
+  .field {
+    margin-right: 0px;
+    width: 260px;
+    margin-left: 0;
+    margin-top: 10px;
+    max-height: fit-content;
+    
+  }
+
+  
+  .userName,
+  .password,
+  .Show-Password {
+    margin-left: 0;
+  }
+
+  .submit {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: -10px;
   }
 
   .formbg {
+    margin: 10px auto;
+    max-height: 100%;
     max-width: 100%;
-    padding: 20px;
+    background-image: url('https://st.depositphotos.com/2504887/4298/i/450/depositphotos_42982647-stock-photo-dark-leather-cover.jpg');
+    background-position:top;
+    background-size:550px;
+    box-shadow: rgba(0, 0, 0, 0.61) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
   }
-}
+  
 
-@media (min-width: 1920px) {
-  .formbg {
-    max-width: 600px; /* Növelheted az űrlap méretét */
-    padding: 40px; /* Nagyobb belső tér */
-  }
-
-  .login-root {
-    justify-content: center; /* Középre igazítás */
-  }
-}
-@media (min-width: 3840px) {
-  body {
-    font-size: 22px; /* Nagyobb alapbetűméret */
-  }
-
-  h1 {
-    font-size: 48px; /* Nagyobb címsorok */
-    margin-bottom: 24px; /* Nagyobb alsó margó a címsorok alatt */
-  }
-
-  .formbg {
-    max-width: 800px; /* Nagyobb űrlap szélesség */
-    padding: 60px; /* Nagyobb belső tér */
-  }
-
-  .field input, .field-checkbox input {
-    font-size: 20px; /* Nagyobb input mező betűméret */
-    padding: 12px 24px; /* Nagyobb input mező padding */
-  }
-
-  input[type="submit"] {
-    padding: 15px 30px; /* Nagyobb beküldő gomb */
-    font-size: 20px; /* Nagyobb gomb betűméret */
-  }
-
-  .listing a {
-    font-size: 18px; /* Link mérete */
-    margin: 0 15px; /* Nagyobb margó a linkek között */
-  }
 }

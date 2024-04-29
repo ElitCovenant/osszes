@@ -11,22 +11,22 @@
 
 
 body {
-  background-image: url(/src/Surrealism.jpg);
-  height: 100vh;
+  background-image: url('/src/Surrealism.jpg');
+  height: auto;
   background-repeat: no-repeat;
   background-position: center;
-  background-size:auto; /* A teljes kép látható, de lehetnek üres területek */
+  background-size: cover; /* Háttérkép kitölti a teljes képernyőt */
 }
 
 /* Kis eszközök (okostelefonok) */
-@media (max-width: 600px) {
+@media (max-width: 320px) {
   body {
-    background-position: top right; /* Állíthatod a háttérkép pozícióját, ha szükséges */
+    background-position: center; /* Ha szükséges, állítsd át a háttérkép pozícióját */
   }
 }
 
 /* Nagy felbontású kijelzők, mint a 4K monitorok */
-@media (min-width: 3840px) {
+@media (min-width: 2560px) {
   body {
     background-position: center; /* Biztosítja, hogy a kép középpontja legyen látható a nagy felbontású kijelzőkön */
   }

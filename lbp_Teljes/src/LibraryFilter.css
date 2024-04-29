@@ -2,17 +2,14 @@
   background-color: #f5f5f5; /* Háttérszín */
   padding: 10px;
   border-radius: 5px; /* Keret sugara */
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Árnyék */
   width: 20%; /* Szélesség */
   position: relative;
   float: left;
   top: 17px; /* Eltolás */
   min-height: 200px; /* Minimális magasság */
 }
-.library_filter_container:hover {
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 8px 15px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease;
-}
+
 
   
   .library_filter_form {
@@ -22,41 +19,92 @@
   }
   
   .filter_section {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 10px;
+  }
+
+  .author_select{
+    margin-bottom: 10px;
+    width: 100%;
   }
   
   .filter_section label {
+    margin-bottom: 5px;
     font-weight: bold;
   }
   
-  .filter_section select,
-  .filter_section input[type="text"] {
-    width: 100%;
+  .filter_section input[type="text"], .filter_section select {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
   }
-  
-
   
   .filter_button {
     cursor: pointer;
-    background-color: #3498db;
+    background-color: #007bff; /* Gomb háttérszíne */
     color: white; /* Szöveg színe */
     border: none;
-      padding: 8px;
-    border-radius: 3px; /* Gomb keretének sugara */
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Átmenet a háttér- és szövegszín megváltoztatásához */
+    padding: 10px;
+    border-radius: 4px; /* Gomb keretének sugara */
   }
   
   .filter_button:hover {
-    color: #f7f7f7;
-  background-color: #07b8e0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Árnyék a hover eseményre */
+    background-color: #0056b3; /* Gomb háttérszín változása */
+  }
+  
+  /* Responsive stílusok */
+  @media (max-width: 425px) {
+    .library_filter_container {
+      width: 80%; /* Szélesség csökkentése */
+      padding: 5px; /* Kisebb padding */
+      top: 0; /* Eltolás eltávolítása */
+      float: none; /* Float eltávolítása */
+      margin: 0 auto; /* Középre igazítás */
+    }
+    
+    .library_filter_form {
+      width: 100%; /* Teljes szélességű elem */
+    }
+    
+    .filter_section label {
+      font-size: 12px; /* Kisobb betűméret */
+    }
+    
+    .filter_section input[type="text"], .filter_section select {
+      padding: 3px; /* Kisobb padding */
+    }
+    
+    .filter_button {
+      padding: 6px; /* Kisobb padding a gombhoz */
+      font-size: 12px; /* Kisobb betűméret a gombhoz */
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .library_filter_container {
+      width: 80%; /* Szélesség csökkentése */
+      padding: 5px; /* Kisebb padding */
+      top: 0; /* Eltolás eltávolítása */
+      float: none; /* Float eltávolítása */
+      margin: 0 auto; /* Középre igazítás */
+    }
+    
+    .library_filter_form {
+      width: 100%; /* Teljes szélességű elem */
+    }
+    
+    .filter_section label {
+      font-size: 12px; /* Kisobb betűméret */
+    }
+    
+    .filter_section input[type="text"], .filter_section select {
+      padding: px; /* Kisobb padding */
+    }
+    
+    .filter_button {
+      padding: 8px; /* Kisobb padding a gombhoz */
+      font-size: 12px; /* Kisobb betűméret a gombhoz */
+    }
   }
   

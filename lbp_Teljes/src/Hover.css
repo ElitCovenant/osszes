@@ -17,3 +17,13 @@
 #myBtn:hover {
   background-color: #00000093;
 }
+
+/* Nagyon kis telefonok, például 320px alatti szélességűek */
+@media (max-width: 320px) {
+  #myBtn {
+    bottom: 10px; /* Kis méretű képernyőkön alulra igazítás */
+    right: 10px; /* Kis méretű képernyőkön jobbra igazítás */
+    font-size: 10px; /* Kis betűméret */
+    padding: 10px; /* Kis méretű képernyőkön kisebb padding */
+  }
+}

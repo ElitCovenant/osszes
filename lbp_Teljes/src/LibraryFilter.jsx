@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useLanguage } from './LanguageProvider';
 import './LibraryFilter.css';
 
 const LibraryFilter = ({ onSubmit }) => {
+
   const [books, setBooks] = useState([]);
   const [searchTitle, setSearchTitle] = useState('');
   const [authors, setAuthors] = useState([]);
   const [selectedAuthor, setSelectedAuthor] = useState('0');
   const [filteredBooks, setFilteredBooks] = useState([]);
+
+  const { translations } = useLanguage(); // Megfelelő használat a useLanguage hooknak
+
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -70,36 +75,37 @@ const LibraryFilter = ({ onSubmit }) => {
 
   return (
     <div className='library_filter_container'>
-      <form className="library_filter_form" onSubmit={handleFilterSubmit}>
-        
-        {/* Author szűrő */}
-        <div className="filter_section">
-          <label htmlFor="author_filter">Author:</label>
-          <select id="author_filter" name="author" onChange={handleAuthorChange} value={selectedAuthor}>
-            {/* Mapping through the authors list */}
-            {authors.map(author => (
-              <option key={author.id} value={author.id}>{author.name}</option>
-            ))}
-          </select>
-        </div>
-        
-        {/* Cím szűrő */}
-        <div className="filter_section">
-          <label htmlFor="title_filter">Title:</label>
-          <input 
-            id="title_filter" 
-            type="text" 
-            name="title" 
-            placeholder="Book title" 
-            value={searchTitle} 
-            onChange={(e) => setSearchTitle(e.target.value)} 
-          />
-        </div>
-
-        <button type="submit" className="filter_button">Filter Books</button>
-      </form>
+    <form className="library_filter_form" onSubmit={handleFilterSubmit}>
       
-    </div>
+      {/* Author szűrő */}
+      <div className="filter_section">
+      <label htmlFor="author_filter">{translations?.libraryFilter?.authorLabel || "Author"}</label>
+        <select id="author_filter" className="author_select" name="author" onChange={handleAuthorChange} value={selectedAuthor}>
+          {/* Mapping through the authors list */} 
+          {authors.map(author => (
+            <option className="author_option" key={author.id} value={author.id}>{author.name}</option>
+          ))}
+        </select>
+      </div>
+      
+      {/* Cím szűrő */}
+      <div className="filter_section">
+      <label htmlFor="title_filter">{translations?.libraryFilter?.titleLabel || "Title"}</label>
+        <input 
+          id="title_filter" 
+          type="text" 
+          name="title" 
+          placeholder={translations.titlePlaceholder} 
+          value={searchTitle} 
+          onChange={(e) => setSearchTitle(e.target.value)} 
+        />
+      </div>
+
+      <button type="submit" className="filter_button">{translations?.libraryFilter?.filterButton || "Filter"}</button>
+    </form>
+    
+  </div>
+
   );
 };
 

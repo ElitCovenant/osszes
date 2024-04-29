@@ -1,10 +1,12 @@
+/* Általános stílusok */
 .mail-icon {
   width: 20px;
   height: 20px;
-  float: right; /* A kép balra igazítása */
+  float: right; /* A kép jobbra igazítása */
   margin-left: 10px; /* Távolság hozzáadása a gomb szövege és a kép között */
 }
-.facebook-profile {
+
+.facebook-profile{
   font-family: 'Helvetica Neue', Arial, sans-serif;
   max-width: 500px;
   margin: 20px auto;
@@ -18,11 +20,6 @@
   position: relative;
   top: 5px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Sima áttűnés az animációhoz */
-}
-
-.facebook-profile:hover {
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 8px 15px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease;
 }
 
 .profile-header {
@@ -99,8 +96,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Árnyék a hover eseményre */
 }
 
-
-
 .profile-info, .social-links {
   margin-top: 20px;
 }
@@ -132,8 +127,8 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   border-radius: 8px;
-  
 }
+
 .role-selector-modal-overlay {
   position: fixed;
   top: 0;
@@ -144,10 +139,14 @@
   z-index: 10;
 }
 
+/* Felbontásokhoz igazítás */
+
+/* Nagy felbontású kijelzők */
 @media (min-width: 2560px) {
   .facebook-profile {
-    max-width: 1200px; /* Nagyobb szélesség */
-    padding: 40px; /* Nagyobb padding */
+    max-width: 500px; /* Nagyobb szélesség */
+    padding: 30px; /* Nagyobb padding */
+    margin-left: 500px;
   }
 
   .profile-header img.profile-picture {
@@ -156,39 +155,35 @@
   }
 
   .toggleLoan-button {
-    top: 60px;
-    right: 60px;
+    top: 15px;
+    right: 4px;
     padding: 15px 20px; /* Nagyobb gomb */
   }
 }
 
-/* Laptopok */
-@media (max-width: 1440px) {
+@media (min-width: 1024px) and (max-width: 1440px) {
+  /* Közepes nagyságú kijelzők, például laptopok */
   .facebook-profile {
-    max-width: 800px; /* Szűkebb szélesség */
-  }
-}
-
-/* Tabletek */
-@media (max-width: 1024px) {
-  .facebook-profile {
-    max-width: 90%; /* Teljes szélesség használata százalékban */
+    max-width: 450px; /* Kisebb maximális szélesség */
+    padding: 25px; /* Kisebb padding */
+    margin-left: 85px;
   }
 
-  .profile-header {
-    flex-direction: column;
-    align-items: center;
+  .profile-header img.profile-picture {
+    width: 120px;
+    height: 120px; /* Kisebb profil kép */
   }
 
   .toggleLoan-button {
-    position: static; /* Statikus pozicionálás */
-    margin-top: 20px;
+    padding: 12px 20px; /* Gomb méretének változtatása */
   }
 }
 
 /* Telefonok */
 @media (max-width: 768px) {
   .facebook-profile {
+    max-width: 90%; /* Szélesség százalékban */
+    margin-right: 10px;
     padding: 15px;
   }
 
@@ -196,33 +191,52 @@
     width: 80px;
     height: 80px; /* Kisebb profil kép */
   }
+
+  .toggleLoan-button {
+    padding: 8px 20px; /* Gomb méretének változtatása */
+  }
 }
 
+
+
+
+/* Telefonok */
+@media (max-width: 425px) {
+  .facebook-profile {
+    flex-direction: column;
+    padding: 10px;
+    margin-right: 40px;
+    text-justify: auto;
+
+  }
+
+  .profile-header img.profile-picture {
+    width: 70px;
+    height: 70px; /* Kisebb profil kép */
+  }
+
+  .toggleLoan-button {
+    padding: 8px 15px; /* Gomb méretének változtatása */
+  }
+}
+
+
+
 /* Nagyon kis telefonok */
-@media (max-width: 480px) {
+@media (max-width: 320px) {
   .facebook-profile {
     padding: 10px;
+    width: 100%;
+    margin-left: 15px;
   }
 
   .profile-header img.profile-picture {
     width: 60px;
     height: 60px; /* Még kisebb profil kép */
   }
-}
-
-@media (max-width: 320px) {
-  .facebook-profile {
-    padding: 5px;
-  }
-
-  .profile-header img.profile-picture {
-    width: 50px;
-    height: 50px; /* Nagyon kis profil kép */
-  }
 
   .toggleLoan-button {
-    top: 10px;
-    right: 10px;
-    padding: 8px 10px; /* Nagyon kis gomb */
+    padding: 8px 15px; /* Gomb méretének változtatása */
   }
 }
+

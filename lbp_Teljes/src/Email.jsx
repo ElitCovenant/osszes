@@ -110,11 +110,11 @@ function Loan() {
   return (
     <div className="panel">
       <div className="message-window">
-        <input type="text" placeholder="Here you can add an email..." value={recipients} onChange={(e) => setRecipients(e.target.value)} />
-        <textarea placeholder="Write your message here..." value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
-        <button onClick={sendMessage}>Send</button>
-        <button className='prepare-message' onClick={prepareMessage}>Prepared Text</button>
-        <button className='close-panel' onClick={handleClose}>Close</button>
+        <input type="text" placeholder="Adja meg a címzettek e-mail címét itt..." value={recipients} onChange={(e) => setRecipients(e.target.value)} />
+        <textarea placeholder="Írjon üzenetet itt..." value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
+        <button onClick={sendMessage}>Üzenet küldése</button>
+        <button className='prepare-message' onClick={prepareMessage}>Üzenet Előkészítése</button>
+        <button className='close-panel' onClick={handleClose}>Bezárás</button>
       </div>
       {/* <div className="email-list-window">
         <input type="text" placeholder="Új e-mail cím hozzáadása..." value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />

@@ -41,11 +41,11 @@
   width: 100%;
   text-align: center;
   color: whitesmoke;
-  background-color: whitesmoke;
+  background-color: rgb(0, 0, 0);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
-  background-size: 101%; /* Háttérkép teljes méretben való megjelenítése */
+  background-size: cover ; /* Háttérkép teljes méretben való megjelenítése */
   background-repeat: no-repeat; /* Háttérkép ismétlődésének letiltása */
-  background-position: center; /* Háttérkép középre igazítása */
+  background-position:center  -10%; /* Háttérkép középre igazítása */
 }
 @media (min-width: 600px) {
   .card {
@@ -79,14 +79,15 @@
   width: 100%;
   height: 200%;
   pointer-events: none;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.79) 100%);
+  background-color: #0d0d0d1a;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.836) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgb(0, 112, 34) 100%);
   transform: translateY(-50%);
   transition: transform calc(var(--d) * 2) var(--e);
 }
 
 .card.selected {
   border-color: #007bff; 
-  background-color: #f0f8ff; 
+  background-color: #a3b6c7; 
   box-shadow: 0 2px 4px rgba(0, 123, 255, 0.5); 
   transform: scale(1.1); 
 }
@@ -101,7 +102,7 @@
   transition: transform var(--d) var(--e);
   z-index: 1;
   background-repeat: no-repeat; /* Háttérkép ismétlődésének letiltása */
-  background-size: cover; /* Háttérkép méretének beállítása a tartalomhoz */
+  background-size:cover; /* Háttérkép méretének beállítása a tartalomhoz */
   grid-template-columns: auto; /* Az oszlopszélesség automatikusra állítása */
 }
 
@@ -114,9 +115,12 @@
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.2;
-  color: #f70000;
-
+  background-image: linear-gradient(#ffffff 20%, #00ff73 80%); /* Lineáris gradiens hozzáadása a háttérszínhez */
+  border-radius: 10px; /* Körvonal kerekítése */
+  -webkit-background-clip: text; /* Szöveghez való illesztés Safari-hoz */
+  -webkit-text-fill-color: transparent; /* Szöveg színének átlátszóvá tétele Safari-hoz */
 }
+
 
 .btn {
   cursor: pointer;
@@ -188,7 +192,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.651);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,7 +203,7 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.514);
   width: 80%;
   max-width: 500px;
 }
@@ -277,35 +281,55 @@
 }
 @media (min-width: 1024px) and (max-width: 1440px) {
   .container, .modal-content, .card, .content, .title, .btn, .page-btn, .pagination-text {
-    max-width: 90%;
+    max-width: auto;
     font-size: 1.2rem;
     padding: 2rem;
   }
 
   .card {
-    height: 400px; 
+    height:400px; /* Nagyobb magasság a nagyobb képernyőkön */
+    background-size: cover; 
+    background-position: top;
+
   }
 
   .title, .btn, .page-btn {
-    font-size: 1.5rem;
+    font-size: 1.0rem;
   }
 
 }
-@media (max-width: 425px) {
-  .container, .modal-content {
-    padding: 1rem;
+@media (max-width: 320px) {
+  .container, 
+  .modal-content, 
+  .card, 
+  .content, 
+  .title, 
+  .btn, 
+  .page-btn, 
+  .pagination-text {
+    max-width: auto;
+    font-size: 1.2rem;
+    padding: 2rem;
   }
 
-  .card, .content, .btn, .page-btn, .pagination-text {
-    font-size: 0.8rem;
-    padding: 0.5rem;
+  .card {
+    height: auto; /* Automatikus magasság a kisebb képernyőkön */
+    background-size: cover; 
+    background-position: top;
   }
 
-  .title {
-    font-size: 1rem;
-  }
-
-  .btn-container, .pagination {
-    flex-direction: column; 
+  .title, 
+  .btn, 
+  .page-btn {
+    font-size: 1.0rem;
   }
 }
+
+@media (min-width: 321px) and (max-width: 425px) {
+  .card {
+    height: 425px; /* 425px magasság a közepes képernyőkön */
+    background-size: cover; 
+    background-position: top;
+  }
+}
+

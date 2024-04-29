@@ -7,7 +7,7 @@
 
 }
 
-/* Avatar selector container *//* Avatar selector container */
+/* Avatar selector container */
 .avatar-selector-container {
   position: relative;
   margin: 50px;
@@ -18,7 +18,10 @@
   z-index: 100;
   box-shadow: 0 4px 8px rgba(33, 9, 9, 0.3); /* Soft shadow */
   border-radius: 12px; /* Rounded corners */
+  overflow-x: auto; /* Horizontal scroll */
+  white-space: nowrap; /* Az elemek egymás mellett vannak */
 }
+
 
 
 /* Buttons inside the container */
@@ -66,27 +69,15 @@
   border-color: #333; /* Dark border on hover */
 }
 
-@media (max-width: 657px) {
-  .avatar-selector-container {
-    top: 10%;
-    left: 50%;
-    width: 90%; /* Szélesebbé tesszük mobil eszközökön */
-  }
-
-  .avatar-item img {
-    width: 80px; /* Kisebb méretű avatarok */
-    height: 80px;
-  }
-}
 
 @media (min-width: 2560px) {
   /* Nagy felbontású kijelzők (4K) */
   .avatar-selector-container {
     top: 5%;
-    left: 50%;
+    left: 140%;
     transform: translateX(-50%);
-    width: 50%; /* Alkalmazkodik a széles képernyőhöz */
-    padding: 20px; /* Nagyobb padding */
+    width: 85%; /* Alkalmazkodik a széles képernyőhöz */
+    size: 50%;
   }
 
   .avatar-item img {
@@ -99,9 +90,9 @@
   /* Laptopok */
   .avatar-selector-container {
     top: 15%;
-    left: 50%;
+    left: 100%;
     transform: translateX(-50%);
-    width: 70%; /* Illeszkedés a kisebb képernyőhöz */
+    width: 84%; /* Illeszkedés a kisebb képernyőhöz */
   }
 
   .avatar-item img {
@@ -110,13 +101,66 @@
   }
 }
 
-@media (max-width: 425px)  {
+@media (max-width: 1024px) {
+  /* 1024px-es felbontás */
+  .avatar-selector-container {
+    top: 10%;
+    left: 80%;
+    transform: translateX(-50%);
+    width: 90%; /* Még szélesebb a nagyobb táblagépeken */
+  }
+
+  .avatars-container {
+    display: flex;
+    overflow-x: auto; /* Horizontal scroll */
+    padding-bottom: 10px;
+    white-space: pre; /* Prevent wrapping */
+  }
+
+  .avatar-item img {
+    width: 120px; /* Kisebb avatarok */
+    height: 120px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  /* 768px-es felbontás */
+  .avatar-selector-container {
+    top: 10%;
+    left: 73%;
+    transform: translateX(-50%);
+    width: 85%; /* Még szélesebb a tablet eszközökön */
+  }
+
+  .avatars-container {
+    display: flex;
+    overflow-x: auto; /* Horizontal scroll */
+    padding-bottom: 10px;
+    white-space: pre; /* Prevent wrapping */
+  }
+
+  .avatar-item img {
+    width: 100px; /* Kisebb avatarok */
+    height: 100px;
+  }
+}
+
+
+@media (max-width: 426px)  {
   /* Mobil eszközök */
   .avatar-selector-container {
     top: 10%;
-    left: 50%;
+    left: 61%;
     transform: translateX(-50%);
-    width: 90%; /* Még szélesebb a mobilokon */
+    width: 63%; /* Még szélesebb a mobilokon */
+  }
+  
+  .avatars-container {
+    display: flex;
+    overflow-x: auto; /* Horizontal scroll */
+    padding-bottom: 10px;
+    white-space: pre; /* Prevent wrapping */
   }
 
   .avatar-item img {
@@ -125,11 +169,42 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 376px) {
+  /* 375px-es felbontás */
+  .avatar-selector-container {
+    top: 10%;
+    left: 58.5%;
+    transform: translateX(-50%);
+    width: 56%; /* Még szélesebb a mobilokon */
+  }
+
+  .avatars-container {
+    display: flex;
+    overflow-x: auto; /* Horizontal scroll */
+    padding-bottom: 10px;
+    white-space: pre; /* Prevent wrapping */
+  }
+
+  .avatar-item img {
+    width: 80px; /* Még kisebb avatarok */
+    height: 80px;
+  }
+}
+
+
+@media (max-width: 320.1px) {
   /* Nagyon kis telefonok */
   .avatar-selector-container {
     top: 5%; /* Kisebb felső margó a még több helyért */
-    width: 95%; /* Még szélesebb, hogy jobban kihasználjuk a rendelkezésre álló helyet */
+    width: 54%; /* Még szélesebb, hogy jobban kihasználjuk a rendelkezésre álló helyet */
+    left: 57%;
+    
+  }
+  .avatars-container {
+    display: flex;
+    overflow-x: auto; /* Horizontal scroll */
+    padding-bottom: 10px;
+    white-space: pre; /* Prevent wrapping */
   }
 
   .avatar-item img {

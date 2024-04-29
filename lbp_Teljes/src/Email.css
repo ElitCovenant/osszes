@@ -1,17 +1,15 @@
 .panel {
-  max-width: 50%; /* Szélesség csökkentése */
+  max-width: 100%; /* Szélesség csökkentése */
   margin: 10px auto; /* Felső és alsó margó növelése */
   border: 2px solid #007bff; /* Sötétkék keret */
-  padding: 20px;
   background-color: #f9f9f9; /* Világosabb háttérszín */
   border-radius: 8px; /* Lekerekített sarkok */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Doboz árnyék hozzáadása */
   position: relative;
-  left: 22%;
 }
 
 .prepare-message {
-  margin-left: 20px;
+  margin-left: 10px;
   position: absolute;
 }
 
@@ -24,7 +22,7 @@
 
 .message-window,
 .email-list-window {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .message-window input[type="text"],
@@ -87,67 +85,330 @@
   align-items: center;
 }
 
+/* Médialekérdezések */
+
 @media (min-width: 2560px) {
   .panel {
-    max-width: 1000px; /* Nagyobb szélesség */
-    padding: 30px; /* Nagyobb padding */
-  }
-}
-
-/* Laptopok */
-@media (max-width: 1440px) {
-  .panel {
-    max-width: 70%; /* Kisebb szélesség */
-  }
-}
-
-/* Tabletek */
-@media (max-width: 1024px) {
-  .panel {
-    max-width: 80%; /* Százalékos szélesség jobb alkalmazkodásért */
-  }
-}
-
-/* Telefonok */
-@media (max-width: 600px) {
-  .panel, .prepare-message, .message-window input[type="text"],
-  .email-list-window input[type="text"], .message-window textarea {
-    width: 100%; /* Teljes szélesség használata */
-    margin-right: 0;
-    padding: 10px; /* Kisebb padding a jobb helykihasználás érdekében */
+    max-width: 100%;
+    margin: 10px auto;
+    left: 250px;
   }
 
   .prepare-message {
-    margin-left: 10px; /* Kisebb bal margó */
+    margin-left: 5px;
   }
 
   .close-panel {
-    right: 5px; /* Kisebb jobb margó */
-    bottom: 5px; /* Kisebb alsó margó */
+    right: 5px;
+    bottom: 5px;
+  }
+
+  .message-window input[type="text"],
+  .email-list-window input[type="text"],
+  .message-window textarea {
+    width: calc(100% - 10px);
+    padding: 5px;
   }
 
   .email-list-window {
-    max-height: 150px; /* Kisebb magasság */
+    max-height: 120px;
   }
 
-  .email-list-window li, .remove-email {
-    padding: 5px; /* Kisebb padding */
+  .email-list-window li,
+  .remove-email {
+    padding: 5px;
   }
 
   .remove-email {
-    width: 15px; /* Kisebb méret */
-    height: 15px; /* Kisebb méret */
+    width: 15px;
+    height: 15px;
+  }
+
+  .message-window button,
+  .email-list-window button {
+    padding: 5px 10px;
   }
 }
 
-/* Médialekérdezések */
+
+@media (max-width: 1440px) {
+  .panel {
+    width: 50%; /* Teljes szélesség használata */
+    margin: 20px; /* Csökkentett margó */
+    left: 200px; /* Visszaállítjuk a bal oldali pozíciít */
+  }
+
+  .prepare-message {
+    margin-left: 5px; /* Tovább csökkentett bal margó */
+  }
+
+  .close-panel {
+    right: 5px; /* Csökkentett jobb margó */
+    bottom: 5px; /* Csökkentett alsó margó */
+  }
+
+  .message-window input[type="text"],
+  .email-list-window input[type="text"],
+  .message-window textarea {
+    width: calc(100% - 10px); /* Számított szélesség a csökkentett padding figyelembevételével */
+    padding: 5px;
+  }
+
+  .email-list-window {
+    max-height: 120px;
+  }
+
+  .email-list-window li,
+  .remove-email {
+    padding: 5px;
+  }
+
+  .remove-email {
+    width: 15px;
+    height: 15px;
+  }
+
+  .message-window button,
+  .email-list-window button {
+    padding: 5px 10px;
+  }
+}
+
+
+
+@media (max-width: 1024px) {
+  .panel {
+    width: 40%; /* Teljes szélesség használata */
+    margin: 20px; /* Csökkentett margó */
+    left: 0; /* Visszaállítjuk a bal oldali pozíciít */
+  }
+
+  .prepare-message {
+    margin-left: 5px; /* Tovább csökkentett bal margó */
+  }
+
+  .close-panel {
+    right: 5px; /* Csökkentett jobb margó */
+    bottom: 5px; /* Csökkentett alsó margó */
+  }
+
+  .message-window input[type="text"],
+  .email-list-window input[type="text"],
+  .message-window textarea {
+    width: calc(100% - 10px); /* Számított szélesség a csökkentett padding figyelembevételével */
+    padding: 5px;
+  }
+
+  .email-list-window {
+    max-height: 120px;
+  }
+
+  .email-list-window li,
+  .remove-email {
+    padding: 5px;
+  }
+
+  .remove-email {
+    width: 15px;
+    height: 15px;
+  }
+
+  .message-window button,
+  .email-list-window button {
+    padding: 5px 10px;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .panel {
+    width: 50%; /* Teljes szélesség használata */
+    margin: 20px; /* Csökkentett margó */
+    left: 0; /* Visszaállítjuk a bal oldali pozíciít */
+  }
+
+  .prepare-message {
+    margin-left: 5px; /* Tovább csökkentett bal margó */
+  }
+
+  .close-panel {
+    right: 5px; /* Csökkentett jobb margó */
+    bottom: 5px; /* Csökkentett alsó margó */
+  }
+
+  .message-window input[type="text"],
+  .email-list-window input[type="text"],
+  .message-window textarea {
+    width: calc(100% - 10px); /* Számított szélesség a csökkentett padding figyelembevételével */
+    padding: 5px;
+  }
+
+  .email-list-window {
+    max-height: 120px;
+  }
+
+  .email-list-window li,
+  .remove-email {
+    padding: 5px;
+  }
+
+  .remove-email {
+    width: 15px;
+    height: 15px;
+  }
+
+  .message-window button,
+  .email-list-window button {
+    padding: 5px 10px;
+  }
+
+}
+
+
+
+/* Csatolók, kéldául 425px alatti szélességűek */
+@media (max-width: 425px) {
+  .panel {
+    width: 100%; /* Teljes szélesség használata */
+    margin: 20px 0; /* Csökkentett margó */
+    left: 0; /* Visszaállítjuk a bal oldali pozíciít */
+  }
+
+  .prepare-message {
+    margin-left: 5px; /* Tovább csökkentett bal margó */
+  }
+
+  .close-panel {
+    right: 5px; /* Csökkentett jobb margó */
+    bottom: 5px; /* Csökkentett alsó margó */
+  }
+
+  .message-window input[type="text"],
+  .email-list-window input[type="text"],
+  .message-window textarea {
+    width: calc(100% - 10px); /* Számított szélesség a csökkentett padding figyelembevételével */
+    padding: 5px;
+  }
+
+  .email-list-window {
+    max-height: 120px;
+  }
+
+  .email-list-window li,
+  .remove-email {
+    padding: 5px;
+  }
+
+  .remove-email {
+    width: 15px;
+    height: 15px;
+  }
+
+  .message-window button,
+  .email-list-window button {
+    padding: 5px 10px;
+  }
+
+}
+
+
+/* Kis telefonok, kéldául 375px alatti szélességűek */
+@media (max-width: 375px) {
+  .panel {
+    width: 300%; /* Teljes szélesség használata */
+    margin: 20px 0; /* Csökkentett margó */
+    left: 0; /* Visszaállítjuk a bal oldali pozíciít */
+  }   
+
+  .prepare-message {
+    margin-left: 5px; /* Tovább csökkentett bal margó */
+  }
+
+  .close-panel {
+    right: 5px; /* Csökkentett jobb margó */
+    bottom: 5px; /* Csökkentett alsó margó */
+  }
+
+  .message-window input[type="text"],
+  .email-list-window input[type="text"],
+  .message-window textarea {
+    width: calc(100% - 10px); /* Számított szélesség a csökkentett padding figyelembevételével */
+    padding: 5px;
+  }
+
+  .email-list-window {
+    max-height: 120px;
+  }
+
+  .email-list-window li,
+  .remove-email {
+    padding: 5px;
+  }
+
+  .remove-email {
+    width: 15px;
+    height: 15px;
+  }
+
+  .message-window button,
+  .email-list-window button {
+    padding: 5px 10px;
+  }
+}
+
+/* Kis telefonok, kéldául 360px alatti szélességűek */
+@media (max-width: 360px) {
+  .panel {
+    width: 300%; /* Teljes szélesség használata */
+    margin: 20px 0; /* Csökkentett margó */
+    left: 0; /* Visszaállítjuk a bal oldali pozíciít */
+  }
+
+  .prepare-message {
+
+    margin-left: 5px; /* Tovább csökkentett bal margó */
+  }
+
+  .close-panel {
+    right: 5px; /* Csökkentett jobb margó */
+    bottom: 5px; /* Csökkentett alsó margó */
+  }
+
+  .message-window input[type="text"],
+  .email-list-window input[type="text"],
+  .message-window textarea {
+    width: calc(100% - 10px); /* Számított szélesség a csökkentett padding figyelembevételével */
+    padding: 5px;
+  }
+
+  .email-list-window {
+    max-height: 120px;
+  }
+
+  .email-list-window li,
+  .remove-email {
+    padding: 5px;
+  }
+
+  .remove-email {
+    width: 15px;
+    height: 15px;
+  }
+
+  .message-window button,
+  .email-list-window button {
+    padding: 5px 10px;
+  }
+}
+
 
 /* Nagyon kis telefonok, például 320px alatti szélességűek */
 @media (max-width: 320px) {
   .panel {
-    width: 100%; /* Teljes szélesség használata */
+    width: 300%; /* Teljes szélesség használata */
     margin: 20px 0; /* Csökkentett margó */
-    padding: 10px; /* Csökkentett padding */
+    left: 0; /* Visszaállítjuk a bal oldali pozíciót */
   }
 
   .prepare-message {
@@ -170,7 +431,8 @@
     max-height: 120px; /* Tovább csökkentett magasság */
   }
 
-  .email-list-window li, .remove-email {
+  .email-list-window li,
+  .remove-email {
     padding: 5px; /* Tovább csökkentett padding */
   }
 
@@ -178,8 +440,9 @@
     width: 15px; /* Csökkentett szélesség */
     height: 15px; /* Csökkentett magasság */
   }
-  
-  .message-window button, .email-list-window button {
+
+  .message-window button,
+  .email-list-window button {
     padding: 5px 10px; /* Kisebb gombokhoz igazított padding */
   }
 }

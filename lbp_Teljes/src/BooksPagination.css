@@ -3,4 +3,11 @@
     font-weight: bold; /* Félkövér betűstílus */
     padding-bottom: 50px;
   }
+  @media (max-width: 310px) {
+    .no-books-text {
+      font-size: 1rem; /* Kisobb betűméret */
+      font-weight: normal; /* Normál betűstílus */
+      padding-bottom: 20px; /* Kisebb padding */
+    }
+  }
   
