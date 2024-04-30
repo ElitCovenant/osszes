@@ -68,9 +68,26 @@
     background-color: #d32f2f; /* Sötétebb piros szín hover állapotban */
 }
 
-/* Médialekérdezések */
+@media (max-width: 657px) {
+    .download-content {
+        padding: 20px; /* Kisebb padding */
+        width: 80%; /* Szélesebb tartalom mobil eszközökön */
+    }
 
-/* Nagyon kis telefonok, például 320px alatti szélességűek */
+    .download-content h2 {
+        font-size: 20px; /* Kis betűméret */
+    }
+
+    .download-content p {
+        font-size: 14px; /* Kis betűméret */
+    }
+
+    .download-button, .close-button {
+        padding: 8px 16px; /* Kisebb padding */
+        font-size: 16px; /* Kis betűméret */
+    }
+}
+
 @media (max-width: 320px) {
     .download-content {
         padding: 15px; /* Kisebb padding */

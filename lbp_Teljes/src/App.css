@@ -18,6 +18,8 @@ body {
   background-size: cover; /* Háttérkép kitölti a teljes képernyőt */
 }
 
+
+
 /* Kis eszközök (okostelefonok) */
 @media (max-width: 320px) {
   body {
@@ -26,9 +28,10 @@ body {
 }
 
 /* Nagy felbontású kijelzők, mint a 4K monitorok */
-@media (min-width: 2560px) {
+@media (min-width: 3840px) {
   body {
     background-position: center; /* Biztosítja, hogy a kép középpontja legyen látható a nagy felbontású kijelzőkön */
   }
 }
+
 

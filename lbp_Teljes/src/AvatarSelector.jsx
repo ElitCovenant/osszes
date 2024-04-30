@@ -11,6 +11,7 @@ import teacher2_logo from './img/teacher2_prof_picture.png';
 
 function AvatarSelector({ onClose }) {
   const { translations } = useLanguage();
+
   const [isAdmin, setIsAdmin] = useState(false);
 
   const avatarlogos = [teacher1_logo, teacher2_logo, quest1_logo, quest2_logo];
@@ -46,12 +47,12 @@ function AvatarSelector({ onClose }) {
             body: JSON.stringify({ avatarId: avatar.id })
           });
           if (response.ok) {
-            toast.success(translations?.avatarSelector?.successMessage); // Fordított sikerüzenet
+            toast.success('Avatar successfully changed!');
             setTimeout(() => {
               window.location.reload();
             }, 6100);
           } else {
-            toast.error(translations?.avatarSelector?.errorMessage); // Fordított hibaüzenet
+            toast.error('Something went wrong');
             console.error('Hiba történt az avatar frissítése során:', response.statusText);
             
           }
@@ -65,8 +66,8 @@ function AvatarSelector({ onClose }) {
 
   return (
     <div className="avatar-selector-container">
-      <h1>{translations?.avatarSelector?.title || 'Avatar Selector'}</h1> {/* Használjuk a fordítást a címhez */}
-      <button onClick={onClose}>{translations?.avatarSelector?.closeButton || 'Close'}</button> {/* Használjuk a fordítást a bezárás gombhoz */}
+            <h1>Avatar Selector</h1>
+      <button onClick={onClose}>Close</button>
       <div className="avatars-container">
         {avatarlogos.map((avatar, index) => (
           <div key={index} className="avatar-item">

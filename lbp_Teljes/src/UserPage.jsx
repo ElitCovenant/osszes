@@ -14,8 +14,6 @@ import mailIcon from './img_icons/mail.png';
 import { useLanguage } from './LanguageProvider'; // importáljuk a LanguageProvider-t és a useLanguage hook-ot
 
 function UserPage() {
-  const { translations } = useLanguage(); // használjuk a translations objektumot a nyelvi fordításokhoz
-
   const avatarlogos = [def_logo, teacher1_logo, teacher2_logo, quest1_logo, quest2_logo]
   const [isRoleSelectorOpen, setIsRoleSelectorOpen] = useState(false);
   const [profilePicturePath, setProfilePicturePath] = useState(null);
@@ -23,6 +21,7 @@ function UserPage() {
   const [decodedrole, setDecodedRole] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoanVisible, setIsLoanVisible] = useState(false);
+  const { translations } = useLanguage(); // használjuk a translations objektumot a nyelvi fordításokhoz
 
   const toggleRoleSelector = () => {
     setIsRoleSelectorOpen(!isRoleSelectorOpen);
@@ -71,7 +70,7 @@ function UserPage() {
         <div className="profile-header" onClick={toggleRoleSelector}>
           <img src={profilePicturePath > 0 ? avatarlogos[profilePicturePath - 1] : avatarlogos[profilePicturePath]} alt="Profile" height={80} />
           <div>
-          <h2>Welcome {decodedEmail}</h2>
+            <h2>Welcome {decodedEmail}</h2>
             <p>{decodedrole}</p>
           </div>
         </div>
@@ -84,10 +83,11 @@ function UserPage() {
             </div>
           </>
         )}
-        {isAdmin && <button className="toggleLoan-button" onClick={toggleLoan}>{translations?.loan?.sendMessage || 'Send Email'} <img src={mailIcon} alt="Logout Icon" className="mail-icon" /></button>}
+        {isAdmin && <button className="toggleLoan-button" onClick={toggleLoan}>Send Email <img src={mailIcon} alt="Logout Icon" className="mail-icon" /></button>}
       </div>
+      {isAdmin==false && <BookHistory bookHistory={["History item 1", "History item 2", "History item 3"]} />}
       {isAdmin && <Loan/>}
-      <BookHistory bookHistory={["History item 1", "History item 2", "History item 3"]} />
+      
 
       {isLoanVisible && <Email />}
     </div>

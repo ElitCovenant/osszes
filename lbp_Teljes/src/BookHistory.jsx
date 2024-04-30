@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import jwt_decode from './jwt_decode';
 import './BookHistory.css';
+import bookhistoryIcon from './img_icons/bookhistory.png'; 
 import { useLanguage } from './LanguageProvider'; // Importáljuk a useLanguage hook-ot
-
 const BookHistory = () => {
   const { translations } = useLanguage(); // Használjuk a translations objektumot a nyelvi fordításokhoz
   const [historyItems, setHistoryItems] = useState([]);
@@ -48,7 +48,7 @@ const BookHistory = () => {
   return (
     <div className="book-history-container">
       <div className="select-all-tab">
-      <h2 id="bookhistoryname">{translations?.loan?.bookHistory || 'Book History'}</h2> {/* Használjuk a fordítást a címhez */}
+        <h2 id="bookhistoryname">{translations?.loan?.bookHistory || 'Book History'}</h2> {/* Használjuk a fordítást a címhez */}
       </div>
       <span>{translations?.loan?.loanedBooks || 'Book Loaned'} - {translations?.loan?.returnDate || 'Return Date'}</span> {/* Használjuk a fordítást a fejléchez */}
       <div className="history-items-container">

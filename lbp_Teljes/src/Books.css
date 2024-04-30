@@ -102,7 +102,7 @@
   transition: transform var(--d) var(--e);
   z-index: 1;
   background-repeat: no-repeat; /* Háttérkép ismétlődésének letiltása */
-  background-size:cover; /* Háttérkép méretének beállítása a tartalomhoz */
+  background-size: cover; /* Háttérkép méretének beállítása a tartalomhoz */
   grid-template-columns: auto; /* Az oszlopszélesség automatikusra állítása */
 }
 
@@ -120,7 +120,6 @@
   -webkit-background-clip: text; /* Szöveghez való illesztés Safari-hoz */
   -webkit-text-fill-color: transparent; /* Szöveg színének átlátszóvá tétele Safari-hoz */
 }
-
 
 .btn {
   cursor: pointer;
@@ -192,7 +191,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.651);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,7 +202,7 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.514);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 80%;
   max-width: 500px;
 }
@@ -298,6 +297,26 @@
   }
 
 }
+
+@media (max-width: 425px) {
+  .container, .modal-content {
+    padding: 1rem;
+  }
+
+  .card, .content, .btn, .page-btn, .pagination-text {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .btn-container, .pagination {
+    flex-direction: column; 
+  }
+}
+
 @media (max-width: 320px) {
   .container, 
   .modal-content, 
@@ -325,11 +344,4 @@
   }
 }
 
-@media (min-width: 321px) and (max-width: 425px) {
-  .card {
-    height: 425px; /* 425px magasság a közepes képernyőkön */
-    background-size: cover; 
-    background-position: top;
-  }
-}
 

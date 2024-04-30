@@ -7,7 +7,7 @@
 
 }
 
-/* Avatar selector container */
+/* Avatar selector container *//* Avatar selector container */
 .avatar-selector-container {
   position: relative;
   margin: 50px;
@@ -18,10 +18,7 @@
   z-index: 100;
   box-shadow: 0 4px 8px rgba(33, 9, 9, 0.3); /* Soft shadow */
   border-radius: 12px; /* Rounded corners */
-  overflow-x: auto; /* Horizontal scroll */
-  white-space: nowrap; /* Az elemek egymás mellett vannak */
 }
-
 
 
 /* Buttons inside the container */
@@ -69,6 +66,18 @@
   border-color: #333; /* Dark border on hover */
 }
 
+@media (max-width: 657px) {
+  .avatar-selector-container {
+    top: 10%;
+    left: 50%;
+    width: 90%; /* Szélesebbé tesszük mobil eszközökön */
+  }
+
+  .avatar-item img {
+    width: 80px; /* Kisebb méretű avatarok */
+    height: 80px;
+  }
+}
 
 @media (min-width: 2560px) {
   /* Nagy felbontású kijelzők (4K) */
@@ -146,8 +155,7 @@
   }
 }
 
-
-@media (max-width: 426px)  {
+@media (max-width: 425px)  {
   /* Mobil eszközök */
   .avatar-selector-container {
     top: 10%;

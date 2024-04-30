@@ -1,13 +1,12 @@
 .no-books-text {
-    font-size: 1.5rem; /* Nagyobb betűméret */
-    font-weight: bold; /* Félkövér betűstílus */
-    padding-bottom: 50px;
+  font-size: 1.5rem; /* Nagyobb betűméret */
+  font-weight: bold; /* Félkövér betűstílus */
+  padding-bottom: 50px;
+}
+@media (max-width: 320px) {
+  .no-books-text {
+    font-size: 1rem; /* Kisobb betűméret */
+    font-weight: normal; /* Normál betűstílus */
+    padding-bottom: 20px; /* Kisebb padding */
   }
-  @media (max-width: 310px) {
-    .no-books-text {
-      font-size: 1rem; /* Kisobb betűméret */
-      font-weight: normal; /* Normál betűstílus */
-      padding-bottom: 20px; /* Kisebb padding */
-    }
-  }
-  
+}

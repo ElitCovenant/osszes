@@ -87,7 +87,6 @@
     text-decoration: underline; /* Aláhúzás ha ráviszed a kurzort */
   }
   
-  
   @media (max-width: 657px) {
     .cookie-consent .modal {
       width: 90%; /* Kisebb képernyőkön szélesebb legyen */
@@ -125,4 +124,5 @@
       font-size: 15px; /* Kisobb betűméret a gombhoz */
     }
   }
+  
   

@@ -290,7 +290,7 @@ a.ssolink {
     margin: 10px auto;
     max-height: 100%;
     max-width: 100%;
-    background-image: url('https://st.depositphotos.com/2504887/4298/i/450/depositphotos_42982647-stock-photo-dark-leather-cover.jpg');
+    background-image: url('/src/LoginBack.jpg');
     background-position:top;
     background-size:550px;
     box-shadow: rgba(0, 0, 0, 0.61) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;

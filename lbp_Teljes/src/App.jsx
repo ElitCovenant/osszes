@@ -13,6 +13,7 @@ import CookieConsent from './CookieConsent';
 import Settings from './Settings';
 import LanguageProvider from './LanguageProvider'; 
 
+
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showCookieConsent, setShowCookieConsent] = useState(true);
@@ -27,25 +28,25 @@ const App = () => {
 
   return (
     <Router>
-      <LanguageProvider> 
-        <div className="app-container">
-          {showCookieConsent && <CookieConsent />} 
-          <AuthProvider>
-            <Navbar setSearchTerm={setSearchTerm} />
-            <div className="content-container">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/books" element={<Books searchTerm={searchTerm} />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/userpage" element={<UserPage />} />
-                <Route path="/settings" element={<Settings />} />
-              </Routes>
-            </div>
-            <Hover />
+       <LanguageProvider> 
+          <div className="app-container">
+            {showCookieConsent && <CookieConsent />} {/* Show CookieConsent only if authToken doesn't exist */}
+              <AuthProvider>
+                <Navbar setSearchTerm={setSearchTerm} />
+                  <div className="content-container">
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/books" element={<Books searchTerm={searchTerm} />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/userpage" element={<UserPage />} />
+                      <Route path="/settings" element={<Settings />} />
+                    </Routes>
+                  </div>
+                <Hover />
+              </AuthProvider>
             <Footer />
-          </AuthProvider>
-        </div>
-      </LanguageProvider>
+          </div>
+        </LanguageProvider>
     </Router>
   );
 };

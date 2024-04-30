@@ -6,17 +6,17 @@ const WelcomeSection = () => {
   const { translations } = useLanguage();
 
   return (
-    <div className="container">
-      <div className="typed-out">
-        <br />
-        <p>
+      <div className="container" >
+        <div className="typed-out">
+          <br />
+          <p>
           {translations.welcome_message}
-          <br />
-          {translations.library_goal}
-          <br />
-        </p>
+            <br />
+            {translations.library_goal}
+            <br />
+          </p>
+        </div>
       </div>
-    </div>
   );
 };
 
