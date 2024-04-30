@@ -3,6 +3,7 @@ Documents mappa:
 	Tárolja a projekt összes dokumentumát.
 		-.pdf
 		-.docx
+		-.pdf
 		-.xlsx
 		-2 .txt
 ----------------------------------------------------------------------
