@@ -92,7 +92,7 @@ const LibraryFilter = ({ onSubmit }) => {
             id="title_filter" 
             type="text" 
             name="title" 
-            placeholder={translations.titlePlaceholder} 
+            placeholder="Book Title"
             value={searchTitle} 
             onChange={(e) => setSearchTitle(e.target.value)} 
           />
